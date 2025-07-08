@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saketh Lingerker | AI/ML Enthusiast</title>
+  <link rel="icon" type="image/png" href="assets/ls-logo.jpg" />
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -18,17 +19,19 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --navbar-bg: #121212;
-      --dark-bg: #0a0a0f;
-      --darker-bg: #07070c;
-      --card-bg: #121218;
-      --accent: #2563eb;
-      --accent-light: #3b82f6;
-      --text: #e2e8f0;
-      --text-secondary: #94a3b8;
+      --navbar-bg: #0F172A;
+      --dark-bg: #0F172A;
+      --darker-bg: #181e2a;
+      --card-bg: #1E293B;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --accent: #38BDF8; /* Sky-400 */
+      --accent-light: #A78BFA; /* Purple-400 */
+      --gradient-hero: linear-gradient(135deg, #38BDF8, #A78BFA);
       --success: #10b981;
       --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -49,28 +52,43 @@
     75%  { transform: translateY(10px); opacity: 0.7; }
     100% { transform: translateY(0); opacity: 1; }
   }
+  body.light-mode {
+    --navbar-bg: #fff;
+    --dark-bg: #F9FAFB;
+    --darker-bg: #f3f4f6;
+    --card-bg: #fff;
+    --accent: #6366F1; /* indigo-500 for light */
+    --accent-alt: #6366F1;
+    --text: #1F2937;
+    --text-secondary: #4b5563;
+    background-color: #F9FAFB;
+    color: #1F2937;
+  }
+
+  body.light-mode .navbar a,
+  body.light-mode .footer-heading,
+  body.light-mode .footer-social,
+  body.light-mode .footer-link,
+  body.light-mode .text-white,
+  body.light-mode .text-zinc-300,
+  body.light-mode h1,
+  body.light-mode h2,
+  body.light-mode h3,
+  body.light-mode p,
+  body.light-mode span,
+  body.light-mode li,
+  body.light-mode .logo {
+    color: #111827 !important;
+  }
+
   body.dark {
     background-color: #0f172a;
     color: #f1f5f9;
   }
 
-    body.light-mode {
-      --dark-bg: #f9fafb;
-      --navbar-bg: #ffffff;
-      /* optional: shadow to separate navbar */
-      --text: #111827;
-      --text-secondary: #4b5563;
-      --darker-bg: #f0f0f0;
-      --card-bg: #ffffff;
-      --text: #111827;
-      --text-secondary: #4b5563;
-      --accent: #2563eb;
-      --accent-light: #3b82f6;
-    }
-
-    body.light-mode header {
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-    }
+  body.light-mode header {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
 
     * {
       margin: 0;
@@ -115,14 +133,35 @@
     .logo {
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--accent);
       text-decoration: none;
       display: flex;
       align-items: center;
     }
-
-    .logo span {
+    .logo-l {
+      font-family: 'Orbitron', 'Inter', Arial, sans-serif !important;
+      font-weight: 900 !important;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .logo-s {
+      font-family: 'Orbitron', 'Inter', Arial, sans-serif !important;
+      font-weight: 900 !important;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       color: var(--text);
+    }
+    body.light-mode .logo-l {
+      color: #4338ca !important;
+    }
+    body.light-mode .logo-s {
+      color: #1F2937 !important;
+    }
+    @media (max-width: 800px) {
+      .logo {
+        font-size: 1.5rem;
+        margin-right: 12px;
+      }
     }
 
     .nav-links {
@@ -216,7 +255,11 @@
     }
 
     .hero-text h1 span {
-      color: var(--accent);
+      background: var(--gradient-hero);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
       display: block;
     }
 
@@ -836,46 +879,104 @@
     /* Footer */
     footer {
       background: var(--darker-bg);
-      padding: 50px 0 30px;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+      font-size: 1.08rem;
+      padding: 32px 0 32px 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      width: 100vw;
+      left: 0;
+      position: relative;
+      box-sizing: border-box;
     }
 
     .footer-content {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 0 32px;
+      box-sizing: border-box;
+    }
+
+    .footer-copy {
+      font-weight: 500;
+      white-space: nowrap;
+      font-size: 1.1rem;
+    }
+
+    .footer-center {
+      display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
 
-    .footer-logo {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 25px;
-    }
-
-    .footer-links {
+    .footer-nav {
       display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.08rem;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 35px;
-      margin-bottom: 35px;
     }
 
-    .footer-links a {
+    .footer-nav a {
       color: var(--text-secondary);
       text-decoration: none;
-      font-size: 1.1rem;
-      transition: var(--transition);
+      transition: color 0.2s;
+      font-weight: 500;
     }
 
-    .footer-links a:hover {
+    .footer-nav a:hover {
       color: var(--accent);
     }
 
-    .copyright {
+    .footer-nav span {
       color: var(--text-secondary);
-      font-size: 1rem;
+      font-size: 1.1em;
+    }
+
+    .footer-socials {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    .footer-socials a {
+      color: var(--accent);
+      font-size: 1.3rem;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+
+    .footer-socials a:hover {
+      color: var(--accent-light);
+    }
+
+    @media (max-width: 800px) {
+      .footer-content {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 0 10px;
+      }
+      .footer-center {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .footer-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .footer-socials {
+        justify-content: center;
+        margin-top: 4px;
+      }
     }
 
     /* Responsive Design - Enhanced */
@@ -1103,8 +1204,8 @@
       }
 
       .profile-card {
-        width: 420px;
-        height: 420px;
+        width: 520px;
+        height: 520px;
         max-width: 100%;
         max-height: 100%;
         border-radius: 16px;
@@ -1128,11 +1229,370 @@
     /* Medium screens: moderate size */
     @media (min-width: 768px) and (max-width: 1199px) {
       .profile-card {
-        width: 400px;
-        height: 400px;
+        width: 440px;
+        height: 440px;
         max-width: 90vw;
         max-height: 90vw;
         border-radius: 16px;
+      }
+    }
+
+    .compact-footer {
+      padding-top: 12px !important;
+      padding-bottom: 12px !important;
+    }
+    .compact-footer .footer-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.98rem;
+      font-weight: 500;
+      transition: var(--transition);
+      margin: 0 2px;
+    }
+    .compact-footer .footer-link:hover {
+      color: var(--accent);
+    }
+    .compact-footer .footer-social {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin: 0 2px;
+      transition: color 0.2s;
+    }
+    .compact-footer .footer-social:hover {
+      color: var(--accent-light);
+    }
+    @media (max-width: 768px) {
+      .compact-footer .container {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+      }
+      .compact-footer .footer-link, .compact-footer .footer-social {
+        font-size: 1rem;
+      }
+      .compact-footer .footer-link {
+        margin: 0 4px;
+      }
+      .compact-footer .footer-social {
+        margin: 0 4px;
+      }
+      .compact-footer .text-xs {
+        font-size: 0.95rem;
+      }
+    }
+
+    .creative-contact-section {
+      background: linear-gradient(135deg, rgba(37,99,235,0.10) 0%, rgba(124,58,237,0.10) 100%);
+      padding: 120px 0 100px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .creative-contact-card {
+      background: rgba(255,255,255,0.03);
+      box-shadow: 0 8px 40px 0 rgba(37,99,235,0.10), 0 1.5px 8px 0 rgba(124,58,237,0.08);
+      border-radius: 32px;
+      padding: 48px 24px 40px 24px;
+      margin-top: 40px;
+      margin-bottom: 0;
+      position: relative;
+    }
+    .creative-contact-heading {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      position: relative;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      width: 100%;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #2563eb 10%, #8b5cf6 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      display: inline-block;
+      animation: gradient-move 3s linear infinite alternate;
+    }
+    @keyframes gradient-move {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .creative-underline {
+      display: block;
+      width: 120px;
+      height: 6px;
+      margin: 0.5rem auto 0 auto;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #2563eb 10%, #8b5cf6 90%);
+      box-shadow: 0 0 16px 2px #2563eb55;
+      opacity: 0.85;
+      animation: underline-glow 2s infinite alternate;
+    }
+    @keyframes underline-glow {
+      0% { box-shadow: 0 0 16px 2px #2563eb55; }
+      100% { box-shadow: 0 0 32px 6px #8b5cf655; }
+    }
+    .creative-contact-subtext {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.01em;
+      margin-bottom: 0;
+      margin-top: 0.5rem;
+      text-shadow: 0 1px 8px rgba(37,99,235,0.07);
+    }
+    @media (max-width: 900px) {
+      .creative-contact-card {
+        padding: 32px 8px 32px 8px;
+        border-radius: 18px;
+      }
+      .creative-contact-heading {
+        font-size: 2.2rem;
+      }
+      .creative-underline {
+        width: 80px;
+        height: 4px;
+      }
+    }
+    @media (max-width: 600px) {
+      .creative-contact-section {
+        padding: 60px 0 60px 0;
+      }
+      .creative-contact-card {
+        padding: 16px 2px 16px 2px;
+        border-radius: 10px;
+      }
+      .creative-contact-heading {
+        font-size: 1.3rem;
+      }
+      .creative-underline {
+        width: 50px;
+        height: 3px;
+      }
+      .creative-contact-subtext {
+        font-size: 1.05rem;
+      }
+    }
+
+    .navbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .navbar-socials {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      align-items: center;
+    }
+    .navbar-social-link {
+      color: var(--accent);
+      font-size: 1.25rem;
+      transition: color 0.2s, transform 0.2s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .navbar-social-link:hover {
+      color: var(--accent-light);
+      transform: translateY(-2px) scale(1.08);
+    }
+    @media (max-width: 768px) {
+      .navbar-socials {
+        gap: 10px;
+      }
+      .navbar-social-link {
+        font-size: 1.1rem;
+      }
+    }
+    .navbar-divider {
+      display: inline-block;
+      height: 28px;
+      width: 1.5px;
+      background: linear-gradient(180deg, #2563eb 0%, #8b5cf6 100%);
+      margin: 0 12px;
+      border-radius: 2px;
+      opacity: 0.6;
+    }
+    @media (max-width: 768px) {
+      .navbar-divider {
+        height: 20px;
+        margin: 0 6px;
+      }
+    }
+
+    /* Modern Navbar inspired by devanshprakash.com */
+    .main-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      z-index: 1000;
+      background: var(--navbar-bg);
+      box-shadow: 0 2px 16px 0 rgba(16, 21, 40, 0.10);
+      transition: background 0.3s, box-shadow 0.3s;
+      border-bottom: 1px solid rgba(100,116,139,0.08);
+    }
+    .navbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      padding: 0 24px;
+    }
+    .logo-img-link {
+      display: flex;
+      align-items: center;
+      height: 56px;
+    }
+    .navbar-logo-img {
+      height: 44px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .main-nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .main-nav-links a {
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 1.08rem;
+      text-decoration: none;
+      padding: 8px 0;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .main-nav-links a.active,
+    .main-nav-links a:hover {
+      color: var(--accent);
+    }
+    .main-nav-links a.active::after,
+    .main-nav-links a:hover::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+    }
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .theme-toggle-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .theme-toggle-btn:hover {
+      color: var(--accent-light);
+    }
+    .navbar-socials {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .navbar-social-link {
+      color: var(--accent);
+      font-size: 1.18rem;
+      transition: color 0.2s, transform 0.2s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .navbar-social-link:hover {
+      color: var(--accent-light);
+      transform: translateY(-2px) scale(1.08);
+    }
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.7rem;
+      cursor: pointer;
+      margin-left: 8px;
+    }
+    /* Mobile Overlay */
+    .mobile-nav-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15,23,42,0.98);
+      z-index: 2000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+    .mobile-nav-overlay.active {
+      display: flex;
+    }
+    .mobile-close {
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 2.2rem;
+      cursor: pointer;
+    }
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+    .mobile-nav-links a {
+      color: var(--text);
+      font-size: 2rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-nav-links a.active,
+    .mobile-nav-links a:hover {
+      color: var(--accent);
+    }
+    @media (max-width: 992px) {
+      .main-nav-links {
+        gap: 18px;
+      }
+      .navbar-inner {
+        padding: 0 10px;
+      }
+    }
+    @media (max-width: 800px) {
+      .main-nav-links {
+        display: none;
+      }
+      .mobile-toggle {
+        display: block;
       }
     }
   </style>
@@ -1140,27 +1600,48 @@
 
 <body>
   <!-- Header -->
- <!-- Header -->
-<header>
-<div class="container">
-<nav class="navbar">
-<a class="logo" href="#">S<span>L</span></a>
-<ul class="nav-links">
-<li><a class="active" href="#home">Home</a></li>
-<li><a href="#experience">Experience</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-<button class="mobile-toggle">
-<i class="fas fa-bars"></i>
-<button class="text-xl ml-4 transition-all duration-300" id="theme-toggle">
-<i class="fas fa-moon" id="theme-icon"></i>
-</button>
-</button>
-</nav>
-</div>
-</header>
+  <header>
+    <nav class="main-navbar">
+      <div class="navbar-inner">
+        <!-- Logo Left -->
+        <a class="logo" href="#"><span class="logo-l">L</span><span class="logo-s">S</span></a>
+        <!-- Nav Links Center -->
+        <ul class="main-nav-links">
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <!-- Right: Theme toggle + Socials -->
+        <div class="navbar-right">
+          <button class="theme-toggle-btn" id="theme-toggle">
+            <i class="fas fa-moon" id="theme-icon"></i>
+          </button>
+          <span class="navbar-divider"> | </span>
+          <div class="navbar-socials">
+            <a href="https://github.com/sakethlingerker" target="_blank" aria-label="GitHub" class="navbar-social-link"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/saketh-lingerker-b93028241/" target="_blank" aria-label="LinkedIn" class="navbar-social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:saketh1805@gmail.com" aria-label="Email" class="navbar-social-link"><i class="fas fa-envelope"></i></a>
+          </div>
+          <button class="mobile-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Overlay Menu -->
+      <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <button class="mobile-close" id="mobile-menu-close"><i class="fas fa-times"></i></button>
+        <ul class="mobile-nav-links">
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
   <!-- Hero Section -->
   <section id="home" class="hero">
@@ -1173,15 +1654,15 @@
             From late-night model tuning to real-world ML deployments, I live deep in the AI/ML grind.
             Right now? I'm turning ideas into working systems — one line of code at a time.
           </p>
-          <p>
+          <!-- <p>
             Currently doing cutting-edge research at IIIT-H and constantly looking to push boundaries.
-          </p>
+          </p> -->
 
           <div class="hero-btns">
-<a class="btn" href="#projects">View Projects</a>
-<a class="btn btn-outline" href="#contact">Contact Me</a>
-<a class="btn" href="resume.pdf" target="_blank">Resume</a>
-</div>  
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn btn-outline" href="#contact">Contact Me</a>
+            <a class="btn" href="resume.pdf" target="_blank">Resume</a>
+          </div>  
         </div>
         <div class="hero-image">
           <div class="profile-card">
@@ -1265,7 +1746,7 @@
   </section>
 
   <!-- Skills Section -->
-  <section id="skills">
+  <section id="skills" class="section-bg">
     <div class="container">
       <div class="section-header">
         <h2>Technical Skills</h2>
@@ -1589,7 +2070,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="contact relative overflow-hidden">
+  <section id="contact" class="contact creative-contact-section relative overflow-hidden">
     <!-- Decorative SVG divider -->
     <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] rotate-180 z-0">
       <svg class="relative block w-full h-[100px]" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
@@ -1598,14 +2079,14 @@
       </svg>
     </div>
 
-    <div class="container mx-auto px-6 max-w-4xl z-10 relative">
-      <h2 class="text-4xl md:text-6xl font-extrabold uppercase tracking-tight drop-shadow-lg text-center"
-        style="color: var(--accent)">
-        Let's Connect
+    <div class="container mx-auto px-6 max-w-4xl z-10 relative creative-contact-card">
+      <h2 class="creative-contact-heading text-4xl md:text-6xl font-extrabold uppercase tracking-tight text-center">
+        <span class="gradient-text">Let's Connect</span>
+        <span class="creative-underline"></span>
       </h2>
-      <p class="mt-4 text-lg text-center max-w-xl mx-auto" style="color: var(--text-secondary)">
-        Whether it’s a collab idea, tech banter, or just a random brainwave —
-        drop it below. I don’t ghost... unless it’s in a codebase.
+      <p class="creative-contact-subtext mt-4 text-lg text-center max-w-xl mx-auto">
+        Whether it's a collab idea, tech banter, or just a random brainwave —
+        drop it below. I don't ghost... unless it's in a codebase.
       </p>
 
       <div class="mt-10 flex flex-col md:flex-row items-center justify-center gap-12 max-w-3xl mx-auto">
@@ -1648,57 +2129,21 @@
   </section>
 
   <!-- Footer -->
-  <footer
-    class="custom-footer bg-gradient-to-tr from-zinc-900 via-zinc-800 to-zinc-900 text-zinc-300 py-12 px-6 border-t border-zinc-700 animate-footer-fadein">
-    <div class="container mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Navigation -->
-        <div class="flex flex-col items-center md:items-start">
-          <h3 class="footer-heading text-2xl font-extrabold text-teal-400 mb-4 tracking-widest">
-            Navigate
-          </h3>
-          <span class="sp flex gap-2">
-            <span><a class="footer-link" href="#home">Home</a></span>|
-            <span><a class="footer-link" href="#experience">Experience</a></span>| <span><a class="footer-link"
-                href="#skills">Skills</a></span>|
-            <span><a class="footer-link" href="#projects">Projects</a></span>|
-            <span><a class="footer-link" href="#contact">Contact</a></span>
-          </span>
-        </div>
-        <!-- Social/Connect -->
-        <div class="flex flex-col items-center">
-          <h3 class="footer-heading text-2xl font-extrabold text-teal-400 mb-4 tracking-widest">
-            Connect
-          </h3>
-          <div class="flex space-x-8">
-            <a href="https://github.com/sakethlingerker" target="_blank" rel="noopener noreferrer" class="footer-social"
-              aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://linkedin.com/in/saketh-lingerker-b93028241/" target="_blank" rel="noopener noreferrer"
-              class="footer-social" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="mailto:saketh1805@gmail.com" class="footer-social" aria-label="Email">
-              <i class="fas fa-envelope"></i>
-            </a>
-          </div>
-        </div>
-        <!-- Contact Info -->
-        <div class="flex flex-col items-center md:items-end">
-          <h3 class="footer-heading text-2xl font-extrabold text-teal-400 mb-4 tracking-widest">
-            Get in Touch
-          </h3>
-          <p class="text-lg font-semibold">Saketh Lingerker</p>
-          <p class="text-sm">+91-8688791352</p>
-          <p class="text-sm">saketh1805@gmail.com</p>
-          <p class="text-sm mt-2">Hyderabad, Telangana, India</p>
-        </div>
-      </div>
-      <div class="mt-10 text-center border-t border-zinc-800 pt-6">
-        <p class="footer-copyright">
-          © 2025 Saketh Lingerker. All rights reserved.
-        </p>
+  <footer class="footer">
+    <div class="footer-content">
+      <span class="footer-copy">© 2025 Saketh Lingerker. All rights reserved.</span>
+      <div class="footer-center">
+        <nav class="footer-nav">
+          <a href="#home">Home</a>
+          <span>|</span>
+          <a href="#experience">Experience</a>
+          <span>|</span>
+          <a href="#skills">Skills</a>
+          <span>|</span>
+          <a href="#projects">Projects</a>
+          <span>|</span>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
     </div>
   </footer>
@@ -1712,16 +2157,16 @@
 
     new Typed("#typed", {
       strings: [
+        "Saketh Lingerker",
         "AI/ML Developer",
-        "MLOps Engineer",
         "Deep Learning Enthusiast",
-        "Builder of Smart Things 🧠",
         "Tech Explorer",
       ],
       typeSpeed: 50,
-      backSpeed: 30,
+      backSpeed: 80,
       backDelay: 2000,
       loop: true,
+      showCursor: false,
     });
 
 
@@ -1733,15 +2178,20 @@
     const toggleBtn = document.getElementById("theme-toggle");
     const icon = document.getElementById("theme-icon");
 
-    // Load saved theme (optional)
+    // On load: default to dark unless user has set light
     if (localStorage.getItem("theme") === "light") {
       document.body.classList.add("light-mode");
+      document.body.classList.remove("dark");
       icon.classList.replace("fa-moon", "fa-sun");
+    } else {
+      document.body.classList.remove("light-mode");
+      document.body.classList.add("dark");
+      icon.classList.replace("fa-sun", "fa-moon");
     }
 
     toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("light-mode");
-      const isLight = document.body.classList.contains("light-mode");
+      const isLight = document.body.classList.toggle("light-mode");
+      document.body.classList.toggle("dark", !isLight);
 
       // Change icon
       icon.classList.replace(
@@ -1749,7 +2199,7 @@
         isLight ? "fa-sun" : "fa-moon"
       );
 
-      // Save preference (optional)
+      // Save preference
       localStorage.setItem("theme", isLight ? "light" : "dark");
     });
 
@@ -1769,10 +2219,10 @@
     });
 
     // Mobile navigation toggle
-    const mobileToggle = document.querySelector(".mobile-toggle");
+    const mobileMenuToggle = document.querySelector(".mobile-toggle");
     const navLinks = document.querySelector(".nav-links");
 
-    mobileToggle.addEventListener("click", () => {
+    mobileMenuToggle.addEventListener("click", () => {
       navLinks.classList.toggle("active");
     });
 
