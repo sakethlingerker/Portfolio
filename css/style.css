@@ -1259,90 +1259,25 @@ footer {
 }
 
 @media (max-width: 576px) {
+  .hero-content {
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 576px) {
   .hero {
-    padding: 60px 0 40px;
-  }
-  section {
-    padding: 16px 0;
-  }
-
-  .hero-text h1 {
-    font-size: 2.4rem;
-  }
-
-  .hero-text p {
-    font-size: 1.15rem;
-  }
-
-  .hero-btns {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .profile-card {
-    width: 300px;
-    height: 300px;
-  }
-
-  .section-header h2 {
-    font-size: 2rem;
-  }
-
-  .section-header p {
-    font-size: 1.05rem;
-  }
-
-  .experience-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-card {
-    padding: 25px;
-  }
-
-  .social-links {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .social-link {
-    justify-content: flex-start;
-  }
-
-  .footer-links {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .compact-icons {
-    gap: 10px;
-    flex-wrap: nowrap;
-  }
-
-  .contact-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 1.1rem;
+    padding: 32px 0 24px 0;
+    min-height: unset;
   }
 }
 
 @media (max-width: 400px) {
-  .hero-text h1 {
-    font-size: 2.2rem;
+  .hero-content {
+    margin-top: 100px;
   }
-
-  .profile-card {
-    width: 260px;
-    height: 260px;
-  }
-
-  .btn {
-    width: 100%;
-    text-align: center;
+  .hero {
+    padding: 8px 0 16px 0;
+    min-height: unset;
   }
 }
 
