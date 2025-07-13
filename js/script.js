@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", function() {
     if (isLight) {
       body.classList.add("light-mode");
       body.classList.remove("dark");
-      icon.innerHTML = '<img src="assets/sun.png" alt="Light Mode" style="width: 16px; height: 16px;">';
+      icon.innerHTML = '<img src="assets/sun.png" alt="Light Mode" style="width: 19px; height: 19px;">';
     } else {
       body.classList.remove("light-mode");
       body.classList.add("dark");
-      icon.innerHTML = '<i class="fas fa-moon"></i>';
+      icon.innerHTML = '<i class="fas fa-moon" ></i>';
     }
   }
 
@@ -197,8 +197,3 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
-
-module.exports = {
-  darkMode: 'class',
-  // ...rest of config
-}
