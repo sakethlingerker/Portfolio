@@ -197,3 +197,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+
+module.exports = {
+  darkMode: 'class',
+  // ...rest of config
+}

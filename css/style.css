@@ -599,6 +599,18 @@ section {
   gap: 12px;
 }
 
+@media (max-width: 767px) {
+  .skill-items {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .skill-tag {
+    font-size: 0.92rem;
+    padding: 7px 14px;
+  }
+}
+
 .skill-tag {
   background: rgba(37, 99, 235, 0.1);
   color: var(--accent);
@@ -960,11 +972,9 @@ footer {
 
 /* Modern Navbar */
 .main-navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100vw;
-  z-index: 1000;
+  z-index: 1050;
   background: var(--navbar-bg);
   box-shadow: 0 2px 16px 0 rgba(16, 21, 40, 0.10);
   transition: background 0.3s, box-shadow 0.3s;
@@ -1426,7 +1436,7 @@ footer {
     max-width: 340px;
     min-height: 1.5em;      /* Only enough for one line */
     height: auto;
-    /* text-align: center; */
+    text-align: center;
     white-space: nowrap;    /* Prevent wrapping on desktop */
     line-height: 1.3em;
     margin: 0 auto;
@@ -1468,5 +1478,15 @@ footer {
     word-break: break-word;
     min-height: 2.8em; /* Reserve space for two lines if needed */
     display: inline;
+  }
+}
+
+@media (max-width: 767px) {
+  .project-card {
+    margin-bottom: 24px;
+    padding: 16px 8px;
+  }
+  .projects-grid {
+    gap: 18px;
   }
 }
