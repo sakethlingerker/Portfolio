@@ -1057,6 +1057,12 @@ section {
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 35px;
 }
+.project-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;   /* curve */
+  object-fit: cover;
+}
 
 .project-card {
   background: var(--card-bg);
