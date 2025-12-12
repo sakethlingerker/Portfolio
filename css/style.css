@@ -307,26 +307,26 @@ body.light-mode .logo-s {
   .hero-content {
     text-align: center !important;
   }
-  
+
   .hero-text {
     text-align: center !important;
     margin: 0 auto !important;
   }
-  
+
   .hero-title {
     text-align: center !important;
   }
-  
+
   .hero-text h1 {
     text-align: center !important;
   }
-  
+
   .hero-text p {
     text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
-  
+
   .hero-btns {
     justify-content: center !important;
     text-align: center !important;
@@ -339,17 +339,18 @@ body.light-mode .logo-s {
     font-size: 1.8rem !important;
     text-align: center !important;
   }
-  
+
   .hero-text h1 span {
     font-size: 1.6rem !important;
     text-align: center !important;
   }
-  
+
   .hero-text p {
     font-size: 1.1rem !important;
     text-align: center !important;
   }
 }
+
 .hero {
   min-height: 100vh;
   display: flex;
@@ -659,6 +660,7 @@ section {
   background: linear-gradient(135deg, #ec4899, #db2777);
   color: white;
 }
+
 
 .timeline-date {
   font-size: 0.9rem;
@@ -1057,10 +1059,12 @@ section {
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 35px;
 }
+
 .project-card img {
   width: 100%;
   height: auto;
-  border-radius: 16px;   /* curve */
+  border-radius: 16px;
+  /* curve */
   object-fit: cover;
 }
 
@@ -1396,31 +1400,32 @@ footer {
 .footer-socials a:hover {
   color: var(--accent-light);
 }
+
 /* Mobile Hero Section Centering */
 @media (max-width: 768px) {
   .hero-content {
     text-align: center !important;
   }
-  
+
   .hero-text {
     text-align: center !important;
     margin: 0 auto !important;
   }
-  
+
   .hero-title {
     text-align: center !important;
   }
-  
+
   .hero-text h1 {
     text-align: center !important;
   }
-  
+
   .hero-text p {
     text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
-  
+
   .hero-btns {
     justify-content: center !important;
     text-align: center !important;
@@ -1433,17 +1438,18 @@ footer {
     font-size: 1.8rem !important;
     text-align: center !important;
   }
-  
+
   .hero-text h1 span {
     font-size: 1.6rem !important;
     text-align: center !important;
   }
-  
+
   .hero-text p {
     font-size: 1.1rem !important;
     text-align: center !important;
   }
 }
+
 /* Modern Navbar */
 .main-navbar {
   position: sticky;
@@ -1839,10 +1845,11 @@ footer {
     max-height: 90vw;
     border-radius: 16px;
   }
+
   .hero-content {
-   text-align: left;
+    text-align: left;
   }
-  
+
 }
 
 @media (max-width: 900px) {
@@ -2753,7 +2760,8 @@ body.light-mode .project-card::after {
   font-weight: bold;
   cursor: pointer;
   z-index: 2001;
-  background: #ef4444 !important; /* Red background for visibility */
+  background: #ef4444 !important;
+  /* Red background for visibility */
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -2766,9 +2774,11 @@ body.light-mode .project-card::after {
 }
 
 #close-resume-modal:hover {
-  background: #dc2626 !important; /* Darker red on hover */
+  background: #dc2626 !important;
+  /* Darker red on hover */
   transform: scale(1.1);
 }
+
 /* Light theme specific close button styles */
 body.light-mode #close-resume-modal {
   background: #ef4444 !important;
@@ -2780,25 +2790,26 @@ body.light-mode #close-resume-modal {
 body.light-mode #close-resume-modal:hover {
   background: #dc2626 !important;
 }
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   #resume-modal {
     padding: 10px;
   }
-  
+
   #resume-modal-content {
     padding: 15px;
     max-height: 90vh;
   }
-  
+
   #pdf-container {
     min-height: 400px;
   }
-  
+
   #mobile-preview {
     max-height: 70vh;
   }
-  
+
   #close-resume-modal {
     top: 10px;
     right: 15px;
@@ -2806,11 +2817,12 @@ body.light-mode #close-resume-modal:hover {
     width: 35px;
     height: 35px;
   }
-  
+
   .resume-image.zoomed {
     transform: scale(2);
   }
 }
+
 /* Ensure buttons work properly in both themes */
 #open-pdf-btn {
   background: var(--accent);
@@ -2838,15 +2850,15 @@ body.light-mode #close-resume-modal:hover {
     text-align: left;
     gap: 60px;
   }
-  
+
   .hero-text {
     text-align: left;
   }
-  
+
   .hero-btns {
     justify-content: flex-start;
   }
-  
+
   /* Handle long text wrapping */
   #typed {
     white-space: normal;
@@ -2862,26 +2874,26 @@ body.light-mode #close-resume-modal:hover {
     text-align: center;
     gap: 50px;
   }
-  
+
   .hero-text {
     order: 1;
     text-align: center;
   }
-  
+
   .hero-image {
     order: 2;
     text-align: center;
   }
-  
+
   .hero-btns {
     justify-content: center;
   }
-  
+
   /* Slightly larger text for tablet */
   .hero-text h1 {
     font-size: 2.3rem;
   }
-  
+
   .hero-text h1 span {
     font-size: 2.1rem;
   }
@@ -2893,7 +2905,7 @@ body.light-mode #close-resume-modal:hover {
     font-size: 2.1rem;
     text-align: center;
   }
-  
+
   .hero-text h1 span {
     font-size: 1.9rem;
     text-align: center;
@@ -2907,19 +2919,19 @@ body.light-mode #close-resume-modal:hover {
     text-align: center;
     gap: 40px;
   }
-  
+
   .hero-text {
     order: 1;
   }
-  
+
   .hero-image {
     order: 2;
   }
-  
+
   .hero-text h1 {
     font-size: 1.9rem;
   }
-  
+
   .hero-text h1 span {
     font-size: 1.7rem;
   }
@@ -2930,11 +2942,11 @@ body.light-mode #close-resume-modal:hover {
   .hero-text h1 {
     font-size: 1.7rem;
   }
-  
+
   .hero-text h1 span {
     font-size: 1.5rem;
   }
-  
+
   .hero-text p {
     font-size: 1.1rem;
   }
@@ -2951,4 +2963,4 @@ body.light-mode #close-resume-modal:hover {
   white-space: normal;
   line-height: 1.2;
   display: inline;
-} 
+}
