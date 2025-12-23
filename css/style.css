@@ -3243,3 +3243,28 @@ textarea:focus-visible {
     max-width: 100%;
   }
 }
+
+/* GitHub Contribution Graph */
+.github-contribution-graph {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.github-contribution-graph img {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.github-contribution-graph img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+}
+
+@media (max-width: 768px) {
+  .github-contribution-graph img {
+    max-width: 100%;
+  }
+}
