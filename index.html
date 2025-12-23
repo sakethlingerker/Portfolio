@@ -63,34 +63,76 @@
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" defer></script>
 
-  <!-- JSON-LD Schema Markup -->
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-02DRH5PMY1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-02DRH5PMY1');
+</script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "uq4jqvupe6"); // Replace with your Clarity ID
+  </script>
+
+  <!-- Enhanced JSON-LD Schema Markup -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Saketh Lingerker",
     "url": "https://sakethlingerker.com",
-    "image": "https://sakethlingerker.com/assets/ls-logo.jpg",
+    "image": "https://sakethlingerker.com/assets/Display-picture.jpg",
     "jobTitle": "AI/ML Engineer & Full-Stack Developer",
-    "description": "AI/ML Engineer specializing in Machine Learning, Deep Learning, NLP, and Full-Stack Web Development",
+    "description": "AI/ML Engineer specializing in Machine Learning, Deep Learning, NLP, and Full-Stack Web Development. Experienced in building scalable ML pipelines and modern web applications.",
+    "email": "saketh1805@gmail.com",
     "alumniOf": {
       "@type": "CollegeOrUniversity",
       "name": "JNTUH University"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Tata Consultancy Services"
     },
     "knowsAbout": [
       "Machine Learning",
       "Deep Learning",
       "Natural Language Processing",
+      "Computer Vision",
+      "MLOps",
       "Web Development",
       "Python",
       "JavaScript",
       "TensorFlow",
+      "PyTorch",
       "React",
-      "Node.js"
+      "Node.js",
+      "AWS",
+      "Docker"
     ],
     "sameAs": [
       "https://github.com/sakethlingerker",
-      "https://www.linkedin.com/in/saketh-lingerker"
+      "https://www.linkedin.com/in/saketh-lingerker-b93028241/"
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "AWS Cloud Practitioner Essentials",
+        "credentialCategory": "certificate"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "IIIT-Hyderabad AI/ML Training & Research Internship",
+        "credentialCategory": "certificate"
+      }
     ]
   }
   </script>
@@ -497,7 +539,8 @@
           <div class="project-card" data-category="web">
             <div class="project-content">
               <h3 class="project-title">Smart Feedback Collection and Analysis System</h3>
-              <img src="assets/PROJECTS/Smart-Feedback-Collection-and-Analysis-System.png" alt="">
+              <img src="assets/PROJECTS/Smart-Feedback-Collection-and-Analysis-System.png"
+                alt="Smart Feedback Collection and Analysis System Dashboard" loading="lazy">
               <strong class="project-description">
                 Full-stack web application with real-time sentiment analysis, multi-layer authentication,
                 and interactive analytics dashboard for comprehensive feedback management.
@@ -539,7 +582,8 @@
           <div class="project-card" data-category="ai">
             <div class="project-content">
               <h3 class="project-title">ATS Resume Expert Pro</h3>
-              <img src="assets/PROJECTS/ATS Resume Expert Pro.png" alt="">
+              <img src="assets/PROJECTS/ATS Resume Expert Pro.png" alt="ATS Resume Expert Pro Application Interface"
+                loading="lazy">
 
               <strong class="project-description">
                 A powerful AI-powered resume analysis tool that helps job seekers optimize their resumes
@@ -578,7 +622,8 @@
           <div class="project-card" data-category="ai">
             <div class="project-content">
               <h3 class="project-title">AI Virtual Interior Designer</h3>
-              <img src="assets/PROJECTS/AI Virtual Interior Designer.png" alt="">
+              <img src="assets/PROJECTS/AI Virtual Interior Designer.png"
+                alt="AI Virtual Interior Designer Generated Room Design" loading="lazy">
 
               <strong class="project-description">
                 Generative AI application that creates custom room designs and provides real-time material cost
@@ -616,7 +661,8 @@
           <div class="project-card" data-category="MLOps">
             <div class="project-content">
               <h3 class="project-title">Vehicle Insurance MLOps Pipeline</h3>
-              <img src="assets/PROJECTS/Vehicle Insurance MLOps Pipeline.png" alt="">
+              <img src="assets/PROJECTS/Vehicle Insurance MLOps Pipeline.png"
+                alt="Vehicle Insurance MLOps Pipeline Architecture" loading="lazy">
 
               <strong class="project-description">
                 End-to-End MLOps pipeline for vehicle insurance data with automated model deployment,
@@ -658,7 +704,8 @@
           <div class="project-card" data-category="ai">
             <div class="project-content">
               <h3 class="project-title">Crop Yield Prediction Model</h3>
-              <img src="assets/PROJECTS/Crop Yield Prediction Model.png" alt="">
+              <img src="assets/PROJECTS/Crop Yield Prediction Model.png" alt="Crop Yield Prediction Model Results"
+                loading="lazy">
 
               <strong class="project-description">
                 Neural network model that predicts crop yield with 97% accuracy using soil nutrients,
@@ -699,7 +746,8 @@
               <h3 class="project-title">
                 ClearView – Interactive Air Quality Insights
               </h3>
-              <img src="assets/PROJECTS/ClearView – Interactive Air Quality Insights.png" alt="">
+              <img src="assets/PROJECTS/ClearView – Interactive Air Quality Insights.png"
+                alt="ClearView Air Quality Dashboard" loading="lazy">
 
               <strong class="project-description">
                 Interactive AQI dashboard with real-time insights and 95% data
@@ -738,7 +786,8 @@
               <h3 class="project-title">
                 Polyglot AI – Language Detection System
               </h3>
-              <img src="assets/PROJECTS/Polyglot AI – Language Detection & Translation.png" alt="">
+              <img src="assets/PROJECTS/Polyglot AI – Language Detection & Translation.png"
+                alt="Polyglot AI Language Detection System" loading="lazy">
 
               <strong class="project-description">
                 NLP model capable of detecting and classifying text into
@@ -778,7 +827,8 @@
               <h3 class="project-title">
                 Real-Time Flight Fare Prediction Application
               </h3>
-              <img src="assets/PROJECTS/Flight Price Prediction.png" alt="">
+              <img src="assets/PROJECTS/Flight Price Prediction.png" alt="Flight Price Prediction Application"
+                loading="lazy">
 
               <strong class="project-description">
                 Machine learning-powered web app for flight fare prediction.
@@ -814,7 +864,7 @@
           <div class="project-card" data-category="web">
             <div class="project-content">
               <h3 class="project-title">Cloudcast - Advanced Weather Application</h3>
-              <img src="assets/PROJECTS/Cloudcast.png" alt="">
+              <img src="assets/PROJECTS/Cloudcast.png" alt="Cloudcast Weather Application Interface" loading="lazy">
 
               <strong class="project-description">
                 Feature-rich weather application with 5-day forecasts, geolocation support, and dynamic
@@ -866,7 +916,7 @@
             <div class="achievement-icon">
               <img
                 src="https://cdn.brandfetch.io/idIu-Ji9Le/theme/light/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1668076193075"
-                style="width: 60px; height: auto; ">
+                alt="Deloitte Logo" loading="lazy" style="width: 60px; height: auto; ">
 
             </div>
             <h3 class="achievement-title">Deloitte Australia – Data Analytics Simulation</h3>

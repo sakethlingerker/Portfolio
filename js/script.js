@@ -151,8 +151,26 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch((error) => {
           alert("Something went wrong.");
           console.error(error);
+          
+          // Track failed form submission
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_error', {
+              'event_category': 'Contact',
+              'event_label': 'Form Submission Failed'
+            });
+          }
         });
     });
+
+  // Track successful form submission
+  document.getElementById("contact-form").addEventListener("submit", function() {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'form_submit', {
+        'event_category': 'Contact',
+        'event_label': 'Contact Form Submitted'
+      });
+    }
+  });
 
   // Mobile navigation functionality
   const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
@@ -258,6 +276,14 @@ document.addEventListener("DOMContentLoaded", function () {
           item.classList.remove("show");
         }
       });
+      
+      // Track filter usage
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'filter_click', {
+          'event_category': 'Projects',
+          'event_label': filterValue
+        });
+      }
       
       // Refresh AOS to recalculate positions after layout change
       setTimeout(() => {
@@ -416,6 +442,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         projectModal.classList.add("open");
         document.body.style.overflow = "hidden";
+        
+        // Track project modal view
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'project_view', {
+            'event_category': 'Projects',
+            'event_label': title
+          });
+        }
       });
     });
 

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://sakethlingerker.com/sitemap.xml
+
+# Crawl-delay (optional, adjust if needed)
+Crawl-delay: 1
+
+# Disallow specific files/folders if needed
+Disallow: /assets/Saketh_Lingerker_8688791352.pdf
+Disallow: /assets/SakethCertificate-IIIT.pdf
