@@ -149,14 +149,42 @@ document.addEventListener("DOMContentLoaded", function () {
           }, 4000);
         })
         .catch((error) => {
-          alert("Something went wrong.");
-          console.error(error);
+          // Improved error handling with specific messages
+          let errorMessage = "Something went wrong. Please try again.";
+          
+          if (!navigator.onLine) {
+            errorMessage = "❌ No internet connection. Please check your network and try again.";
+          } else if (error.text) {
+            errorMessage = "❌ Email service error. Please try again or contact directly at saketh1805@gmail.com";
+          } else {
+            errorMessage = "❌ Failed to send message. Please try again later.";
+          }
+          
+          // Show error toast
+          const toast = document.createElement("div");
+          toast.textContent = errorMessage;
+          toast.className = "form-message error";
+          toast.style.position = "fixed";
+          toast.style.bottom = "20px";
+          toast.style.right = "20px";
+          toast.style.maxWidth = "400px";
+          toast.style.zIndex = "9999";
+          toast.style.transition = "opacity 0.3s ease-in-out";
+          document.body.appendChild(toast);
+
+          setTimeout(() => {
+            toast.style.opacity = "0";
+            setTimeout(() => toast.remove(), 300);
+          }, 5000);
+          
+          console.error("EmailJS Error:", error);
           
           // Track failed form submission
           if (typeof gtag !== 'undefined') {
             gtag('event', 'form_error', {
               'event_category': 'Contact',
-              'event_label': 'Form Submission Failed'
+              'event_label': 'Form Submission Failed',
+              'error_type': !navigator.onLine ? 'network' : 'service'
             });
           }
         });
@@ -291,6 +319,45 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 100); // Small delay to ensure DOM update
     });
   });
+
+  // Project Search Functionality
+  const searchInput = document.getElementById('project-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const searchQuery = e.target.value.toLowerCase().trim();
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      projectCards.forEach(card => {
+        const title = card.querySelector('.project-title')?.textContent.toLowerCase() || '';
+        const description = card.querySelector('.project-description')?.textContent.toLowerCase() || '';
+        const tags = Array.from(card.querySelectorAll('.project-tag'))
+          .map(tag => tag.textContent.toLowerCase())
+          .join(' ');
+        
+        const searchText = `${title} ${description} ${tags}`;
+        const matches = searchText.includes(searchQuery);
+        
+        if (matches || searchQuery === '') {
+          card.classList.remove('hide');
+          card.classList.add('show');
+        } else {
+          card.classList.add('hide');
+          card.classList.remove('show');
+        }
+      });
+      
+      // Track search usage
+      if (searchQuery && typeof gtag !== 'undefined') {
+        gtag('event', 'search', {
+          'event_category': 'Projects',
+          'search_term': searchQuery
+        });
+      }
+      
+      // Refresh AOS
+      setTimeout(() => AOS.refresh(), 100);
+    });
+  }
 
   // RESUME MODAL - FIXED VERSION
   const resumeModal = document.getElementById("resume-modal");

@@ -139,6 +139,8 @@
 </head>
 
 <body>
+  <!-- Skip Navigation Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress-container">
     <div class="scroll-progress-bar" id="scroll-progress"></div>
@@ -198,7 +200,7 @@
   </header>
 
   <!-- Main Content -->
-  <main>
+  <main id="main-content">
     <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="container">
@@ -525,13 +527,20 @@
           <p>My recent work and technical contributions</p>
         </div>
 
+        <!-- Project Search -->
+        <div class="project-search-container" data-aos="fade-up">
+          <input type="text" id="project-search" class="project-search-input" placeholder="🔍 Search projects..."
+            aria-label="Search projects by name or description">
+        </div>
+
         <!-- Project Filters -->
-        <div class="project-filters" data-aos="fade-up">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="web">Web Dev</button>
-          <button class="filter-btn" data-filter="ai">AI/ML</button>
-          <button class="filter-btn" data-filter="data">Data Science</button>
-          <button class="filter-btn" data-filter="MLOps">MLOps</button>
+        <div class="project-filters" data-aos="fade-up" role="group" aria-label="Filter projects by category">
+          <button class="filter-btn active" data-filter="all" aria-label="Show all projects">All</button>
+          <button class="filter-btn" data-filter="web" aria-label="Filter by Web Development projects">Web Dev</button>
+          <button class="filter-btn" data-filter="ai" aria-label="Filter by AI/ML projects">AI/ML</button>
+          <button class="filter-btn" data-filter="data" aria-label="Filter by Data Science projects">Data
+            Science</button>
+          <button class="filter-btn" data-filter="MLOps" aria-label="Filter by MLOps projects">MLOps</button>
         </div>
 
         <div class="projects-grid">
