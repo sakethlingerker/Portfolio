@@ -39,18 +39,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Load saved theme preference
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    setTheme(true);
-  } else {
-    setTheme(false);
-  }
+  // Always start with light mode on every page load
+  setTheme(true);
 
   toggleBtn.addEventListener("click", () => {
     const isLight = !body.classList.contains("light-mode");
     setTheme(isLight);
-    localStorage.setItem("theme", isLight ? "light" : "dark");
+    // Theme preference is NOT saved, so it resets to light on refresh
   });
 
   // Tilt effect for cards

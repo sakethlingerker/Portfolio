@@ -2964,3 +2964,139 @@ body.light-mode #close-resume-modal:hover {
   line-height: 1.2;
   display: inline;
 }
+
+/* ===== Mobile Navigation Overlay ===== */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: var(--card-bg);
+  z-index: 9999;
+  transition: right 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 80px 30px 30px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mobile-nav-overlay.active {
+  right: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10000;
+}
+
+.mobile-close:hover {
+  color: var(--accent);
+  transform: rotate(90deg);
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobile-nav-links li {
+  margin: 0;
+}
+
+.mobile-nav-links a {
+  display: block;
+  padding: 15px 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: var(--transition);
+  background: transparent;
+}
+
+.mobile-nav-links a:hover {
+  background: rgba(139, 92, 246, 0.1);
+  color: var(--accent);
+  transform: translateX(5px);
+}
+
+.mobile-nav-links a.active {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--accent);
+  border-left: 3px solid var(--accent);
+}
+
+/* Light Mode Mobile Navigation */
+body.light-mode .mobile-nav-overlay {
+  background: #ffffff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .mobile-close {
+  color: #1F2937;
+}
+
+body.light-mode .mobile-close:hover {
+  color: #6366F1;
+}
+
+body.light-mode .mobile-nav-links a {
+  color: #1F2937;
+}
+
+body.light-mode .mobile-nav-links a:hover {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366F1;
+}
+
+body.light-mode .mobile-nav-links a.active {
+  background: rgba(99, 102, 241, 0.15);
+  color: #6366F1;
+  border-left: 3px solid #6366F1;
+}
+
+/* Mobile toggle button - only show on mobile */
+.mobile-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block !important;
+  }
+
+  .main-nav-links {
+    display: none !important;
+  }
+}
+
+/* Desktop - hide mobile navigation elements */
+@media (min-width: 769px) {
+  .mobile-nav-overlay {
+    display: none !important;
+  }
+
+  .mobile-toggle {
+    display: none !important;
+  }
+
+  .main-nav-links {
+    display: flex !important;
+  }
+}
