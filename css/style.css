@@ -3100,6 +3100,7 @@ body.light-mode .mobile-nav-links a.active {
     display: flex !important;
   }
 }
+
 /* ===== NEW FEATURES: Accessibility, Search, GitHub Stats ===== */
 
 /* Skip Navigation Link */
@@ -3221,7 +3222,10 @@ textarea:focus-visible {
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -3233,12 +3237,12 @@ textarea:focus-visible {
     font-size: 1rem;
     padding: 14px 20px;
   }
-  
+
   .github-stats-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .github-stats-grid img {
     max-width: 100%;
   }
@@ -3266,5 +3270,114 @@ textarea:focus-visible {
 @media (max-width: 768px) {
   .github-contribution-graph img {
     max-width: 100%;
+  }
+}
+
+/* ===== Print Optimization ===== */
+@media print {
+  @page {
+    margin: 1cm;
+    size: auto;
+  }
+
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+
+  /* Hide non-essential elements for printing */
+  .navbar,
+  .mobile-toggle,
+  .theme-toggle,
+  .scroll-progress-container,
+  .back-to-top,
+  .skip-link,
+  .project-filters,
+  .project-search-container,
+  .creative-contact-section,
+  .footer-nav,
+  .github-stats-section,
+  .social-proof-section,
+  #project-modal,
+  #resume-modal,
+  .modal {
+    display: none !important;
+  }
+
+  /* Optimize Hero for Print */
+  .hero {
+    min-height: auto;
+    padding: 20px 0;
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: 24pt;
+    color: black;
+  }
+
+  .typewriter {
+    color: #444;
+  }
+
+  /* Show content sections clearly */
+  section {
+    page-break-inside: avoid;
+    padding: 20px 0;
+  }
+
+  .section-header h2 {
+    font-size: 18pt;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    color: black;
+  }
+
+  .section-header p {
+    display: none;
+  }
+
+  /* Project Cards for Print */
+  .projects-grid {
+    display: block;
+  }
+
+  .project-card {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    break-inside: avoid;
+    box-shadow: none;
+    background: transparent;
+    color: black;
+  }
+
+  .project-card img {
+    display: none;
+    /* Hide images to save ink */
+  }
+
+  .project-title {
+    color: black;
+    font-size: 14pt;
+  }
+
+  .project-description {
+    color: #333;
+  }
+
+  /* Skills for Print */
+  .skill-card {
+    border: 1px solid #eee;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  /* Expand Links */
+  a[href^=http]:after {
+    content: attr(href);
+    font-size: 9pt;
+    color: #666;
   }
 }
