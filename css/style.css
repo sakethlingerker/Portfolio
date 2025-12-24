@@ -16,6 +16,7 @@
 
   /* Vibrant Accents */
   --accent: #8b5cf6;
+  --accent-rgb: 139, 92, 246;
   /* Violet 500 */
   --accent-light: #d8b4fe;
   /* Violet 300 */
@@ -32,6 +33,7 @@ body.light-mode {
   --darker-bg: #f3f4f6;
   --card-bg: #fff;
   --accent: #6366F1;
+  --accent-rgb: 99, 102, 241;
   /* Indigo 500 */
   --accent-alt: #4F46E5;
   /* Indigo 600 */
@@ -1023,6 +1025,25 @@ section {
   .skills-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  /* Enhanced Typography for Laptops/Desktops - High Specificity */
+
+  /* "Hey, I'm" Text */
+  .hero-text h1 {
+    font-size: 4.2rem !important;
+  }
+
+  /* Typewriter Text - Using ID for Max Specificity */
+  #typed {
+    font-size: 5rem !important;
+  }
+
+  /* Subtitle Description */
+  .hero-text p {
+    font-size: 1.8rem !important;
+    max-width: 750px;
+    line-height: 1.6;
+  }
 }
 
 .skill-card {
@@ -1123,10 +1144,10 @@ section {
 
 .project-card img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   border-radius: 16px;
   /* curve */
-  object-fit: cover;
 }
 
 .project-card {
@@ -1949,7 +1970,7 @@ footer {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
+
   display: inline-block;
 }
 
@@ -2414,41 +2435,58 @@ button:hover,
   display: none;
 }
 
-/* Hover Overlay */
-.project-card::after {
-  content: "Tap to know more";
+/* Hover Effect - Card Highlight */
+.project-card {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.project-card::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: rgba(15, 23, 42, 0.6);
-  /* Default dark overlay */
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-weight: bold;
+  height: 4px;
+  background: var(--accent);
   opacity: 0;
-  transition: opacity 0.3s ease;
-  backdrop-filter: blur(4px);
-  /* Increased blur */
+  transition: var(--transition);
+  z-index: 10;
 }
 
-/* Light Mode Hover Overlay */
-body.light-mode .project-card::after {
-  background: rgba(255, 255, 255, 0.3);
-  /* Light overlay for light mode */
-  color: var(--accent-alt);
-  /* Use alternate accent color */
-  backdrop-filter: blur(8px);
-  /* Stronger blur for glass effect */
-}
-
-.project-card:hover::after {
+.project-card:hover::before {
   opacity: 1;
 }
+
+/* Learn More Link Styling */
+.learn-more-link {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: auto;
+  padding-top: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.learn-more-link i {
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .learn-more-link i {
+  transform: translateX(4px);
+}
+
 
 /* Ensure title and description look good centered */
 .project-card .project-content {

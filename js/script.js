@@ -536,7 +536,8 @@ document.addEventListener("DOMContentLoaded", function () {
         title: "ATS Resume Expert Pro",
         desc: "Leveraging **Google Gemini AI**, this tool automates resume optimization. Ideal for **GenAI Product** enthusiasts.",
         tags: ["Python", "Google Gemini", "Streamlit"],
-        link: "https://resume-tracking-sakethlingerker.streamlit.app/"
+        link: "https://resume-tracking-sakethlingerker.streamlit.app/",
+        btnText: "See Live"
       },
       interior_design: {
         title: "AI Virtual Interior Designer",
@@ -545,7 +546,7 @@ document.addEventListener("DOMContentLoaded", function () {
         link: "https://github.com/sakethlingerker/AI-Driven-Virtual-Interior-Designer"
       },
       polyglot: {
-        title: "Polyglot AI",
+        title: "Polyglot AI – Language Detection System",
         desc: "A classical **NLP** model capable of detecting languages with high precision. Perfect for **Core ML** interest.",
         tags: ["NLP", "Scikit-Learn", "Python"],
         link: "https://github.com/sakethlingerker/Polyglot-AI-Language-Detection-System"
@@ -553,39 +554,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // ML & Data Branch
       flight_fare: {
-        title: "Flight Fare Prediction",
+        title: "Real-Time Flight Fare Prediction Application",
         desc: "A pure **Data Science** project achieving 96% accuracy using advanced regression. Perfect for **ML Engineers**.",
         tags: ["Sklearn", "Machine Learning", "Flask"],
         link: "https://github.com/sakethlingerker/Flight-Price-Prediction"
       },
       crop_yield: {
-        title: "Crop Yield Prediction",
+        title: "Crop Yield Prediction Model",
         desc: "Utilizes **Neural Networks** to optimize agricultural output. Ideal for interest in **Deep Learning Applications**.",
         tags: ["Keras", "TensorFlow", "Neural Networks"],
         link: "https://github.com/sakethlingerker/Minor-Project"
       },
       clearview: {
-        title: "ClearView Air Quality",
+        title: "ClearView – Interactive Air Quality Insights",
         desc: "Focuses on **Data Visualization** and real-time environmental insights using PowerBI and Python.",
         tags: ["Data Viz", "Power BI", "Streamlit"],
-        link: "https://air-quality-insight.streamlit.app/"
+        link: "https://air-quality-insight.streamlit.app/",
+        btnText: "See Live"
       },
 
       // Engineering Branch
       smart_feedback: {
-        title: "Smart Feedback System",
+        title: "Smart Feedback Collection and Analysis System",
         desc: "A scalable **Full-Stack** solution featuring real-time analysis and complex architecture. For **Backend** fans.",
         tags: ["Node.js", "MongoDB", "Express"],
         link: "https://github.com/sakethlingerker/Smart-Feedback-Collection-and-Analysis-System"
       },
       cloudcast: {
-        title: "Cloudcast Weather App",
+        title: "Cloudcast - Advanced Weather Application",
         desc: "A polished **Frontend** application with dynamic glassmorphism UI. Demonstrates strong **UX/UI** skills.",
         tags: ["JavaScript", "CSS3", "API Integration"],
-        link: "https://sakethlingerker.github.io/Cloudcast---Advanced-Weather-Application/"
+        link: "https://sakethlingerker.github.io/Cloudcast---Advanced-Weather-Application/",
+        btnText: "See Live"
       },
       mlops: {
-        title: "Vehicle Insurance Pipeline",
+        title: "Vehicle Insurance MLOps Pipeline",
         desc: "End-to-end **MLOps Pipeline** with CI/CD and Cloud deployment. The definitive project for **Cloud/DevOps**.",
         tags: ["AWS", "Docker", "MLOps"],
         link: "https://github.com/sakethlingerker/MLOPS-Project"
@@ -611,7 +614,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <p class="result-description">${formattedDesc}</p>
         
         <div class="result-actions">
-           <a href="${rec.link}" target="_blank" class="btn result-btn primary-result-btn">View Project</a>
+           <a href="${rec.link}" target="_blank" class="btn result-btn primary-result-btn">${rec.btnText || "View Project"}</a>
            <button onclick="resetQuiz()" class="btn result-btn secondary-result-btn">Restart Quiz</button>
         </div>
       </div>
