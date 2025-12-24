@@ -306,6 +306,18 @@ document.addEventListener("DOMContentLoaded", function () {
         probSec.style.display = "block";
       } else if (probSec) probSec.style.display = "none";
 
+      // Handle Case Study (Impact/Lessons)
+      const caseStudyContent = card.querySelector(".project-case-study")?.innerHTML;
+      const caseStudyContainer = document.getElementById("modal-case-study");
+      const caseStudySection = document.getElementById("modal-case-study-section");
+      
+      if (caseStudyContent && caseStudyContainer) {
+        caseStudyContainer.innerHTML = caseStudyContent;
+        if(caseStudySection) caseStudySection.style.display = "block";
+      } else if (caseStudySection) {
+        caseStudySection.style.display = "none";
+      }
+
       const highlights = card.querySelector(".project-highlights")?.innerHTML;
       if (highlights) document.getElementById("modal-highlights").innerHTML = highlights;
 
