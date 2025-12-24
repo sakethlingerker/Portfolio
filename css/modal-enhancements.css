@@ -1,17 +1,16 @@
-/* ===== Premium Minimal Modal Design (Reference Style) ===== */
+/* ===== Premium Minimal Modal Design (Theme Aligned) ===== */
 
 /* Overlay */
 .modal {
-    background-color: rgba(15, 23, 42, 0.9);
+    background-color: rgba(9, 9, 11, 0.95);
+    /* Deep Zinc Overlay */
     backdrop-filter: blur(8px);
 }
 
 /* Modal Content Container */
 .project-modal-content {
-    background: white;
-    /* Clean white background as per image */
-    color: #1e293b;
-    /* Dark text */
+    background: var(--card-bg);
+    color: var(--text);
     text-align: left;
     overflow-y: auto;
     border-radius: 20px;
@@ -19,7 +18,8 @@
     width: 90%;
     padding: 0;
     position: relative;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Close Button */
@@ -27,8 +27,8 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    background: white;
-    border: 1px solid #e2e8f0;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -37,14 +37,15 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #64748b;
+    color: var(--text-secondary);
     transition: all 0.2s;
     z-index: 10;
 }
 
 .close-modal:hover {
-    background: #f1f5f9;
-    color: #0f172a;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
     transform: rotate(90deg);
 }
 
@@ -65,29 +66,31 @@
 }
 
 .top-tags .project-tag {
-    background: #fbbf24;
-    /* Golden Yellow */
-    color: #78350f;
-    /* Dark Brown/Red text */
+    background: rgba(139, 92, 246, 0.15);
+    /* Translucent Accent */
+    color: var(--accent-light);
     font-weight: 700;
     font-size: 0.75rem;
     padding: 6px 16px;
     border-radius: 20px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    border: none;
+    border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
 /* 2. Title */
 #modal-title {
-    font-family: 'Playfair Display', 'Times New Roman', serif;
-    /* Serif Font */
+    font-family: 'Inter', sans-serif;
+    /* Align with Portfolio Font */
     font-size: 3rem;
-    font-weight: 700;
-    color: #0f172a;
+    font-weight: 800;
     margin-bottom: 40px;
     line-height: 1.1;
     letter-spacing: -0.02em;
+    background: linear-gradient(135deg, white 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* 3. Sections */
@@ -99,7 +102,7 @@
 }
 
 .minimal-section {
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 30px;
 }
 
@@ -108,34 +111,34 @@
 }
 
 /* Headers (PROBLEM, SOLUTION, IMPACT) */
-.minimal-heading {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: #d97706;
-    /* Ancient Gold/Orange */
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 12px;
-}
-
-/* Use generic selectors for injected H4s in Case Study */
+.minimal-heading,
 #modal-case-study h4 {
     font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
     font-weight: 800;
-    color: #d97706;
+    color: var(--accent);
+    /* Use Theme Accent */
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 12px;
-    margin-top: 30px;
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
+#modal-case-study h4 {
+    margin-top: 30px;
+}
+
 #modal-case-study h4:first-child {
     margin-top: 0;
+}
+
+/* Icons in H4s - ensure size consistency */
+.minimal-heading i,
+#modal-case-study h4 i {
+    font-size: 1.1em;
+    color: var(--accent-light);
 }
 
 /* Content Text */
@@ -145,8 +148,8 @@
     font-family: 'Inter', sans-serif;
     font-size: 1.05rem;
     line-height: 1.7;
-    color: #475569;
-    /* Slate 600 */
+    color: var(--text-secondary);
+    /* Muted Text */
 }
 
 /* List Styling */
@@ -156,8 +159,17 @@
 }
 
 .clean-list li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     position: relative;
+    padding-left: 20px;
+}
+
+.clean-list li::before {
+    content: "•";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
 }
 
 /* 4. Bottom Links / Button */
@@ -170,9 +182,9 @@
 }
 
 .bottom-links .project-link {
-    background: #1e293b;
-    /* Dark Slate */
+    background: var(--accent);
     color: white;
+    /* Always white on accent */
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     padding: 14px 32px;
@@ -181,22 +193,49 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: transform 0.2s, background 0.2s;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
 .bottom-links .project-link:hover {
-    background: #0f172a;
+    background: var(--accent-light);
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.5);
 }
 
 .bottom-links .project-link i {
     font-size: 0.9em;
 }
 
+/* Light Mode Overrides (if needed) */
+body.light-mode .project-modal-content {
+    background: #fff;
+    color: #1f2937;
+    border: none;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode #modal-title {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: #111827;
+}
+
+body.light-mode .minimal-section p,
+body.light-mode #modal-case-study p {
+    color: #4b5563;
+}
+
+body.light-mode .minimal-heading,
+body.light-mode #modal-case-study h4 {
+    color: var(--accent);
+    /* Keep accent for headers */
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .modal-body.minimal-layout {
-        padding: 30px 20px;
+        padding: 40px 24px;
     }
 
     #modal-title {
