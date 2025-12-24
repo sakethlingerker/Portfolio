@@ -403,43 +403,120 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // ===== Project Matchmaker (Inline) Logic =====
-  window.handleQuizAnswer = function(category) {
+  // ===== Project Matchmaker (Multi-Step Logic) =====
+  let quizHistory = {}; // Store answers
+
+  window.handleQuizAnswer = function(step, value) {
     const step1 = document.getElementById("quiz-step-1");
+    const step2 = document.getElementById("quiz-step-2");
+    const resultStep = document.getElementById("quiz-result-step");
+    const progress = document.getElementById("quiz-progress-fill");
+    
+    // Step 1 Logic
+    if (step === 1) {
+      quizHistory.domain = value;
+      
+      // If Web Dev -> Direct Recommendation (No Q2 needed for now as per project list)
+      if (value === 'web') {
+        showRecommendation("smart_feedback");
+        return;
+      }
+      
+      // If AI or Data -> Go to Step 2
+      transitionToStep(step1, step2, 66);
+      
+      // Populate Q2 based on Q1
+      const q2Text = document.getElementById("quiz-q2-text");
+      const q2Options = document.getElementById("quiz-q2-options");
+      q2Options.innerHTML = "";
+
+      if (value === 'ai') {
+        q2Text.innerText = "Which aspect of AI intrigues you?";
+        q2Options.innerHTML = `
+          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'genai')">
+            <i class="fas fa-magic"></i> <span>Generative AI & LLMs</span>
+          </button>
+          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'vision')">
+            <i class="fas fa-eye"></i> <span>Computer Vision & Design</span>
+          </button>
+        `;
+      } else if (value === 'data') {
+        q2Text.innerText = "What kind of data challenge?";
+        q2Options.innerHTML = `
+          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'predict')">
+            <i class="fas fa-chart-line"></i> <span>Predictive Modeling (Regression)</span>
+          </button>
+          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'nlp')">
+             <i class="fas fa-comments"></i> <span>Natural Language Processing (NLP)</span>
+          </button>
+        `;
+      }
+    } 
+    // Step 2 Logic
+    else if (step === 2) {
+      // Determine Recommendation
+      if (quizHistory.domain === 'ai') {
+        if (value === 'genai') showRecommendation("ats_resume");
+        else showRecommendation("interior_design");
+      } else if (quizHistory.domain === 'data') {
+        if (value === 'predict') showRecommendation("flight_fare");
+        else showRecommendation("smart_feedback"); // NLP cross-over
+      }
+    }
+  };
+
+  function transitionToStep(from, to, progressVal) {
+    const progress = document.getElementById("quiz-progress-fill");
+    from.classList.remove("active");
+    setTimeout(() => {
+        from.style.display = "none";
+        to.style.display = "block";
+        setTimeout(() => to.classList.add("active"), 50);
+    }, 400);
+    if(progress) progress.style.width = `${progressVal}%`;
+  }
+
+  function showRecommendation(projectKey) {
+    const step1 = document.getElementById("quiz-step-1");
+    const step2 = document.getElementById("quiz-step-2");
     const resultStep = document.getElementById("quiz-result-step");
     const recDisplay = document.getElementById("quiz-recommendation-display");
     const progress = document.getElementById("quiz-progress-fill");
 
-    if (!step1 || !resultStep || !recDisplay) return;
-
-    // Recommendations Data
-    const recommendations = {
-      ai: {
-        title: "ATS Resume Expert Pro",
-        desc: "Since you're interested in <strong>AI & LLMs</strong>, this project is a perfect match. It utilizes Google's Gemini AI to parse and optimize resumes against job descriptions.",
-        tags: ["Python", "Google Gemini", "Streamlit"],
-        link: "https://github.com/sakethlingerker/ATS-Resume-Expert-Pro"
-      },
-      web: {
+    // Project Data
+    const projects = {
+      smart_feedback: {
         title: "Smart Feedback Collection System",
-        desc: "For <strong>Scalable Backend Systems</strong>, check this out. It features real-time data processing, sentiment analysis, and a robust architecture.",
+        desc: "A scalable <strong>Full-Stack</strong> solution featuring real-time sentiment analysis and complex architecture. Perfect for Backend enthusiasts.",
         tags: ["Node.js", "MongoDB", "Express"],
         link: "https://github.com/sakethlingerker/Smart-Feedback-Collection-and-Analysis-System"
       },
-      data: {
-        title: "Real-Time Flight Fare Prediction",
-        desc: "If <strong>Data Analysis</strong> is your focus, this project demonstrates advanced regression modeling (Extra Trees Regressor) with 96% accuracy.",
-        tags: ["Machine Learning", "Scikit-Learn", "Flask"],
+      ats_resume: {
+        title: "ATS Resume Expert Pro",
+        desc: "Leveraging **Google Gemini AI**, this tool automates resume optimization. Ideal for those interested in **GenAI & Automation**.",
+        tags: ["Python", "Google Gemini", "Streamlit"],
+        link: "https://github.com/sakethlingerker/ATS-Resume-Expert-Pro"
+      },
+      interior_design: {
+        title: "AI Virtual Interior Designer",
+        desc: "Combines creative **Generative AI** with computer vision concepts to visualize spaces. Great for those who love **Visual AI**.",
+        tags: ["Stable Diffusion", "PyTorch", "Python"],
+        link: "https://github.com/sakethlingerker/AI-Driven-Virtual-Interior-Designer"
+      },
+      flight_fare: {
+        title: "Flight Fare Prediction App",
+        desc: "A pure **Data Science** project achieving 96% accuracy using advanced regression models. perfect for **ML Engineers**.",
+        tags: ["Sklearn", "Machine Learning", "Flask"],
         link: "https://github.com/sakethlingerker/Flight-Fare-Prediction-Web-App"
       }
     };
 
-    const rec = recommendations[category];
-    
-    // Build Recommendation Card HTML
+    const rec = projects[projectKey];
+
+    // Build Card
     recDisplay.innerHTML = `
       <div class="recommend-card fade-up">
-        <h4><i class="fas fa-check-circle"></i> Top Recommendation</h4>
+        <h4><i class="fas fa-check-circle"></i> Top Suggestion</h4>
         <h3 style="font-size: 1.5rem; margin: 10px 0; color: var(--text);">${rec.title}</h3>
         <p style="color: var(--text-secondary); margin-bottom: 15px;">${rec.desc}</p>
         <div class="project-tags" style="margin-bottom: 20px;">
@@ -449,31 +526,35 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
 
-    // Transition UI
+    // Hide Current Steps
     step1.classList.remove("active");
-    setTimeout(() => {
-        step1.style.display = "none";
-        resultStep.style.display = "block";
-        setTimeout(() => resultStep.classList.add("active"), 50);
-    }, 400); // Wait for fade out
+    step2.classList.remove("active");
+    step1.style.display = "none";
+    step2.style.display = "none";
 
-    // Update Progress
+    // Show Result
+    resultStep.style.display = "block";
+    setTimeout(() => resultStep.classList.add("active"), 50);
+    
     if(progress) progress.style.width = "100%";
-  };
+  }
 
   window.resetQuiz = function() {
     const step1 = document.getElementById("quiz-step-1");
+    const step2 = document.getElementById("quiz-step-2");
     const resultStep = document.getElementById("quiz-result-step");
     const progress = document.getElementById("quiz-progress-fill");
 
+    step2.classList.remove("active");
     resultStep.classList.remove("active");
-    step1.style.display = "block";
     
-    setTimeout(() => {
-        resultStep.style.display = "none";
-        step1.classList.add("active");
-    }, 100);
+    step2.style.display = "none";
+    resultStep.style.display = "none";
+    
+    step1.style.display = "block";
+    setTimeout(() => step1.classList.add("active"), 50);
 
+    quizHistory = {}; // Reset history
     if(progress) progress.style.width = "33%";
   };
 

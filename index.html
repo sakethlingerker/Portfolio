@@ -542,21 +542,31 @@
           <div id="quiz-flow-container">
             <!-- Question 1 -->
             <div class="quiz-step active" id="quiz-step-1">
-              <h3 class="quiz-question">What is your primary interest?</h3>
+              <h3 class="quiz-question">What technical domain interests you most?</h3>
               <div class="quiz-options-grid">
-                <button class="quiz-option-btn" onclick="handleQuizAnswer('ai')">
+                <button class="quiz-option-btn" onclick="handleQuizAnswer(1, 'ai')">
                   <i class="fas fa-brain"></i>
-                  <span>Artificial Intelligence & LLMs</span>
+                  <span>Generative AI & LLMs</span>
                 </button>
-                <button class="quiz-option-btn" onclick="handleQuizAnswer('web')">
-                  <i class="fas fa-server"></i>
-                  <span>Scalable Backend Systems</span>
+                <button class="quiz-option-btn" onclick="handleQuizAnswer(1, 'data')">
+                  <i class="fas fa-chart-line"></i>
+                  <span>Data Science & Predictive Analytics</span>
                 </button>
-                <button class="quiz-option-btn" onclick="handleQuizAnswer('data')">
-                  <i class="fas fa-chart-bar"></i>
-                  <span>Data Analysis & Prediction</span>
+                <button class="quiz-option-btn" onclick="handleQuizAnswer(1, 'web')">
+                  <i class="fas fa-laptop-code"></i>
+                  <span>Full-Stack Web Engineering</span>
                 </button>
               </div>
+            </div>
+
+            <!-- Question 2 (Dynamic) -->
+            <div class="quiz-step" id="quiz-step-2">
+              <h3 class="quiz-question" id="quiz-q2-text">Secondary Question</h3>
+              <div class="quiz-options-grid" id="quiz-q2-options">
+                <!-- Injected via JS -->
+              </div>
+              <button class="btn secondary-btn mt-4" style="font-size: 0.9rem; padding: 8px 16px;"
+                onclick="resetQuiz()">← Back</button>
             </div>
 
             <!-- Result -->
@@ -565,7 +575,7 @@
               <div id="quiz-recommendation-display">
                 <!-- Injected via JS -->
               </div>
-              <button class="btn primary-btn mt-4" onclick="resetQuiz()">Try Again</button>
+              <button class="btn primary-btn mt-4" onclick="resetQuiz()">Start Over</button>
             </div>
           </div>
         </div>
