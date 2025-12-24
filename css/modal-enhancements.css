@@ -110,6 +110,8 @@
 .minimal-heading,
 #modal-case-study h4 {
     color: var(--accent);
+    font-family: 'Inter', sans-serif;
+    /* Explicitly use Sans-Serif for labels */
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -117,7 +119,6 @@
     margin-bottom: 12px;
     margin-top: 32px;
     display: block;
-    /* Font inherited from body (Inter) */
 }
 
 #modal-case-study h4:first-child {
