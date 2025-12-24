@@ -4011,15 +4011,6 @@ body.light-mode .matchmaker-progress-bar {
   text-align: center;
 }
 
-.accent-line {
-  width: 100px;
-  height: 4px;
-  background-color: #fbbf24;
-  /* Golden accent from reference */
-  margin: 0 auto 24px auto;
-  border-radius: 2px;
-}
-
 .result-heading {
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;

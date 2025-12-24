@@ -573,7 +573,7 @@ document.addEventListener("DOMContentLoaded", function () {
     recDisplay.innerHTML = `
       <div class="recommend-card fade-up">
         <div class="result-header">
-           <div class="accent-line"></div>
+           <!-- Accent Line Removed -->
            <h2 class="result-heading">You should check out...</h2>
         </div>
         
