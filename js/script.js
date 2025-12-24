@@ -214,22 +214,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const backToTopBtn = document.getElementById("back-to-top");
   if (backToTopBtn) backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-  // Projects: Filtering & Search
+  // Projects: Filtering
   const filterBtns = document.querySelectorAll(".filter-btn");
-  const searchInput = document.getElementById('project-search');
 
   function updateProjectVisibility() {
-    const searchQuery = searchInput?.value.toLowerCase().trim() || "";
     const activeFilter = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
     
     document.querySelectorAll(".project-card").forEach((card) => {
       const category = card.getAttribute("data-category");
-      const title = card.querySelector('.project-title')?.textContent.toLowerCase() || "";
-      const description = card.querySelector('.project-description')?.textContent.toLowerCase() || "";
-      const matchesSearch = !searchQuery || `${title} ${description}`.includes(searchQuery);
       const matchesFilter = activeFilter === "all" || category === activeFilter;
       
-      if (matchesSearch && matchesFilter) {
+      if (matchesFilter) {
         card.classList.remove("hide");
         card.classList.add("show");
       } else {
@@ -245,7 +240,6 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.classList.add("active");
     updateProjectVisibility();
   }));
-  if (searchInput) searchInput.addEventListener("input", updateProjectVisibility);
 
   // Resume Modal
   const resumeModal = document.getElementById("resume-modal");
@@ -256,16 +250,22 @@ document.addEventListener("DOMContentLoaded", function () {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
   }
 
+  function openResume() {
+    if (!resumeModal) return;
+    const isMobile = isMobileDevice();
+    document.querySelectorAll('.desktop-view').forEach(el => el.style.display = isMobile ? 'none' : 'block');
+    const mobileEl = document.querySelector('.mobile-view');
+    if (mobileEl) mobileEl.style.display = isMobile ? 'block' : 'none';
+    resumeModal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
   if (resumeModal && resumeButtons.length > 0) {
     resumeButtons.forEach(btn => {
       if (!btn.hasAttribute('download')) {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
-          const isMobile = isMobileDevice();
-          document.querySelectorAll('.desktop-view').forEach(el => el.style.display = isMobile ? 'none' : 'block');
-          document.querySelector('.mobile-view').style.display = isMobile ? 'block' : 'none';
-          resumeModal.classList.add("open");
-          document.body.style.overflow = "hidden";
+          openResume();
         });
       }
     });
@@ -295,33 +295,41 @@ document.addEventListener("DOMContentLoaded", function () {
       const links = card.querySelector(".project-links").innerHTML;
       const problem = card.querySelector(".project-problem")?.innerHTML.trim() || "";
 
-      document.getElementById("modal-title").innerText = title; // Plain text title
-      // document.getElementById("modal-description").textContent = desc; // Removed description per new design
-
+      document.getElementById("modal-title").innerText = title;
       document.getElementById("modal-tags").innerHTML = tags;
-      document.getElementById("modal-links").innerHTML = links; // Inject links at bottom
+      document.getElementById("modal-links").innerHTML = links;
       
-      const probSec = document.getElementById("modal-problem-section");
-      const probText = document.getElementById("modal-problem");
-      if (problem && probSec && probText) {
-        probText.innerHTML = problem;
-        probSec.style.display = "block";
-      } else if (probSec) probSec.style.display = "none";
-
-      // Handle Case Study (Impact/Lessons)
-      const caseStudyContent = card.querySelector(".project-case-study")?.innerHTML;
-      const caseStudyContainer = document.getElementById("modal-case-study");
-      const caseStudySection = document.getElementById("modal-case-study-section");
+      const highlights = card.querySelector(".project-highlights")?.innerHTML || "";
+      const caseStudy = card.querySelector(".project-case-study");
       
-      if (caseStudyContent && caseStudyContainer) {
-        caseStudyContainer.innerHTML = caseStudyContent;
-        if(caseStudySection) caseStudySection.style.display = "block";
-      } else if (caseStudySection) {
-        caseStudySection.style.display = "none";
+      let impactContent = "";
+      let lessonsContent = "";
+      
+      if (caseStudy) {
+        const h4s = caseStudy.querySelectorAll("h4");
+        h4s.forEach(h4 => {
+          const text = h4.textContent.toLowerCase();
+          if (text.includes("impact")) {
+            impactContent = h4.nextElementSibling?.innerHTML || "";
+          }
+        });
       }
 
-      const highlights = card.querySelector(".project-highlights")?.innerHTML;
-      if (highlights) document.getElementById("modal-highlights").innerHTML = highlights;
+      // Helper to update sections
+      const updateModalSection = (secId, textId, content) => {
+        const sec = document.getElementById(secId);
+        const txt = document.getElementById(textId);
+        if (content && content.trim() !== "" && sec && txt) {
+          txt.innerHTML = content;
+          sec.style.display = "block";
+        } else if (sec) {
+          sec.style.display = "none";
+        }
+      };
+
+      updateModalSection("modal-problem-section", "modal-problem", problem);
+      updateModalSection("modal-solution-section", "modal-highlights", highlights);
+      updateModalSection("modal-impact-section", "modal-impact", impactContent);
 
       projectModal.classList.add("open");
       document.body.style.overflow = "hidden";
@@ -373,14 +381,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const termOutput = document.getElementById("terminal-output");
   
   const termCommands = {
-    "help": "Commands: help, ls, whoami, contact, clear, theme",
+    "help": "Commands: help, ls, whoami, skills, projects, resume, social, theme, clear, gui",
     "ls": "about.txt  projects/  skills/  contact.info  resume.pdf",
-    "whoami": "Saketh Lingerker - AI/ML Engineer & Full-Stack Developer."
+    "whoami": "Saketh Lingerker - AI/ML Engineer & Full-Stack Developer.",
+    "skills": "AI/ML (TensorFlow, PyTorch), Full-Stack (React, Flask, Node), Cloud (AWS, Docker).",
+    "projects": "ATS Resume Expert, AI Interior Designer, MLOps Pipeline, Polyglot AI, and more...",
+    "social": "GitHub: github.com/sakethlingerker | LinkedIn: linkedin.com/in/saketh-lingerker",
+    "contact": "Email: saketh1805@gmail.com | Phone: +91 9177112046"
   };
 
-  document.getElementById("terminal-toggle")?.addEventListener("click", () => terminal.classList.toggle("active"));
+  document.getElementById("terminal-toggle")?.addEventListener("click", () => {
+    terminal.classList.toggle("active");
+    if (terminal.classList.contains("active")) setTimeout(() => termInput.focus(), 100);
+  });
   document.getElementById("close-terminal")?.addEventListener("click", () => terminal.classList.remove("active"));
-  window.addEventListener("keydown", (e) => { if (e.key === "`") terminal.classList.toggle("active"); });
+  window.addEventListener("keydown", (e) => { 
+    if (e.key === "`") {
+        terminal.classList.toggle("active");
+        if (terminal.classList.contains("active")) setTimeout(() => termInput.focus(), 100);
+    }
+  });
 
   if (termInput) termInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
@@ -391,12 +411,18 @@ document.addEventListener("DOMContentLoaded", function () {
       line.textContent = `saketh@portfolio:~$ ${cmd}`;
       termOutput.appendChild(line);
       
-      if (cmd === "clear") termOutput.innerHTML = "";
-      else if (cmd === "theme") document.getElementById("theme-toggle")?.click();
-      else {
+      if (cmd === "clear") {
+        termOutput.innerHTML = "";
+      } else if (cmd === "theme") {
+        document.getElementById("theme-toggle")?.click();
+      } else if (cmd === "resume") {
+        openResume();
+      } else if (cmd === "gui" || cmd === "exit") {
+        terminal.classList.remove("active");
+      } else {
         const out = document.createElement("div");
         out.className = "terminal-line command-output";
-        out.textContent = termCommands[cmd] || `Command not found: ${cmd}`;
+        out.textContent = termCommands[cmd] || `Command not found: ${cmd}. Type 'help' for options.`;
         termOutput.appendChild(out);
       }
       termOutput.scrollTop = termOutput.scrollHeight;
@@ -661,8 +687,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // Privacy Policy
-  document.getElementById("privacy-policy-link")?.addEventListener("click", () => document.getElementById("privacy-modal").classList.add("open"));
-  document.getElementById("close-privacy")?.addEventListener("click", () => document.getElementById("privacy-modal").classList.remove("active"));
+  document.getElementById("privacy-policy-link")?.addEventListener("click", () => {
+    document.getElementById("privacy-modal").classList.add("open");
+    document.body.style.overflow = "hidden";
+  });
+  document.getElementById("close-privacy")?.addEventListener("click", () => {
+    document.getElementById("privacy-modal").classList.remove("open");
+    document.body.style.overflow = "auto";
+  });
 
   // Close modals on outside click
   window.addEventListener("click", (e) => {

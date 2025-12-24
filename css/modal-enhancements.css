@@ -1,194 +1,59 @@
-/* ===== Universal Project Modal (Clean & Unified) ===== */
+/* ===== Universal Project Modal (Clean & Minimal) ===== */
 
 /* 1. Backdrop Overlay */
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
     z-index: 2000;
-    /* Highest layer */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    /* Enable scroll if content is long */
-    background-color: rgba(9, 9, 11, 0.95);
-    /* Deep Zinc Overlay */
+    overflow-y: auto;
+    background-color: rgba(9, 9, 11, 0.85);
     backdrop-filter: blur(8px);
-    /* Unified Blur */
-    animation: fadeIn 0.3s ease;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal.open {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* For scrolling if long */
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 /* 2. Modal Content Container */
+.modal-content,
 .project-modal-content {
-    background-color: var(--card-bg);
-    margin: 5% auto;
-    /* 15% from top and centered */
-    padding: 60px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    width: 90%;
-    max-width: 800px;
-    /* Optimal reading width */
-    border-radius: 24px;
-    /* Soft rounding */
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    /* Deep shadow */
-    position: relative;
-    animation: slideUp 0.4s ease;
-}
-
-/* 3. Close Button */
-.close-modal {
-    color: var(--text-secondary);
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.2s ease;
-    line-height: 1;
-    position: absolute;
-    top: 30px;
-    right: 30px;
-}
-
-.close-modal:hover,
-.close-modal:focus {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-/* 4. Modal Body Layout */
-.modal-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Center everything */
-    text-align: center;
-}
-
-/* 5. Typography & Elements */
-
-/* Tags (Top) */
-.top-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 24px;
-}
-
-.top-tags .project-tag {
-    background: rgba(139, 92, 246, 0.1);
-    color: var(--accent);
-    padding: 6px 16px;
+    background-color: var(--card-bg) !important;
+    color: var(--text) !important;
+    width: 95%;
+    max-width: 650px;
+    /* More compact width */
+    margin: 0 auto;
+    padding: 40px;
+    /* Reduced padding */
     border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    /* Font inherited from body (Inter) */
-}
-
-/* Title */
-#modal-title {
-    /* Font inherited from h2 (Playfair Display) */
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 40px;
-    line-height: 1.2;
-}
-
-/* Sections Container */
-.modal-sections-container {
-    width: 100%;
-    text-align: left;
-    /* Reading content left-aligned for readability */
-}
-
-/* Section Headings (PROBLEM, SOLUTION, etc.) */
-.minimal-heading,
-#modal-case-study h4 {
-    color: var(--accent);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
     font-family: 'Inter', sans-serif;
-    /* Explicitly use Sans-Serif for labels */
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 12px;
-    margin-top: 32px;
-    display: block;
+    box-sizing: border-box;
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-#modal-case-study h4:first-child {
-    margin-top: 0;
-}
-
-/* Section Text */
-.minimal-section p,
-#modal-case-study p,
-.clean-list li {
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: var(--text-secondary);
-    margin-bottom: 0;
-    /* Font inherited from body (Inter) */
-}
-
-.clean-list {
-    list-style: none;
-    padding: 0;
-}
-
-.clean-list li {
-    padding-left: 0;
-    margin-bottom: 12px;
-}
-
-/* Bottom Links */
-.bottom-links {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-}
-
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 28px;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-}
-
-.project-link:first-child {
-    background-color: var(--accent);
-    color: white;
-}
-
-.project-link:hover {
-    transform: translateY(-2px);
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+body.light-mode .modal-content,
+body.light-mode .project-modal-content {
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 @keyframes slideUp {
     from {
-        transform: translateY(20px);
+        transform: translateY(15px);
         opacity: 0;
     }
 
@@ -198,15 +63,188 @@
     }
 }
 
+/* Close Button */
+.close-modal {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 24px;
+    font-weight: 300;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.close-modal:hover {
+    color: var(--accent);
+}
+
+/* 3. Modal Body Layout */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Tags (Top) */
+.top-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.top-tags .project-tag {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--accent);
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+body.light-mode .top-tags .project-tag {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* Title */
+#modal-title {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.8rem;
+    /* Scaled down */
+    font-weight: 700;
+    color: var(--text) !important;
+    margin: 0 0 24px 0;
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* Sections Container */
+.modal-sections-container {
+    width: 100%;
+    text-align: left;
+    /* Reading content left-aligned */
+}
+
+/* Section Headings */
+.minimal-heading {
+    color: var(--accent);
+    font-size: 0.7rem;
+    /* Smaller labels */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    display: block;
+    opacity: 0.9;
+}
+
+.modal-section p,
+.modal-section li {
+    font-size: 0.95rem;
+    /* Slightly smaller text */
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+.modal-section p b,
+.modal-section p strong {
+    color: var(--text);
+}
+
+.clean-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.clean-list li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+}
+
+.clean-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+/* Bottom Links */
+.bottom-links {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.project-link.primary {
+    background-color: var(--accent);
+    color: white !important;
+}
+
+.project-link.secondary {
+    background-color: rgba(139, 92, 246, 0.1);
+    color: var(--text);
+}
+
+body.light-mode .project-link.secondary {
+    background-color: rgba(99, 102, 241, 0.1);
+}
+
+.project-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollable specific style */
+.modal-content {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .project-modal-content {
-        margin: 10% auto;
         padding: 40px 24px;
-        width: 95%;
+        border-radius: 16px;
     }
 
     #modal-title {
         font-size: 2rem;
+    }
+
+    .bottom-links {
+        flex-direction: column;
+    }
+
+    .project-link {
+        width: 100%;
+        justify-content: center;
     }
 }
