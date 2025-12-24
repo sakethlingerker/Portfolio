@@ -103,6 +103,20 @@ body {
   overflow-x: hidden;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.section-header h2,
+.project-title,
+.hero-title,
+.about-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -3986,19 +4000,114 @@ body.light-mode .matchmaker-progress-bar {
 
 /* Result Styles in script interaction */
 .recommend-card {
-  padding: 24px;
-  background: rgba(139, 92, 246, 0.1);
-  border-radius: 12px;
+  padding: 40px;
+  background: var(--card-bg);
+  border-radius: 20px;
   margin-top: 20px;
   border: 1px solid rgba(139, 92, 246, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.recommend-card h4 {
-  color: var(--accent-light);
-  margin-bottom: 8px;
-  font-size: 1.2rem;
+.accent-line {
+  width: 100px;
+  height: 4px;
+  background-color: #fbbf24;
+  /* Golden accent from reference */
+  margin: 0 auto 24px auto;
+  border-radius: 2px;
 }
 
-body.light-mode .recommend-card h4 {
-  color: var(--accent);
+.result-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--text);
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.result-project-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.result-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 450px;
+  margin: 0 auto 32px auto;
+}
+
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.btn.result-btn {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 50px;
+  /* Pill shape */
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.primary-result-btn {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--text);
+}
+
+.primary-result-btn:hover {
+  background: var(--text);
+  color: var(--dark-bg);
+  transform: translateY(-2px);
+}
+
+.secondary-result-btn {
+  background: #1f2937;
+  /* Dark button */
+  color: white;
+  border: none;
+}
+
+.secondary-result-btn:hover {
+  background: #374151;
+  transform: translateY(-2px);
+}
+
+/* Light Mode Overrides for Result Card */
+body.light-mode .recommend-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+body.light-mode .primary-result-btn {
+  color: #111827;
+  border-color: #111827;
+}
+
+body.light-mode .primary-result-btn:hover {
+  background: #111827;
+  color: white;
+}
+
+body.light-mode .secondary-result-btn {
+  background: #111827;
+  color: white;
 }

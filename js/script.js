@@ -569,15 +569,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const rec = projects[projectKey];
 
     // Build Card
+    // Build Card (Reference Style)
     recDisplay.innerHTML = `
       <div class="recommend-card fade-up">
-        <h4><i class="fas fa-check-circle"></i> Top Suggestion</h4>
-        <h3 style="font-size: 1.5rem; margin: 10px 0; color: var(--text);">${rec.title}</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 15px;">${rec.desc}</p>
-        <div class="project-tags" style="margin-bottom: 20px;">
-          ${rec.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}
+        <div class="result-header">
+           <div class="accent-line"></div>
+           <h2 class="result-heading">You should check out...</h2>
         </div>
-        <a href="${rec.link}" target="_blank" class="btn primary-btn">View Project</a>
+        
+        <h3 class="result-project-title">${rec.title}</h3>
+        
+        <p class="result-description">${rec.desc}</p>
+        
+        <div class="result-actions">
+           <a href="${rec.link}" target="_blank" class="btn result-btn primary-result-btn">View Project</a>
+           <button onclick="resetQuiz()" class="btn result-btn secondary-result-btn">Restart Quiz</button>
+        </div>
       </div>
     `;
 
