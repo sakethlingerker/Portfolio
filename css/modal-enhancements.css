@@ -1,0 +1,183 @@
+/* ===== Premium Project Modal Design ===== */
+
+/* Modal Content Container */
+.project-modal-content {
+    text-align: left;
+    /* Reset center alignment */
+    overflow-y: auto;
+    /* Allow scrolling within content */
+    background: var(--card-bg);
+    /* Ensure background matches theme */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modal-body {
+    padding: 10px 20px 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Modal Header: Title & Description */
+#modal-title {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--accent) 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    padding-right: 40px;
+    /* Space for close button */
+}
+
+#modal-description {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    padding-bottom: 20px;
+}
+
+/* Layout Grid for Sections */
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 900px) {
+    .modal-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: start;
+    }
+}
+
+/* Section Headings */
+.modal-section h3 {
+    font-size: 1.3rem;
+    color: var(--text);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-section h3::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 24px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+/* Problem Statement */
+#modal-problem-section {
+    background: rgba(37, 99, 235, 0.05);
+    /* Subtle blue tint */
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+}
+
+#modal-problem {
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* Highlights List */
+#modal-highlights {
+    list-style: none;
+    padding: 0;
+}
+
+#modal-highlights li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+#modal-highlights li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* Case Study (Impact/Lessons) */
+#modal-case-study h4 {
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+#modal-case-study p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 2px solid rgba(139, 92, 246, 0.3);
+}
+
+/* Technologies Tags */
+#modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#modal-tags .project-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text);
+    transition: all 0.2s;
+}
+
+#modal-tags .project-tag:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+/* Footer Links */
+#modal-links {
+    margin-top: 40px;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#modal-links .project-link {
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s;
+}
+
+#modal-links .project-link:first-child {
+    background: var(--accent);
+    color: white;
+}
+
+#modal-links .project-link:hover {
+    transform: translateY(-2px);
+}

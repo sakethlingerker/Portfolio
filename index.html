@@ -41,6 +41,7 @@
 
   <!-- External CSS -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modal-enhancements.css">
 
   <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
@@ -1293,40 +1294,42 @@
       <div class="modal-body">
         <h2 id="modal-title">Project Title</h2>
         <p id="modal-description">Project Description</p>
-        <div class="modal-section" id="modal-problem-section" style="display: none;">
-          <strong>
-            <h3>Problem Statement:</h3>
-          </strong>
-          <p id="modal-problem"></p>
-        </div>
 
-        <div class="modal-section">
-          <strong>
-            <h3>Key Highlights</h3>
-          </strong>
-          <ul id="modal-highlights">
-            <!-- Highlights will be injected here -->
-          </ul>
-        </div>
+        <div class="modal-grid">
+          <!-- Left Column: Context & Impact -->
+          <div class="modal-col-left">
+            <div class="modal-section" id="modal-problem-section" style="display: none;">
+              <h3><i class="fas fa-exclamation-circle"></i> Problem Statement</h3>
+              <p id="modal-problem"></p>
+            </div>
 
-        <div class="modal-section" id="modal-case-study-section">
-          <div id="modal-case-study">
-            <!-- Case Study (Impact/Lessons) will be injected here -->
+            <div class="modal-section" id="modal-case-study-section">
+              <div id="modal-case-study">
+                <!-- Case Study (Impact/Lessons) will be injected here -->
+              </div>
+            </div>
           </div>
-        </div>
 
+          <!-- Right Column: Details & Tech -->
+          <div class="modal-col-right">
+            <div class="modal-section">
+              <h3><i class="fas fa-star"></i> Key Highlights</h3>
+              <ul id="modal-highlights">
+                <!-- Highlights will be injected here -->
+              </ul>
+            </div>
 
-        <div class="modal-section">
-          <strong>
-            <h3>Technologies Used</h3>
-          </strong>
-          <div id="modal-tags" class="project-tags">
-            <!-- Tags will be injected here -->
+            <div class="modal-section">
+              <h3><i class="fas fa-code"></i> Technologies</h3>
+              <div id="modal-tags" class="project-tags">
+                <!-- Tags will be injected here -->
+              </div>
+            </div>
+
+            <div id="modal-links" class="project-links">
+              <!-- Links will be injected here -->
+            </div>
           </div>
-        </div>
-
-        <div id="modal-links" class="project-links mt-4">
-          <!-- Links will be injected here -->
         </div>
       </div>
     </div>
