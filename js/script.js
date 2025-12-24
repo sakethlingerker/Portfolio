@@ -1,8 +1,6 @@
 // Initialize libraries
 document.addEventListener("DOMContentLoaded", function () {
   AOS.init();
-  // Remove Rellax since you don't have .rellax elements
-  // new Rellax(".rellax");
 
   // Initialize Typed.js
   new Typed("#typed", {
@@ -25,54 +23,46 @@ document.addEventListener("DOMContentLoaded", function () {
   const icon = document.getElementById("theme-icon");
   const body = document.body;
 
-  // Function to set theme
   function setTheme(isLight) {
     if (isLight) {
       body.classList.add("light-mode");
       body.classList.remove("dark");
-      icon.innerHTML =
-        '<img src="assets/sun.png" alt="Light Mode" style="width: 19px; height: 19px;">';
+      if (icon) icon.innerHTML = '<img src="assets/sun.png" alt="Light Mode" style="width: 19px; height: 19px;">';
     } else {
       body.classList.remove("light-mode");
       body.classList.add("dark");
-      icon.innerHTML = '<i class="fas fa-moon" ></i>';
+      if (icon) icon.innerHTML = '<i class="fas fa-moon" ></i>';
     }
   }
 
-  // Check localStorage or system preference
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    setTheme(false);
-  } else if (savedTheme === 'light') {
-    setTheme(true);
-  } else {
-    // Use system preference
+  if (savedTheme === 'dark') setTheme(false);
+  else if (savedTheme === 'light') setTheme(true);
+  else {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setTheme(!prefersDark);
   }
 
-  toggleBtn.addEventListener("click", () => {
-    const isLight = !body.classList.contains("light-mode");
-    setTheme(isLight);
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  });
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const isLight = !body.classList.contains("light-mode");
+      setTheme(isLight);
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  }
 
   // Tilt effect for cards
-  VanillaTilt.init(
-    document.querySelectorAll(".project-card, .experience-card, .skill-card"),
-    {
-      max: 10,
-      speed: 400,
-      glare: true,
-      "max-glare": 0.2,
-    }
-  );
+  VanillaTilt.init(document.querySelectorAll(".project-card, .experience-card, .skill-card"), {
+    max: 10,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2,
+  });
 
-  // Smooth scrolling for navigation links
+  // Smooth scrolling
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
-
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
         window.scrollTo({
@@ -83,30 +73,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Animation on scroll for project cards
-  const projectCards = document.querySelectorAll(".project-card");
-  const experienceCards = document.querySelectorAll(".experience-card");
-  const skillCards = document.querySelectorAll(".skill-card");
-  const skillTags = document.querySelectorAll(".skill-tag");
-
-  // Set initial state for animated elements
-  const elements = [
-    ...projectCards,
-    ...experienceCards,
-    ...skillCards,
-    ...skillTags,
+  // Animation on scroll
+  const elementsToAnimate = [
+    ...document.querySelectorAll(".project-card"),
+    ...document.querySelectorAll(".experience-card"),
+    ...document.querySelectorAll(".skill-card"),
+    ...document.querySelectorAll(".skill-tag"),
   ];
-  elements.forEach((el) => {
+
+  elementsToAnimate.forEach((el) => {
     el.style.opacity = "0";
     el.style.transform = "translateY(30px)";
     el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
   });
-
-  // Animate on scroll using Intersection Observer
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-  };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -116,564 +95,354 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.unobserve(entry.target);
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-  elements.forEach((el) => observer.observe(el));
+  elementsToAnimate.forEach((el) => observer.observe(el));
 
-  // Initialize EmailJS
-  emailjs.init("GvfnZrKiGDpB0yff1");
+  // EmailJS Configuration
+  const EMAILJS_CONFIG = {
+    PUBLIC_KEY: "GvfnZrKiGDpB0yff1",
+    SERVICE_ID: "service_oglwqbv",
+    TEMPLATE_ID: "template_n533ec8"
+  };
+  emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
 
-  // Contact form submission
-  document
-    .getElementById("contact-form")
-    .addEventListener("submit", function (e) {
+  function checkRateLimit() {
+    const lastSubmission = localStorage.getItem('last_submission_time');
+    if (lastSubmission) {
+      const fiveMinutes = 5 * 60 * 1000;
+      const timePassed = Date.now() - parseInt(lastSubmission);
+      if (timePassed < fiveMinutes) {
+        return { limited: true, remaining: Math.ceil((fiveMinutes - timePassed) / 60000) };
+      }
+    }
+    return { limited: false };
+  }
+
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
+      const rateLimitStatus = checkRateLimit();
+      if (rateLimitStatus.limited) {
+        showToast(`⏳ Please wait ${rateLimitStatus.remaining} minutes before sending another message.`, "error");
+        return;
+      }
+
+      const btn = this.querySelector("button[type='submit']");
+      const originalText = btn.textContent;
+      btn.classList.add("loading");
+      btn.textContent = "Sending...";
+
       document.getElementById("email-time").value = new Date().toLocaleString();
 
-      emailjs
-        .sendForm("service_oglwqbv", "template_n533ec8", this)
+      emailjs.sendForm(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, this)
         .then(() => {
           this.reset();
-
-          // Success toast
-          const toast = document.createElement("div");
-          toast.textContent = "📬 Message sent! Talk soon 👋";
-          toast.style.position = "fixed";
-          toast.style.bottom = "20px";
-          toast.style.right = "20px";
-          toast.style.background = "#2563eb";
-          toast.style.color = "#fff";
-          toast.style.padding = "12px 20px";
-          toast.style.borderRadius = "12px";
-          toast.style.fontSize = "16px";
-          toast.style.fontWeight = "500";
-          toast.style.boxShadow = "0 8px 20px rgba(0,0,0,0.2)";
-          toast.style.zIndex = "9999";
-          toast.style.transition = "opacity 0.3s ease-in-out";
-          document.body.appendChild(toast);
-
+          localStorage.setItem('last_submission_time', Date.now().toString());
+          showToast("📬 Message sent! Talk soon 👋", "success");
+          btn.classList.remove("loading");
+          btn.textContent = "Message Sent! 🚀";
+          btn.style.backgroundColor = "var(--success)";
           setTimeout(() => {
-            toast.style.opacity = "0";
-            setTimeout(() => toast.remove(), 300);
-          }, 4000);
+            btn.textContent = originalText;
+            btn.style.backgroundColor = "";
+          }, 3000);
         })
         .catch((error) => {
-          // Improved error handling with specific messages
-          let errorMessage = "Something went wrong. Please try again.";
-          
-          if (!navigator.onLine) {
-            errorMessage = "❌ No internet connection. Please check your network and try again.";
-          } else if (error.text) {
-            errorMessage = "❌ Email service error. Please try again or contact directly at saketh1805@gmail.com";
-          } else {
-            errorMessage = "❌ Failed to send message. Please try again later.";
-          }
-          
-          // Show error toast
-          const toast = document.createElement("div");
-          toast.textContent = errorMessage;
-          toast.className = "form-message error";
-          toast.style.position = "fixed";
-          toast.style.bottom = "20px";
-          toast.style.right = "20px";
-          toast.style.maxWidth = "400px";
-          toast.style.zIndex = "9999";
-          toast.style.transition = "opacity 0.3s ease-in-out";
-          document.body.appendChild(toast);
-
-          setTimeout(() => {
-            toast.style.opacity = "0";
-            setTimeout(() => toast.remove(), 300);
-          }, 5000);
-          
+          btn.classList.remove("loading");
+          btn.textContent = originalText;
+          let errorMessage = !navigator.onLine ? "❌ No internet connection." : "❌ Email service error.";
+          showToast(errorMessage, "error");
           console.error("EmailJS Error:", error);
-          
-          // Track failed form submission
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'form_error', {
-              'event_category': 'Contact',
-              'event_label': 'Form Submission Failed',
-              'error_type': !navigator.onLine ? 'network' : 'service'
-            });
-          }
         });
     });
+  }
 
-  // Track successful form submission
-  document.getElementById("contact-form").addEventListener("submit", function() {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'form_submit', {
-        'event_category': 'Contact',
-        'event_label': 'Contact Form Submitted'
-      });
-    }
-  });
+  function showToast(message, type = "success") {
+    const toast = document.createElement("div");
+    toast.textContent = message;
+    toast.className = `form-message ${type}`;
+    toast.style.cssText = `position: fixed; bottom: 20px; right: 20px; max-width: 400px; z-index: 9999; padding: 12px 20px; border-radius: 12px; font-size: 16px; font-weight: 500; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: opacity 0.3s ease-in-out; background: ${type === 'success' ? '#10b981' : '#ef4444'}; color: #fff;`;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = "0";
+      setTimeout(() => toast.remove(), 300);
+    }, 4000);
+  }
 
-  // Mobile navigation functionality
+  // Mobile Menu
   const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
   const mobileMenuClose = document.getElementById("mobile-menu-close");
   const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
 
-  if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener("click", () => {
-      mobileNavOverlay.classList.add("active");
-    });
-  }
-
-  if (mobileMenuClose) {
-    mobileMenuClose.addEventListener("click", () => {
-      mobileNavOverlay.classList.remove("active");
-    });
-  }
-
-  // Close mobile menu when clicking on a link
+  if (mobileMenuToggle) mobileMenuToggle.addEventListener("click", () => mobileNavOverlay.classList.add("active"));
+  if (mobileMenuClose) mobileMenuClose.addEventListener("click", () => mobileNavOverlay.classList.remove("active"));
   document.querySelectorAll(".mobile-nav-links a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileNavOverlay.classList.remove("active");
-    });
+    link.addEventListener("click", () => mobileNavOverlay.classList.remove("active"));
   });
 
-  // Active link highlighting
+  // Scroll Listeners (Active Link, Progress Bar, Header Shrink)
   window.addEventListener("scroll", () => {
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(
-      ".main-nav-links a, .mobile-nav-links a"
-    );
+    const navLinks = document.querySelectorAll(".main-nav-links a, .mobile-nav-links a");
+    const header = document.querySelector(".header");
+    const scrollProgress = document.getElementById("scroll-progress");
+    const backToTopBtn = document.getElementById("back-to-top");
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+    // Active Highlight
     let current = "";
-
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-
-      if (pageYOffset >= sectionTop - 100) {
-        current = section.getAttribute("id");
-      }
+      if (scrollTop >= section.offsetTop - 100) current = section.getAttribute("id");
     });
-
     navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").substring(1) === current) {
-        link.classList.add("active");
-      }
+      link.classList.toggle("active", link.getAttribute("href")?.substring(1) === current);
     });
-  });
 
-  // Scroll Progress Bar & Back to Top
-  const scrollProgress = document.getElementById("scroll-progress");
-  const backToTopBtn = document.getElementById("back-to-top");
+    // Shrink Header
+    if (header) header.classList.toggle("shrink", scrollTop > 100);
 
-  window.addEventListener("scroll", () => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    // Progress Bar
     const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (scrollTop / scrollHeight) * 100;
-    
-    if(scrollProgress) {
-      scrollProgress.style.width = `${scrolled}%`;
-    }
+    if (scrollProgress) scrollProgress.style.width = `${(scrollTop / scrollHeight) * 100}%`;
 
-    // Back to Top Button Visibility
-    if (backToTopBtn) {
-      if (scrollTop > 500) {
-        backToTopBtn.classList.add("visible");
-      } else {
-        backToTopBtn.classList.remove("visible");
-      }
-    }
+    // Back to Top
+    if (backToTopBtn) backToTopBtn.classList.toggle("visible", scrollTop > 500);
   });
 
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-  }
+  const backToTopBtn = document.getElementById("back-to-top");
+  if (backToTopBtn) backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-  // Project Filtering
+  // Projects: Filtering & Search
   const filterBtns = document.querySelectorAll(".filter-btn");
-  const projectItems = document.querySelectorAll(".project-card");
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      // Remove active class from all buttons
-      filterBtns.forEach((btn) => btn.classList.remove("active"));
-      // Add active class to clicked button
-      btn.classList.add("active");
-
-      const filterValue = btn.getAttribute("data-filter");
-
-      projectItems.forEach((item) => {
-        if (filterValue === "all" || item.getAttribute("data-category") === filterValue) {
-          item.classList.remove("hide");
-          item.classList.add("show");
-        } else {
-          item.classList.add("hide");
-          item.classList.remove("show");
-        }
-      });
-      
-      // Track filter usage
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'filter_click', {
-          'event_category': 'Projects',
-          'event_label': filterValue
-        });
-      }
-      
-      // Refresh AOS to recalculate positions after layout change
-      setTimeout(() => {
-        AOS.refresh();
-      }, 100); // Small delay to ensure DOM update
-    });
-  });
-
-  // Project Search Functionality
   const searchInput = document.getElementById('project-search');
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      const searchQuery = e.target.value.toLowerCase().trim();
-      const projectCards = document.querySelectorAll('.project-card');
+
+  function updateProjectVisibility() {
+    const searchQuery = searchInput?.value.toLowerCase().trim() || "";
+    const activeFilter = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
+    
+    document.querySelectorAll(".project-card").forEach((card) => {
+      const category = card.getAttribute("data-category");
+      const title = card.querySelector('.project-title')?.textContent.toLowerCase() || "";
+      const description = card.querySelector('.project-description')?.textContent.toLowerCase() || "";
+      const matchesSearch = !searchQuery || `${title} ${description}`.includes(searchQuery);
+      const matchesFilter = activeFilter === "all" || category === activeFilter;
       
-      projectCards.forEach(card => {
-        const title = card.querySelector('.project-title')?.textContent.toLowerCase() || '';
-        const description = card.querySelector('.project-description')?.textContent.toLowerCase() || '';
-        const tags = Array.from(card.querySelectorAll('.project-tag'))
-          .map(tag => tag.textContent.toLowerCase())
-          .join(' ');
-        
-        const searchText = `${title} ${description} ${tags}`;
-        const matches = searchText.includes(searchQuery);
-        
-        if (matches || searchQuery === '') {
-          card.classList.remove('hide');
-          card.classList.add('show');
-        } else {
-          card.classList.add('hide');
-          card.classList.remove('show');
-        }
-      });
-      
-      // Track search usage
-      if (searchQuery && typeof gtag !== 'undefined') {
-        gtag('event', 'search', {
-          'event_category': 'Projects',
-          'search_term': searchQuery
-        });
+      if (matchesSearch && matchesFilter) {
+        card.classList.remove("hide");
+        card.classList.add("show");
+      } else {
+        card.classList.add("hide");
+        card.classList.remove("show");
       }
-      
-      // Refresh AOS
-      setTimeout(() => AOS.refresh(), 100);
     });
+    setTimeout(() => AOS.refresh(), 100);
   }
 
-  // RESUME MODAL - FIXED VERSION
+  filterBtns.forEach(btn => btn.addEventListener("click", () => {
+    filterBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    updateProjectVisibility();
+  }));
+  if (searchInput) searchInput.addEventListener("input", updateProjectVisibility);
+
+  // Resume Modal
   const resumeModal = document.getElementById("resume-modal");
   const resumeCloseModal = document.getElementById("close-resume-modal");
-  
-  // Find ALL resume buttons (including the one in hero section)
   const resumeButtons = document.querySelectorAll('a[href*="Saketh_Lingerker_8688791352.pdf"]');
-  
-  console.log("Found resume buttons:", resumeButtons.length);
 
-  if (resumeButtons.length > 0 && resumeModal && resumeCloseModal) {
+  function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  }
+
+  if (resumeModal && resumeButtons.length > 0) {
     resumeButtons.forEach(btn => {
-      // Only add listener to buttons that are NOT download links
       if (!btn.hasAttribute('download')) {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
-          console.log("Opening resume modal");
+          const isMobile = isMobileDevice();
+          document.querySelectorAll('.desktop-view').forEach(el => el.style.display = isMobile ? 'none' : 'block');
+          document.querySelector('.mobile-view').style.display = isMobile ? 'block' : 'none';
           resumeModal.classList.add("open");
           document.body.style.overflow = "hidden";
         });
       }
     });
 
-    resumeCloseModal.addEventListener("click", () => {
+    resumeCloseModal?.addEventListener("click", () => {
       resumeModal.classList.remove("open");
       document.body.style.overflow = "auto";
     });
 
-    window.addEventListener("click", (e) => {
-      if (e.target === resumeModal) {
-        resumeModal.classList.remove("open");
-        document.body.style.overflow = "auto";
-      }
-    });
-    
-    console.log("Resume modal initialized successfully!");
-  } else {
-    console.log("Resume modal elements not found:", {
-      resumeButtons: resumeButtons.length,
-      resumeModal: !!resumeModal,
-      resumeCloseModal: !!resumeCloseModal
-    });
-  }
-
-  // Header Shrink on Scroll
-  const header = document.querySelector(".header");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 100) {
-      header.classList.add("shrink");
-    } else {
-      header.classList.remove("shrink");
-    }
-  });
-
-  // Timeline Read More Toggle
-  const timelineToggles = document.querySelectorAll(".timeline-toggle");
-  timelineToggles.forEach(toggle => {
-    toggle.addEventListener("click", () => {
-      const details = toggle.previousElementSibling;
-      details.classList.toggle("hidden");
-      toggle.classList.toggle("active");
-      
-      if (details.classList.contains("hidden")) {
-        toggle.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-      } else {
-        toggle.innerHTML = 'Show Less <i class="fas fa-chevron-up"></i>';
-      }
-      
-      // Refresh AOS
-      setTimeout(() => AOS.refresh(), 300);
-    });
-  });
-
-  // Custom Cursor
-  const cursor = document.querySelector(".cursor");
-  const follower = document.querySelector(".cursor-follower");
-  
-  if (cursor && follower) {
-    document.addEventListener("mousemove", (e) => {
-      cursor.style.left = e.clientX + "px";
-      cursor.style.top = e.clientY + "px";
-      
-      // Small delay for follower
-      setTimeout(() => {
-        follower.style.left = e.clientX + "px";
-        follower.style.top = e.clientY + "px";
-      }, 50);
-    });
-
-    // Hover effects
-    const links = document.querySelectorAll("a, button, .btn, .filter-btn, .skill-tag, .project-card");
-    links.forEach(link => {
-      link.addEventListener("mouseenter", () => {
-        cursor.classList.add("active");
-        follower.classList.add("active");
-      });
-      link.addEventListener("mouseleave", () => {
-        cursor.classList.remove("active");
-        follower.classList.remove("active");
-      });
-    });
-  }
-
-  // Project Modals
-  const projectModal = document.getElementById("project-modal");
-  const closeProjectModal = document.getElementById("close-project-modal");
-  const modalTitle = document.getElementById("modal-title");
-  const modalDesc = document.getElementById("modal-description");
-  const modalProblemSection = document.getElementById("modal-problem-section");
-  const modalProblem = document.getElementById("modal-problem");
-  const modalHighlights = document.getElementById("modal-highlights");
-  const modalTags = document.getElementById("modal-tags");
-  const modalLinks = document.getElementById("modal-links");
-  const modalProjectCards = document.querySelectorAll(".project-card");
-
-  if (projectModal && closeProjectModal) {
-    modalProjectCards.forEach(card => {
-      card.addEventListener("click", (e) => {
-        // Prevent modal opening if clicking directly on a link
-        if (e.target.closest("a")) return;
-
-        const title = card.querySelector(".project-title").textContent.trim();
-        const desc = card.querySelector(".project-description").textContent.trim();
-        const highlightsList = card.querySelector(".project-highlights");
-        const tags = card.querySelector(".project-tags").innerHTML;
-        const links = card.querySelector(".project-links").innerHTML;
-
-        // Create title with inline link
-        modalTitle.innerHTML = `${title} <span class="modal-title-links">${links}</span>`;
-        modalDesc.textContent = desc;
-        modalTags.innerHTML = tags;
-        modalLinks.innerHTML = ''; // Clear the bottom links section
-
-        // Handle Problem Statement extraction
-        const problemDiv = card.querySelector(".project-problem");
-        const problemStatement = problemDiv ? problemDiv.innerHTML.trim() : "";
-
-        if (problemStatement && modalProblemSection && modalProblem) {
-          modalProblem.innerHTML = problemStatement;
-          modalProblemSection.style.display = "block";
-        } else if (modalProblemSection) {
-          modalProblemSection.style.display = "none";
-        }
-
-        // Handle Highlights
-        if (highlightsList) {
-          modalHighlights.innerHTML = highlightsList.innerHTML;
-        }
-
-        projectModal.classList.add("open");
-        document.body.style.overflow = "hidden";
-        
-        // Track project modal view
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'project_view', {
-            'event_category': 'Projects',
-            'event_label': title
-          });
-        }
-      });
-    });
-
-    closeProjectModal.addEventListener("click", () => {
-      projectModal.classList.remove("open");
+    document.getElementById('open-pdf-btn')?.addEventListener('click', () => {
+      window.open('assets/Saketh_Lingerker_8688791352.pdf', '_blank');
+      resumeModal.classList.remove("open");
       document.body.style.overflow = "auto";
     });
-
-    window.addEventListener("click", (e) => {
-      if (e.target === projectModal) {
-        projectModal.classList.remove("open");
-        document.body.style.overflow = "auto";
-      }
-    });
   }
 
-  // Contact Form Loading State
-  const contactForm = document.getElementById("contact-form");
-  if (contactForm) {
-    contactForm.addEventListener("submit", function(e) {
-      const btn = this.querySelector("button[type='submit']");
-      if (btn) {
-        const originalText = btn.textContent;
-        btn.classList.add("loading");
-        btn.textContent = "Sending..."; 
+  // Project Modal
+  const projectModal = document.getElementById("project-modal");
+  const closeProjectModal = document.getElementById("close-project-modal");
 
-        // Simulate success after 2 seconds (or replace with actual promise handling)
-        setTimeout(() => {
-          btn.classList.remove("loading");
-          btn.textContent = "Message Sent! 🚀";
-          btn.style.backgroundColor = "var(--success)";
-          
-          // Reset form
-          contactForm.reset();
+  document.querySelectorAll(".project-card").forEach(card => {
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("a, button")) return;
+      const title = card.querySelector(".project-title").textContent.trim();
+      const desc = card.querySelector(".project-description").textContent.trim();
+      const tags = card.querySelector(".project-tags").innerHTML;
+      const links = card.querySelector(".project-links").innerHTML;
+      const problem = card.querySelector(".project-problem")?.innerHTML.trim() || "";
 
-          // Reset button after another 3 seconds
-          setTimeout(() => {
-             btn.textContent = originalText;
-             btn.style.backgroundColor = ""; // Revert to original CSS
-          }, 3000);
-        }, 2000);
+      document.getElementById("modal-title").innerHTML = `${title} <span class="modal-title-links">${links}</span>`;
+      document.getElementById("modal-description").textContent = desc;
+      document.getElementById("modal-tags").innerHTML = tags;
+      
+      const probSec = document.getElementById("modal-problem-section");
+      const probText = document.getElementById("modal-problem");
+      if (problem && probSec && probText) {
+        probText.innerHTML = problem;
+        probSec.style.display = "block";
+      } else if (probSec) probSec.style.display = "none";
+
+      const highlights = card.querySelector(".project-highlights")?.innerHTML;
+      if (highlights) document.getElementById("modal-highlights").innerHTML = highlights;
+
+      projectModal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  if (closeProjectModal) closeProjectModal.addEventListener("click", () => {
+    projectModal.classList.remove("open");
+    document.body.style.overflow = "auto";
+  });
+
+  // Interactive Features (Chatbot, Terminal, Quiz, Snippets)
+  
+  // Chatbot
+  const chatbot = document.getElementById("ai-chatbot");
+  const chatbotInput = document.getElementById("chatbot-input");
+  const chatbotMsgs = document.getElementById("ai-chatbot-messages");
+  
+  const chatbotResponses = {
+    "hello": "Hi there! How can I help you learn more about Saketh?",
+    "projects": "Saketh has worked on AI Interior Designers, ATS Resume Experts, and MLOps pipelines.",
+    "skills": "His core skills include Python, ML (TensorFlow, PyTorch), Full-Stack (React, Flask), and Cloud.",
+    "contact": "Reach him at saketh1805@gmail.com or via the form above."
+  };
+
+  document.getElementById("chatbot-toggle")?.addEventListener("click", () => chatbot.classList.toggle("active"));
+  document.getElementById("close-chatbot")?.addEventListener("click", () => chatbot.classList.remove("active"));
+
+  function chatMessage(text, sender) {
+    const div = document.createElement("div");
+    div.className = `message ${sender}-message`;
+    div.textContent = text;
+    chatbotMsgs.appendChild(div);
+    chatbotMsgs.scrollTop = chatbotMsgs.scrollHeight;
+  }
+
+  document.getElementById("send-chatbot")?.addEventListener("click", () => {
+    const val = chatbotInput.value.trim();
+    if (!val) return;
+    chatMessage(val, "user");
+    chatbotInput.value = "";
+    const response = chatbotResponses[Object.keys(chatbotResponses).find(k => val.toLowerCase().includes(k))] || "Interesting! Ask about 'projects', 'skills', or 'contact'.";
+    setTimeout(() => chatMessage(response, "ai"), 500);
+  });
+
+  // Terminal
+  const terminal = document.getElementById("portfolio-terminal");
+  const termInput = document.getElementById("terminal-input");
+  const termOutput = document.getElementById("terminal-output");
+  
+  const termCommands = {
+    "help": "Commands: help, ls, whoami, contact, clear, theme",
+    "ls": "about.txt  projects/  skills/  contact.info  resume.pdf",
+    "whoami": "Saketh Lingerker - AI/ML Engineer & Full-Stack Developer."
+  };
+
+  document.getElementById("terminal-toggle")?.addEventListener("click", () => terminal.classList.toggle("active"));
+  document.getElementById("close-terminal")?.addEventListener("click", () => terminal.classList.remove("active"));
+  window.addEventListener("keydown", (e) => { if (e.key === "`") terminal.classList.toggle("active"); });
+
+  if (termInput) termInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      const cmd = termInput.value.toLowerCase().trim();
+      termInput.value = "";
+      const line = document.createElement("div");
+      line.className = "terminal-line";
+      line.textContent = `saketh@portfolio:~$ ${cmd}`;
+      termOutput.appendChild(line);
+      
+      if (cmd === "clear") termOutput.innerHTML = "";
+      else if (cmd === "theme") document.getElementById("theme-toggle")?.click();
+      else {
+        const out = document.createElement("div");
+        out.className = "terminal-line command-output";
+        out.textContent = termCommands[cmd] || `Command not found: ${cmd}`;
+        termOutput.appendChild(out);
       }
+      termOutput.scrollTop = termOutput.scrollHeight;
+    }
+  });
+
+  // Quiz
+  const quizModal = document.getElementById("quiz-modal");
+  const quizQ = document.getElementById("quiz-question");
+  const quizO = document.getElementById("quiz-options");
+  const quizR = document.getElementById("quiz-result");
+  
+  let qIdx = 0;
+  const questions = [{ q: "Area of interest?", o: ["AI/ML", "Web Dev"] }];
+  
+  document.getElementById("quiz-toggle")?.addEventListener("click", () => {
+    quizModal.classList.add("open");
+    qIdx = 0;
+    quizR.classList.add("hidden");
+    document.getElementById("quiz-container").classList.remove("hidden");
+    showQ();
+  });
+
+  function showQ() {
+    quizQ.textContent = questions[qIdx].q;
+    quizO.innerHTML = "";
+    questions[qIdx].o.forEach(opt => {
+      const b = document.createElement("div");
+      b.className = "quiz-option";
+      b.textContent = opt;
+      b.onclick = () => {
+        document.getElementById("quiz-container").classList.add("hidden");
+        quizR.classList.remove("hidden");
+        document.getElementById("matched-project-display").innerHTML = "<h4>Recommended: AI Virtual Designer</h4>";
+      };
+      quizO.appendChild(b);
     });
   }
-});
+  
+  document.getElementById("close-quiz")?.addEventListener("click", () => quizModal.classList.remove("open"));
 
-// RESUME MODAL - Fixed PDF opening and close button
-const resumeModal = document.getElementById("resume-modal");
-const resumeCloseModal = document.getElementById("close-resume-modal");
-const resumeButtons = document.querySelectorAll('a[href*="Saketh_Lingerker_8688791352.pdf"]');
+  // Snippets
+  const codeModal = document.getElementById("code-modal");
+  const codeDisp = document.getElementById("code-display");
+  document.querySelectorAll(".show-code-btn").forEach(btn => btn.addEventListener("click", () => {
+    const p = btn.getAttribute("data-project");
+    codeDisp.textContent = p === "ats" ? "def analyze(): ..." : "print('Logic here')";
+    codeModal.classList.add("open");
+  }));
+  document.getElementById("close-code")?.addEventListener("click", () => codeModal.classList.remove("open"));
 
-// Detect mobile device
-function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-           window.innerWidth <= 768;
-}
+  // Privacy Policy
+  document.getElementById("privacy-policy-link")?.addEventListener("click", () => document.getElementById("privacy-modal").classList.add("open"));
+  document.getElementById("close-privacy")?.addEventListener("click", () => document.getElementById("privacy-modal").classList.remove("active"));
 
-if (resumeButtons.length > 0 && resumeModal && resumeCloseModal) {
-    resumeButtons.forEach(btn => {
-        if (!btn.hasAttribute('download')) {
-            btn.addEventListener("click", (e) => {
-                e.preventDefault();
-                
-                const isMobile = isMobileDevice();
-                console.log("Opening resume on:", isMobile ? "Mobile" : "Desktop");
-                
-                if (isMobile) {
-                    // Show mobile image preview
-                    document.querySelectorAll('.desktop-view').forEach(el => el.style.display = 'none');
-                    document.querySelector('.mobile-view').style.display = 'block';
-                } else {
-                    // Show desktop PDF iframe
-                    document.querySelectorAll('.desktop-view').forEach(el => el.style.display = 'block');
-                    document.querySelector('.mobile-view').style.display = 'none';
-                }
-                
-                resumeModal.classList.add("open");
-                document.body.style.overflow = "hidden";
-            });
-        }
-    });
-
-    // FIXED: PDF opening functionality
-    document.getElementById('open-pdf-btn')?.addEventListener('click', function() {
-        const pdfUrl = 'assets/Saketh_Lingerker_8688791352.pdf';
-        
-        // Method 1: Try to open in new tab
-        const newWindow = window.open(pdfUrl, '_blank');
-        
-        // Method 2: If blocked, use download approach
-        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-            console.log("Popup blocked, forcing download");
-            const link = document.createElement('a');
-            link.href = pdfUrl;
-            link.target = '_blank';
-            link.download = 'Saketh_Lingerker_Resume.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-        
-        // Close the modal after opening PDF
-        resumeModal.classList.remove("open");
-        document.body.style.overflow = "auto";
-    });
-
-    resumeCloseModal.addEventListener("click", () => {
-        resumeModal.classList.remove("open");
-        document.body.style.overflow = "auto";
-    });
-
-    window.addEventListener("click", (e) => {
-        if (e.target === resumeModal) {
-            resumeModal.classList.remove("open");
-            document.body.style.overflow = "auto";
-        }
-    });
-
-    // Simple image zoom for mobile
-    const resumeImage = document.querySelector('.resume-image');
-    if (resumeImage) {
-        let isZoomed = false;
-        
-        resumeImage.addEventListener('click', function() {
-            isZoomed = !isZoomed;
-            this.classList.toggle('zoomed');
-        });
-        
-        // Auto-exit zoom when clicking outside (on modal background)
-        resumeModal.addEventListener('click', function(e) {
-            if (isZoomed && !e.target.classList.contains('resume-image')) {
-                resumeImage.classList.remove('zoomed');
-                isZoomed = false;
-            }
-        });
+  // Close modals on outside click
+  window.addEventListener("click", (e) => {
+    if (e.target.classList.contains("modal")) {
+      e.target.classList.remove("open");
+      document.body.style.overflow = "auto";
     }
-}
-
-// Handle window resize
-window.addEventListener('resize', function() {
-    if (resumeModal.classList.contains('open')) {
-        const isMobile = isMobileDevice();
-        if (isMobile) {
-            document.querySelectorAll('.desktop-view').forEach(el => el.style.display = 'none');
-            document.querySelector('.mobile-view').style.display = 'block';
-        } else {
-            document.querySelectorAll('.desktop-view').forEach(el => el.style.display = 'block');
-            document.querySelector('.mobile-view').style.display = 'none';
-        }
-    }
+  });
 });
