@@ -1,237 +1,208 @@
-/* ===== Premium Minimal Modal Design (Theme Aligned) ===== */
+/* ===== Universal Project Modal (Clean & Unified) ===== */
 
-/* Overlay */
+/* 1. Backdrop Overlay */
 .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 2000;
+    /* Highest layer */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /* Enable scroll if content is long */
     background-color: rgba(9, 9, 11, 0.95);
     /* Deep Zinc Overlay */
     backdrop-filter: blur(8px);
+    /* Unified Blur */
+    animation: fadeIn 0.3s ease;
 }
 
-/* Modal Content Container */
+/* 2. Modal Content Container */
 .project-modal-content {
-    background: var(--card-bg);
-    color: var(--text);
-    text-align: left;
-    overflow-y: auto;
-    border-radius: 20px;
-    max-width: 900px;
-    width: 90%;
-    padding: 0;
-    position: relative;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+    background-color: var(--card-bg);
+    margin: 5% auto;
+    /* 15% from top and centered */
+    padding: 60px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 90%;
+    max-width: 800px;
+    /* Optimal reading width */
+    border-radius: 24px;
+    /* Soft rounding */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    /* Deep shadow */
+    position: relative;
+    animation: slideUp 0.4s ease;
 }
 
-/* Close Button */
+/* 3. Close Button */
 .close-modal {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
     color: var(--text-secondary);
-    transition: all 0.2s;
-    z-index: 10;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    line-height: 1;
+    position: absolute;
+    top: 30px;
+    right: 30px;
 }
 
-.close-modal:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: white;
-    transform: rotate(90deg);
+.close-modal:hover,
+.close-modal:focus {
+    color: var(--accent);
+    text-decoration: none;
 }
 
-/* Modal Body */
-.modal-body.minimal-layout {
-    padding: 60px 80px;
+/* 4. Modal Body Layout */
+.modal-body {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    /* Center everything */
+    text-align: center;
 }
 
-/* 1. Top Tags */
+/* 5. Typography & Elements */
+
+/* Tags (Top) */
 .top-tags {
     display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
     flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 24px;
 }
 
 .top-tags .project-tag {
-    background: rgba(139, 92, 246, 0.15);
-    /* Translucent Accent */
-    color: var(--accent-light);
-    font-weight: 700;
-    font-size: 0.75rem;
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--accent);
     padding: 6px 16px;
     border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    /* Font inherited from body (Inter) */
 }
 
-/* 2. Title */
+/* Title */
 #modal-title {
+    /* Font inherited from h2 (Playfair Display) */
     font-size: 2.5rem;
-    /* Standard H2 Size */
-    font-family: 'Playfair Display', serif;
-    /* Explicitly match theme */
     font-weight: 700;
-    margin-bottom: 24px;
-    line-height: 1.2;
     color: var(--text);
-    /* Solid color matching theme */
+    margin-bottom: 40px;
+    line-height: 1.2;
 }
 
-/* 3. Sections */
+/* Sections Container */
 .modal-sections-container {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    text-align: left;
+    /* Reading content left-aligned for readability */
 }
 
-.minimal-section {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 30px;
-}
-
-.minimal-section:last-child {
-    border-bottom: none;
-}
-
-/* Headers (PROBLEM, SOLUTION, IMPACT) */
+/* Section Headings (PROBLEM, SOLUTION, etc.) */
 .minimal-heading,
 #modal-case-study h4 {
-    font-size: 0.9rem;
-    font-weight: 700;
     color: var(--accent);
-    /* Use Theme Accent */
+    font-size: 0.85rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    /* Font inherited from global H3/H4 (Playfair Display) */
-}
-
-#modal-case-study h4 {
-    margin-top: 30px;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    margin-top: 32px;
+    display: block;
+    /* Font inherited from body (Inter) */
 }
 
 #modal-case-study h4:first-child {
     margin-top: 0;
 }
 
-/* Icons in H4s - ensure size consistency */
-.minimal-heading i,
-#modal-case-study h4 i {
-    font-size: 1.1em;
-    color: var(--accent-light);
-}
-
-/* Content Text */
+/* Section Text */
 .minimal-section p,
-.minimal-section li,
-#modal-case-study p {
-    font-size: 1rem;
-    /* Inherit standard size */
-    line-height: 1.7;
+#modal-case-study p,
+.clean-list li {
+    font-size: 1.05rem;
+    line-height: 1.75;
     color: var(--text-secondary);
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+    /* Font inherited from body (Inter) */
 }
 
-/* List Styling */
 .clean-list {
     list-style: none;
     padding: 0;
 }
 
 .clean-list li {
+    padding-left: 0;
     margin-bottom: 12px;
-    position: relative;
-    padding-left: 20px;
 }
 
-.clean-list li::before {
-    content: "•";
-    color: var(--accent);
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-}
-
-/* 4. Bottom Links / Button */
+/* Bottom Links */
 .bottom-links {
-    margin-top: 20px;
-    width: 100%;
+    margin-top: 50px;
     display: flex;
-    justify-content: flex-end;
-    /* Right aligned button */
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
 }
 
-.bottom-links .project-link {
-    background: var(--accent);
-    color: white;
-    /* Always white on accent */
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    padding: 14px 32px;
-    border-radius: 30px;
-    text-decoration: none;
+.project-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease;
 }
 
-.bottom-links .project-link:hover {
-    background: var(--accent-light);
+.project-link:first-child {
+    background-color: var(--accent);
+    color: white;
+}
+
+.project-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.5);
 }
 
-.bottom-links .project-link i {
-    font-size: 0.9em;
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-/* Light Mode Overrides (if needed) */
-body.light-mode .project-modal-content {
-    background: #fff;
-    color: #1f2937;
-    border: none;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
-}
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
 
-body.light-mode #modal-title {
-    color: #111827;
-}
-
-body.light-mode .minimal-section p,
-body.light-mode #modal-case-study p {
-    color: #4b5563;
-}
-
-body.light-mode .minimal-heading,
-body.light-mode #modal-case-study h4 {
-    color: var(--accent);
-    /* Keep accent for headers */
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .modal-body.minimal-layout {
+    .project-modal-content {
+        margin: 10% auto;
         padding: 40px 24px;
+        width: 95%;
     }
 
     #modal-title {

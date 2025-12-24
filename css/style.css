@@ -75,18 +75,7 @@ body.light-mode .project-tag {
   color: #4F46E5;
 }
 
-body.light-mode .project-modal-content h2 {
-  color: #6366F1 !important;
-}
 
-body.light-mode .modal-section h3 {
-  color: #1F2937 !important;
-}
-
-body.light-mode .project-modal-content .project-tag {
-  background: rgba(99, 102, 241, 0.15);
-  color: #4F46E5 !important;
-}
 
 /* ===== Base Styles ===== */
 * {
@@ -3851,9 +3840,7 @@ body.light-mode .quiz-option {
 }
 
 #project-modal .project-case-study,
-#project-modal .project-problem {
-  display: block !important;
-}
+
 
 /* ===== Project Matchmaker Section (Inline) ===== */
 .project-matchmaker-section {
