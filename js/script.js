@@ -403,64 +403,84 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // ===== Project Matchmaker (Multi-Step Logic) =====
-  let quizHistory = {}; // Store answers
+  // ===== Project Matchmaker (9-Project Decision Tree) =====
+  let quizHistory = {}; 
 
   window.handleQuizAnswer = function(step, value) {
     const step1 = document.getElementById("quiz-step-1");
     const step2 = document.getElementById("quiz-step-2");
-    const resultStep = document.getElementById("quiz-result-step");
-    const progress = document.getElementById("quiz-progress-fill");
     
-    // Step 1 Logic
+    // Step 1: Broad Domain
     if (step === 1) {
       quizHistory.domain = value;
-      
-      // If Web Dev -> Direct Recommendation (No Q2 needed for now as per project list)
-      if (value === 'web') {
-        showRecommendation("smart_feedback");
-        return;
-      }
-      
-      // If AI or Data -> Go to Step 2
       transitionToStep(step1, step2, 66);
       
-      // Populate Q2 based on Q1
       const q2Text = document.getElementById("quiz-q2-text");
       const q2Options = document.getElementById("quiz-q2-options");
       q2Options.innerHTML = "";
 
-      if (value === 'ai') {
-        q2Text.innerText = "Which aspect of AI intrigues you?";
+      // Branch 1: Generative AI & NLP
+      if (value === 'genai') {
+        q2Text.innerText = "What specific problem intrigues you?";
         q2Options.innerHTML = `
-          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'genai')">
-            <i class="fas fa-magic"></i> <span>Generative AI & LLMs</span>
+          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'resume')">
+            <i class="fas fa-file-alt"></i> <span>Automating Resume Optimization</span>
           </button>
           <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'vision')">
-            <i class="fas fa-eye"></i> <span>Computer Vision & Design</span>
+            <i class="fas fa-paint-brush"></i> <span>Visual Design & Creativity</span>
+          </button>
+          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'lang')">
+            <i class="fas fa-language"></i> <span>Global Language Detection</span>
           </button>
         `;
-      } else if (value === 'data') {
-        q2Text.innerText = "What kind of data challenge?";
+      } 
+      // Branch 2: Predictive ML & Data
+      else if (value === 'ml_data') {
+        q2Text.innerText = "Choose a data challenge:";
         q2Options.innerHTML = `
-          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'predict')">
-            <i class="fas fa-chart-line"></i> <span>Predictive Modeling (Regression)</span>
+          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'flight')">
+            <i class="fas fa-plane"></i> <span>Predicting Financial/Travel Costs</span>
           </button>
-          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'nlp')">
-             <i class="fas fa-comments"></i> <span>Natural Language Processing (NLP)</span>
+          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'crop')">
+            <i class="fas fa-seedling"></i> <span>Optimizing Agriculture Output</span>
+          </button>
+          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'air')">
+            <i class="fas fa-wind"></i> <span>Visualizing Environmental Impact</span>
+          </button>
+        `;
+      }
+      // Branch 3: Web Engineering & MLOps
+      else if (value === 'engineering') {
+        q2Text.innerText = "What is your preferred focus?";
+        q2Options.innerHTML = `
+          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'backend')">
+            <i class="fas fa-database"></i> <span>Complex Backend & Analytics</span>
+          </button>
+           <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'frontend')">
+            <i class="fas fa-cloud-sun"></i> <span>Frontend UX & APIs</span>
+          </button>
+          <button class="quiz-option-btn" onclick="handleQuizAnswer(2, 'ops')">
+            <i class="fas fa-cogs"></i> <span>Cloud Infra & CI/CD Pipelines</span>
           </button>
         `;
       }
     } 
-    // Step 2 Logic
+    // Step 2: Specific Project Selection
     else if (step === 2) {
-      // Determine Recommendation
-      if (quizHistory.domain === 'ai') {
-        if (value === 'genai') showRecommendation("ats_resume");
-        else showRecommendation("interior_design");
-      } else if (quizHistory.domain === 'data') {
-        if (value === 'predict') showRecommendation("flight_fare");
-        else showRecommendation("smart_feedback"); // NLP cross-over
+      if (quizHistory.domain === 'genai') {
+        if (value === 'resume') showRecommendation("ats_resume");
+        else if (value === 'vision') showRecommendation("interior_design");
+        else if (value === 'lang') showRecommendation("polyglot");
+      } 
+      else if (quizHistory.domain === 'ml_data') {
+        if (value === 'flight') showRecommendation("flight_fare");
+        else if (value === 'crop') showRecommendation("crop_yield");
+        else if (value === 'air') showRecommendation("clearview");
+      }
+      else if (quizHistory.domain === 'engineering') {
+        if (value === 'backend') showRecommendation("smart_feedback");
+        else if (value === 'frontend') showRecommendation("cloudcast");
+        else if (value === 'ops') showRecommendation("mlops");
       }
     }
   };
@@ -483,31 +503,66 @@ document.addEventListener("DOMContentLoaded", function () {
     const recDisplay = document.getElementById("quiz-recommendation-display");
     const progress = document.getElementById("quiz-progress-fill");
 
-    // Project Data
+    // Full 9-Project Data
     const projects = {
-      smart_feedback: {
-        title: "Smart Feedback Collection System",
-        desc: "A scalable <strong>Full-Stack</strong> solution featuring real-time sentiment analysis and complex architecture. Perfect for Backend enthusiasts.",
-        tags: ["Node.js", "MongoDB", "Express"],
-        link: "https://github.com/sakethlingerker/Smart-Feedback-Collection-and-Analysis-System"
-      },
+      // GenAI Branch
       ats_resume: {
         title: "ATS Resume Expert Pro",
-        desc: "Leveraging **Google Gemini AI**, this tool automates resume optimization. Ideal for those interested in **GenAI & Automation**.",
+        desc: "Leveraging **Google Gemini AI**, this tool automates resume optimization. Ideal for **GenAI Product** enthusiasts.",
         tags: ["Python", "Google Gemini", "Streamlit"],
-        link: "https://github.com/sakethlingerker/ATS-Resume-Expert-Pro"
+        link: "https://resume-tracking-sakethlingerker.streamlit.app/"
       },
       interior_design: {
         title: "AI Virtual Interior Designer",
-        desc: "Combines creative **Generative AI** with computer vision concepts to visualize spaces. Great for those who love **Visual AI**.",
+        desc: "Combines creative **Generative AI** with computer vision to visualize spaces. Great for **Visual AI** lovers.",
         tags: ["Stable Diffusion", "PyTorch", "Python"],
         link: "https://github.com/sakethlingerker/AI-Driven-Virtual-Interior-Designer"
       },
+      polyglot: {
+        title: "Polyglot AI",
+        desc: "A classical **NLP** model capable of detecting languages with high precision. Perfect for **Core ML** interest.",
+        tags: ["NLP", "Scikit-Learn", "Python"],
+        link: "https://github.com/sakethlingerker/Polyglot-AI-Language-Detection-System"
+      },
+
+      // ML & Data Branch
       flight_fare: {
-        title: "Flight Fare Prediction App",
-        desc: "A pure **Data Science** project achieving 96% accuracy using advanced regression models. perfect for **ML Engineers**.",
+        title: "Flight Fare Prediction",
+        desc: "A pure **Data Science** project achieving 96% accuracy using advanced regression. Perfect for **ML Engineers**.",
         tags: ["Sklearn", "Machine Learning", "Flask"],
-        link: "https://github.com/sakethlingerker/Flight-Fare-Prediction-Web-App"
+        link: "https://github.com/sakethlingerker/Flight-Price-Prediction"
+      },
+      crop_yield: {
+        title: "Crop Yield Prediction",
+        desc: "Utilizes **Neural Networks** to optimize agricultural output. Ideal for interest in **Deep Learning Applications**.",
+        tags: ["Keras", "TensorFlow", "Neural Networks"],
+        link: "https://github.com/sakethlingerker/Minor-Project"
+      },
+      clearview: {
+        title: "ClearView Air Quality",
+        desc: "Focuses on **Data Visualization** and real-time environmental insights using PowerBI and Python.",
+        tags: ["Data Viz", "Power BI", "Streamlit"],
+        link: "https://air-quality-insight.streamlit.app/"
+      },
+
+      // Engineering Branch
+      smart_feedback: {
+        title: "Smart Feedback System",
+        desc: "A scalable **Full-Stack** solution featuring real-time analysis and complex architecture. For **Backend** fans.",
+        tags: ["Node.js", "MongoDB", "Express"],
+        link: "https://github.com/sakethlingerker/Smart-Feedback-Collection-and-Analysis-System"
+      },
+      cloudcast: {
+        title: "Cloudcast Weather App",
+        desc: "A polished **Frontend** application with dynamic glassmorphism UI. Demonstrates strong **UX/UI** skills.",
+        tags: ["JavaScript", "CSS3", "API Integration"],
+        link: "https://sakethlingerker.github.io/Cloudcast---Advanced-Weather-Application/"
+      },
+      mlops: {
+        title: "Vehicle Insurance Pipeline",
+        desc: "End-to-end **MLOps Pipeline** with CI/CD and Cloud deployment. The definitive project for **Cloud/DevOps**.",
+        tags: ["AWS", "Docker", "MLOps"],
+        link: "https://github.com/sakethlingerker/MLOPS-Project"
       }
     };
 
