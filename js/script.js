@@ -403,6 +403,80 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // ===== Project Matchmaker (Inline) Logic =====
+  window.handleQuizAnswer = function(category) {
+    const step1 = document.getElementById("quiz-step-1");
+    const resultStep = document.getElementById("quiz-result-step");
+    const recDisplay = document.getElementById("quiz-recommendation-display");
+    const progress = document.getElementById("quiz-progress-fill");
+
+    if (!step1 || !resultStep || !recDisplay) return;
+
+    // Recommendations Data
+    const recommendations = {
+      ai: {
+        title: "ATS Resume Expert Pro",
+        desc: "Since you're interested in <strong>AI & LLMs</strong>, this project is a perfect match. It utilizes Google's Gemini AI to parse and optimize resumes against job descriptions.",
+        tags: ["Python", "Google Gemini", "Streamlit"],
+        link: "https://github.com/sakethlingerker/ATS-Resume-Expert-Pro"
+      },
+      web: {
+        title: "Smart Feedback Collection System",
+        desc: "For <strong>Scalable Backend Systems</strong>, check this out. It features real-time data processing, sentiment analysis, and a robust architecture.",
+        tags: ["Node.js", "MongoDB", "Express"],
+        link: "https://github.com/sakethlingerker/Smart-Feedback-Collection-and-Analysis-System"
+      },
+      data: {
+        title: "Real-Time Flight Fare Prediction",
+        desc: "If <strong>Data Analysis</strong> is your focus, this project demonstrates advanced regression modeling (Extra Trees Regressor) with 96% accuracy.",
+        tags: ["Machine Learning", "Scikit-Learn", "Flask"],
+        link: "https://github.com/sakethlingerker/Flight-Fare-Prediction-Web-App"
+      }
+    };
+
+    const rec = recommendations[category];
+    
+    // Build Recommendation Card HTML
+    recDisplay.innerHTML = `
+      <div class="recommend-card fade-up">
+        <h4><i class="fas fa-check-circle"></i> Top Recommendation</h4>
+        <h3 style="font-size: 1.5rem; margin: 10px 0; color: var(--text);">${rec.title}</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 15px;">${rec.desc}</p>
+        <div class="project-tags" style="margin-bottom: 20px;">
+          ${rec.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}
+        </div>
+        <a href="${rec.link}" target="_blank" class="btn primary-btn">View Project</a>
+      </div>
+    `;
+
+    // Transition UI
+    step1.classList.remove("active");
+    setTimeout(() => {
+        step1.style.display = "none";
+        resultStep.style.display = "block";
+        setTimeout(() => resultStep.classList.add("active"), 50);
+    }, 400); // Wait for fade out
+
+    // Update Progress
+    if(progress) progress.style.width = "100%";
+  };
+
+  window.resetQuiz = function() {
+    const step1 = document.getElementById("quiz-step-1");
+    const resultStep = document.getElementById("quiz-result-step");
+    const progress = document.getElementById("quiz-progress-fill");
+
+    resultStep.classList.remove("active");
+    step1.style.display = "block";
+    
+    setTimeout(() => {
+        resultStep.style.display = "none";
+        step1.classList.add("active");
+    }, 100);
+
+    if(progress) progress.style.width = "33%";
+  };
+
   // Quiz
   const quizModal = document.getElementById("quiz-modal");
   const quizQ = document.getElementById("quiz-question");

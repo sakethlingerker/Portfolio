@@ -3840,3 +3840,163 @@ body.light-mode .quiz-option {
 #project-modal .project-problem {
   display: block !important;
 }
+
+/* ===== Project Matchmaker Section (Inline) ===== */
+.project-matchmaker-section {
+  padding: 80px 0;
+  text-align: center;
+  background-color: var(--dark-bg);
+}
+
+.matchmaker-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 12px;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.matchmaker-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Card Container */
+.matchmaker-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 50px 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+/* Progress Bar */
+.matchmaker-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.matchmaker-progress-fill {
+  height: 100%;
+  width: 33%;
+  /* Start at 33% for Step 1 */
+  background: #fbbf24;
+  /* Golden */
+  transition: width 0.3s ease;
+  border-radius: 3px;
+}
+
+/* Questions */
+.quiz-step {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.quiz-step.active {
+  display: block;
+}
+
+.quiz-question {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.quiz-options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.quiz-option-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 20px;
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.quiz-option-btn span {
+  font-family: 'Inter', sans-serif;
+}
+
+.quiz-option-btn i {
+  color: #fbbf24;
+  font-size: 1.2rem;
+  width: 24px;
+}
+
+.quiz-option-btn:hover {
+  background: rgba(251, 191, 36, 0.1);
+  border-color: #fbbf24;
+  transform: translateX(5px);
+}
+
+/* Light Mode Overrides */
+body.light-mode .project-matchmaker-section {
+  background-color: #f9fafb;
+}
+
+body.light-mode .matchmaker-title {
+  color: #111827;
+}
+
+body.light-mode .matchmaker-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .quiz-option-btn {
+  border-color: #e5e7eb;
+  color: #1f2937;
+}
+
+body.light-mode .quiz-option-btn:hover {
+  background: #fffbeb;
+}
+
+body.light-mode .matchmaker-progress-bar {
+  background: #f3f4f6;
+}
+
+/* Result Styles in script interaction */
+.recommend-card {
+  padding: 24px;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 12px;
+  margin-top: 20px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.recommend-card h4 {
+  color: var(--accent-light);
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+body.light-mode .recommend-card h4 {
+  color: var(--accent);
+}

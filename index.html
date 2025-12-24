@@ -527,6 +527,51 @@
       </div>
     </section>
 
+    <!-- Project Matchmaker Section -->
+    <section id="project-matchmaker" class="project-matchmaker-section" data-aos="fade-up">
+      <div class="container matchmaker-container">
+        <h2 class="matchmaker-title">Project Matchmaker</h2>
+        <p class="matchmaker-subtitle">Not sure where to start? Answer 3 quick questions to find the best project to
+          review.</p>
+
+        <div class="matchmaker-card">
+          <div class="matchmaker-progress-bar">
+            <div class="matchmaker-progress-fill" id="quiz-progress-fill"></div>
+          </div>
+
+          <div id="quiz-flow-container">
+            <!-- Question 1 -->
+            <div class="quiz-step active" id="quiz-step-1">
+              <h3 class="quiz-question">What is your primary interest?</h3>
+              <div class="quiz-options-grid">
+                <button class="quiz-option-btn" onclick="handleQuizAnswer('ai')">
+                  <i class="fas fa-brain"></i>
+                  <span>Artificial Intelligence & LLMs</span>
+                </button>
+                <button class="quiz-option-btn" onclick="handleQuizAnswer('web')">
+                  <i class="fas fa-server"></i>
+                  <span>Scalable Backend Systems</span>
+                </button>
+                <button class="quiz-option-btn" onclick="handleQuizAnswer('data')">
+                  <i class="fas fa-chart-bar"></i>
+                  <span>Data Analysis & Prediction</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Result -->
+            <div class="quiz-step" id="quiz-result-step">
+              <h3 class="quiz-question">We Recommend:</h3>
+              <div id="quiz-recommendation-display">
+                <!-- Injected via JS -->
+              </div>
+              <button class="btn primary-btn mt-4" onclick="resetQuiz()">Try Again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects" class="projects">
       <div class="container">
