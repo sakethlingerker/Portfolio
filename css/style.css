@@ -3381,6 +3381,7 @@ textarea:focus-visible {
     color: #666;
   }
 }
+
 /* ===== Project Case Study Styling ===== */
 .project-case-study {
   margin-top: 15px;
@@ -3429,7 +3430,7 @@ body.light-mode .project-case-study {
   height: 500px;
   background: var(--card-bg);
   border-radius: 20px;
-  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -3508,14 +3509,14 @@ body.light-mode .project-case-study {
 
 .ai-chatbot-input-container {
   padding: 15px;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   gap: 10px;
 }
 
 .ai-chatbot-input-container input {
   flex-grow: 1;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 10px;
   padding: 10px 15px;
@@ -3623,9 +3624,17 @@ body.light-mode .project-case-study {
   border-radius: 50%;
 }
 
-.control.red { background: #ff5f56; }
-.control.yellow { background: #ffbd2e; }
-.control.green { background: #27c93f; }
+.control.red {
+  background: #ff5f56;
+}
+
+.control.yellow {
+  background: #ffbd2e;
+}
+
+.control.green {
+  background: #27c93f;
+}
 
 .terminal-title {
   color: #94a3b8;
@@ -3810,40 +3819,4 @@ body.light-mode .project-case-study {
 
 body.light-mode .quiz-option {
   background: rgba(37, 99, 235, 0.05);
-}
-
-/* ===== Code Snippet Modal Styling ===== */
-.code-view-content {
-  max-width: 800px !important;
-  background: #1e293b !important;
-}
-
-.code-container {
-  background: #0f172a;
-  padding: 20px;
-  border-radius: 12px;
-  margin-top: 20px;
-  max-height: 400px;
-  overflow-y: auto;
-  border: 1px solid rgba(139, 92, 246, 0.2);
-}
-
-.code-container pre {
-  margin: 0;
-  color: #e2e8f0;
-  font-family: \ Fira Code\, \Courier New\, Courier, monospace;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.show-code-btn {
-  background: rgba(139, 92, 246, 0.1) !important;
-  color: var(--accent) !important;
-  border: 1px solid var(--accent) !important;
-  cursor: pointer;
-}
-
-.show-code-btn:hover {
-  background: var(--accent) !important;
-  color: white !important;
 }

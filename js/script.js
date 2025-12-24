@@ -424,15 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
   document.getElementById("close-quiz")?.addEventListener("click", () => quizModal.classList.remove("open"));
 
-  // Snippets
-  const codeModal = document.getElementById("code-modal");
-  const codeDisp = document.getElementById("code-display");
-  document.querySelectorAll(".show-code-btn").forEach(btn => btn.addEventListener("click", () => {
-    const p = btn.getAttribute("data-project");
-    codeDisp.textContent = p === "ats" ? "def analyze(): ..." : "print('Logic here')";
-    codeModal.classList.add("open");
-  }));
-  document.getElementById("close-code")?.addEventListener("click", () => codeModal.classList.remove("open"));
+
 
   // Privacy Policy
   document.getElementById("privacy-policy-link")?.addEventListener("click", () => document.getElementById("privacy-modal").classList.add("open"));
@@ -440,7 +432,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Close modals on outside click
   window.addEventListener("click", (e) => {
-    if (e.target.classList.contains("modal")) {
+    if (e.target === privacyModal || e.target === quizModal) {
       e.target.classList.remove("open");
       document.body.style.overflow = "auto";
     }
