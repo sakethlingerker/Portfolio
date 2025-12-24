@@ -1290,46 +1290,44 @@
   <!-- Project Modal -->
   <div id="project-modal" class="modal">
     <div class="modal-content project-modal-content">
-      <span class="close-modal" id="close-project-modal">&times;</span>
-      <div class="modal-body">
+      <button class="close-modal" id="close-project-modal">&times;</button>
+      <div class="modal-body minimal-layout">
+        <!-- 1. Top Tags (Pill shaped) -->
+        <div id="modal-tags" class="top-tags">
+          <!-- Tags injected here -->
+        </div>
+
+        <!-- 2. Large Serif Title -->
         <h2 id="modal-title">Project Title</h2>
-        <p id="modal-description">Project Description</p>
 
-        <div class="modal-grid">
-          <!-- Left Column: Context & Impact -->
-          <div class="modal-col-left">
-            <div class="modal-section" id="modal-problem-section" style="display: none;">
-              <h3><i class="fas fa-exclamation-circle"></i> Problem Statement</h3>
-              <p id="modal-problem"></p>
-            </div>
+        <!-- 3. Sections Container -->
+        <div class="modal-sections-container">
 
-            <div class="modal-section" id="modal-case-study-section">
-              <div id="modal-case-study">
-                <!-- Case Study (Impact/Lessons) will be injected here -->
-              </div>
-            </div>
+          <!-- Problem Section -->
+          <div class="modal-section minimal-section" id="modal-problem-section">
+            <h3 class="minimal-heading">PROBLEM</h3>
+            <p id="modal-problem"></p>
           </div>
 
-          <!-- Right Column: Details & Tech -->
-          <div class="modal-col-right">
-            <div class="modal-section">
-              <h3><i class="fas fa-star"></i> Key Highlights</h3>
-              <ul id="modal-highlights">
-                <!-- Highlights will be injected here -->
-              </ul>
-            </div>
-
-            <div class="modal-section">
-              <h3><i class="fas fa-code"></i> Technologies</h3>
-              <div id="modal-tags" class="project-tags">
-                <!-- Tags will be injected here -->
-              </div>
-            </div>
-
-            <div id="modal-links" class="project-links">
-              <!-- Links will be injected here -->
-            </div>
+          <!-- Solution/Highlights Section -->
+          <div class="modal-section minimal-section">
+            <h3 class="minimal-heading">SOLUTION</h3>
+            <ul id="modal-highlights" class="clean-list">
+              <!-- Injected -->
+            </ul>
           </div>
+
+          <!-- Impact & Lessons (Case Study) -->
+          <div class="modal-section minimal-section" id="modal-case-study-section">
+            <!-- Script injects H4 Impact / H4 Lessons here. We will style them via CSS. -->
+            <div id="modal-case-study"></div>
+          </div>
+
+        </div>
+
+        <!-- 4. Bottom Button -->
+        <div id="modal-links" class="bottom-links">
+          <!-- Links injected here -->
         </div>
       </div>
     </div>

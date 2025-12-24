@@ -295,9 +295,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const links = card.querySelector(".project-links").innerHTML;
       const problem = card.querySelector(".project-problem")?.innerHTML.trim() || "";
 
-      document.getElementById("modal-title").innerHTML = `${title} <span class="modal-title-links">${links}</span>`;
-      document.getElementById("modal-description").textContent = desc;
+      document.getElementById("modal-title").innerText = title; // Plain text title
+      // document.getElementById("modal-description").textContent = desc; // Removed description per new design
+
       document.getElementById("modal-tags").innerHTML = tags;
+      document.getElementById("modal-links").innerHTML = links; // Inject links at bottom
       
       const probSec = document.getElementById("modal-problem-section");
       const probText = document.getElementById("modal-problem");
