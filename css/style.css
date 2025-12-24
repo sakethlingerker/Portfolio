@@ -4002,9 +4002,13 @@ body.light-mode .matchmaker-progress-bar {
 .recommend-card {
   padding: 40px;
   background: var(--card-bg);
+  /* Dark background */
   border-radius: 20px;
   margin-top: 20px;
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Subtle white border for contrast */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  /* Stronger shadow for depth */
   display: flex;
   flex-direction: column;
   align-items: center;

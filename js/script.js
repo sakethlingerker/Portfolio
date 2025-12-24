@@ -570,6 +570,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Build Card
     // Build Card (Reference Style)
+    // Parse Markdown Bold
+    const formattedDesc = rec.desc.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
     recDisplay.innerHTML = `
       <div class="recommend-card fade-up">
         <div class="result-header">
@@ -579,7 +582,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         <h3 class="result-project-title">${rec.title}</h3>
         
-        <p class="result-description">${rec.desc}</p>
+        <p class="result-description">${formattedDesc}</p>
         
         <div class="result-actions">
            <a href="${rec.link}" target="_blank" class="btn result-btn primary-result-btn">View Project</a>
