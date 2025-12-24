@@ -80,17 +80,15 @@
 
 /* 2. Title */
 #modal-title {
-    font-family: 'Inter', sans-serif;
-    /* Align with Portfolio Font */
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 40px;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, white 0%, var(--text-secondary) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem;
+    /* Standard H2 Size */
+    font-family: 'Playfair Display', serif;
+    /* Explicitly match theme */
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.2;
+    color: var(--text);
+    /* Solid color matching theme */
 }
 
 /* 3. Sections */
@@ -113,17 +111,17 @@
 /* Headers (PROBLEM, SOLUTION, IMPACT) */
 .minimal-heading,
 #modal-case-study h4 {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 800;
+    font-size: 0.9rem;
+    font-weight: 700;
     color: var(--accent);
     /* Use Theme Accent */
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     margin-bottom: 16px;
     display: flex;
     align-items: center;
     gap: 8px;
+    /* Font inherited from global H3/H4 (Playfair Display) */
 }
 
 #modal-case-study h4 {
@@ -145,11 +143,11 @@
 .minimal-section p,
 .minimal-section li,
 #modal-case-study p {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.05rem;
+    font-size: 1rem;
+    /* Inherit standard size */
     line-height: 1.7;
     color: var(--text-secondary);
-    /* Muted Text */
+    margin-bottom: 1rem;
 }
 
 /* List Styling */
@@ -216,8 +214,6 @@ body.light-mode .project-modal-content {
 }
 
 body.light-mode #modal-title {
-    background: none;
-    -webkit-text-fill-color: initial;
     color: #111827;
 }
 
