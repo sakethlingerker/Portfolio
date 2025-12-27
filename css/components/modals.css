@@ -24,10 +24,11 @@
     padding: 20px;
     width: 100%;
     max-width: 900px;
-    height: 90vh;
+    max-height: 95vh;
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow-y: auto;
 }
 
 #pdf-container {
@@ -35,7 +36,7 @@
     width: 100%;
     min-height: 0;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: visible;
     background: white;
 }
 
@@ -60,11 +61,12 @@
     }
 
     #pdf-container {
-        min-height: 400px;
+        min-height: 500px;
+        overflow: visible;
     }
 
     #mobile-preview {
-        max-height: 70vh;
+        max-height: none;
     }
 
 
