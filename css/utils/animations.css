@@ -1,0 +1,80 @@
+/* ===== Animations ===== */
+.badge {
+    animation: rotateBadge 12s linear infinite;
+    display: inline-block;
+    padding: 0.5em 1em;
+    background: #1e293b;
+    border-radius: 9999px;
+    white-space: nowrap;
+    color: white;
+    margin: 0.5rem;
+}
+
+@keyframes rotateBadge {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    25% {
+        transform: translateY(-10px);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    75% {
+        transform: translateY(10px);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #2563eb 10%, #8b5cf6 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    animation: gradient-move 3s linear infinite alternate;
+}
+
+@keyframes gradient-move {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.creative-underline {
+    display: block;
+    width: 120px;
+    height: 6px;
+    margin: 0.5rem auto 0 auto;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #2563eb 10%, #8b5cf6 90%);
+    box-shadow: 0 0 16px 2px #2563eb55;
+    opacity: 0.85;
+    animation: underline-glow 2s infinite alternate;
+}
+
+@keyframes underline-glow {
+    0% {
+        box-shadow: 0 0 16px 2px #2563eb55;
+    }
+
+    100% {
+        box-shadow: 0 0 32px 6px #8b5cf655;
+    }
+}

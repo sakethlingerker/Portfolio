@@ -58,7 +58,7 @@ PORTFOLIO/
 
 **Saketh Lingerker**
 - GitHub: [@sakethlingerker](https://github.com/sakethlingerker)
-- LinkedIn: [Saketh Lingerker](https://linkedin.com/in/saketh-lingerker-b93028241/)
+- LinkedIn: [Saketh Lingerker](https://linkedin.com/in/sakethlingerker/)
 - Email: saketh1805@gmail.com
 
 ---

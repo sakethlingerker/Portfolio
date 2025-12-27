@@ -2,8 +2,10 @@ const CACHE_NAME = 'saketh-portfolio-v1';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
-  './css/style.css',
-  './js/script.js',
+  './css/main.css',
+  './js/main.js',
+  './js/config.js',
+  './data/projects.json',
   './assets/ls-logo.jpg',
   './assets/sun.png',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',

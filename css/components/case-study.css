@@ -1,0 +1,38 @@
+/* Project Case Study Styling */
+.project-case-study {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(139, 92, 246, 0.03);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+}
+
+.project-case-study h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-case-study h4 i {
+    font-size: 0.85rem;
+}
+
+.project-case-study p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.project-case-study p:last-child {
+    margin-bottom: 0;
+}
+
+body.light-mode .project-case-study {
+    background: rgba(37, 99, 235, 0.05);
+}

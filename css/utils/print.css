@@ -1,0 +1,60 @@
+/* Print Optimization */
+@media print {
+    @page {
+        margin: 1cm;
+        size: auto;
+    }
+
+    body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+    }
+
+    /* Hide non-essential elements for printing */
+    .navbar,
+    .mobile-toggle,
+    .theme-toggle-btn,
+    .scroll-progress-container,
+    .back-to-top,
+    .skip-link,
+    .project-filters,
+    .creative-contact-section,
+    .footer-nav,
+    .github-stats-section,
+    .social-proof-section,
+    #project-modal,
+    #resume-modal,
+    .modal,
+    #chatbot-toggle,
+    #terminal-toggle,
+    .ai-chatbot-container,
+    .terminal-container,
+    .matchmaker-card,
+    #project-matchmaker {
+        display: none !important;
+    }
+
+    /* Print URLs */
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.9em;
+        color: #555;
+    }
+
+    /* Optimize Hero for Print */
+    .hero {
+        min-height: auto;
+        padding: 20px 0;
+        text-align: left;
+    }
+
+    .hero h1 {
+        font-size: 24pt;
+        color: black;
+    }
+
+    .typewriter {
+        color: #444;
+    }
+}

@@ -1,0 +1,78 @@
+/* ===== CSS Variables ===== */
+:root {
+  /* New "Deep Zinc" Dark Theme */
+  --navbar-bg: rgba(9, 9, 11, 0.8);
+  /* Zinc 950 with opacity */
+  --dark-bg: #09090b;
+  /* Zinc 950 - Deep Charcoal */
+  --darker-bg: #000000;
+  /* Pure Black for contrast */
+  --card-bg: #18181b;
+  /* Zinc 900 */
+  --text: #fafafa;
+  /* Zinc 50 */
+  --text-secondary: #a1a1aa;
+  /* Zinc 400 */
+  
+  /* Vibrant Accents */
+  --accent: #8b5cf6;
+  --accent-rgb: 139, 92, 246;
+  /* Violet 500 */
+  --accent-light: #d8b4fe;
+  /* Violet 300 */
+  --gradient-hero: linear-gradient(135deg, #8b5cf6, #ec4899);
+  /* Violet to Pink */
+
+  --success: #10b981;
+  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.light-mode {
+  --navbar-bg: #fff;
+  --dark-bg: #F9FAFB;
+  --darker-bg: #f3f4f6;
+  --card-bg: #fff;
+  --accent: #6366F1;
+  --accent-rgb: 99, 102, 241;
+  /* Indigo 500 */
+  --accent-alt: #4F46E5;
+  /* Indigo 600 */
+  --accent-light: #818cf8;
+  /* Indigo 400 */
+  --gradient-hero: linear-gradient(135deg, #6366F1, #8B5CF6);
+  /* Indigo to Violet */
+  --text: #1F2937;
+  --text-secondary: #4b5563;
+  background-color: #F9FAFB;
+  color: #1F2937;
+}
+
+body.light-mode .navbar a,
+body.light-mode .footer-heading,
+body.light-mode .footer-social,
+body.light-mode .footer-link,
+body.light-mode .text-white,
+body.light-mode .text-zinc-300,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode p,
+body.light-mode span,
+body.light-mode li,
+body.light-mode .logo {
+  color: #111827 !important;
+}
+
+body.dark {
+  background-color: var(--dark-bg);
+  color: var(--text);
+}
+
+body.light-mode header {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .project-tag {
+  background: rgba(99, 102, 241, 0.1);
+  color: #4F46E5;
+}

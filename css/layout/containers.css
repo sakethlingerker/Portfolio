@@ -1,0 +1,60 @@
+/* Section Containers */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px !important;
+        max-width: 100% !important;
+    }
+}
+
+section {
+    padding: 32px 0;
+}
+
+.section-bg {
+    background-color: var(--darker-bg);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 12px;
+    color: var(--text);
+    font-weight: 700;
+    position: relative;
+}
+
+.section-header h2::after {
+    display: none;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .section-header p {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+}

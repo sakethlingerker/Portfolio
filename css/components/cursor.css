@@ -1,0 +1,55 @@
+/* ===== Custom Cursor ===== */
+.cursor {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s;
+    z-index: 9999;
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.cursor-follower {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s, width 0.3s, height 0.3s;
+    z-index: 9998;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.cursor.active {
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+.cursor-follower.active {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: rgba(37, 99, 235, 0.1);
+    border-color: transparent;
+}
+
+@media (max-width: 768px) {
+
+    .cursor,
+    .cursor-follower {
+        display: none;
+    }
+}
+
+/* Micro-Interactions */
+a:hover,
+button:hover,
+.btn:hover {
+    cursor: none;
+}

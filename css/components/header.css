@@ -1,0 +1,336 @@
+/* Header & Navigation */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--navbar-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: none;
+    /* Removed static border */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+/* ... (skipping unchanged parts for brevity in explanation, but tool needs exact context or I'll split it) ... */
+/* Actually, I should use multi_replace for accuracy since they are far apart */
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-l {
+    font-family: 'Orbitron', 'Inter', Arial, sans-serif !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.logo-s {
+    font-family: 'Orbitron', 'Inter', Arial, sans-serif !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+body.light-mode .logo-l {
+    color: #4338ca !important;
+}
+
+body.light-mode .logo-s {
+    color: #1F2937 !important;
+}
+
+@media (max-width: 900px) {
+    .logo {
+        font-size: 1.5rem;
+        margin-right: 12px;
+    }
+}
+
+@media (max-width: 900px) {
+    .mobile-toggle {
+        display: block;
+        margin-left: 8px;
+        font-size: 1.7rem;
+    }
+
+    .main-nav-links {
+        display: none;
+    }
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--transition);
+    position: relative;
+    padding: 10px 0;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--text);
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Modern Navbar */
+.main-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    background: var(--navbar-bg);
+    box-shadow: 0 2px 16px 0 rgba(16, 21, 40, 0.10);
+    transition: background 0.3s, box-shadow 0.3s;
+    border-bottom: none;
+    /* Removed static border */
+}
+
+.navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 24px;
+}
+
+.logo-img-link {
+    display: flex;
+    align-items: center;
+    height: 56px;
+}
+
+.navbar-logo-img {
+    height: 44px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.main-nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-nav-links a {
+    color: var(--text-secondary);
+    font-weight: 500;
+    position: relative;
+    /* Constrain pseudo-element width to the link */
+}
+
+/* Enhanced Navbar Styles */
+.main-nav-links a.active,
+.main-nav-links a:hover {
+    color: var(--accent);
+}
+
+.main-nav-links a.active::after,
+.main-nav-links a:hover::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.theme-toggle-btn:hover {
+    color: var(--accent-light);
+}
+
+.navbar-socials {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.navbar-social-link {
+    color: var(--accent);
+    font-size: 1.18rem;
+    transition: color 0.2s, transform 0.2s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-social-link:hover {
+    color: var(--accent-light);
+    transform: translateY(-2px) scale(1.08);
+}
+
+/* Mobile Overlay */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.98);
+    z-index: 2000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+}
+
+.mobile-nav-overlay.active {
+    display: flex;
+}
+
+.mobile-close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 2.2rem;
+    cursor: pointer;
+}
+
+.mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.mobile-nav-links a {
+    color: var(--text);
+    font-size: 2rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.mobile-nav-links a.active,
+.mobile-nav-links a:hover {
+    color: var(--accent);
+}
+
+/* Mobile Navigation Toggle Visibility */
+.mobile-toggle {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .mobile-toggle {
+        display: block;
+        margin-left: 8px;
+        font-size: 1.7rem;
+    }
+
+    .main-nav-links {
+        display: none;
+    }
+}
+
+/* Scroll Progress Bar */
+/* Scroll Progress Bar */
+.scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    z-index: 1100;
+    /* Above header (1050) */
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+}

@@ -1,0 +1,111 @@
+/* Footer */
+footer {
+    background: var(--darker-bg);
+    color: var(--text-secondary);
+    font-size: 1.08rem;
+    padding: 32px 0 32px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100vw;
+    left: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 100px;
+    /* Increased to avoid overlap with fixed toggle buttons */
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        padding: 0 24px;
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+}
+
+.footer-copy {
+    font-weight: 500;
+    white-space: nowrap;
+    font-size: 1.1rem;
+}
+
+.footer-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.08rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.footer-nav a:hover {
+    color: var(--accent);
+}
+
+.footer-nav span {
+    color: var(--text-secondary);
+    font-size: 1.1em;
+}
+
+.footer-privacy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-privacy a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.footer-privacy a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.footer-socials a {
+    color: var(--accent);
+    font-size: 1.3rem;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.footer-socials a:hover {
+    color: var(--accent-light);
+}

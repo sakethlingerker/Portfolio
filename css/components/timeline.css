@@ -1,0 +1,347 @@
+/* Experience Timeline */
+.experience-section {
+    background: var(--darker-bg);
+    padding: 80px 0;
+    min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .experience-section {
+        padding: 40px 0;
+    }
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Center Line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #3b82f6, #8b5cf6, #ec4899);
+    border-radius: 10px;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    position: relative;
+    margin: 2rem 0;
+    width: 50%;
+}
+
+.timeline-item:nth-child(even) {
+    align-self: flex-end;
+    justify-content: flex-start;
+    padding-left: 30px;
+    padding-right: 0;
+    margin-left: 50%;
+}
+
+.timeline-content {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 450px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid #3b82f6;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    border-left: none;
+    border-right: 4px solid #8b5cf6;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.timeline-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 6px var(--darker-bg), 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    top: 20px;
+}
+
+/* Left cards - icon on right side of center line */
+.timeline-item:nth-child(odd) .timeline-icon {
+    right: -25px;
+    left: auto;
+}
+
+/* Right cards - icon on left side of center line */
+.timeline-item:nth-child(even) .timeline-icon {
+    left: -25px;
+}
+
+.icon-education {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+}
+
+.icon-work {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+}
+
+.icon-achievement {
+    background: linear-gradient(135deg, #ec4899, #db2777);
+    color: white;
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #3b82f6;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.timeline-item:nth-child(even) .timeline-date {
+    color: #8b5cf6;
+}
+
+.timeline-date i {
+    margin-right: 8px;
+}
+
+.timeline-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-grade {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.timeline-company {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.timeline-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.timeline-list {
+    list-style-type: none;
+    margin-bottom: 1.5rem;
+}
+
+.timeline-list li {
+    padding: 0.3rem 0;
+    color: var(--text);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.timeline-list li:before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+.timeline-item:nth-child(even) .timeline-list li:before {
+    color: #8b5cf6;
+}
+
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    color: #3b82f6;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.timeline-item:nth-child(even) .read-more {
+    color: #8b5cf6;
+}
+
+.read-more:hover {
+    color: #1d4ed8;
+}
+
+.read-more i {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.read-more:hover i {
+    transform: translateX(3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+        margin-left: 0;
+        padding-left: 70px;
+    }
+
+    .timeline-icon {
+        left: 30px;
+        right: auto;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-icon,
+    .timeline-item:nth-child(even) .timeline-icon {
+        left: 30px;
+        right: auto;
+    }
+
+    /* CLEAN LAYOUT Override */
+    .timeline::before {
+        display: none;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 1.5rem 0;
+        display: block;
+    }
+
+    .timeline-item:nth-child(even) {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .timeline-icon {
+        display: none;
+    }
+
+    .timeline-content {
+        padding: 1.5rem;
+        max-width: none;
+        margin-bottom: 0;
+        border-left: 4px solid var(--accent) !important;
+        border-right: none !important;
+        margin: 0 10px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+        border-left: 4px solid var(--accent) !important;
+        border-right: none !important;
+    }
+
+    .timeline-date {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+        color: var(--accent) !important;
+    }
+
+    .timeline-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .timeline-company {
+        font-size: 1.05rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .timeline-grade {
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .timeline-description {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+
+    .timeline-list {
+        margin-bottom: 1.25rem;
+    }
+
+    .timeline-list li {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+        padding-left: 1.25rem;
+        line-height: 1.4;
+    }
+
+    .timeline-list li:before {
+        color: var(--accent) !important;
+    }
+
+    .read-more {
+        font-size: 0.95rem;
+        color: var(--accent) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .experience-section {
+        padding: 2.5rem 1rem;
+        min-height: auto;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+    }
+
+    .timeline-content {
+        padding: 1.25rem;
+        margin: 0 5px;
+    }
+
+    .timeline-date {
+        font-size: 0.85rem;
+    }
+
+    .timeline-title {
+        font-size: 1.1rem;
+    }
+
+    .timeline-company {
+        font-size: 1rem;
+    }
+
+    .timeline-grade {
+        font-size: 0.9rem;
+    }
+}
