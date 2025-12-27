@@ -67,6 +67,9 @@ body.light-mode .quiz-option {
     padding: 80px 0;
     text-align: center;
     background-color: var(--dark-bg);
+    opacity: 1 !important;
+    /* Force visibility */
+    visibility: visible !important;
 }
 
 .matchmaker-title {

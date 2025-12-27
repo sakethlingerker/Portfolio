@@ -209,6 +209,8 @@ body.light-mode .logo-s {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 40px;
+    height: 40px;
 }
 
 #theme-icon {
@@ -251,7 +253,9 @@ body.light-mode .logo-s {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(15, 23, 42, 0.98);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     z-index: 2000;
     flex-direction: column;
     align-items: center;
@@ -290,11 +294,13 @@ body.light-mode .logo-s {
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s;
+    opacity: 0.9;
 }
 
 .mobile-nav-links a.active,
 .mobile-nav-links a:hover {
     color: var(--accent);
+    opacity: 1;
 }
 
 /* Mobile Navigation Toggle Visibility */
@@ -333,4 +339,16 @@ body.light-mode .logo-s {
     width: 0%;
     transition: width 0.1s linear;
     box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+}
+
+body.light-mode .mobile-nav-overlay {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+body.light-mode .mobile-nav-links a {
+    color: #1F2937;
+}
+
+body.light-mode .mobile-close {
+    color: var(--accent);
 }

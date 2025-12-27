@@ -78,6 +78,13 @@ export function initUI() {
     link.addEventListener("click", () => mobileNavOverlay.classList.remove("active"));
   });
 
+  // Close mobile menu on resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900 && mobileNavOverlay.classList.contains('active')) {
+      mobileNavOverlay.classList.remove('active');
+    }
+  });
+
   // Scroll Listeners (Active Link, Progress Bar, Header Shrink)
   window.addEventListener("scroll", () => {
     const sections = document.querySelectorAll("section");
