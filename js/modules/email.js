@@ -4,6 +4,10 @@ import { showToast } from './utils.js';
 export function initEmail() {
   // Initialize EmailJS
   if (window.emailjs) {
+      if (!CONFIG.EMAILJS_PUBLIC_KEY) {
+          console.error("EmailJS Error: Missing Public Key. Check GitHub Secrets.");
+          return;
+      }
       emailjs.init(CONFIG.EMAILJS_PUBLIC_KEY);
   } else {
       console.error("EmailJS SDK not loaded");
