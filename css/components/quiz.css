@@ -286,3 +286,27 @@ body.light-mode .matchmaker-progress-bar {
     background: transparent;
     color: var(--text);
 }
+.primary-result-btn {
+    background: var(--gradient-hero) !important;
+    color: white !important;
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.25);
+}
+.primary-result-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6), 0 15px 35px rgba(139, 92, 246, 0.4);
+}
+.secondary-result-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    color: var(--text);
+}
+body.light-mode .secondary-result-btn {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+    color: #374151;
+}
+.secondary-result-btn:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+}
