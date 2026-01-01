@@ -24,11 +24,11 @@
     padding: 20px;
     width: 100%;
     max-width: 900px;
-    max-height: 95vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 #pdf-container {
@@ -37,7 +37,7 @@
     min-height: 0;
     border-radius: 8px;
     overflow: visible;
-    background: white;
+    background: var(--card-bg);
 }
 
 #resume-iframe {
