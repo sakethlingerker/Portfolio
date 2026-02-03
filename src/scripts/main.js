@@ -8,8 +8,12 @@ import { showToast, setupGlobalErrorHandling } from './modules/utils.js';
 import { initChatbot } from './modules/chatbot.js';
 import { initTerminal } from './modules/terminal.js';
 import { initProjects } from './modules/projects.js';
+import { initMatchmaker } from './modules/matchmaker.js';
+import { initMagneticButtons } from './modules/magnetic-buttons.js';
+import { initCustomCursor } from './modules/custom-cursor.js';
+import { toast } from './modules/toast.js';
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     // Initialize AOS
     if(window.AOS) AOS.init();
     
@@ -17,10 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     initTheme();
     initUI();
-    initEmail();
+    await initEmail(); // Now async
     initChatbot();
     initTerminal();
     initProjects();
+    initMatchmaker();
+    initMagneticButtons();
+    initCustomCursor();
 
     // Register Service Worker
     if ('serviceWorker' in navigator) {

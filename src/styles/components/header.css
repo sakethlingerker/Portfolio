@@ -95,7 +95,8 @@ body.light-mode .logo-s {
     color: var(--text);
 }
 
-.nav-links a::after {
+/* Underline effect removed per user request */
+/* .nav-links a::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -109,7 +110,7 @@ body.light-mode .logo-s {
 .nav-links a:hover::after,
 .nav-links a.active::after {
     width: 100%;
-}
+} */
 
 .nav-links a.active {
     color: var(--text);
@@ -171,6 +172,7 @@ body.light-mode .logo-s {
     color: var(--text-secondary);
     font-weight: 500;
     position: relative;
+    text-decoration: none !important;
     /* Constrain pseudo-element width to the link */
 }
 
@@ -180,8 +182,8 @@ body.light-mode .logo-s {
     color: var(--accent);
 }
 
-.main-nav-links a.active::after,
-.main-nav-links a:hover::after {
+/* Underline only for active link (scroll spy indicator) */
+.main-nav-links a.active::after {
     content: '';
     display: block;
     width: 100%;

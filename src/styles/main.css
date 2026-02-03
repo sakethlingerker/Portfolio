@@ -26,6 +26,8 @@
 @import './components/terminal.css';
 @import './components/quiz.css';
 @import './components/cursor.css';
+@import './components/toast.css';
+@import './components/gradient-headings.css';
 
 /* Utilities */
 @import './utils/animations.css';

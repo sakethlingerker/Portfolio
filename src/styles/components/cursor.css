@@ -1,0 +1,74 @@
+/* ===== High-Performance Custom Cursor ===== */
+body {
+    cursor: none;
+}
+
+a,
+button,
+.btn,
+input,
+textarea,
+select {
+    cursor: none;
+}
+
+.cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: #8b5cf6;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+    /* GPU acceleration */
+    will-change: transform;
+    transform: translate3d(0, 0, 0) translate(-50%, -50%);
+    /* Faster scale transition only */
+    transition: width 0.15s ease, height 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cursor-follower {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(139, 92, 246, 0.5);
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 9998;
+    background: rgba(139, 92, 246, 0.05);
+    /* GPU acceleration */
+    will-change: transform;
+    transform: translate3d(0, 0, 0) translate(-50%, -50%);
+    /* Faster transitions for hover effects only */
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.cursor.hover {
+    width: 24px;
+    height: 24px;
+    background: #ec4899;
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.8);
+}
+
+.cursor-follower.hover {
+    width: 60px;
+    height: 60px;
+    background: rgba(236, 72, 153, 0.1);
+    border-color: rgba(236, 72, 153, 0.6);
+}
+
+@media (max-width: 768px) {
+    body {
+        cursor: auto;
+    }
+
+    .cursor,
+    .cursor-follower {
+        display: none;
+    }
+}

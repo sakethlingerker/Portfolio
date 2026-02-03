@@ -1,4 +1,8 @@
 /* ===== Animations ===== */
+.hidden {
+    display: none !important;
+}
+
 .badge {
     animation: rotateBadge 12s linear infinite;
     display: inline-block;
