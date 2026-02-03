@@ -2,6 +2,7 @@
 // CSS is now loaded via index.html to prevent FOUC
 // import '../css/main.css';
 import { initTheme } from "./modules/theme.js";
+import "./preloader.js"; // Import preloader to run its IIFE
 import { initUI } from "./modules/ui.js";
 import { initEmail } from "./modules/email.js";
 import { showToast, setupGlobalErrorHandling } from "./modules/utils.js";
