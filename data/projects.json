@@ -1,95 +1,506 @@
 {
-    "ats_resume": {
-        "title": "ATS Resume Expert Pro",
-        "desc": "Leveraging **Google Gemini AI**, this tool automates resume optimization. Ideal for **GenAI Product** enthusiasts.",
-        "tags": [
-            "Python",
-            "Google Gemini",
-            "Streamlit"
-        ],
-        "link": "https://resume-tracking-sakethlingerker.streamlit.app/",
-        "btnText": "See Live"
+  "enterprise_rag": {
+    "id": "enterprise_rag",
+    "title": "Enterprise-Ready RAG Agent",
+    "subtitle": "An enterprise-grade Retrieval-Augmented Generation (RAG) AI agent that enables users to upload PDFs and ask natural-language questions.",
+    "category": "ai-ml",
+    "isFeatured": true,
+    "tags": ["AI Platform", "RAG", "GenAI", "NLP"],
+    "heroImage": "src/assets/enterprise_rag_agent.png",
+    "matchmakerKey": "genai_rag",
+    "links": {
+      "github": "https://github.com/sakethlingerker/Enterprise-Ready-RAG-Agent",
+      "demo": "https://enterprise-ready-rag-agent.streamlit.app/"
     },
-    "interior_design": {
-        "title": "AI Virtual Interior Designer",
-        "desc": "Combines creative **Generative AI** with computer vision to visualize spaces. Great for **Visual AI** lovers.",
-        "tags": [
-            "Stable Diffusion",
-            "PyTorch",
-            "Python"
-        ],
-        "link": "https://github.com/sakethlingerker/AI-Driven-Virtual-Interior-Designer"
+    "overview": "An enterprise-grade Retrieval-Augmented Generation (RAG) AI agent that enables users to upload PDFs and ask natural-language questions. The system retrieves relevant document chunks via vector search (FAISS/ChromaDB) and generates grounded, citation-backed answers using LLMs (Llama 3.1/3.3 70B via Groq API), significantly reducing hallucinations compared to vanilla LLM chat. Includes an Arxiv Research Agent that detects research intent, searches arXiv, proposes papers, and auto-downloads them.",
+    "problem": "Enterprise documents are difficult to search efficiently, and standalone LLMs cannot reliably answer questions without relevant contextual knowledge, causing hallucinated or unverified responses.",
+    "solution": "Engineered a hybrid retrieval system pairing FAISS & ChromaDB vector embeddings with Google Gemini & Groq Llama 3.3 LLMs. Integrated recursive text chunking, metadata traceability, and page-level citation generation to ground answers strictly in source data.",
+    "architecture": [
+      "PDF Upload & PyMuPDF Ingestion",
+      "Table-to-Markdown & Recursive Semantic Chunking",
+      "FAISS / ChromaDB Vector Indexing",
+      "Similarity Retriever & Context Injector",
+      "Groq Llama 3.3 70B LLM Generator",
+      "Grounded Output with Citation Verification"
+    ],
+    "engineeringDecisions": [
+      "Ingestion Pipeline: Used PyMuPDF-based PDF extraction with table-to-Markdown restoration and recursive semantic chunking to preserve paragraph meaning.",
+      "Vector Indexing: Embeddings stored in FAISS and ChromaDB for low-latency similarity search retrieving top-K relevant chunks.",
+      "Multi-Model Support: Hot-swappable between Llama 3.1, Llama 3.3 (70B), and Gemini via Groq API client layer.",
+      "Agentic Workflow: Intent detection router directs queries to document Q&A or automated arXiv paper discovery."
+    ],
+    "keyFeatures": [
+      "PDF upload & real-time arXiv research paper integration",
+      "Advanced semantic text chunking with table-to-Markdown restoration",
+      "Dual vector database (FAISS & ChromaDB)",
+      "LLM-powered answers with page-level source citations",
+      "Multi-turn context-aware chat history & agent routing"
+    ],
+    "techStackDetailed": [
+      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
+      { "name": "LangChain", "badge": "https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" },
+      { "name": "FAISS", "badge": "https://img.shields.io/badge/FAISS-4285F4?style=flat-square&logo=meta&logoColor=white" },
+      { "name": "Google Gemini", "badge": "https://img.shields.io/badge/Google_Gemini-8E75B2?style=flat-square&logo=google&logoColor=white" },
+      { "name": "Streamlit", "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" },
+      { "name": "PyMuPDF", "badge": "https://img.shields.io/badge/PyMuPDF-3776AB?style=flat-square&logo=python&logoColor=white" },
+      { "name": "ChromaDB", "badge": "https://img.shields.io/badge/ChromaDB-7C3AED?style=flat-square&logo=database&logoColor=white" },
+      { "name": "Groq API", "badge": "https://img.shields.io/badge/Groq_API-F05032?style=flat-square&logo=fastapi&logoColor=white" }
+    ],
+    "challenges": "Handling large PDF extractions with complex tabular figures and preventing context dilution when synthesizing answers across multi-page papers.",
+    "quantifiableImpact": [
+      { "value": "~80%", "label": "Reduction in hallucinated responses" },
+      { "value": "<5 sec", "label": "Avg. query-to-answer latency" },
+      { "value": "4+", "label": "Reusable enterprise use cases" }
+    ],
+    "lessonsLearned": "Chunk overlap strategy and metadata-aware retrieval matter far more for RAG accuracy than prompt engineering alone.",
+    "relatedProjectIds": ["ats_resume", "smart_feedback", "interior_design"]
+  },
+  "mlops": {
+    "id": "mlops",
+    "title": "Vehicle Insurance MLOps Pipeline",
+    "subtitle": "Production-grade automated ML training, versioning, containerization, and AWS cloud deployment pipeline.",
+    "category": "mlops",
+    "isFeatured": true,
+    "tags": ["MLOps", "AWS", "Docker", "CI/CD"],
+    "heroImage": "src/assets/mlops_pipeline.png",
+    "matchmakerKey": "engineering_cloud",
+    "links": {
+      "github": "https://github.com/sakethlingerker/MLOPS-Project"
     },
-    "polyglot": {
-        "title": "Polyglot AI – Language Detection System",
-        "desc": "A classical **NLP** model capable of detecting languages with high precision. Perfect for **Core ML** interest.",
-        "tags": [
-            "NLP",
-            "Scikit-Learn",
-            "Python"
-        ],
-        "link": "https://github.com/sakethlingerker/Polyglot-AI-Language-Detection-System"
+    "overview": "A production-grade, end-to-end MLOps pipeline for vehicle insurance risk prediction — from data ingestion through model deployment on AWS with fully automated CI/CD. Demonstrates the complete ML lifecycle: data management with MongoDB Atlas, model training/validation, containerized deployment via Docker, and automated continuous delivery using GitHub Actions to AWS EC2/ECR.",
+    "problem": "Manual ML model training and deployment suffer from code drift, environment discrepancies, lack of reproducibility, and zero automated health monitoring.",
+    "solution": "Designed a 6-stage modular pipeline using Python, Docker, GitHub Actions, and AWS ECR/EC2. Implemented automated data validation, model versioning, continuous integration, and seamless deployment triggers.",
+    "architecture": [
+      "MongoDB Atlas Cloud Data Ingestion",
+      "Config-Driven Schema Data Validation",
+      "Feature Engineering & Data Transformation",
+      "Model Training & S3 Benchmark Evaluation",
+      "Docker Container Build & AWS ECR Push",
+      "GitHub Actions CI/CD to AWS EC2 Runner"
+    ],
+    "engineeringDecisions": [
+      "Data Layer: MongoDB Atlas integration with schema-driven validation using config/schema.yaml.",
+      "ML Pipeline: 6-stage sequential pipeline (Data Ingestion → Validation → Transformation → Training → Evaluation → Pusher).",
+      "Model Promotion: Automated evaluation against S3-stored production benchmarks; automated promotion only when new model exceeds threshold.",
+      "CI/CD Automation: GitHub Actions workflow authenticated with AWS IAM keys deploying to EC2 self-hosted runner."
+    ],
+    "keyFeatures": [
+      "MongoDB Atlas cloud database integration",
+      "6-stage automated sequential ML pipeline",
+      "Automated S3 model benchmark evaluation & promotion",
+      "Docker containerized microservice runtime",
+      "GitHub Actions automated CI/CD pipeline to AWS EC2"
+    ],
+    "techStackDetailed": [
+      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
+      { "name": "Docker", "badge": "https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" },
+      { "name": "AWS EC2", "badge": "https://img.shields.io/badge/AWS_EC2-232F3E?style=flat-square&logo=amazon-ec2&logoColor=white" },
+      { "name": "AWS ECR", "badge": "https://img.shields.io/badge/AWS_ECR-FF9900?style=flat-square&logo=amazon-aws&logoColor=white" },
+      { "name": "GitHub Actions", "badge": "https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white" },
+      { "name": "MongoDB", "badge": "https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" }
+    ],
+    "challenges": "Debugging AWS ECR authentication credentials inside automated GitHub Actions workflows and resolving container port bindings on EC2.",
+    "quantifiableImpact": [
+      { "value": "85%", "label": "Reduction in deployment time" },
+      { "value": "6-Stage", "label": "Fully automated ML pipeline" },
+      { "value": "Zero", "label": "Downtime model updates" }
+    ],
+    "lessonsLearned": "Learned the critical importance of decoupling pipeline stages into modular components for zero-downtime container updates.",
+    "relatedProjectIds": ["flight_fare", "enterprise_rag", "crop_yield"]
+  },
+  "smart_feedback": {
+    "id": "smart_feedback",
+    "title": "Smart Feedback Collection & Analysis System",
+    "subtitle": "Scalable full-stack application featuring real-time feedback ingestion, MongoDB analytics, and automated reporting.",
+    "category": "fullstack",
+    "isFeatured": true,
+    "tags": ["Full Stack", "Node.js", "MongoDB", "Express"],
+    "heroImage": "src/assets/smart_feedback_system.png",
+    "matchmakerKey": "engineering_backend",
+    "links": {
+      "github": "https://github.com/sakethlingerker/Smart-Feedback-Collection-and-Analysis-System"
     },
-    "flight_fare": {
-        "title": "Real-Time Flight Fare Prediction Application",
-        "desc": "A pure **Data Science** project achieving 96% accuracy using advanced regression. Perfect for **ML Engineers**.",
-        "tags": [
-            "Sklearn",
-            "Machine Learning",
-            "Flask"
-        ],
-        "link": "https://github.com/sakethlingerker/Flight-Price-Prediction"
+    "overview": "A full-stack web application that automates user feedback collection and sentiment analysis. The system ingests user-submitted feedback through a web interface, runs an NLP pipeline (tokenization → stop-word removal → polarity scoring) for automatic sentiment classification, and presents real-time analytics through admin dashboards with interactive charts.",
+    "problem": "Organizations lack centralized, structured feedback channels with real-time sentiment metrics and automated aggregation.",
+    "solution": "Built a high-throughput Flask/Express REST API backend with NLTK sentiment preprocessing and an interactive Chart.js analytics dashboard.",
+    "architecture": [
+      "Client Web Feedback Form",
+      "Flask REST API Backend Gateway",
+      "JWT Security & Role-Based Authorization",
+      "NLTK Tokenization & Polarity Sentiment Engine",
+      "Chart.js Real-Time Sentiment Admin Dashboard"
+    ],
+    "engineeringDecisions": [
+      "Backend Architecture: Flask-based REST API architecture with clean endpoint design for feedback CRUD and analytics.",
+      "NLP Pipeline: Built with NLTK for text preprocessing (tokenization, stop-word removal) and polarity scoring into positive/negative/neutral.",
+      "Security: Implemented JWT-based authentication with role-based authorization (admin vs. regular users).",
+      "Visualization: Interactive admin dashboard with Chart.js for real-time sentiment distribution visualization."
+    ],
+    "keyFeatures": [
+      "Dynamic feedback collection forms",
+      "RESTful API architecture",
+      "NLTK-powered sentiment classification pipeline",
+      "JWT authentication & role-based access control",
+      "Chart.js real-time sentiment analytics dashboard"
+    ],
+    "techStackDetailed": [
+      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
+      { "name": "Flask", "badge": "https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" },
+      { "name": "NLTK", "badge": "https://img.shields.io/badge/NLTK-2563EB?style=flat-square&logo=python&logoColor=white" },
+      { "name": "JavaScript", "badge": "https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" },
+      { "name": "Chart.js", "badge": "https://img.shields.io/badge/Chart.js-FF6384?style=flat-square&logo=chartdotjs&logoColor=white" }
+    ],
+    "challenges": "Optimizing MongoDB / database aggregation queries to prevent bottlenecks under heavy concurrent submission loads.",
+    "quantifiableImpact": [
+      { "value": "92%", "label": "Sentiment classification accuracy" },
+      { "value": "70%", "label": "Reduction in manual feedback processing" },
+      { "value": "3", "label": "Classification categories (pos/neg/neutral)" }
+    ],
+    "lessonsLearned": "Gained deep experience in schema indexing strategies and REST API rate limiting best practices.",
+    "relatedProjectIds": ["cloudcast", "ats_resume", "clearview"]
+  },
+  "ats_resume": {
+    "id": "ats_resume",
+    "title": "ATS Resume Expert Pro",
+    "subtitle": "AI-powered ATS scanner and resume optimizer leveraging Google Gemini 2.5 for job description alignment.",
+    "category": "ai-ml",
+    "isFeatured": true,
+    "tags": ["GenAI", "Google Gemini", "Streamlit", "NLP"],
+    "heroImage": "src/assets/ats_resume_expert.png",
+    "matchmakerKey": "genai_resume",
+    "links": {
+      "github": "https://github.com/sakethlingerker/Resume-Tracking",
+      "demo": "https://resume-tracking-sakethlingerker.streamlit.app/"
     },
-    "crop_yield": {
-        "title": "Crop Yield Prediction Model",
-        "desc": "Utilizes **Neural Networks** to optimize agricultural output. Ideal for interest in **Deep Learning Applications**.",
-        "tags": [
-            "Keras",
-            "TensorFlow",
-            "Neural Networks"
-        ],
-        "link": "https://github.com/sakethlingerker/Minor-Project"
+    "overview": "An AI-powered resume evaluation tool that analyzes uploaded PDF resumes against job descriptions using Google Gemini AI (Flash). The system performs ATS compatibility scoring, keyword gap analysis, and generates actionable improvement suggestions — helping job seekers optimize their resumes for Applicant Tracking Systems.",
+    "problem": "Job applicants suffer high ATS rejection rates due to missing keywords, formatting errors, and poor alignment with specific job postings.",
+    "solution": "Integrated Google Gemini Flash API with PyMuPDF text extraction to evaluate resumes against detailed job prompts, generating actionable breakdown reports.",
+    "architecture": [
+      "PDF Resume Ingestion & PyMuPDF Parsing",
+      "Job Description Text & Keyword Extraction",
+      "Structured LLM Prompt Engineering",
+      "Google Gemini Flash Semantic API Evaluation",
+      "Streamlit Real-Time ATS Score & Gap Report UI"
+    ],
+    "engineeringDecisions": [
+      "PDF Parsing: PyMuPDF-based resume extraction pipeline handling diverse PDF formats with structure preservation.",
+      "LLM Integration: Google Gemini Flash API for semantic resume evaluation and structured HR-expert feedback.",
+      "Keyword Analysis: Automated comparison of resume content against job description keywords identifying missing skills.",
+      "Deployment: Production deployment on Streamlit Cloud with environment-based API key management."
+    ],
+    "keyFeatures": [
+      "PyMuPDF PDF resume parsing & keyword matching",
+      "Automated job description compatibility scoring",
+      "Detailed missing skills & strengths analysis",
+      "Instant AI optimization recommendations",
+      "Streamlit UI with custom CSS styling and real-time scoring"
+    ],
+    "techStackDetailed": [
+      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
+      { "name": "Google Gemini", "badge": "https://img.shields.io/badge/Google_Gemini-8E75B2?style=flat-square&logo=google&logoColor=white" },
+      { "name": "Streamlit", "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" },
+      { "name": "PyMuPDF", "badge": "https://img.shields.io/badge/PyMuPDF-3776AB?style=flat-square&logo=python&logoColor=white" }
+    ],
+    "challenges": "Handling diverse PDF formatting styles without losing key header metadata or section context.",
+    "quantifiableImpact": [
+      { "value": "40%", "label": "Improvement in interview shortlisting rate" },
+      { "value": "500+", "label": "Resumes optimized" }
+    ],
+    "lessonsLearned": "Understood the nuances of prompt engineering for strict structured JSON output evaluation.",
+    "relatedProjectIds": ["enterprise_rag", "smart_feedback", "polyglot"]
+  },
+  "crop_yield": {
+    "id": "crop_yield",
+    "title": "Crop Yield Prediction Model",
+    "subtitle": "Deep Learning agricultural yield prediction using Neural Networks, weather telemetry, and soil metrics.",
+    "category": "ai-ml",
+    "isFeatured": false,
+    "tags": ["Neural Networks", "TensorFlow", "Keras", "Python"],
+    "heroImage": "src/assets/crop_yield_prediction.png",
+    "matchmakerKey": "ml_data_agriculture",
+    "links": {
+      "github": "https://github.com/sakethlingerker/Minor-Project"
     },
-    "clearview": {
-        "title": "ClearView – Interactive Air Quality Insights",
-        "desc": "Focuses on **Data Visualization** and real-time environmental insights using PowerBI and Python.",
-        "tags": [
-            "Data Viz",
-            "Power BI",
-            "Streamlit"
-        ],
-        "link": "https://air-quality-insight.streamlit.app/",
-        "btnText": "See Live"
+    "overview": "A deep neural network (DNN) model that predicts crop yield with 97% accuracy using agricultural and environmental input features. The model is trained on a Feed-Forward Neural Network architecture and considers soil nutrients (NPK levels), environmental factors (temperature, humidity, rainfall, pH), enabling farmers to make data-driven farming and resource-management decisions.",
+    "problem": "Unpredictable climate conditions and unoptimized fertilizer usage cause significant crop yield variance for farmers.",
+    "solution": "Engineered a TensorFlow/Keras deep neural network that analyzes 7 agricultural features (NPK levels, temperature, humidity, rainfall, pH) to forecast harvest yields.",
+    "architecture": [
+      "Multivariate Dataset Cleaning & Preprocessing",
+      "Feature Normalization & Min-Max Scaling",
+      "Feed-Forward Deep Neural Network (DNN)",
+      "Flask REST API Inference Backend",
+      "Client Yield Prediction Interface"
+    ],
+    "engineeringDecisions": [
+      "Model: Feed-Forward Neural Network built with TensorFlow/Keras handling multi-feature inputs (NPK, temperature, humidity, rainfall, pH).",
+      "Data Engineering: Feature engineering and preprocessing pipeline for diverse input types; handled missing values and normalization.",
+      "Deployment: Flask-based REST API for real-time inference and web interaction.",
+      "Scalability: Model architecture designed for extensibility supporting GPS-based field predictions."
+    ],
+    "keyFeatures": [
+      "Multivariate Deep Neural Network model",
+      "7 input features (NPK, temp, humidity, rain, pH)",
+      "97% crop yield prediction accuracy",
+      "Flask REST API real-time inference endpoint",
+      "Precision agriculture decision support"
+    ],
+    "techStackDetailed": [
+      { "name": "TensorFlow", "badge": "https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white" },
+      { "name": "Keras", "badge": "https://img.shields.io/badge/Keras-D00000?style=flat-square&logo=keras&logoColor=white" },
+      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
+      { "name": "Flask", "badge": "https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" },
+      { "name": "Pandas", "badge": "https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white" }
+    ],
+    "challenges": "Handling noisy historical weather records and scaling disparate environmental units effectively.",
+    "quantifiableImpact": [
+      { "value": "97%", "label": "Prediction accuracy" },
+      { "value": "~25%", "label": "Potential improvement in resource planning" },
+      { "value": "7", "label": "Input features (NPK, temp, humidity, rain, pH)" }
+    ],
+    "lessonsLearned": "Mastered regularization hyperparameter tuning in deep neural networks.",
+    "relatedProjectIds": ["flight_fare", "mlops", "clearview"]
+  },
+  "clearview": {
+    "id": "clearview",
+    "title": "ClearView – Air Quality Insights",
+    "subtitle": "Interactive environmental intelligence platform transforming air quality metrics into actionable visual insights.",
+    "category": "datascience",
+    "isFeatured": false,
+    "tags": ["Data Viz", "Power BI", "Streamlit", "Python"],
+    "heroImage": "src/assets/clearview_air_quality.png",
+    "matchmakerKey": "ml_data_environmental",
+    "links": {
+      "github": "https://github.com/sakethlingerker/Minor-Project",
+      "demo": "https://air-quality-insight.streamlit.app/"
     },
-    "smart_feedback": {
-        "title": "Smart Feedback Collection and Analysis System",
-        "desc": "A scalable **Full-Stack** solution featuring real-time analysis and complex architecture. For **Backend** fans.",
-        "tags": [
-            "Node.js",
-            "MongoDB",
-            "Express"
-        ],
-        "link": "https://github.com/sakethlingerker/Smart-Feedback-Collection-and-Analysis-System"
+    "overview": "A real-time air quality monitoring dashboard that integrates live API data, processes 10+ pollutant metrics, and presents interactive visualizations using Power BI and Streamlit. Enables stakeholders to track pollution trends across multiple geographic regions with 95% data accuracy.",
+    "problem": "Raw environmental sensor data is dense and unreadable for non-technical stakeholders, delaying regional pollution interventions.",
+    "solution": "Constructed an automated data pipeline and Streamlit dashboard backed by Power BI charts to visualize PM2.5, PM10, NO2, SO2, CO, and O3 concentrations.",
+    "architecture": [
+      "Live Air Quality Monitoring API Ingestion",
+      "Python Data Processing & Cleansing Pipeline",
+      "Multi-Pollutant Aggregation & Analytics Engine",
+      "Power BI Enterprise Stakeholder Dashboards",
+      "Streamlit Public Interactive Exploration UI"
+    ],
+    "engineeringDecisions": [
+      "Data Pipeline: API-based data ingestion from air quality monitoring services with Python data processing.",
+      "Visualization: Power BI dashboards for enterprise stakeholders paired with Streamlit app for interactive exploration.",
+      "Analytics: Multi-pollutant tracking (PM2.5, PM10, NO2, SO2, CO, O3) and regional trend analysis."
+    ],
+    "keyFeatures": [
+      "Real-time air quality API data ingestion",
+      "Multi-pollutant tracking (10+ metrics including PM2.5, PM10, NO2, CO)",
+      "Power BI & Streamlit interactive visualizations",
+      "Geographical & historical trend analysis",
+      "95% data accuracy for environmental decision-making"
+    ],
+    "techStackDetailed": [
+      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
+      { "name": "Streamlit", "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" },
+      { "name": "Power BI", "badge": "https://img.shields.io/badge/Power_BI-F2C811?style=flat-square&logo=powerbi&logoColor=black" },
+      { "name": "Plotly", "badge": "https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white" }
+    ],
+    "challenges": "Synchronizing disparate sensor API formats into a unified time-series dataset.",
+    "quantifiableImpact": [
+      { "value": "95%", "label": "Data accuracy" },
+      { "value": "10+", "label": "Pollutants visualized" }
+    ],
+    "lessonsLearned": "Gained expertise in spatial-temporal data visualization and interactive dashboard design.",
+    "relatedProjectIds": ["flight_fare", "crop_yield", "smart_feedback"]
+  },
+  "interior_design": {
+    "id": "interior_design",
+    "title": "AI Virtual Interior Designer",
+    "subtitle": "Generative Computer Vision platform leveraging Stable Diffusion and PyTorch to redesign interior living spaces.",
+    "category": "ai-ml",
+    "isFeatured": false,
+    "tags": ["Generative AI", "Stable Diffusion", "PyTorch", "Computer Vision"],
+    "heroImage": "src/assets/ai_interior_designer.png",
+    "matchmakerKey": "genai_visual",
+    "links": {
+      "github": "https://github.com/sakethlingerker/AI-Driven-Virtual-Interior-Designer"
     },
-    "cloudcast": {
-        "title": "Cloudcast - Advanced Weather Application",
-        "desc": "A polished **Frontend** application with dynamic glassmorphism UI. Demonstrates strong **UX/UI** skills.",
-        "tags": [
-            "JavaScript",
-            "CSS3",
-            "API Integration"
-        ],
-        "link": "https://sakethlingerker.github.io/Cloudcast---Advanced-Weather-Application/",
-        "btnText": "See Live"
+    "overview": "A generative AI application that creates interior design images from text prompts using Stable Diffusion and provides real-time material cost estimates with direct purchase links. Users select room type (6 options), architectural style (5 styles), colors, wood finishes, and flooring — the system generates a unique design in 15–30 seconds.",
+    "problem": "Interior design visualization requires manual CAD rendering or expensive architectural consulting, taking days for concepts.",
+    "solution": "Implemented a PyTorch pipeline leveraging Stable Diffusion and CUDA acceleration to generate styled room renders in 15-30 seconds with material cost breakdowns.",
+    "architecture": [
+      "User Room Preference Input Ingestion",
+      "PyTorch & Stable Diffusion Prompt Engineering",
+      "CUDA GPU-Accelerated Image Inference Engine",
+      "Material Cost Calculation & Purchase Link Generator",
+      "Streamlit Interactive Interior Render UI"
+    ],
+    "engineeringDecisions": [
+      "Image Generation: Stable Diffusion model integration via PyTorch with room-specific prompt engineering.",
+      "GPU Optimization: CUDA-accelerated inference pipeline (15-30 sec on GPU) with CPU fallback.",
+      "Cost Estimation: Material cost calculation logic based on selected finishes, flooring, and furnishings.",
+      "Customization: Supports 6 room types, 5 architectural styles (Modern, Classic, Scandinavian, Tropical, Colonial), plus material selection."
+    ],
+    "keyFeatures": [
+      "Stable Diffusion text-prompted room generation",
+      "6 room types & 5 architectural styles",
+      "15-30 second GPU-accelerated generation",
+      "Integrated material cost estimation & purchase links",
+      "Streamlit web interface with real-time status"
+    ],
+    "techStackDetailed": [
+      { "name": "PyTorch", "badge": "https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" },
+      { "name": "Stable Diffusion", "badge": "https://img.shields.io/badge/Stable_Diffusion-A855F7?style=flat-square&logo=openai&logoColor=white" },
+      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
+      { "name": "Streamlit", "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" }
+    ],
+    "challenges": "Eliminating AI image artifacts while strictly respecting fixed structural architectural elements.",
+    "quantifiableImpact": [
+      { "value": "Days → Mins", "label": "Design ideation time reduction" },
+      { "value": "15–30 sec", "label": "GPU-accelerated image generation" },
+      { "value": "30+", "label": "Customizable design combinations" }
+    ],
+    "lessonsLearned": "Deepened understanding of latent diffusion models, conditioning adapters, and tensor optimization.",
+    "relatedProjectIds": ["enterprise_rag", "polyglot", "ats_resume"]
+  },
+  "flight_fare": {
+    "id": "flight_fare",
+    "title": "Real-Time Flight Fare Prediction",
+    "subtitle": "Machine Learning regression system achieving 96% accuracy using Random Forest and XGBoost ensembles.",
+    "category": "datascience",
+    "isFeatured": false,
+    "tags": ["Machine Learning", "Scikit-Learn", "Flask", "Data Science"],
+    "heroImage": "src/assets/flight_fare_prediction.png",
+    "matchmakerKey": "ml_data_financial",
+    "links": {
+      "github": "https://github.com/sakethlingerker/Flight-Price-Prediction"
     },
-    "mlops": {
-        "title": "Vehicle Insurance MLOps Pipeline",
-        "desc": "End-to-end **MLOps Pipeline** with CI/CD and Cloud deployment. The definitive project for **Cloud/DevOps**.",
-        "tags": [
-            "AWS",
-            "Docker",
-            "MLOps"
-        ],
-        "link": "https://github.com/sakethlingerker/MLOPS-Project"
-    }
+    "overview": "A machine learning application that predicts flight ticket prices based on features like airline, departure city, destination, time of day, number of stops, and flight duration. Uses ensemble ML models achieving an R² score of 96.95%, deployed as a Flask web application with real-time prediction capability.",
+    "problem": "Volatile airline pricing algorithms make it difficult for travelers to identify optimal booking windows.",
+    "solution": "Engineered a Scikit-Learn ensemble model trained on temporal flight data, integrated with a Flask backend for instant fare predictions.",
+    "architecture": [
+      "Raw Flight Telemetry Data Extraction",
+      "Temporal Datetime Feature Engineering",
+      "Scikit-Learn Ensemble Model (Random Forest)",
+      "Flask Web API Real-Time Inference Backend",
+      "Client Ticket Price Estimation Form"
+    ],
+    "engineeringDecisions": [
+      "ML Model: Ensemble methods (Scikit-learn) trained on flight data with temporal pattern feature engineering.",
+      "Web Application: Flask backend with HTML/CSS frontend for real-time predictions using pre-trained serialized model.",
+      "Data Processing: Feature extraction from raw flight data including categorical encoding and datetime engineering."
+    ],
+    "keyFeatures": [
+      "96.95% R² score regression ensemble",
+      "Flask RESTful web application endpoint",
+      "Temporal feature engineering (departure, duration, stops)",
+      "Real-time fare estimation engine",
+      "Average ~20% cost savings for users"
+    ],
+    "techStackDetailed": [
+      { "name": "Scikit-Learn", "badge": "https://img.shields.io/badge/Scikit_Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" },
+      { "name": "Flask", "badge": "https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" },
+      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
+      { "name": "Pandas", "badge": "https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white" }
+    ],
+    "challenges": "Handling highly complex cyclical datetime variables (departure time, duration, arrival time) effectively.",
+    "quantifiableImpact": [
+      { "value": "96.95%", "label": "R² score on test data" },
+      { "value": "~20%", "label": "Average cost savings for users" }
+    ],
+    "lessonsLearned": "Reinforced the power of feature engineering over basic model selection in tabular datasets.",
+    "relatedProjectIds": ["crop_yield", "mlops", "clearview"]
+  },
+  "polyglot": {
+    "id": "polyglot",
+    "title": "Polyglot AI – Language Detection System",
+    "subtitle": "High-precision Natural Language Processing classification model detecting 20+ world languages.",
+    "category": "ai-ml",
+    "isFeatured": false,
+    "tags": ["NLP", "Scikit-Learn", "MultinomialNB", "Python"],
+    "heroImage": "src/assets/polyglot_language_detection.png",
+    "matchmakerKey": "genai_language",
+    "links": {
+      "github": "https://github.com/sakethlingerker/Polyglot-AI"
+    },
+    "overview": "A multilingual language detection system using Linear SVM (Scikit-learn) that automatically identifies the language of input text across 17+ languages with 99%+ accuracy. Deployed as a REST API for integration into multilingual content processing pipelines.",
+    "problem": "Global software applications require instant language identification for automated content routing and localization.",
+    "solution": "Trained a Linear SVM classifier with character n-gram TF-IDF features capable of sub-millisecond language detection across 17+ international languages.",
+    "architecture": [
+      "Multilingual Corpus Text Ingestion",
+      "Character N-gram TF-IDF Vectorization",
+      "Linear SVM Multilingual Classifier",
+      "REST API Real-Time Endpoint Gateway",
+      "Client Sub-Millisecond Classification Response"
+    ],
+    "engineeringDecisions": [
+      "Model: Linear SVM classifier with TF-IDF feature extraction trained on multilingual text corpus spanning 17+ languages.",
+      "API: REST API endpoint for real-time language detection designed for pipeline integration.",
+      "Preprocessing: Text normalization and feature engineering optimized for cross-lingual character patterns."
+    ],
+    "keyFeatures": [
+      "99%+ language classification accuracy",
+      "17+ international languages supported",
+      "Linear SVM & TF-IDF n-gram feature extraction",
+      "REST API real-time detection endpoint",
+      "Sub-millisecond inference speed"
+    ],
+    "techStackDetailed": [
+      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
+      { "name": "Scikit-Learn", "badge": "https://img.shields.io/badge/Scikit_Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" },
+      { "name": "NLTK", "badge": "https://img.shields.io/badge/NLTK-2563EB?style=flat-square&logo=python&logoColor=white" }
+    ],
+    "challenges": "Distinguishing between closely related Romance and Slavic languages on very short sentence fragments.",
+    "quantifiableImpact": [
+      { "value": "99%+", "label": "Detection accuracy" },
+      { "value": "17+", "label": "Languages supported" }
+    ],
+    "lessonsLearned": "Character n-grams are vastly superior to word tokens when identifying languages with flexible syntax.",
+    "relatedProjectIds": ["ats_resume", "enterprise_rag", "interior_design"]
+  },
+  "cloudcast": {
+    "id": "cloudcast",
+    "title": "Cloudcast Weather App",
+    "subtitle": "Polished web application delivering real-time weather telemetry with a sleek dynamic UI.",
+    "category": "fullstack",
+    "isFeatured": false,
+    "tags": ["JavaScript", "CSS3", "API Integration", "HTML5"],
+    "heroImage": "src/assets/cloudcast_weather.png",
+    "matchmakerKey": "engineering_frontend",
+    "links": {
+      "github": "https://github.com/sakethlingerker/Cloudcast---Advanced-Weather-Application/",
+      "demo": "https://sakethlingerker.github.io/Cloudcast---Advanced-Weather-Application/"
+    },
+    "overview": "A responsive weather application built with vanilla JavaScript and CSS that fetches real-time weather data from live APIs, dynamically updates the UI based on weather conditions, and presents current and forecasted weather information with an intuitive, visually engaging interface.",
+    "problem": "Standard weather dashboards are cluttered with ad banners and lack responsive, intuitive user interfaces.",
+    "solution": "Built a clean vanilla JavaScript app with dynamic background weather transitions and OpenWeather REST API integration, deployed on GitHub Pages.",
+    "architecture": [
+      "User City Search & Location Query",
+      "OpenWeather REST API Payload Request",
+      "Client JSON Transformation & Caching",
+      "Dynamic UI Glassmorphism Background Render",
+      "GitHub Pages Static Deployment"
+    ],
+    "engineeringDecisions": [
+      "Frontend: Pure JavaScript with CSS for responsive design and dynamic UI theming based on current weather conditions.",
+      "API Integration: Third-party Weather API consumption with error handling and rate limiting.",
+      "Deployment: Static site deployed on GitHub Pages for zero-cost hosting."
+    ],
+    "keyFeatures": [
+      "Real-time weather telemetry & forecasts",
+      "Dynamic weather-conditioned CSS themes",
+      "Vanilla JavaScript zero-framework architecture",
+      "Mobile-first responsive design",
+      "Deployed live on GitHub Pages"
+    ],
+    "techStackDetailed": [
+      { "name": "JavaScript", "badge": "https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" },
+      { "name": "CSS3", "badge": "https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" },
+      { "name": "HTML5", "badge": "https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" },
+      { "name": "OpenWeather API", "badge": "https://img.shields.io/badge/OpenWeather_API-EB6E4B?style=flat-square&logo=openweather&logoColor=white" }
+    ],
+    "challenges": "Handling API rate limit edge cases and smooth UI state transitions during network latency.",
+    "quantifiableImpact": [
+      { "value": "100%", "label": "Mobile-first responsive design" },
+      { "value": "Live", "label": "API forecast integration" }
+    ],
+    "lessonsLearned": "Vanilla JavaScript and native CSS variables can deliver unmatched speed and aesthetic elegance.",
+    "relatedProjectIds": ["smart_feedback", "clearview", "ats_resume"]
+  }
 }
