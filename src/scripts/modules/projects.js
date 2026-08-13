@@ -130,7 +130,7 @@ function renderSidebarList() {
   listContainer.innerHTML = filtered
     .map((p) => {
       const isActive = p.id === activeProjectId ? 'active' : '';
-      const thumb = p.heroImage || 'src/assets/enterprise_rag_agent.png';
+      const thumb = p.heroImage || 'assets/projects/enterprise_rag_agent.png';
 
       return `
         <div class="finder-nav-item ${isActive}" data-id="${p.id}" tabindex="0" role="button" aria-label="Select ${p.title}">
@@ -360,7 +360,7 @@ function renderProjectDetail(id) {
   const workspaceContainer = document.querySelector('#finder-detail-container');
   if (!workspaceContainer) return;
 
-  const heroImg = p.heroImage || 'src/assets/enterprise_rag_agent.png';
+  const heroImg = p.heroImage || 'assets/projects/enterprise_rag_agent.png';
 
   // Tech stack shield badges
   const techBadgesHtml = p.techStackDetailed
@@ -411,7 +411,7 @@ function renderProjectDetail(id) {
           if (!rel) return '';
           return `
         <div class="finder-related-card" data-rel-id="${rel.id}" tabindex="0" role="button" aria-label="View related project ${rel.title}">
-          <img src="${rel.heroImage || 'src/assets/enterprise_rag_agent.png'}" alt="${rel.title}" class="finder-related-thumb" />
+          <img src="${rel.heroImage || 'assets/projects/enterprise_rag_agent.png'}" alt="${rel.title}" class="finder-related-thumb" />
           <div class="finder-related-info">
             <div class="finder-related-title">${rel.title}</div>
             <span class="finder-related-cat">${rel.category}</span>

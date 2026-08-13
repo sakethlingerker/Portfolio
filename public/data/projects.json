@@ -6,7 +6,7 @@
     "category": "ai-ml",
     "isFeatured": true,
     "tags": ["AI Platform", "RAG", "GenAI", "NLP"],
-    "heroImage": "src/assets/enterprise_rag_agent.png",
+    "heroImage": "assets/projects/enterprise_rag_agent.png",
     "matchmakerKey": "genai_rag",
     "links": {
       "github": "https://github.com/sakethlingerker/Enterprise-Ready-RAG-Agent",
@@ -62,7 +62,7 @@
     "category": "mlops",
     "isFeatured": true,
     "tags": ["MLOps", "AWS", "Docker", "CI/CD"],
-    "heroImage": "src/assets/mlops_pipeline.png",
+    "heroImage": "assets/projects/mlops_pipeline.png",
     "matchmakerKey": "engineering_cloud",
     "links": {
       "github": "https://github.com/sakethlingerker/MLOPS-Project"
@@ -115,7 +115,7 @@
     "category": "fullstack",
     "isFeatured": true,
     "tags": ["Full Stack", "Node.js", "MongoDB", "Express"],
-    "heroImage": "src/assets/smart_feedback_system.png",
+    "heroImage": "assets/projects/smart_feedback_system.png",
     "matchmakerKey": "engineering_backend",
     "links": {
       "github": "https://github.com/sakethlingerker/Smart-Feedback-Collection-and-Analysis-System"
@@ -166,7 +166,7 @@
     "category": "ai-ml",
     "isFeatured": true,
     "tags": ["GenAI", "Google Gemini", "Streamlit", "NLP"],
-    "heroImage": "src/assets/ats_resume_expert.png",
+    "heroImage": "assets/projects/ats_resume_expert.png",
     "matchmakerKey": "genai_resume",
     "links": {
       "github": "https://github.com/sakethlingerker/Resume-Tracking",
@@ -216,7 +216,7 @@
     "category": "ai-ml",
     "isFeatured": false,
     "tags": ["Neural Networks", "TensorFlow", "Keras", "Python"],
-    "heroImage": "src/assets/crop_yield_prediction.png",
+    "heroImage": "assets/projects/crop_yield_prediction.png",
     "matchmakerKey": "ml_data_agriculture",
     "links": {
       "github": "https://github.com/sakethlingerker/Minor-Project"
@@ -267,7 +267,7 @@
     "category": "datascience",
     "isFeatured": false,
     "tags": ["Data Viz", "Power BI", "Streamlit", "Python"],
-    "heroImage": "src/assets/clearview_air_quality.png",
+    "heroImage": "assets/projects/clearview_air_quality.png",
     "matchmakerKey": "ml_data_environmental",
     "links": {
       "github": "https://github.com/sakethlingerker/Minor-Project",
@@ -316,7 +316,7 @@
     "category": "ai-ml",
     "isFeatured": false,
     "tags": ["Generative AI", "Stable Diffusion", "PyTorch", "Computer Vision"],
-    "heroImage": "src/assets/ai_interior_designer.png",
+    "heroImage": "assets/projects/ai_interior_designer.png",
     "matchmakerKey": "genai_visual",
     "links": {
       "github": "https://github.com/sakethlingerker/AI-Driven-Virtual-Interior-Designer"
@@ -366,7 +366,7 @@
     "category": "datascience",
     "isFeatured": false,
     "tags": ["Machine Learning", "Scikit-Learn", "Flask", "Data Science"],
-    "heroImage": "src/assets/flight_fare_prediction.png",
+    "heroImage": "assets/projects/flight_fare_prediction.png",
     "matchmakerKey": "ml_data_financial",
     "links": {
       "github": "https://github.com/sakethlingerker/Flight-Price-Prediction"
@@ -414,7 +414,7 @@
     "category": "ai-ml",
     "isFeatured": false,
     "tags": ["NLP", "Scikit-Learn", "MultinomialNB", "Python"],
-    "heroImage": "src/assets/polyglot_language_detection.png",
+    "heroImage": "assets/projects/polyglot_language_detection.png",
     "matchmakerKey": "genai_language",
     "links": {
       "github": "https://github.com/sakethlingerker/Polyglot-AI"
@@ -461,7 +461,7 @@
     "category": "fullstack",
     "isFeatured": false,
     "tags": ["JavaScript", "CSS3", "API Integration", "HTML5"],
-    "heroImage": "src/assets/cloudcast_weather.png",
+    "heroImage": "assets/projects/cloudcast_weather.png",
     "matchmakerKey": "engineering_frontend",
     "links": {
       "github": "https://github.com/sakethlingerker/Cloudcast---Advanced-Weather-Application/",

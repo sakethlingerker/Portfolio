@@ -104,7 +104,7 @@ function renderSidebarList() {
 
   listContainer.innerHTML = filtered.map(project => {
     const isActive = project.id === activeProjectId ? 'active' : '';
-    const imgUrl = project.heroImage ? project.heroImage : 'src/assets/images/enterprise_rag_agent.png';
+    const imgUrl = project.heroImage ? project.heroImage : 'assets/projects/enterprise_rag_agent.png';
 
     return `
       <div class="project-list-item ${isActive}" data-id="${project.id}">
@@ -168,7 +168,7 @@ function renderProjectStudio(id) {
   const studioWrapper = document.querySelector('#studio-content-wrapper');
   if (!studioWrapper) return;
 
-  const heroImg = p.heroImage || 'src/assets/images/enterprise_rag_agent.png';
+  const heroImg = p.heroImage || 'assets/projects/enterprise_rag_agent.png';
   const tagPillsHtml = p.tags ? p.tags.map(t => `<span class="tag-pill">${t}</span>`).join('') : '';
   
   const techBadgesHtml = p.techStackDetailed ? p.techStackDetailed.map(t => `
@@ -201,7 +201,7 @@ function renderProjectStudio(id) {
     if (!rel) return '';
     return `
       <div class="related-item-card" data-rel-id="${rel.id}">
-        <img src="${rel.heroImage || 'src/assets/images/enterprise_rag_agent.png'}" alt="${rel.title}" class="related-thumb" />
+        <img src="${rel.heroImage || 'assets/projects/enterprise_rag_agent.png'}" alt="${rel.title}" class="related-thumb" />
         <div class="related-name">${rel.title}</div>
       </div>
     `;
