@@ -10,6 +10,7 @@ import { initChatbot } from "./modules/chatbot.js";
 import { initTerminal } from "./modules/terminal.js";
 import { initProjects } from "./modules/projects.js";
 import { initMatchmaker } from "./modules/matchmaker.js";
+import { initCertifications } from "./modules/certifications.js";
 import { initMagneticButtons } from "./modules/magnetic-buttons.js";
 import { initCustomCursor } from "./modules/custom-cursor.js";
 import { toast } from "./modules/toast.js";
@@ -27,10 +28,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   } catch (error) {
     console.error("EmailJS initialization failed:", error);
   }
-  initChatbot();
+  await initProjects();
+  await initChatbot();
+  await initMatchmaker();
+  initCertifications();
   initTerminal();
-  initProjects();
-  initMatchmaker();
   initMagneticButtons();
   initCustomCursor();
 

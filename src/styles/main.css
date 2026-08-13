@@ -14,9 +14,11 @@
 @import './components/hero.css';
 @import './components/skills.css';
 @import './components/projects.css';
+@import './components/project-explorer.css';
 @import './components/case-study.css';
 /* Include project case study styles */
 @import './components/achievements.css';
+@import './components/certifications.css';
 @import './components/timeline.css';
 @import './components/contact.css';
 @import './components/modals.css';

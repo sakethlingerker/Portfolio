@@ -1,7 +1,10 @@
 // High-Performance Custom Cursor Module
 export function initCustomCursor() {
-    // Only init on desktop
-    if (window.innerWidth <= 768) return;
+    // Only init on desktop / non-coarse pointer devices
+    if (window.innerWidth <= 768 || window.matchMedia('(pointer: coarse)').matches) return;
+    
+    // Prevent duplicate cursor elements
+    if (document.querySelector('.cursor')) return;
     
     // Create cursor elements
     const cursor = document.createElement('div');
@@ -12,36 +15,40 @@ export function initCustomCursor() {
     
     document.body.appendChild(cursor);
     document.body.appendChild(cursorFollower);
+    document.body.classList.add('custom-cursor-active');
     
-    let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
-    let isMoving = false;
+    let mouseX = -100, mouseY = -100;
+    let followerX = -100, followerY = -100;
+    let isMoving = true;
+    let hasMoved = false;
     
-    // Track mouse movement - use transform for better performance
+    // Track mouse movement with GPU transform
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
         isMoving = true;
         
-        // Update main cursor immediately with transform (GPU accelerated)
+        if (!hasMoved) {
+            followerX = mouseX;
+            followerY = mouseY;
+            hasMoved = true;
+        }
+        
         cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
     });
     
-    // Smooth follower movement with higher speed
+    // Smooth follower animation loop
     function animateFollower() {
         if (isMoving) {
             const dx = mouseX - followerX;
             const dy = mouseY - followerY;
             
-            // Increased from 0.1 to 0.2 for faster, more responsive movement
-            followerX += dx * 0.2;
-            followerY += dy * 0.2;
+            followerX += dx * 0.25;
+            followerY += dy * 0.25;
             
-            // Use transform3d for GPU acceleration
             cursorFollower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
             
-            // Stop animation if cursor is barely moving
-            if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) {
+            if (Math.abs(dx) < 0.05 && Math.abs(dy) < 0.05) {
                 isMoving = false;
             }
         }
@@ -50,18 +57,18 @@ export function initCustomCursor() {
     }
     animateFollower();
     
-    // Add hover effects for interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .btn, input, textarea, select, .project-card, .skill-card');
-    
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
+    // Event delegation for dynamic hover effects
+    document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('a, button, .btn, input, textarea, select, .project-card, .skill-card, .timeline-item, .achievement-card, .filter-btn')) {
             cursor.classList.add('hover');
             cursorFollower.classList.add('hover');
-        });
-        
-        el.addEventListener('mouseleave', () => {
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        if (e.target.closest('a, button, .btn, input, textarea, select, .project-card, .skill-card, .timeline-item, .achievement-card, .filter-btn')) {
             cursor.classList.remove('hover');
             cursorFollower.classList.remove('hover');
-        });
+        }
     });
 }

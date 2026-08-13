@@ -1,13 +1,12 @@
 export function initUI() {
-  // Initialize Typed.js
-  if (typeof Typed !== 'undefined') {
+  // Initialize Typed.js if container exists
+  if (document.querySelector("#typed") && typeof Typed !== 'undefined') {
     new Typed("#typed", {
       strings: [
         "Saketh Lingerker",
-        "AI/ML Developer",
-        "Full-Stack Developer",
-        "Deep Learning Enthusiast",
-        "Tech Explorer",
+        "Incoming Systems Engineer @ TCS",
+        "Full-Stack & AI Engineer",
+        "Former AI/ML Research Intern @ IIIT-H",
       ],
       typeSpeed: 50,
       backSpeed: 80,
@@ -177,10 +176,10 @@ export function initUI() {
   document.querySelectorAll(".project-card").forEach(card => {
     card.addEventListener("click", (e) => {
       if (e.target.closest("a, button")) return;
-      const title = card.querySelector(".project-title").textContent.trim();
-      const desc = card.querySelector(".project-description").textContent.trim();
-      const tags = card.querySelector(".project-tags").innerHTML;
-      const links = card.querySelector(".project-links").innerHTML;
+      const title = card.querySelector(".project-title")?.textContent.trim() || "";
+      const desc = card.querySelector(".project-description")?.textContent.trim() || "";
+      const tags = card.querySelector(".project-tags")?.innerHTML || "";
+      const links = card.querySelector(".project-links")?.innerHTML || "";
       const problem = card.querySelector(".project-problem")?.innerHTML.trim() || "";
 
       document.getElementById("modal-title").innerText = title;
@@ -257,7 +256,7 @@ export function initUI() {
 
   // Close modals on outside click
   window.addEventListener("click", (e) => {
-    if (e.target === privacyModal || e.target === document.getElementById("quiz-modal")) {
+    if (e.target === projectModal || e.target === privacyModal || e.target === document.getElementById("quiz-modal")) {
       e.target.classList.remove("open");
       document.body.style.overflow = "auto";
     }
