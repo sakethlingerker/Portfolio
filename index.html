@@ -4,275 +4,160 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    Saketh Lingerker | Systems Engineer & AI Developer Portfolio
-  </title>
+  <title>Saketh Lingerker | Systems Engineer & AI Developer</title>
 
-  <!-- Enhanced SEO Meta Tags -->
+  <!-- SEO Meta Tags -->
   <meta name="description"
     content="Saketh Lingerker - Incoming Systems Engineer at TCS & Former AI/ML Research Intern at IIIT Hyderabad. Specializing in Software Engineering, Backend Systems, and Production AI Applications." />
   <meta name="keywords"
-    content="Saketh Lingerker, AI Engineer, ML Engineer, Full-Stack Developer, Machine Learning, Deep Learning, NLP, Web Development, Python, JavaScript, TensorFlow, React, Portfolio" />
+    content="Saketh Lingerker, Systems Engineer, AI Engineer, MLOps, Machine Learning, Deep Learning, NLP, Python, C++, PyTorch, Docker, AWS, TCS, IIIT Hyderabad, Portfolio" />
   <meta name="author" content="Saketh Lingerker" />
   <meta name="robots" content="index, follow" />
-  <meta name="language" content="English" />
 
-  <!-- PWA Meta Tags -->
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#8b5cf6" />
-  <link rel="apple-touch-icon" href="assets/ls-logo.jpg" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Saketh Lingerker | Systems Engineer & Full-Stack Developer" />
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Saketh Lingerker | Systems Engineer & AI Developer" />
   <meta property="og:description"
-    content="Portfolio of Saketh Lingerker — Incoming Systems Engineer at TCS and former AI/ML Research Intern at IIIT Hyderabad. Showcasing production software systems, backend architectures, and AI projects." />
-  <meta property="og:image" content="assets/ls-logo.jpg" />
-  <meta property="og:url" content="https://sakethlingerker.com/" />
+    content="Production architectures, high-performance backend systems, and verified AI pipelines. Incoming Systems Engineer @ TCS Digital · Former AI/ML Research Intern @ IIIT Hyderabad." />
   <meta property="og:type" content="website" />
-
-  <!-- Twitter -->
+  <meta property="og:url" content="https://sakethlingerker.com/" />
+  <meta property="og:image" content="src/assets/Display-picture.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Saketh Lingerker | Systems Engineer & Full-Stack Developer" />
+  <meta name="twitter:title" content="Saketh Lingerker | Systems Engineer & AI Developer" />
   <meta name="twitter:description"
-    content="Portfolio of Saketh Lingerker — Incoming Systems Engineer at TCS and former AI/ML Research Intern at IIIT Hyderabad. Showcasing production software systems, backend architectures, and AI projects." />
-  <meta name="twitter:image" content="assets/ls-logo.jpg" />
+    content="Production architectures, high-performance backend systems, and verified AI pipelines." />
 
-  <link rel="icon" type="image/png" href="assets/ls-logo.jpg" />
+  <link rel="icon" type="image/jpeg" href="src/assets/Display-picture.jpg" />
 
-  <!-- External CSS -->
-  <!-- CSS (Render Blocking to prevent FOUC) -->
-  <link rel="stylesheet" href="src/styles/preloader.css" />
-  <link rel="stylesheet" href="src/styles/main.css" />
-
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <!-- Fonts -->
+  <!-- Google Fonts: Syne, Inter, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
 
-  <!-- Preload Critical Fonts -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    as="style" onload="
-        this.onload = null;
-        this.rel = 'stylesheet';
-      " />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet" />
-  </noscript>
+  <!-- Font Awesome & Devicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" as="style"
-    onload="
-        this.onload = null;
-        this.rel = 'stylesheet';
-      " />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
-  </noscript>
 
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-  <!-- External JS with async/defer for better performance -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" defer></script>
-  <script type="module" src="src/scripts/preloader.js" defer></script>
-
-  <!-- Google Analytics -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-02DRH5PMY1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-
-    gtag("config", "G-02DRH5PMY1");
-  </script>
-
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function (c, l, a, r, i, t, y) {
-      c[a] =
-        c[a] ||
-        function () {
-          (c[a].q = c[a].q || []).push(arguments);
-        };
-      t = l.createElement(r);
-      t.async = 1;
-      t.src = "https://www.clarity.ms/tag/" + i;
-      y = l.getElementsByTagName(r)[0];
-      y.parentNode.insertBefore(t, y);
-    })(window, document, "clarity", "script", "uq4jqvupe6"); // Replace with your Clarity ID
-  </script>
-
-  <!-- Enhanced JSON-LD Schema Markup -->
-  <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Saketh Lingerker",
-        "url": "https://sakethlingerker.com",
-        "image": "https://sakethlingerker.com/assets/Display-picture.jpg",
-        "jobTitle": "Incoming Systems Engineer",
-        "description": "Incoming Systems Engineer at TCS specializing in Software Engineering, Backend Architectures, MLOps Pipelines, and Production AI Applications. Former AI/ML Research Intern at IIIT Hyderabad.",
-        "email": "saketh1805@gmail.com",
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "JNTUH University"
-        },
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Tata Consultancy Services"
-        },
-        "knowsAbout": [
-          "Machine Learning",
-          "Deep Learning",
-          "Natural Language Processing",
-          "Computer Vision",
-          "MLOps",
-          "Web Development",
-          "Python",
-          "JavaScript",
-          "TensorFlow",
-          "PyTorch",
-          "React",
-          "Node.js",
-          "AWS",
-          "Docker"
-        ],
-        "sameAs": [
-          "https://github.com/sakethlingerker",
-          "https://www.linkedin.com/in/sakethlingerker/"
-        ],
-        "hasCredential": [
-          {
-            "@type": "EducationalOccupationalCredential",
-            "name": "AWS Cloud Practitioner Essentials",
-            "credentialCategory": "certificate"
-          },
-          {
-            "@type": "EducationalOccupationalCredential",
-            "name": "IIIT-Hyderabad AI/ML Training & Research Internship",
-            "credentialCategory": "certificate"
-          }
-        ]
-      }
-    </script>
-
-      
-</head>
-
-<body>
-  
-
-  <!-- Preloader -->
-  <!-- Preloader -->
-  <div id="preloader">
-    <div class="preloader-content">
-      <div class="loader"></div>
-      <h2 class="loading-title">Loading Portfolio</h2>
-      <p class="loading-subtitle">Building something amazing...</p>
-      <div class="loading-dots">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-  </div>
-
-  <script type="module" src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"></script>
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="src/styles/preloader.css" />
+  <link rel="stylesheet" href="src/styles/main.css" />
 
   <script>
     (function () {
-      const savedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-      const body = document.body;
-
-      if (savedTheme === "light" || (!savedTheme && !prefersDark)) {
-        body.classList.add("light-mode");
-        body.classList.remove("dark");
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem("theme");
+      } catch (e) { }
+      if (savedTheme === "light") {
+        document.documentElement.classList.add("light-mode");
       } else {
-        body.classList.add("dark");
-        body.classList.remove("light-mode");
+        document.documentElement.classList.add("dark");
       }
     })();
   </script>
-  <!-- Skip Navigation Link for Accessibility -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress-container">
-    <div class="scroll-progress-bar" id="scroll-progress"></div>
+
+  <!-- JSON-LD Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Saketh Lingerker",
+    "url": "https://sakethlingerker.com",
+    "jobTitle": "Incoming Systems Engineer",
+    "description": "Incoming Systems Engineer at TCS specializing in Systems Engineering, Backend Architectures, MLOps Pipelines, and Production AI Applications. Former AI/ML Research Intern at IIIT Hyderabad.",
+    "email": "saketh1805@gmail.com",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "JNTUH University"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Tata Consultancy Services"
+    },
+    "sameAs": [
+      "https://github.com/sakethlingerker",
+      "https://www.linkedin.com/in/sakethlingerker/"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Film Grain Overlay -->
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- Ambient Radial World Glow -->
+  <div class="world" aria-hidden="true"></div>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" aria-hidden="true"></div>
+
+  <!-- Minimalist Boot Preloader -->
+  <div class="boot" aria-hidden="true">
+    <span>Saketh Lingerker<span class="boot-dot">.</span></span>
+    <span class="boot-sub">Systems Engineer & AI Developer</span>
   </div>
 
-  <!-- Back to Top Button -->
-  <button id="back-to-top" aria-label="Back to Top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-  <!-- Header -->
-  <header>
-    <nav class="main-navbar">
-      <div class="navbar-inner">
-        <!-- Logo Left -->
-        <a class="logo" href="#home"><span class="logo-l">L</span><span class="logo-s">S</span></a>
-        <!-- Nav Links Center -->
-        <ul class="main-nav-links">
-          <li><a class="active" href="#home">Home</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#project-matchmaker">Projects</a></li>
-          <li><a href="#achievements">Achievements</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <!-- Right: Theme toggle + Socials -->
-        <div class="navbar-right">
-          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Dark Mode">
-            <span id="theme-icon"></span>
-          </button>
-          <span class="navbar-divider"> | </span>
-          <div class="navbar-socials">
-            <a href="https://github.com/sakethlingerker" target="_blank" aria-label="GitHub"
-              class="navbar-social-link"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/sakethlingerker/" target="_blank" aria-label="LinkedIn"
-              class="navbar-social-link"><i class="fab fa-linkedin-in"></i></a>
-            <a href="mailto:saketh1805@gmail.com" aria-label="Email" class="navbar-social-link"><i
-                class="fas fa-envelope"></i></a>
-          </div>
-          <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Open mobile menu">
-            <i class="fas fa-bars"></i>
-          </button>
-        </div>
-      </div>
-      <!-- Mobile Overlay Menu -->
-      <div class="mobile-nav-overlay" id="mobile-nav-overlay">
-        <button class="mobile-close" id="mobile-menu-close" aria-label="Close mobile menu">
-          <i class="fas fa-times"></i>
-        </button>
-        <ul class="mobile-nav-links">
-          <li><a class="active" href="#home">Home</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#achievements">Achievements</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-link"
+    style="position: absolute; top: -90px; left: 20px; z-index: 999; background: #fff; color: #000; padding: 10px 18px; text-decoration: none; font-family: var(--font-mono); font-size: 11px;">Skip
+    to content</a>
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <a href="#home" class="brand-monogram" aria-label="Go to homepage">
+      <span class="brand-logo" aria-hidden="true"><span class="logo-letters">sl</span><span class="logo-dot"></span></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#proof">Proof &amp; Metrics</a>
+      <a href="#work">Projects</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#journey">The Journey</a>
     </nav>
+    <div class="topbar-actions">
+      <button id="workbench-nav-trigger" class="workbench-nav-btn" title="Open Engineering Workbench (Ctrl+K)" aria-label="Open Engineering Workbench">
+        <i class="fas fa-terminal"></i>
+        <span class="workbench-btn-text">Workbench</span>
+        
+      </button>
+      <a class="talk-btn" href="#contact">
+        Let’s talk
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
   </header>
 
-  <!-- Main Content -->
-  <main id="main-content">
+  <!-- Mobile Cinematic Menu Overlay -->
+  <div class="mobile-cinematic-menu" aria-hidden="true">
+    <button id="mobile-workbench-trigger" class="workbench-nav-btn" style="width: 100%; justify-content: center; margin-bottom: 12px; padding: 10px;">
+      <i class="fas fa-terminal"></i>
+      <span>Engineering Workbench</span>
+      <kbd class="workbench-btn-kbd">⌘K</kbd>
+    </button>
+    <a href="#proof">Proof &amp; Metrics <span class="mono">01</span></a>
+    <a href="#work">Selected Work <span class="mono">02</span></a>
+    <a href="#toolkit">Toolkit <span class="mono">03</span></a>
+    <a href="#journey">The Journey <span class="mono">04</span></a>
+    <a href="#contact">Contact <span class="mono">05</span></a>
+  </div>
+
+  <!-- Main Content Wrap -->
+  <main id="main-content" class="cinematic-wrapper">
+
     <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="container">
@@ -284,12 +169,14 @@
               <!-- Eyebrow -->
               <div class="hero-eyebrow" data-aos="fade-up" data-aos-delay="50">
                 <span class="hero-eyebrow-dot"></span>
-                <span>SOFTWARE ENGINEERING · AI/ML · RESEARCH</span>
+                <span class="eyebrow-desktop">SOFTWARE ENGINEERING · AI/ML · RESEARCH</span>
+                <span class="eyebrow-mobile">SOFTWARE ENGINEERING · AI/ML</span>
               </div>
 
               <!-- Main Heading (Single H1 for SEO) -->
               <h1 class="hero-name" data-aos="fade-up" data-aos-delay="100">
-                Saketh Lingerker
+                <span class="hero-name-first">Saketh</span>
+                <span class="hero-name-last">Lingerker</span>
               </h1>
 
               <!-- Role Title -->
@@ -300,7 +187,9 @@
 
               <!-- Concise Positioning Statement -->
               <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
-                Computer Science Engineer building practical AI/ML systems, production-ready web applications, and research-driven solutions.
+                <span class="desc-desktop">Computer Science Engineer building practical AI/ML systems, production-ready
+                  web applications, and research-driven solutions.</span>
+                <span class="desc-mobile">Building practical software and AI solutions.</span>
               </p>
 
               <!-- Secondary Line -->
@@ -311,13 +200,30 @@
 
             <!-- Bottom Details (CTAs + Proof Strip) -->
             <div class="hero-bottom-info">
-              <!-- Primary Action CTAs -->
+              <!-- Primary Action CTAs (Option 3: Terminal Style) -->
               <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
-                <a href="#projects" class="btn btn-primary hero-cta-primary" id="hero-explore-work">
-                  <i class="fas fa-arrow-right"></i> Explore My Work
+                <a href="#work" class="hero-cta-primary terminal-cta-primary" id="hero-explore-work" aria-label="Explore Projects">
+                  <span class="terminal-accent-block" aria-hidden="true">
+                    <svg class="terminal-prompt-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </span>
+                  <span class="terminal-content">
+                    <span class="terminal-label">explore_projects</span><span class="terminal-cursor" aria-hidden="true">_</span>
+                  </span>
                 </a>
-                <a href="assets/Saketh_Lingerker_8688791352.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline hero-cta-secondary" id="hero-view-resume">
-                  <i class="fas fa-file-pdf"></i> View Resume
+                <a href="assets/Saketh_Lingerker_8688791352.pdf" target="_blank" rel="noopener noreferrer"
+                  class="hero-cta-secondary terminal-cta-secondary" id="hero-view-resume" aria-label="Resume (PDF)">
+                  <span class="terminal-content">
+                    <svg class="terminal-doc-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                      <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span class="terminal-label">resume.pdf</span><span class="terminal-cursor terminal-cursor-subtle" aria-hidden="true">_</span>
+                  </span>
                 </a>
               </div>
 
@@ -346,17 +252,115 @@
             </div>
           </div>
 
-          <!-- Right Column: Profile Image Anchor -->
+          <!-- Right Column: Profile Image Anchor / Cinematic HUD Portrait -->
           <div class="hero-visual" data-aos="fade-up" data-aos-delay="200">
-            <!-- Profile Photo Card -->
-            <div class="profile-card-wrapper">
-              <div class="profile-card-frame">
-                <img src="src/assets/Display-picture.jpg" alt="Saketh Lingerker — Systems Engineer & AI/ML Developer" class="profile-img" fetchpriority="high" />
+            <div class="cinematic-portrait-wrapper stage-1" id="hero-cinematic-portrait">
+              <!-- Left Technical Telemetry Axis -->
+              <div class="portrait-telemetry-axis" aria-hidden="true">
+                <span class="telemetry-node node-top"></span>
+                <span class="telemetry-tick tick-1"></span>
+                <span class="telemetry-node node-mid pulse-node"></span>
+                <span class="telemetry-tick tick-2"></span>
+                <span class="telemetry-node node-bottom"></span>
               </div>
-              <!-- Status Indicator -->
-              <div class="profile-status-indicator">
-                <span class="status-pulse-dot"></span>
-                <span>Available for Opportunities</span>
+
+              <!-- Main HUD Frame Container -->
+              <div class="cinematic-portrait-card">
+                <!-- High-Precision Animated Glowing Orange HUD Frame Overlay -->
+                <svg class="hud-border-svg" viewBox="0 0 400 424" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <filter id="hud-corner-glow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feGaussianBlur stdDeviation="2" result="blur1" />
+                      <feGaussianBlur stdDeviation="4.5" result="blur2" />
+                      <feMerge>
+                        <feMergeNode in="blur2" />
+                        <feMergeNode in="blur1" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                    <filter id="hud-node-glow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur stdDeviation="3" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+
+                  <!-- 1. Base Thin Chamfered Frame Outline -->
+                  <path class="hud-frame-path" d="M 32,2 L 368,2 L 398,32 L 398,392 L 368,422 L 32,422 L 2,392 L 2,32 Z" />
+
+                  <!-- 2. Traveling Animated Light Beams along the perimeter -->
+                  <path class="hud-beam-segment beam-1" d="M 32,2 L 368,2 L 398,32 L 398,392 L 368,422 L 32,422 L 2,392 L 2,32 Z" />
+                  <path class="hud-beam-segment beam-2" d="M 32,2 L 368,2 L 398,32 L 398,392 L 368,422 L 32,422 L 2,392 L 2,32 Z" />
+
+                  <!-- 3. Distinctive Clipped/Chamfered Glowing Corner Brackets -->
+                  <path class="hud-corner-bracket corner-tl-path" d="M 68,2 L 32,2 L 2,32 L 2,68" />
+                  <path class="hud-corner-bracket corner-tr-path" d="M 332,2 L 368,2 L 398,32 L 398,68" />
+                  <path class="hud-corner-bracket corner-bl-path" d="M 2,356 L 2,392 L 32,422 L 68,422" />
+                  <path class="hud-corner-bracket corner-br-path" d="M 332,422 L 368,422 L 398,392 L 398,356" />
+
+                  <!-- 4. Left Circuit Rail with Connector Lines & Glowing Nodes -->
+                  <line class="hud-circuit-line left-rail" x1="-12" y1="65" x2="-12" y2="360" />
+                  <line class="hud-circuit-line" x1="-12" y1="95" x2="2" y2="95" />
+                  <circle class="hud-node-circle pulse-1" cx="-12" cy="155" r="4.5" />
+                  <circle class="hud-node-core" cx="-12" cy="155" r="1.8" />
+                  <rect class="hud-node-square" x="-14.5" y="132" width="5" height="5" />
+                  <rect class="hud-node-square" x="-14.5" y="178" width="5" height="5" />
+                  <line class="hud-circuit-line" x1="-12" y1="215" x2="2" y2="215" />
+                  <circle class="hud-node-circle pulse-2" cx="-12" cy="250" r="4.5" />
+                  <circle class="hud-node-core" cx="-12" cy="250" r="1.8" />
+                  <rect class="hud-node-square" x="-14.5" y="272" width="5" height="5" />
+                  <line class="hud-circuit-line" x1="-12" y1="330" x2="2" y2="330" />
+
+                  <!-- Right Outer Edge Nodes -->
+                  <circle class="hud-node-circle pulse-3" cx="410" cy="195" r="4.5" />
+                  <circle class="hud-node-core" cx="410" cy="195" r="1.8" />
+                  <line class="hud-circuit-line" x1="398" y1="195" x2="410" y2="195" />
+                  <rect class="hud-node-square" x="407.5" y="320" width="5" height="5" />
+                  <line class="hud-circuit-line" x1="398" y1="322.5" x2="410" y2="322.5" />
+                </svg>
+
+                <!-- Top-Left Plain Text Monogram: <SL /> (Text-Only, No Background Box) -->
+                <div class="hud-tag-sl" aria-hidden="true">
+                  <span class="hud-bracket">&lt;</span><span class="hud-logo-text">SL</span><span class="hud-bracket">&nbsp;/&gt;</span>
+                </div>
+
+                <!-- Inner Media Viewport Frame (Chamfered Silhouette) -->
+                <div class="portrait-media-frame">
+                  <!-- Layer 1: Base Blurred Photograph (Silhouette & Formation Foundation) -->
+                  <img src="src/assets/Display-picture.jpg"
+                    alt=""
+                    class="cinematic-portrait-base"
+                    aria-hidden="true" />
+
+                  <!-- Layer 2: Particle Matrix Canvas (Stages 2 & 3: Particle Assembly & Vector Contours) -->
+                  <canvas class="portrait-particle-canvas" id="portrait-particle-canvas" aria-hidden="true"></canvas>
+
+                  <!-- Layer 3: Progressive Reveal Photograph (Unmasked by Horizontal Scan) -->
+                  <div class="portrait-reveal-layer" id="portrait-reveal-layer">
+                    <img src="src/assets/Display-picture.jpg"
+                      alt="Saketh Lingerker — Systems Engineer &amp; AI Developer"
+                      class="cinematic-portrait-img"
+                      fetchpriority="high" />
+                  </div>
+
+                  <!-- Layer 4: Digital Grid Overlay -->
+                  <div class="portrait-grid-overlay" aria-hidden="true"></div>
+
+                  <!-- Layer 5: Horizontal Glowing Laser Scan Beam (Stage 4) -->
+                  <div class="portrait-scan-beam" id="portrait-scan-beam" aria-hidden="true">
+                    <div class="scan-beam-line"></div>
+                    <div class="scan-beam-glow"></div>
+                  </div>
+                </div>
+
+                <!-- Portrait Motto Stack: THINK. BUILD. EVOLVE. (Text-Only, Static, No Background) -->
+                <div class="hud-motto-stack" aria-hidden="true">
+                  <span class="hud-motto-line">THINK<span class="hud-motto-dot">.</span></span>
+                  <span class="hud-motto-line">BUILD<span class="hud-motto-dot">.</span></span>
+                  <span class="hud-motto-line">EVOLVE<span class="hud-motto-dot">.</span></span>
+                </div>
               </div>
             </div>
           </div>
@@ -364,459 +368,405 @@
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience-section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Experience & Education</h2>
-          <p>My professional journey and academic background</p>
+
+    <!-- ======================================================================
+         2. Selected Proof (Minimal Editorial Proof)
+         ====================================================================== -->
+    <section id="proof" class="proof-section" aria-label="Selected Proof">
+      <div class="proof-container">
+        <!-- Editorial Section Header -->
+        <header class="proof-header">
+          <span class="proof-kicker mono">SELECTED PROOF</span>
+          <h2 class="proof-editorial-title">A record of work.<br /><em>Proof to back it.</em></h2>
+          <p class="proof-lead">Standardized enterprise evaluations, verified credentials, and institutional research
+            records.</p>
+        </header>
+
+        <!-- Primary Assessment Results -->
+        <div class="proof-assessments">
+          <!-- Result 1: TCS iON NQT -->
+          <a href="assets/certificates/TCS%20iON%20NQT%20-%20Cognitive.pdf" target="_blank" rel="noopener noreferrer"
+            class="proof-assessment-item" aria-label="View TCS iON NQT Cognitive Scorecard">
+            <div class="proof-assessment-stat">
+              <span class="stat-number">91.51<span class="stat-symbol">%</span></span>
+            </div>
+            <div class="proof-assessment-body">
+              <div class="assessment-title-row">
+                <span class="assessment-label">TCS iON NQT</span>
+                <span class="assessment-cta mono">
+                  <span>View Scorecard</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </span>
+              </div>
+              <p class="assessment-description">Standardized national cognitive assessment evaluating numerical, verbal,
+                and logical reasoning.</p>
+            </div>
+          </a>
+
+          <!-- Result 2: GET-IT Foundation -->
+          <a href="assets/certificates/TCS%20iON%20NPT%20-%20GET%20IT.pdf" target="_blank" rel="noopener noreferrer"
+            class="proof-assessment-item" aria-label="View GET-IT Foundation Certificate">
+            <div class="proof-assessment-stat">
+              <span class="stat-number">89<span class="stat-symbol">%</span></span>
+            </div>
+            <div class="proof-assessment-body">
+              <div class="assessment-title-row">
+                <span class="assessment-label">GET-IT Foundation</span>
+                <span class="assessment-cta mono">
+                  <span>View Certificate</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </span>
+              </div>
+              <p class="assessment-description">Core software engineering evaluation covering systems architecture, data
+                structures, and algorithms.</p>
+            </div>
+          </a>
         </div>
 
-        <div class="timeline">
-          <!-- TCS Experience -->
-          <div class="timeline-item">
-            <div class="timeline-icon icon-work">
-              <i class="fas fa-laptop-code"></i>
+        <!-- Selected Credentials List -->
+        <div class="proof-credentials">
+          <div class="credentials-heading mono">VERIFIED CREDENTIALS &amp; RESEARCH</div>
+          <div class="credentials-list">
+            <!-- 1. Speech Signal Research (IIIT-H LTRC) -->
+            <a href="assets/certificates/SakethCertificate-IIIT.pdf" target="_blank" rel="noopener noreferrer"
+              class="credential-row">
+              <span class="credential-category mono">Research Letter</span>
+              <div class="credential-main">
+                <span class="credential-title">Speech Signal Research &middot; Language Technologies Lab</span>
+                <span class="credential-details mono">6-Month Research Internship &middot; VAD, ASR, Multimodal Q&amp;A &middot; Speech Lab (LTRC)</span>
+              </div>
+              <div class="credential-meta">
+                <span class="credential-issuer mono">IIIT Hyderabad</span>
+                <span class="credential-date mono">Dec 2024 &ndash; May 2025</span>
+              </div>
+              <span class="credential-action" aria-label="Open Certificate">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
+            </a>
+
+            <!-- 2. Applied AI & ML Specialization (iHub-Data IIIT-H) -->
+            <a href="assets/certificates/IIIT-AIML.jpg" target="_blank" rel="noopener noreferrer"
+              class="credential-row">
+              <span class="credential-category mono">AI / ML Training</span>
+              <div class="credential-main">
+                <span class="credential-title">Applied AI &amp; Machine Learning Specialization</span>
+                <span class="credential-details mono">Certificate of Proficiency &middot; Deep Learning, Neural Networks &amp; Applied AI Foundations</span>
+              </div>
+              <div class="credential-meta">
+                <span class="credential-issuer mono">iHub-Data, IIIT-H</span>
+                <span class="credential-date mono">May &ndash; Oct 2024</span>
+              </div>
+              <span class="credential-action" aria-label="Open Certificate">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
+            </a>
+
+            <!-- 3. AWS Cloud Practitioner Essentials -->
+            <a href="assets/certificates/AWS%20Cloud%20Practitioner%20Essentials.pdf" target="_blank"
+              rel="noopener noreferrer" class="credential-row">
+              <span class="credential-category mono">Cloud Infrastructure</span>
+              <div class="credential-main">
+                <span class="credential-title">AWS Cloud Practitioner Essentials</span>
+                <span class="credential-details mono">Cloud Computing Architecture, IAM Security, Global Infrastructure &amp; Billing Management</span>
+              </div>
+              <div class="credential-meta">
+                <span class="credential-issuer mono">Amazon Web Services</span>
+                <span class="credential-date mono">Apr 2025</span>
+              </div>
+              <span class="credential-action" aria-label="Open Certificate">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
+            </a>
+
+            <!-- 4. Deloitte Australia Job Simulation -->
+            <a href="assets/certificates/Data%20Analytics%20Job%20Simulation.pdf" target="_blank" rel="noopener noreferrer"
+              class="credential-row">
+              <span class="credential-category mono">Data Analytics</span>
+              <div class="credential-main">
+                <span class="credential-title">Deloitte Australia &ndash; Data Analytics Simulation</span>
+                <span class="credential-details mono">Credential ID: RubyKoEwttXCc7pDv &middot; Forensic Technology, Data Visualization &amp; Executive Storytelling</span>
+              </div>
+              <div class="credential-meta">
+                <span class="credential-issuer mono">Deloitte &middot; Forage</span>
+                <span class="credential-date mono">Dec 2025</span>
+              </div>
+              <span class="credential-action" aria-label="Open Certificate">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
+            </a>
+
+            <!-- 5. Tata Group GenAI Data Analytics Simulation -->
+            <a href="assets/certificates/GenAI%20Powered%20Data%20Analytics%20Job%20Simulation.pdf" target="_blank" rel="noopener noreferrer"
+              class="credential-row">
+              <span class="credential-category mono">GenAI &amp; Analytics</span>
+              <div class="credential-main">
+                <span class="credential-title">Tata Group &ndash; GenAI Powered Data Analytics Simulation</span>
+                <span class="credential-details mono">Credential ID: 4pc3JgG3CEuqSST9g &middot; Exploratory Data Analysis, Delinquency Risk AI &amp; Strategy</span>
+              </div>
+              <div class="credential-meta">
+                <span class="credential-issuer mono">Tata Group &middot; Forage</span>
+                <span class="credential-date mono">Dec 2025</span>
+              </div>
+              <span class="credential-action" aria-label="Open Certificate">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
+            </a>
+
+            <!-- 6. Coding Club Mentor -->
+            <div class="credential-row credential-milestone">
+              <span class="credential-category mono">Leadership</span>
+              <div class="credential-main">
+                <span class="credential-title">Coding Club Mentor &middot; 50+ Students Mentored</span>
+                <span class="credential-details mono">Conducted technical workshops &amp; peer mentorship in Data Structures, Algorithms &amp; Python</span>
+              </div>
+              <div class="credential-meta">
+                <span class="credential-issuer mono">JNTUH CE Manthani</span>
+                <span class="credential-date mono">2024 &ndash; 2025</span>
+              </div>
+              <span class="credential-action" aria-label="Verified Milestone">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
             </div>
-            <div class="timeline-content">
-              <div class="timeline-date">
-                <i class="far fa-calendar-alt"></i> Jul 2025 - Feb 2026
+
+            <!-- 7. College Fest Coordinator -->
+            <div class="credential-row credential-milestone">
+              <span class="credential-category mono">Institutional</span>
+              <div class="credential-main">
+                <span class="credential-title">College Fest Coordinator &middot; Lead Technical Coordinator</span>
+                <span class="credential-details mono">Headed tech infrastructure, competitive hack tracks &amp; event logistics for annual college symposium</span>
               </div>
-              <h3 class="timeline-title">Graduate Engineer Trainee - IT</h3>
-              <div class="timeline-company">
-                TCS iON Job Achiever · Tata Consultancy Services
+              <div class="credential-meta">
+                <span class="credential-issuer mono">JNTUH CE Manthani</span>
+                <span class="credential-date mono">2024 &ndash; 2025</span>
               </div>
-              <div class="timeline-details hidden">
-                <p class="timeline-description">
-                  Completed intensive Graduate Engineer Trainee (GET-IT) training program focused on software
-                  engineering fundamentals, full-stack concepts, and core IT competencies.
-                </p>
-                <ul class="timeline-list">
-                  <li>
-                    <strong>TCS iON NPT – Graduate Engineer Trainee (GET-IT):</strong> 89%
-                    <a href="assets/certificates/TCS%20iON%20NPT%20-%20GET%20IT.pdf" target="_blank" rel="noopener noreferrer" class="read-more"
-                      style="margin-left: 8px; font-size: 0.85rem;"><i class="fas fa-file-pdf"></i> View Certificate</a>
-                  </li>
-                  <li>
-                    <strong>TCS iON National Qualifier Test (NQT) – Cognitive:</strong> 91.51%
-                    <a href="assets/certificates/TCS%20iON%20NQT%20-%20Cognitive.pdf" target="_blank" rel="noopener noreferrer" class="read-more"
-                      style="margin-left: 8px; font-size: 0.85rem;"><i class="fas fa-file-pdf"></i> View Certificate</a>
-                  </li>
-                  <li>
-                    <strong>TCS iON NQT – Psychometric:</strong> High Performance
-                    <a href="assets/certificates/TCS%20iON%20NQT%20-%20Cognitive.pdf" target="_blank" rel="noopener noreferrer" class="read-more"
-                      style="margin-left: 8px; font-size: 0.85rem;"><i class="fas fa-file-pdf"></i> View Certificate</a>
-                  </li>
-                  <li>
-                    <strong>TCS iON NPT – English with British Council:</strong> CEFR B1 (Speaking), CEFR B2+ (Writing)
-                    <a href="assets/certificates/English%20with%20British%20Council.pdf" target="_blank" rel="noopener noreferrer" class="read-more"
-                      style="margin-left: 8px; font-size: 0.85rem;"><i class="fas fa-file-pdf"></i> View Certificate</a>
-                  </li>
-                  <li>
-                    <strong>Certificate of Proficiency:</strong> TCS iON Program Completion
-                    <a href="assets/certificates/Certificate%20of%20Proficiency.pdf" target="_blank" rel="noopener noreferrer" class="read-more"
-                      style="margin-left: 8px; font-size: 0.85rem;"><i class="fas fa-file-pdf"></i> View Certificate</a>
-                  </li>
-                </ul>
-              </div>
-              <button class="timeline-toggle">
-                Read More <i class="fas fa-chevron-down"></i>
-              </button>
+              <span class="credential-action" aria-label="Verified Milestone">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- IIIT Internship -->
-          <div class="timeline-item">
-            <div class="timeline-icon icon-work">
-              <i class="fas fa-flask"></i>
+    <!-- ======================================================================
+         5. Selected Work (Deep Architectural Acts)
+         ====================================================================== -->
+    <section id="work" class="selected-work" aria-label="Selected Engineering Work">
+      <div class="work-intro">
+        <span class="mono">Selected Work</span>
+        <h2>The systems.<br /><span style="color: #8fa093;">The pipelines.</span></h2>
+        <span class="work-intro-note mono">From model architecture<br />to cloud orchestration.</span>
+      </div>
+
+      <div class="work-acts-list">
+        <!-- Act 1: Enterprise RAG Agent -->
+        <article class="work-act">
+          <div>
+            <div class="work-meta mono">
+              <span>Flagship Project</span>
+              <span>AI Platform / RAG / GenAI</span>
             </div>
-            <div class="timeline-content">
-              <div class="timeline-date">
-                <i class="far fa-calendar-alt"></i> Nov 2024 - Jun 2025
-              </div>
-              <h3 class="timeline-title">AI/ML Research Intern</h3>
-              <div class="timeline-company">IIIT Hyderabad</div>
-              <div class="timeline-details hidden">
-                <p class="timeline-description">
-                  Conducted research on Voice Activity Detection (VAD) algorithms and speech processing to enhance
-                  AI-assisted video summarization.
-                </p>
-                <ul class="timeline-list">
-                  <li>
-                    Implemented and evaluated Rapid Voice Activity Detection (VAD) models using Python
-                  </li>
-                  <li>
-                    Developed automated data preprocessing pipelines and speech feature extraction scripts
-                  </li>
-                  <li>
-                    Collaborated with research mentors to benchmark summarization accuracy and processing efficiency
-                  </li>
-                </ul>
-              </div>
-              <button class="timeline-toggle">
-                Read More <i class="fas fa-chevron-down"></i>
-              </button>
-              <a href="assets/SakethCertificate-IIIT.pdf" target="_blank" class="read-more"
-                style="margin-top: 10px; display: inline-block">
-                Research Internship Certificate
-                <i class="fas fa-arrow-right"></i>
+            <h3 class="work-act-title">Enterprise-RAG<span>↗</span></h3>
+          </div>
+          <div class="work-act-copy">
+            <span class="work-act-category mono">Document Intelligence Engine</span>
+            <h4>Every vector.<br />Every citation.</h4>
+            <p class="work-act-desc">Hybrid FAISS &amp; ChromaDB vector search paired with Groq Llama 3.3 70B &amp;
+              Gemini. Autonomous arXiv intent routing, recursive semantic chunking, and strict page-level source
+              citations to eliminate hallucination.</p>
+            <div class="work-tech-pills">
+              <span>Python</span> &middot; <span>LangChain</span> &middot; <span>FAISS</span> &middot; <span>Llama 3.3
+                70B</span> &middot; <span>ChromaDB</span> &middot; <span>Docker</span>
+            </div>
+            <div class="work-act-actions">
+              <a href="https://github.com/sakethlingerker/Enterprise-Ready-RAG-Agent" target="_blank"
+                rel="noopener noreferrer" class="work-act-link">
+                GitHub Repository ↗
+              </a>
+              <a href="https://enterprise-ready-rag-agent.streamlit.app/" target="_blank" rel="noopener noreferrer"
+                class="work-act-link" style="color: var(--cyan); border-color: var(--cyan);">
+                Live Demo ↗
               </a>
             </div>
           </div>
+        </article>
 
-          <!-- B.Tech Education -->
-          <div class="timeline-item">
-            <div class="timeline-icon icon-education">
-              <i class="fas fa-graduation-cap"></i>
+        <!-- Act 2: Vehicle Insurance MLOps Pipeline -->
+        <article class="work-act">
+          <div>
+            <div class="work-meta mono">
+              <span>Production Pipeline</span>
+              <span>DevOps / AWS Cloud / CI/CD</span>
             </div>
-            <div class="timeline-content">
-              <div class="timeline-date">
-                <i class="far fa-calendar-alt"></i> Dec 2021 - Jul 2025
-              </div>
-              <h3 class="timeline-title">B.Tech Computer Science</h3>
-              <div class="timeline-company">JNTUH University</div>
-              <div class="timeline-grade">CGPA: 7.47 / 10.0</div>
-              <div class="timeline-details hidden">
-                <p class="timeline-description">
-                  Specialized in core CSE subjects including Data Structures & Algorithms, Operating Systems, DBMS, and
-                  Computer Networks, along with foundational expertise in Machine Learning and Deep Learning.
-                </p>
-                <ul class="timeline-list">
-                  <li>
-                    Enhanced problem-solving skills through coding challenges and algorithmic practice
-                  </li>
-                  <li>Developed multiple ML and full-stack projects</li>
-                  <li>Member of Coding Club and Technical Committee</li>
-                </ul>
-              </div>
-              <button class="timeline-toggle">
-                Read More <i class="fas fa-chevron-down"></i>
-              </button>
+            <h3 class="work-act-title">Insurance-MLOps<span>↗</span></h3>
+          </div>
+          <div class="work-act-copy">
+            <span class="work-act-category mono" style="color: var(--lime);">Automated Delivery Engine</span>
+            <h4>From commit.<br />To AWS deployment.</h4>
+            <p class="work-act-desc">End-to-end 6-stage automated pipeline: MongoDB Atlas ingestion, schema validation,
+              S3 model benchmark evaluation, Docker containerization, and automated GitHub Actions deployment to AWS EC2
+              runner.</p>
+            <div class="work-tech-pills">
+              <span>AWS EC2/ECR</span> &middot; <span>Docker</span> &middot; <span>GitHub Actions</span> &middot;
+              <span>MongoDB</span> &middot; <span>Python</span>
+            </div>
+            <div class="work-act-actions">
+              <a href="https://github.com/sakethlingerker/MLOPS-Project" target="_blank" rel="noopener noreferrer"
+                class="work-act-link">
+                GitHub Repository ↗
+              </a>
             </div>
           </div>
+        </article>
 
-          <!-- Intermediate Education -->
-          <div class="timeline-item">
-            <div class="timeline-icon icon-education">
-              <i class="fas fa-graduation-cap"></i>
+        <!-- Act 3: Smart Feedback Collection -->
+        <article class="work-act">
+          <div>
+            <div class="work-meta mono">
+              <span>Full-Stack Platform</span>
+              <span>NLP / Sentiment Analysis / Web</span>
             </div>
-            <div class="timeline-content">
-              <div class="timeline-date">
-                <i class="far fa-calendar-alt"></i> March 2021
-              </div>
-              <h3 class="timeline-title">Intermediate (12th Grade)</h3>
-              <div class="timeline-company">
-                Sri Gayatri Junior College, Hyderabad
-              </div>
-              <div class="timeline-grade">Percentage: 94.4%</div>
-              <div class="timeline-details hidden">
-                <p class="timeline-description">
-                  Completed intermediate education with distinction, achieving 94.4% marks.
-                </p>
-              </div>
-              <button class="timeline-toggle">
-                Read More <i class="fas fa-chevron-down"></i>
-              </button>
+            <h3 class="work-act-title">Smart-Feedback<span>↗</span></h3>
+          </div>
+          <div class="work-act-copy">
+            <span class="work-act-category mono">Sentiment &amp; Insights Engine</span>
+            <h4>Every opinion.<br />Quantified.</h4>
+            <p class="work-act-desc">Full-stack customer sentiment engine powered by Google Gemini NLP. Automates
+              sentiment scoring, thematic cluster detection, and actionable visual analytics for product
+              decision-makers.</p>
+            <div class="work-tech-pills">
+              <span>React</span> &middot; <span>Node.js</span> &middot; <span>Gemini API</span> &middot;
+              <span>MongoDB</span> &middot; <span>Tailwind</span>
+            </div>
+            <div class="work-act-actions">
+              <a href="https://github.com/sakethlingerker/Smart-Feedback-Collection-and-Analysis-System" target="_blank" rel="noopener noreferrer"
+                class="work-act-link">
+                GitHub Repository ↗
+              </a>
             </div>
           </div>
+        </article>
 
-          <!-- School Education -->
-          <div class="timeline-item">
-            <div class="timeline-icon icon-education">
-              <i class="fas fa-school"></i>
+        <!-- Act 4: ATS Resume Expert System -->
+        <article class="work-act">
+          <div>
+            <div class="work-meta mono">
+              <span>AI Agent System</span>
+              <span>Gemini Vision / Multi-Agent / NLP</span>
             </div>
-            <div class="timeline-content">
-              <div class="timeline-date">
-                <i class="far fa-calendar-alt"></i> March 2019
-              </div>
-              <h3 class="timeline-title">Secondary School (10th Grade)</h3>
-              <div class="timeline-company">
-                Vaishnavi High School, Hyderabad
-              </div>
-              <div class="timeline-grade">GPA: 9.5 / 10.0</div>
-              <div class="timeline-details hidden">
-                <p class="timeline-description">
-                  Completed secondary education with excellent academic performance, achieving 9.5 GPA.
-                </p>
-              </div>
-              <button class="timeline-toggle">
-                Read More <i class="fas fa-chevron-down"></i>
-              </button>
+            <h3 class="work-act-title">ATS-Expert<span>↗</span></h3>
+          </div>
+          <div class="work-act-copy">
+            <span class="work-act-category mono" style="color: var(--cyan);">CV Evaluation Engine</span>
+            <h4>Scored against the role.<br />Precision feedback.</h4>
+            <p class="work-act-desc">Multi-agent resume evaluation pipeline analyzing candidate profiles against complex
+              job descriptions using Google Gemini Vision, producing match percentages, missing skill vectors, and
+              bullet recommendations.</p>
+            <div class="work-tech-pills">
+              <span>Python</span> &middot; <span>Gemini Vision</span> &middot; <span>PyPDF2</span> &middot;
+              <span>Streamlit</span>
+            </div>
+            <div class="work-act-actions">
+              <a href="https://github.com/sakethlingerker/Resume-Tracking" target="_blank" rel="noopener noreferrer"
+                class="work-act-link">
+                GitHub Repository ↗
+              </a>
             </div>
           </div>
-        </div>
+        </article>
+      </div>
+
+      <!-- Quick Trigger for All 10 Projects Studio -->
+      <div class="all-projects-bar">
+        <span class="mono soft">Want to inspect technical architecture, system diagrams &amp; all 10 projects?</span>
+        <button id="toggle-finder-studio" class="all-projects-btn">
+          <i class="fas fa-folder-open"></i> Launch System Studio
+        </button>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section-bg">
+    <!-- ======================================================================
+         Expanded System Studio (macOS Finder Interface)
+         ====================================================================== -->
+    <section id="projects" class="projects studio-collapsed" aria-label="Find Projects &amp; System Studio: All 10 Projects">
       <div class="container">
-        <div class="section-header">
-          <h2>Technical Skills</h2>
-          <p>Everything I've used to build, train, deploy, and experiment like a tech beast 🚀</p>
-        </div>
-        <div class="skills-grid">
-
-          <!-- Languages & Web -->
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fas fa-code"></i></div>
-            <h3 class="skill-title">Languages & Web</h3>
-            <div class="skill-items">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"
-                alt="Python">
-              <img
-                src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
-                alt="JavaScript">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
-                alt="HTML5">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="SQL">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/C/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white"
-                alt="C/C++">
-            </div>
+        <div class="work-header studio-header">
+          <div>
+            <span class="mono"> SYSTEM STUDIO</span>
           </div>
-
-          <!-- AI/ML Frameworks -->
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fas fa-brain"></i></div>
-            <h3 class="skill-title">AI/ML Frameworks</h3>
-            <div class="skill-items">
-              <img
-                src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white"
-                alt="TensorFlow">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white"
-                alt="PyTorch">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white"
-                alt="Keras">
-              <img
-                src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white"
-                alt="Scikit-learn">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white"
-                alt="OpenCV">
-              <img
-                src="https://img.shields.io/badge/LangChain-121212?style=for-the-badge&logo=chainlink&logoColor=white"
-                alt="LangChain">
-            </div>
-          </div>
-
-          <!-- Web & Backend -->
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fas fa-globe"></i></div>
-            <h3 class="skill-title">Web & Backend</h3>
-            <div class="skill-items">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white"
-                alt="Flask">
-              <img
-                src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white"
-                alt="Streamlit">
-              <img
-                src="https://img.shields.io/badge/RESTful_APIs-FF6C37?style=for-the-badge&logo=fastapi&logoColor=white"
-                alt="RESTful APIs">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chart.js&logoColor=white"
-                alt="Chart.js">
-              <img
-                src="https://img.shields.io/badge/API_Integration-009688?style=for-the-badge&logo=api&logoColor=white"
-                alt="API Integration">
-              <img
-                src="https://img.shields.io/badge/Responsive_Design-06B6D4?style=for-the-badge&logo=css3&logoColor=white"
-                alt="Responsive Design">
-            </div>
-          </div>
-
-          <!-- Data Science -->
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
-            <h3 class="skill-title">Data Science</h3>
-            <div class="skill-items">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white"
-                alt="NumPy">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"
-                alt="Pandas">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/Matplotlib-11557c?style=for-the-badge&logo=python&logoColor=white"
-                alt="Matplotlib">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/Seaborn-3776AB?style=for-the-badge&logo=python&logoColor=white"
-                alt="Seaborn">
-              <img
-                src="https://img.shields.io/badge/Data_Analysis-4285F4?style=for-the-badge&logo=googleanalytics&logoColor=white"
-                alt="Data Analysis">
-              <img
-                src="https://img.shields.io/badge/Data_Visualization-FF6F00?style=for-the-badge&logo=plotly&logoColor=white"
-                alt="Data Visualization">
-            </div>
-          </div>
-
-          <!-- Technologies -->
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fas fa-cogs"></i></div>
-            <h3 class="skill-title">Technologies</h3>
-            <div class="skill-items">
-              <img
-                src="https://img.shields.io/badge/Machine_Learning-0078D4?style=for-the-badge&logo=azuremachinelearning&logoColor=white"
-                alt="Machine Learning">
-              <img
-                src="https://img.shields.io/badge/Deep_Learning-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white"
-                alt="Deep Learning">
-              <img
-                src="https://img.shields.io/badge/Generative_AI-412991?style=for-the-badge&logo=openai&logoColor=white"
-                alt="Generative AI">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/NLP-FF6F00?style=for-the-badge&logo=spacy&logoColor=white" alt="NLP">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/MLOps-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white"
-                alt="MLOps">
-            </div>
-          </div>
-
-          <!-- Tools & Platforms -->
-          <div class="skill-card">
-            <div class="skill-icon"><i class="fas fa-tools"></i></div>
-            <h3 class="skill-title">Tools & Platforms</h3>
-            <div class="skill-items">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"
-                alt="Docker">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"
-                alt="AWS">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"
-                alt="MongoDB">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"
-                alt="MySQL">
-              <img loading="lazy" decoding="async"
-                src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white"
-                alt="SQLite">
-              <img
-                src="https://img.shields.io/badge/CI/CD-2088FF?style=for-the-badge&logo=github-actions&logoColor=white"
-                alt="CI/CD">
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Project Matchmaker Section -->
-    <section id="project-matchmaker" class="project-matchmaker-section" data-aos="fade-up">
-      <div class="container matchmaker-container">
-        <h2 class="matchmaker-title">Project Matchmaker</h2>
-        <p class="matchmaker-subtitle">
-          Not sure where to start? Answer 2 quick questions to find the best
-          project to review.
-        </p>
-
-        <div class="matchmaker-card">
-          <div class="matchmaker-progress-bar">
-            <div class="matchmaker-progress-fill" id="quiz-progress-fill"></div>
-          </div>
-
-          <div id="quiz-flow-container">
-            <!-- Question 1 -->
-            <div class="quiz-step active" id="quiz-step-1">
-              <h3 class="quiz-question">
-                What technical domain interests you most?
-              </h3>
-              <div class="quiz-options-grid">
-                <button class="quiz-option-btn" onclick="handleQuizAnswer(1, 'genai')">
-                  <i class="fas fa-brain"></i>
-                  <span>Generative AI & NLP</span>
-                </button>
-                <button class="quiz-option-btn" onclick="handleQuizAnswer(1, 'ml_data')">
-                  <i class="fas fa-chart-line"></i>
-                  <span>Predictive ML & Data Science</span>
-                </button>
-                <button class="quiz-option-btn" onclick="handleQuizAnswer(1, 'engineering')">
-                  <i class="fas fa-server"></i>
-                  <span>Web Engineering & MLOps</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Question 2 (Dynamic) -->
-            <div class="quiz-step" id="quiz-step-2">
-              <h3 class="quiz-question" id="quiz-q2-text">
-                What interests you most?
-              </h3>
-              <div class="quiz-options-grid" id="quiz-q2-options">
-                <!-- Injected via JS based on Q1 selection -->
-              </div>
-              <button class="btn secondary-btn mt-4" style="font-size: 0.9rem; padding: 8px 16px" onclick="resetQuiz()">
-                ← Back
-              </button>
-            </div>
-
-            <!-- Result -->
-            <div class="quiz-step" id="quiz-result-step">
-              <div id="quiz-recommendation-display">
-                <!-- Injected via JS -->
-              </div>
-              <button class="btn primary-btn mt-4" style="display: none" onclick="resetQuiz()">
-                Restart Quiz
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section (macOS Finder-Inspired Interface) -->
-    <section id="projects" class="projects">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2>Projects</h2>
-          <p>Engineering projects spanning AI/ML, full-stack development, data science, and research.</p>
+          <p>Explore system components, verified engineering trade-offs, quantifiable benchmarks, and direct source repositories across all 10 systems.</p>
         </div>
 
-        <!-- Finder Window Container -->
-        <div class="finder-window" data-aos="fade-up" data-aos-delay="100">
-          <!-- Finder Window Header -->
+        <div class="finder-window">
           <div class="finder-header">
             <div class="finder-controls">
-              <span class="finder-dot red"></span>
-              <span class="finder-dot yellow"></span>
-              <span class="finder-dot green"></span>
+              <button type="button" class="finder-dot red" id="close-finder-dot" title="Close Studio (Esc)"
+                aria-label="Close Studio"></button>
+              <span class="finder-dot yellow" title="Studio Active"></span>
+              <span class="finder-dot green" title="10 Systems Loaded"></span>
             </div>
             <div class="finder-title">
               <i class="fas fa-folder-open"></i>
-              <span id="finder-breadcrumb">Projects / Enterprise-Ready RAG Agent</span>
+              <span id="finder-breadcrumb"><span class="finder-bc-prefix">Projects / </span><span class="finder-bc-name">Enterprise-Ready RAG Agent</span></span>
             </div>
             <button id="finder-mobile-toggle" class="finder-mobile-toggle" aria-label="Toggle Project Sidebar">
               <i class="fas fa-list"></i> <span>Projects</span>
             </button>
           </div>
 
-          <!-- Finder Body Split Screen -->
           <div class="finder-body">
-            <!-- Left Sidebar -->
             <aside class="finder-sidebar" id="finder-sidebar">
               <div class="finder-sidebar-header">
                 <div class="finder-studio-badge">
-                  <div class="finder-studio-icon"><i class="fas fa-server"></i></div>
+                  <div class="finder-studio-icon"><i class="fas fa-search"></i></div>
                   <div class="finder-studio-text">
-                    <h4 class="finder-studio-title">Saketh's System Studio</h4>
-                    <span class="finder-studio-subtitle">10 Production Systems</span>
+                    <h4 class="finder-studio-title">Find Projects</h4>
+                    <span class="finder-studio-subtitle">Search by tech, domain, or problem</span>
                   </div>
                 </div>
               </div>
 
-              <!-- Category Quick Filters -->
+              <!-- Quick Project Search -->
+              <div class="finder-search-box">
+                <i class="fas fa-search finder-search-icon" aria-hidden="true"></i>
+                <input type="text" id="finder-project-search" placeholder="Search projects, tech, concepts, tools..."
+                  aria-label="Search projects by tech, domain, or problem" autocomplete="off" />
+              </div>
+
               <div class="finder-categories">
                 <span class="finder-section-title">CATEGORIES</span>
                 <div class="finder-category-list">
@@ -829,7 +779,7 @@
                     <span class="finder-count" id="count-featured">4</span>
                   </button>
                   <button class="finder-cat-btn" data-category="ai-ml">
-                    <span><i class="fas fa-brain"></i> AI & ML</span>
+                    <span><i class="fas fa-brain"></i> AI &amp; ML</span>
                     <span class="finder-count" id="count-ai-ml">5</span>
                   </button>
                   <button class="finder-cat-btn" data-category="fullstack">
@@ -847,7 +797,6 @@
                 </div>
               </div>
 
-              <!-- Projects List Items (10 Projects) -->
               <div class="finder-projects-nav">
                 <span class="finder-section-title">PROJECTS</span>
                 <div class="finder-project-list" id="finder-project-list">
@@ -856,7 +805,6 @@
               </div>
             </aside>
 
-            <!-- Right Detail Panel Workspace -->
             <main class="finder-workspace" id="finder-workspace">
               <div class="finder-detail-container" id="finder-detail-container">
                 <!-- Injected dynamically via JS from projects.json -->
@@ -879,400 +827,677 @@
       </div>
     </div>
 
+    <!-- ======================================================================
+         6. Engineering Vocabulary (Toolkit Accordion)
+         ====================================================================== -->
+    <section id="toolkit" class="toolkit" aria-label="Engineering Vocabulary and Toolkit">
+      <div class="toolkit-heading">
+        <span class="mono">An engineer’s vocabulary.</span>
+        <h2>From models<br /><span style="color: #8fa093;">to production.</span></h2>
+        <p>A rigorous suite of frameworks, languages, cloud tools, and databases I deploy to construct robust systems.
+        </p>
+      </div>
 
-
-    <!-- Certifications & Achievements Studio Section -->
-    <section id="achievements" class="certifications-section">
-      <div class="container">
-        <!-- Section Header -->
-        <div class="section-header" data-aos="fade-up">
-          <h2>Certifications & Achievements</h2>
-          <p>Credentials, technical training, and milestones that document my engineering journey.</p>
-        </div>
-
-
-
-
-
-
-
-        <!-- Main Studio Split View (60% All Certifications Grid / 40% Persistent Inspector) -->
-        <div data-aos="fade-up" data-aos-delay="200">
-          <h3 class="cert-section-subtitle"><i class="fas fa-layer-group" style="color: var(--accent-light);"></i> All Certifications</h3>
-          <div class="cert-studio-split">
-            <!-- Left Side: All Certifications Grid -->
-            <div class="cert-cards-grid" id="cert-grid-root">
-              <!-- Dynamically populated -->
-            </div>
-
-            <!-- Right Side: Persistent Inspector Studio -->
-            <div id="cert-inspector-root">
-              <!-- Dynamically populated -->
+      <div class="tool-list">
+        <!-- Row 1: AI & Deep Learning -->
+        <div class="tool-row expanded">
+          <button aria-expanded="true">
+            <span>AI &amp; Deep Learning <span class="tool-count">7</span></span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="tool-content">
+            <div>
+              <p>Model architectures, vector search, embeddings, and generative LLM orchestration.</p>
+              <div class="tools-grid">
+                <span>PyTorch</span>
+                <span>TensorFlow</span>
+                <span>LangChain</span>
+                <span>FAISS</span>
+                <span>ChromaDB</span>
+                <span>Scikit-learn</span>
+                <span>Hugging Face</span>
+              </div>
             </div>
           </div>
         </div>
 
+        <!-- Row 2: Systems & Backend -->
+        <div class="tool-row">
+          <button aria-expanded="false">
+            <span>Systems &amp; Backend <span class="tool-count">8</span></span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="tool-content">
+            <div>
+              <p>High-concurrency servers, clean API contracts, and low-level runtime efficiency.</p>
+              <div class="tools-grid">
+                <span>Python</span>
+                <span>C++</span>
+                <span>Java</span>
+                <span>FastAPI</span>
+                <span>Node.js</span>
+                <span>Express</span>
+                <span>REST APIs</span>
+                <span>Linux</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <!-- Row 3: Data & Storage -->
+        <div class="tool-row">
+          <button aria-expanded="false">
+            <span>Data &amp; Storage <span class="tool-count">7</span></span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="tool-content">
+            <div>
+              <p>Schema design, analytical query optimization, and structured &amp; unstructured stores.</p>
+              <div class="tools-grid">
+                <span>PostgreSQL</span>
+                <span>MongoDB</span>
+                <span>MySQL</span>
+                <span>Pandas</span>
+                <span>NumPy</span>
+                <span>SQL Server</span>
+                <span>Firebase</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Cloud & MLOps -->
+        <div class="tool-row">
+          <button aria-expanded="false">
+            <span>Cloud &amp; MLOps <span class="tool-count">6</span></span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="tool-content">
+            <div>
+              <p>Container isolation, automated CI/CD runners, and scalable cloud execution.</p>
+              <div class="tools-grid">
+                <span>Docker</span>
+                <span>AWS EC2 / ECR</span>
+                <span>GitHub Actions</span>
+                <span>Git</span>
+                <span>Streamlit</span>
+                <span>Postman</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Testimonials Section (Placeholder)
-    <section class="testimonials-section" data-aos="fade-up">
-      <div class="container">
-        <div class="section-header">
-          <h2>What People Say</h2>
-          <p>Feedback from mentors and colleagues</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-text">"Saketh is a dedicated developer with a strong grasp of AI/ML concepts. His
-            ability to translate complex requirements into functional code is impressive."</p>
-          <div class="testimonial-author">Dr. Mentor Name</div>
-          <div class="testimonial-role">Professor, IIIT Hyderabad</div>
-        </div>
+    <!-- ======================================================================
+         7. The Journey (Education & Work Experience Timeline)
+         ====================================================================== -->
+    <section id="journey" class="journey-section" aria-label="The Journey: Education and Work Experience">
+      <!-- Anchor aliases for backward compatibility -->
+      <span id="experience" class="section-anchor-alias" aria-hidden="true"></span>
+      <span id="education" class="section-anchor-alias" aria-hidden="true"></span>
+      <span id="about" class="section-anchor-alias" aria-hidden="true"></span>
+
+      <div class="journey-header">
+        <span class="mono">Experience &amp; Education</span>
+        <h2>Built through learning.<br /><span style="color: var(--muted);">Shaped by experience.</span></h2>
+        <p class="journey-intro">
+          My professional journey and academic background — spanning software engineering at TCS, AI/ML research at IIIT
+          Hyderabad, and foundational engineering education.
+        </p>
       </div>
-    </section> -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-      <!-- Decorative background blobs -->
-      <div class="contact-bg-blob blob-1"></div>
-      <div class="contact-bg-blob blob-2"></div>
-
-      <div class="container">
-        <div class="contact-wrapper" data-aos="fade-up">
-          <!-- Section Header -->
-          <div class="contact-header">
-            <h2 class="gradient-text">LET'S CONNECT</h2>
-            <p class="contact-subtitle">
-              Open to technical discussions, software architecture inquiries,
-              and engineering collaboration. Feel free to reach out below.
-            </p>
+      <div class="journey-timeline">
+        <!-- 1. TCS Experience -->
+        <article class="timeline-entry" data-category="experience">
+          <div class="timeline-meta">
+            <span class="timeline-date mono">Jul 2025 – Feb 2026</span>
+            <span class="timeline-badge badge-amber mono">Work Experience</span>
           </div>
-
-          <!-- Contact Content Grid -->
-          <div class="contact-grid">
-            <!-- Left: Illustration -->
-            <div class="contact-illustration" data-aos="fade-right" data-aos-delay="100">
-              <div class="illustration-card">
-                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_tno6cg2w.json"
-                  background="transparent" speed="1" loop autoplay>
-                </lottie-player>
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="marker-dot"></span>
+            <span class="marker-line"></span>
+          </div>
+          <div class="timeline-body">
+            <div class="timeline-title-row">
+              <h3 class="timeline-org">TCS iON Job Achiever · Tata Consultancy Services</h3>
+              <span class="timeline-location mono soft">Hyderabad, India</span>
+            </div>
+            <div class="timeline-role">Graduate Engineer Trainee - IT</div>
+            <p class="timeline-desc">
+              Completed intensive Graduate Engineer Trainee (GET-IT) training program focused on software engineering
+              fundamentals, full-stack concepts, and core IT competencies.
+            </p>
+            <div class="timeline-expandable" id="details-tcs" hidden>
+              <div class="timeline-details-inner">
+                <ul class="timeline-list">
+                  <li>
+                    <strong>TCS iON NPT – Graduate Engineer Trainee (GET-IT):</strong> 89%
+                    <a href="assets/certificates/TCS%20iON%20NPT%20-%20GET%20IT.pdf" target="_blank"
+                      rel="noopener noreferrer" class="timeline-cert-link"><i class="fas fa-file-pdf"></i> View
+                      Certificate</a>
+                  </li>
+                  <li>
+                    <strong>TCS iON National Qualifier Test (NQT) – Cognitive:</strong> 91.51%
+                    <a href="assets/certificates/TCS%20iON%20NQT%20-%20Cognitive.pdf" target="_blank"
+                      rel="noopener noreferrer" class="timeline-cert-link"><i class="fas fa-file-pdf"></i> View
+                      Certificate</a>
+                  </li>
+                  <li>
+                    <strong>TCS iON NQT – Psychometric:</strong> High Performance
+                    <a href="assets/certificates/TCS%20iON%20NQT%20-%20Cognitive.pdf" target="_blank"
+                      rel="noopener noreferrer" class="timeline-cert-link"><i class="fas fa-file-pdf"></i> View
+                      Certificate</a>
+                  </li>
+                  <li>
+                    <strong>TCS iON NPT – English with British Council:</strong> CEFR B1 (Speaking), CEFR B2+ (Writing)
+                    <a href="assets/certificates/English%20with%20British%20Council.pdf" target="_blank"
+                      rel="noopener noreferrer" class="timeline-cert-link"><i class="fas fa-file-pdf"></i> View
+                      Certificate</a>
+                  </li>
+                  <li>
+                    <strong>Certificate of Proficiency:</strong> TCS iON Program Completion
+                    <a href="assets/certificates/Certificate%20of%20Proficiency.pdf" target="_blank"
+                      rel="noopener noreferrer" class="timeline-cert-link"><i class="fas fa-file-pdf"></i> View
+                      Certificate</a>
+                  </li>
+                </ul>
               </div>
             </div>
+            <button type="button" class="timeline-toggle-btn" aria-expanded="false" aria-controls="details-tcs">
+              <span class="toggle-text">View details</span>
+              <svg class="toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+        </article>
 
-            <!-- Right: Contact Form -->
-            <div class="contact-form-container" data-aos="fade-left" data-aos-delay="200">
-              <form id="contact-form" class="contact-form-modern">
-                <!-- Name Input -->
-                <div class="form-field">
-                  <label for="contact-name" class="form-label">
-                    <i class="fas fa-user"></i>
-                    Full Name
-                  </label>
-                  <input type="text" id="contact-name" name="name" class="form-input" placeholder="John Doe" required />
+        <!-- 2. IIIT Hyderabad Internship -->
+        <article class="timeline-entry" data-category="research">
+          <div class="timeline-meta">
+            <span class="timeline-date mono">Nov 2024 – Jun 2025</span>
+            <span class="timeline-badge badge-purple mono">Research Internship</span>
+          </div>
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="marker-dot"></span>
+            <span class="marker-line"></span>
+          </div>
+          <div class="timeline-body">
+            <div class="timeline-title-row">
+              <h3 class="timeline-org">IIIT Hyderabad</h3>
+              <span class="timeline-location mono soft">Hyderabad, India</span>
+            </div>
+            <div class="timeline-role">AI/ML Research Intern</div>
+            <p class="timeline-desc">
+              Conducted research on Voice Activity Detection (VAD) algorithms and speech processing to enhance
+              AI-assisted video summarization.
+            </p>
+            <div class="timeline-expandable" id="details-iiit" hidden>
+              <div class="timeline-details-inner">
+                <ul class="timeline-list">
+                  <li>Implemented and evaluated Rapid Voice Activity Detection (VAD) models using Python.</li>
+                  <li>Developed automated data preprocessing pipelines and speech feature extraction scripts.</li>
+                  <li>Collaborated with research mentors to benchmark summarization accuracy and processing efficiency.
+                  </li>
+                </ul>
+                <div class="timeline-cert-block">
+                  <a href="assets/certificates/SakethCertificate-IIIT.pdf" target="_blank" rel="noopener noreferrer"
+                    class="timeline-cert-link" style="margin-left: 0; padding: 6px 14px;">
+                    <i class="fas fa-file-pdf"></i> Research Internship Certificate <i class="fas fa-arrow-right"
+                      style="font-size: 10px; margin-left: 4px;"></i>
+                  </a>
                 </div>
+              </div>
+            </div>
+            <button type="button" class="timeline-toggle-btn" aria-expanded="false" aria-controls="details-iiit">
+              <span class="toggle-text">View details</span>
+              <svg class="toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+        </article>
 
-                <!-- Email Input -->
-                <div class="form-field">
-                  <label for="contact-email" class="form-label">
-                    <i class="fas fa-envelope"></i>
-                    Email Address
-                  </label>
-                  <input type="email" id="contact-email" name="email" class="form-input" placeholder="john@example.com"
-                    required />
-                </div>
+        <!-- 3. B.Tech Education -->
+        <article class="timeline-entry" data-category="education">
+          <div class="timeline-meta">
+            <span class="timeline-date mono">Dec 2021 – Jul 2025</span>
+            <span class="timeline-badge badge-blue mono">Under Graduation</span>
+          </div>
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="marker-dot"></span>
+            <span class="marker-line"></span>
+          </div>
+          <div class="timeline-body">
+            <div class="timeline-title-row">
+              <h3 class="timeline-org">JNTUH University</h3>
+              <span class="timeline-location mono soft">Telangana, India</span>
+            </div>
+            <div class="timeline-role">B.Tech Computer Science and Engineering</div>
+            <div>
+              <span class="timeline-grade">CGPA: 7.47 / 10.0</span>
+            </div>
+            <p class="timeline-desc">
+              Specialized in core CSE subjects including Data Structures &amp; Algorithms, Operating Systems, DBMS, and
+              Computer Networks, along with foundational expertise in Machine Learning and Deep Learning.
+            </p>
+            <div class="timeline-expandable" id="details-jntuh" hidden>
+              <div class="timeline-details-inner">
+                <ul class="timeline-list">
+                  <li>Enhanced problem-solving skills through coding challenges and algorithmic practice.</li>
+                  <li>Developed multiple ML and full-stack projects.</li>
+                  <li>Member of Coding Club and Technical Committee.</li>
+                </ul>
+              </div>
+            </div>
+            <button type="button" class="timeline-toggle-btn" aria-expanded="false" aria-controls="details-jntuh">
+              <span class="toggle-text">View details</span>
+              <svg class="toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+        </article>
 
-                <!-- Message Textarea -->
-                <div class="form-field">
-                  <label for="contact-message" class="form-label">
-                    <i class="fas fa-comment-dots"></i>
-                    Your Message
-                  </label>
-                  <textarea id="contact-message" name="message" class="form-textarea"
-                    placeholder="Tell me about your idea..." rows="5" required></textarea>
-                </div>
+        <!-- 4. Intermediate Education -->
+        <article class="timeline-entry" data-category="education">
+          <div class="timeline-meta">
+            <span class="timeline-date mono">March 2021</span>
+            <span class="timeline-badge badge-lime mono">Higher Education</span>
+          </div>
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="marker-dot"></span>
+            <span class="marker-line"></span>
+          </div>
+          <div class="timeline-body">
+            <div class="timeline-title-row">
+              <h3 class="timeline-org">Sri Gayatri Junior College</h3>
+              <span class="timeline-location mono soft">Hyderabad, India</span>
+            </div>
+            <div class="timeline-role">Intermediate (12th Grade)</div>
+            <div>
+              <span class="timeline-grade">Percentage: 94.4%</span>
+            </div>
+            <p class="timeline-desc">
+              Completed intermediate education with distinction, achieving 94.4% marks.
+            </p>
+          </div>
+        </article>
 
+        <!-- 5. Secondary School Education -->
+        <article class="timeline-entry" data-category="education">
+          <div class="timeline-meta">
+            <span class="timeline-date mono">March 2019</span>
+            <span class="timeline-badge badge-coral mono">Secondary Education</span>
+          </div>
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="marker-dot"></span>
+            <span class="marker-line"></span>
+          </div>
+          <div class="timeline-body">
+            <div class="timeline-title-row">
+              <h3 class="timeline-org">Vaishnavi High School</h3>
+              <span class="timeline-location mono soft">Hyderabad, India</span>
+            </div>
+            <div class="timeline-role">Secondary School (10th Grade)</div>
+            <div>
+              <span class="timeline-grade">GPA: 9.5 / 10.0</span>
+            </div>
+            <p class="timeline-desc">
+              Completed secondary education with excellent academic performance, achieving 9.5 GPA.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Action Bar (Resume Link & Editorial Statement) -->
+      <div class="journey-footer-bar">
+        <div class="journey-statement">
+          <span class="mono soft">Continuous progression through engineering rigour and verified credentials.</span>
+        </div>
+        <div class="journey-actions">
+          <a href="assets/Saketh_Lingerker_8688791352.pdf" target="_blank" rel="noopener noreferrer"
+            class="journey-resume-link">
+            <span>Verified Technical Resume</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         9. Terminal-Inspired Contact Section (Desktop + Mobile)
+         ====================================================================== -->
+    <section id="contact" class="contact-section" aria-label="Contact Saketh Lingerker">
+      <div class="contact-bg-grid" aria-hidden="true"></div>
+
+      <div class="contact-container">
+        <!-- Two-Column Editorial Grid: Left (Editorial Intro + Map) | Right (Technical Form) -->
+        <div class="contact-grid">
+
+          <!-- LEFT COLUMN: Intro, Location & Technical Map Graphic -->
+          <div class="contact-intro-col">
+            <!-- Eyebrow -->
+            <div class="contact-eyebrow">
+              <span class="eyebrow-dot" aria-hidden="true"></span>
+              <span class="eyebrow-text mono">CONTACT // 01</span>
+              <span class="eyebrow-line" aria-hidden="true"></span>
+            </div>
+
+            <!-- Main Heading -->
+            <h2 class="contact-title">
+              <span class="title-white">Let's</span>
+              <span class="title-coral">talk.</span>
+            </h2>
+
+            <!-- Description -->
+            <p class="contact-desc">
+              Open to technical discussions, software architecture inquiries, and engineering collaboration. Feel free to reach out below.
+            </p>
+
+
+            <!-- Dotted Technical World Map Graphic -->
+            <div class="contact-map-graphic" aria-hidden="true">
+              <svg class="tech-world-map-svg" viewBox="0 0 460 210" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="World map with Hyderabad, India highlighted">
+  <defs>
+    <!-- Concentrated glow around India / Hyderabad -->
+    <radialGradient id="hyd-india-glow" cx="288" cy="122" r="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F45135" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#F45135" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#F45135" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Left Technical Coordinate Crosshairs (+) -->
+  <g class="map-crosshairs-group">
+    <text x="14" y="35" class="map-crosshair">+</text>
+    <text x="14" y="65" class="map-crosshair">+</text>
+    <text x="34" y="65" class="map-crosshair">+</text>
+    <text x="14" y="95" class="map-crosshair">+</text>
+    <text x="34" y="95" class="map-crosshair">+</text>
+    <text x="14" y="125" class="map-crosshair">+</text>
+    <text x="34" y="125" class="map-crosshair">+</text>
+    <text x="14" y="155" class="map-crosshair">+</text>
+    <text x="34" y="155" class="map-crosshair">+</text>
+  </g>
+
+  <!-- Right Technical Coordinate Crosshairs (+) -->
+  <g class="map-crosshairs-group">
+    <text x="375" y="48" class="map-crosshair">+</text>
+    <text x="397" y="48" class="map-crosshair">+</text>
+    <text x="419" y="48" class="map-crosshair">+</text>
+    <text x="375" y="72" class="map-crosshair">+</text>
+    <text x="397" y="72" class="map-crosshair">+</text>
+    <text x="419" y="72" class="map-crosshair">+</text>
+  </g>
+
+  <!-- World Continents Dotted Silhouette (Muted Gray-Green Dots) -->
+  <path d="M 30.0 72.0 h 0.01 M 33.0 72.0 h 0.01 M 33.0 75.0 h 0.01 M 42.0 69.0 h 0.01 M 42.0 78.0 h 0.01 M 45.0 69.0 h 0.01 M 45.0 72.0 h 0.01 M 45.0 75.0 h 0.01 M 45.0 78.0 h 0.01 M 48.0 69.0 h 0.01 M 48.0 72.0 h 0.01 M 48.0 75.0 h 0.01 M 48.0 78.0 h 0.01 M 48.0 81.0 h 0.01 M 51.0 69.0 h 0.01 M 51.0 72.0 h 0.01 M 51.0 75.0 h 0.01 M 51.0 78.0 h 0.01 M 54.0 69.0 h 0.01 M 54.0 72.0 h 0.01 M 54.0 75.0 h 0.01 M 54.0 78.0 h 0.01 M 57.0 69.0 h 0.01 M 57.0 72.0 h 0.01 M 57.0 75.0 h 0.01 M 57.0 78.0 h 0.01 M 60.0 69.0 h 0.01 M 60.0 72.0 h 0.01 M 60.0 75.0 h 0.01 M 60.0 78.0 h 0.01 M 63.0 69.0 h 0.01 M 63.0 72.0 h 0.01 M 63.0 75.0 h 0.01 M 63.0 78.0 h 0.01 M 66.0 69.0 h 0.01 M 66.0 72.0 h 0.01 M 66.0 75.0 h 0.01 M 66.0 78.0 h 0.01 M 69.0 72.0 h 0.01 M 69.0 75.0 h 0.01 M 69.0 78.0 h 0.01 M 72.0 69.0 h 0.01 M 72.0 72.0 h 0.01 M 72.0 75.0 h 0.01 M 72.0 78.0 h 0.01 M 72.0 81.0 h 0.01 M 75.0 69.0 h 0.01 M 75.0 72.0 h 0.01 M 75.0 75.0 h 0.01 M 75.0 78.0 h 0.01 M 75.0 81.0 h 0.01 M 75.0 84.0 h 0.01 M 78.0 69.0 h 0.01 M 78.0 72.0 h 0.01 M 78.0 75.0 h 0.01 M 78.0 78.0 h 0.01 M 78.0 81.0 h 0.01 M 78.0 84.0 h 0.01 M 78.0 87.0 h 0.01 M 81.0 66.0 h 0.01 M 81.0 69.0 h 0.01 M 81.0 72.0 h 0.01 M 81.0 75.0 h 0.01 M 81.0 78.0 h 0.01 M 81.0 81.0 h 0.01 M 81.0 84.0 h 0.01 M 81.0 87.0 h 0.01 M 81.0 90.0 h 0.01 M 81.0 96.0 h 0.01 M 84.0 66.0 h 0.01 M 84.0 69.0 h 0.01 M 84.0 72.0 h 0.01 M 84.0 75.0 h 0.01 M 84.0 78.0 h 0.01 M 84.0 81.0 h 0.01 M 84.0 84.0 h 0.01 M 84.0 87.0 h 0.01 M 84.0 90.0 h 0.01 M 84.0 93.0 h 0.01 M 84.0 96.0 h 0.01 M 84.0 99.0 h 0.01 M 84.0 102.0 h 0.01 M 87.0 72.0 h 0.01 M 87.0 75.0 h 0.01 M 87.0 78.0 h 0.01 M 87.0 81.0 h 0.01 M 87.0 84.0 h 0.01 M 87.0 87.0 h 0.01 M 87.0 90.0 h 0.01 M 87.0 93.0 h 0.01 M 87.0 96.0 h 0.01 M 87.0 99.0 h 0.01 M 87.0 102.0 h 0.01 M 87.0 105.0 h 0.01 M 90.0 63.0 h 0.01 M 90.0 66.0 h 0.01 M 90.0 69.0 h 0.01 M 90.0 72.0 h 0.01 M 90.0 75.0 h 0.01 M 90.0 78.0 h 0.01 M 90.0 81.0 h 0.01 M 90.0 84.0 h 0.01 M 90.0 87.0 h 0.01 M 90.0 90.0 h 0.01 M 90.0 93.0 h 0.01 M 90.0 96.0 h 0.01 M 90.0 99.0 h 0.01 M 90.0 102.0 h 0.01 M 90.0 105.0 h 0.01 M 90.0 108.0 h 0.01 M 93.0 63.0 h 0.01 M 93.0 66.0 h 0.01 M 93.0 69.0 h 0.01 M 93.0 72.0 h 0.01 M 93.0 75.0 h 0.01 M 93.0 78.0 h 0.01 M 93.0 81.0 h 0.01 M 93.0 84.0 h 0.01 M 93.0 87.0 h 0.01 M 93.0 90.0 h 0.01 M 93.0 93.0 h 0.01 M 93.0 96.0 h 0.01 M 93.0 99.0 h 0.01 M 93.0 102.0 h 0.01 M 93.0 105.0 h 0.01 M 93.0 108.0 h 0.01 M 96.0 63.0 h 0.01 M 96.0 66.0 h 0.01 M 96.0 69.0 h 0.01 M 96.0 72.0 h 0.01 M 96.0 75.0 h 0.01 M 96.0 78.0 h 0.01 M 96.0 81.0 h 0.01 M 96.0 84.0 h 0.01 M 96.0 87.0 h 0.01 M 96.0 90.0 h 0.01 M 96.0 93.0 h 0.01 M 96.0 96.0 h 0.01 M 96.0 99.0 h 0.01 M 96.0 102.0 h 0.01 M 96.0 105.0 h 0.01 M 96.0 108.0 h 0.01 M 96.0 111.0 h 0.01 M 99.0 63.0 h 0.01 M 99.0 66.0 h 0.01 M 99.0 72.0 h 0.01 M 99.0 75.0 h 0.01 M 99.0 78.0 h 0.01 M 99.0 81.0 h 0.01 M 99.0 84.0 h 0.01 M 99.0 87.0 h 0.01 M 99.0 90.0 h 0.01 M 99.0 93.0 h 0.01 M 99.0 96.0 h 0.01 M 99.0 99.0 h 0.01 M 99.0 102.0 h 0.01 M 99.0 105.0 h 0.01 M 99.0 108.0 h 0.01 M 99.0 111.0 h 0.01 M 99.0 114.0 h 0.01 M 102.0 63.0 h 0.01 M 102.0 69.0 h 0.01 M 102.0 72.0 h 0.01 M 102.0 75.0 h 0.01 M 102.0 78.0 h 0.01 M 102.0 81.0 h 0.01 M 102.0 84.0 h 0.01 M 102.0 87.0 h 0.01 M 102.0 90.0 h 0.01 M 102.0 93.0 h 0.01 M 102.0 96.0 h 0.01 M 102.0 99.0 h 0.01 M 102.0 102.0 h 0.01 M 102.0 105.0 h 0.01 M 102.0 108.0 h 0.01 M 102.0 111.0 h 0.01 M 102.0 114.0 h 0.01 M 102.0 117.0 h 0.01 M 102.0 120.0 h 0.01 M 105.0 60.0 h 0.01 M 105.0 66.0 h 0.01 M 105.0 72.0 h 0.01 M 105.0 75.0 h 0.01 M 105.0 78.0 h 0.01 M 105.0 81.0 h 0.01 M 105.0 84.0 h 0.01 M 105.0 87.0 h 0.01 M 105.0 90.0 h 0.01 M 105.0 93.0 h 0.01 M 105.0 96.0 h 0.01 M 105.0 99.0 h 0.01 M 105.0 102.0 h 0.01 M 105.0 105.0 h 0.01 M 105.0 108.0 h 0.01 M 105.0 111.0 h 0.01 M 105.0 114.0 h 0.01 M 105.0 117.0 h 0.01 M 105.0 120.0 h 0.01 M 108.0 63.0 h 0.01 M 108.0 66.0 h 0.01 M 108.0 69.0 h 0.01 M 108.0 72.0 h 0.01 M 108.0 75.0 h 0.01 M 108.0 78.0 h 0.01 M 108.0 81.0 h 0.01 M 108.0 84.0 h 0.01 M 108.0 87.0 h 0.01 M 108.0 90.0 h 0.01 M 108.0 93.0 h 0.01 M 108.0 96.0 h 0.01 M 108.0 99.0 h 0.01 M 108.0 102.0 h 0.01 M 108.0 105.0 h 0.01 M 108.0 108.0 h 0.01 M 108.0 111.0 h 0.01 M 108.0 114.0 h 0.01 M 108.0 117.0 h 0.01 M 108.0 120.0 h 0.01 M 108.0 123.0 h 0.01 M 111.0 63.0 h 0.01 M 111.0 66.0 h 0.01 M 111.0 72.0 h 0.01 M 111.0 75.0 h 0.01 M 111.0 78.0 h 0.01 M 111.0 81.0 h 0.01 M 111.0 84.0 h 0.01 M 111.0 87.0 h 0.01 M 111.0 90.0 h 0.01 M 111.0 93.0 h 0.01 M 111.0 96.0 h 0.01 M 111.0 99.0 h 0.01 M 111.0 102.0 h 0.01 M 111.0 105.0 h 0.01 M 111.0 108.0 h 0.01 M 111.0 123.0 h 0.01 M 114.0 57.0 h 0.01 M 114.0 63.0 h 0.01 M 114.0 69.0 h 0.01 M 114.0 72.0 h 0.01 M 114.0 75.0 h 0.01 M 114.0 84.0 h 0.01 M 114.0 87.0 h 0.01 M 114.0 90.0 h 0.01 M 114.0 93.0 h 0.01 M 114.0 96.0 h 0.01 M 114.0 99.0 h 0.01 M 114.0 102.0 h 0.01 M 114.0 105.0 h 0.01 M 114.0 108.0 h 0.01 M 114.0 123.0 h 0.01 M 117.0 57.0 h 0.01 M 117.0 63.0 h 0.01 M 117.0 66.0 h 0.01 M 117.0 72.0 h 0.01 M 117.0 84.0 h 0.01 M 117.0 87.0 h 0.01 M 117.0 90.0 h 0.01 M 117.0 93.0 h 0.01 M 117.0 96.0 h 0.01 M 117.0 99.0 h 0.01 M 117.0 102.0 h 0.01 M 117.0 105.0 h 0.01 M 117.0 108.0 h 0.01 M 117.0 120.0 h 0.01 M 117.0 123.0 h 0.01 M 117.0 126.0 h 0.01 M 120.0 63.0 h 0.01 M 120.0 84.0 h 0.01 M 120.0 87.0 h 0.01 M 120.0 90.0 h 0.01 M 120.0 93.0 h 0.01 M 120.0 96.0 h 0.01 M 120.0 99.0 h 0.01 M 120.0 102.0 h 0.01 M 120.0 105.0 h 0.01 M 120.0 108.0 h 0.01 M 120.0 126.0 h 0.01 M 123.0 57.0 h 0.01 M 123.0 60.0 h 0.01 M 123.0 63.0 h 0.01 M 123.0 66.0 h 0.01 M 123.0 69.0 h 0.01 M 123.0 72.0 h 0.01 M 123.0 84.0 h 0.01 M 123.0 87.0 h 0.01 M 123.0 90.0 h 0.01 M 123.0 93.0 h 0.01 M 123.0 96.0 h 0.01 M 123.0 99.0 h 0.01 M 123.0 102.0 h 0.01 M 123.0 105.0 h 0.01 M 123.0 108.0 h 0.01 M 126.0 57.0 h 0.01 M 126.0 60.0 h 0.01 M 126.0 63.0 h 0.01 M 126.0 90.0 h 0.01 M 126.0 93.0 h 0.01 M 126.0 96.0 h 0.01 M 126.0 99.0 h 0.01 M 126.0 102.0 h 0.01 M 126.0 105.0 h 0.01 M 126.0 114.0 h 0.01 M 126.0 117.0 h 0.01 M 126.0 132.0 h 0.01 M 126.0 141.0 h 0.01 M 126.0 144.0 h 0.01 M 129.0 57.0 h 0.01 M 129.0 60.0 h 0.01 M 129.0 66.0 h 0.01 M 129.0 78.0 h 0.01 M 129.0 84.0 h 0.01 M 129.0 87.0 h 0.01 M 129.0 90.0 h 0.01 M 129.0 93.0 h 0.01 M 129.0 96.0 h 0.01 M 129.0 99.0 h 0.01 M 129.0 102.0 h 0.01 M 129.0 132.0 h 0.01 M 129.0 138.0 h 0.01 M 129.0 141.0 h 0.01 M 129.0 144.0 h 0.01 M 129.0 147.0 h 0.01 M 129.0 150.0 h 0.01 M 132.0 57.0 h 0.01 M 132.0 69.0 h 0.01 M 132.0 78.0 h 0.01 M 132.0 81.0 h 0.01 M 132.0 84.0 h 0.01 M 132.0 87.0 h 0.01 M 132.0 90.0 h 0.01 M 132.0 93.0 h 0.01 M 132.0 96.0 h 0.01 M 132.0 99.0 h 0.01 M 132.0 129.0 h 0.01 M 132.0 132.0 h 0.01 M 132.0 135.0 h 0.01 M 132.0 138.0 h 0.01 M 132.0 141.0 h 0.01 M 132.0 144.0 h 0.01 M 132.0 147.0 h 0.01 M 132.0 150.0 h 0.01 M 132.0 153.0 h 0.01 M 132.0 186.0 h 0.01 M 132.0 189.0 h 0.01 M 135.0 57.0 h 0.01 M 135.0 60.0 h 0.01 M 135.0 69.0 h 0.01 M 135.0 72.0 h 0.01 M 135.0 75.0 h 0.01 M 135.0 78.0 h 0.01 M 135.0 81.0 h 0.01 M 135.0 84.0 h 0.01 M 135.0 87.0 h 0.01 M 135.0 90.0 h 0.01 M 135.0 93.0 h 0.01 M 135.0 96.0 h 0.01 M 135.0 120.0 h 0.01 M 135.0 132.0 h 0.01 M 135.0 135.0 h 0.01 M 135.0 138.0 h 0.01 M 135.0 141.0 h 0.01 M 135.0 144.0 h 0.01 M 135.0 147.0 h 0.01 M 135.0 150.0 h 0.01 M 135.0 153.0 h 0.01 M 135.0 156.0 h 0.01 M 135.0 171.0 h 0.01 M 135.0 174.0 h 0.01 M 135.0 177.0 h 0.01 M 135.0 180.0 h 0.01 M 135.0 183.0 h 0.01 M 135.0 186.0 h 0.01 M 135.0 189.0 h 0.01 M 135.0 192.0 h 0.01 M 135.0 195.0 h 0.01 M 138.0 57.0 h 0.01 M 138.0 60.0 h 0.01 M 138.0 69.0 h 0.01 M 138.0 72.0 h 0.01 M 138.0 75.0 h 0.01 M 138.0 81.0 h 0.01 M 138.0 84.0 h 0.01 M 138.0 87.0 h 0.01 M 138.0 93.0 h 0.01 M 138.0 129.0 h 0.01 M 138.0 132.0 h 0.01 M 138.0 135.0 h 0.01 M 138.0 138.0 h 0.01 M 138.0 141.0 h 0.01 M 138.0 144.0 h 0.01 M 138.0 147.0 h 0.01 M 138.0 150.0 h 0.01 M 138.0 153.0 h 0.01 M 138.0 156.0 h 0.01 M 138.0 159.0 h 0.01 M 138.0 162.0 h 0.01 M 138.0 165.0 h 0.01 M 138.0 168.0 h 0.01 M 138.0 171.0 h 0.01 M 138.0 174.0 h 0.01 M 138.0 177.0 h 0.01 M 138.0 180.0 h 0.01 M 138.0 183.0 h 0.01 M 138.0 186.0 h 0.01 M 138.0 189.0 h 0.01 M 138.0 195.0 h 0.01 M 141.0 60.0 h 0.01 M 141.0 72.0 h 0.01 M 141.0 75.0 h 0.01 M 141.0 81.0 h 0.01 M 141.0 84.0 h 0.01 M 141.0 87.0 h 0.01 M 141.0 90.0 h 0.01 M 141.0 93.0 h 0.01 M 141.0 132.0 h 0.01 M 141.0 135.0 h 0.01 M 141.0 138.0 h 0.01 M 141.0 141.0 h 0.01 M 141.0 144.0 h 0.01 M 141.0 147.0 h 0.01 M 141.0 150.0 h 0.01 M 141.0 153.0 h 0.01 M 141.0 156.0 h 0.01 M 141.0 159.0 h 0.01 M 141.0 162.0 h 0.01 M 141.0 165.0 h 0.01 M 141.0 168.0 h 0.01 M 141.0 171.0 h 0.01 M 141.0 174.0 h 0.01 M 141.0 177.0 h 0.01 M 141.0 180.0 h 0.01 M 141.0 183.0 h 0.01 M 144.0 57.0 h 0.01 M 144.0 60.0 h 0.01 M 144.0 72.0 h 0.01 M 144.0 81.0 h 0.01 M 144.0 84.0 h 0.01 M 144.0 87.0 h 0.01 M 144.0 132.0 h 0.01 M 144.0 135.0 h 0.01 M 144.0 138.0 h 0.01 M 144.0 141.0 h 0.01 M 144.0 144.0 h 0.01 M 144.0 147.0 h 0.01 M 144.0 150.0 h 0.01 M 144.0 153.0 h 0.01 M 144.0 156.0 h 0.01 M 144.0 159.0 h 0.01 M 144.0 162.0 h 0.01 M 144.0 165.0 h 0.01 M 144.0 168.0 h 0.01 M 144.0 171.0 h 0.01 M 144.0 174.0 h 0.01 M 144.0 177.0 h 0.01 M 144.0 180.0 h 0.01 M 147.0 57.0 h 0.01 M 147.0 60.0 h 0.01 M 147.0 84.0 h 0.01 M 147.0 87.0 h 0.01 M 147.0 132.0 h 0.01 M 147.0 135.0 h 0.01 M 147.0 138.0 h 0.01 M 147.0 141.0 h 0.01 M 147.0 144.0 h 0.01 M 147.0 147.0 h 0.01 M 147.0 150.0 h 0.01 M 147.0 153.0 h 0.01 M 147.0 156.0 h 0.01 M 147.0 159.0 h 0.01 M 147.0 162.0 h 0.01 M 147.0 165.0 h 0.01 M 147.0 168.0 h 0.01 M 147.0 171.0 h 0.01 M 147.0 174.0 h 0.01 M 147.0 177.0 h 0.01 M 150.0 57.0 h 0.01 M 150.0 60.0 h 0.01 M 150.0 63.0 h 0.01 M 150.0 87.0 h 0.01 M 150.0 90.0 h 0.01 M 150.0 135.0 h 0.01 M 150.0 138.0 h 0.01 M 150.0 141.0 h 0.01 M 150.0 144.0 h 0.01 M 150.0 147.0 h 0.01 M 150.0 150.0 h 0.01 M 150.0 153.0 h 0.01 M 150.0 156.0 h 0.01 M 150.0 159.0 h 0.01 M 150.0 162.0 h 0.01 M 150.0 165.0 h 0.01 M 150.0 168.0 h 0.01 M 150.0 171.0 h 0.01 M 150.0 174.0 h 0.01 M 150.0 177.0 h 0.01 M 153.0 57.0 h 0.01 M 153.0 60.0 h 0.01 M 153.0 63.0 h 0.01 M 153.0 69.0 h 0.01 M 153.0 135.0 h 0.01 M 153.0 138.0 h 0.01 M 153.0 141.0 h 0.01 M 153.0 144.0 h 0.01 M 153.0 147.0 h 0.01 M 153.0 150.0 h 0.01 M 153.0 153.0 h 0.01 M 153.0 156.0 h 0.01 M 153.0 159.0 h 0.01 M 153.0 162.0 h 0.01 M 153.0 165.0 h 0.01 M 153.0 168.0 h 0.01 M 153.0 171.0 h 0.01 M 153.0 174.0 h 0.01 M 156.0 57.0 h 0.01 M 156.0 60.0 h 0.01 M 156.0 63.0 h 0.01 M 156.0 66.0 h 0.01 M 156.0 69.0 h 0.01 M 156.0 72.0 h 0.01 M 156.0 75.0 h 0.01 M 156.0 138.0 h 0.01 M 156.0 141.0 h 0.01 M 156.0 144.0 h 0.01 M 156.0 147.0 h 0.01 M 156.0 150.0 h 0.01 M 156.0 153.0 h 0.01 M 156.0 156.0 h 0.01 M 156.0 159.0 h 0.01 M 156.0 162.0 h 0.01 M 156.0 165.0 h 0.01 M 156.0 168.0 h 0.01 M 159.0 57.0 h 0.01 M 159.0 60.0 h 0.01 M 159.0 63.0 h 0.01 M 159.0 66.0 h 0.01 M 159.0 69.0 h 0.01 M 159.0 72.0 h 0.01 M 159.0 75.0 h 0.01 M 159.0 141.0 h 0.01 M 159.0 144.0 h 0.01 M 159.0 147.0 h 0.01 M 159.0 150.0 h 0.01 M 159.0 153.0 h 0.01 M 159.0 156.0 h 0.01 M 159.0 159.0 h 0.01 M 159.0 162.0 h 0.01 M 159.0 165.0 h 0.01 M 162.0 57.0 h 0.01 M 162.0 60.0 h 0.01 M 162.0 63.0 h 0.01 M 162.0 66.0 h 0.01 M 162.0 69.0 h 0.01 M 162.0 72.0 h 0.01 M 162.0 75.0 h 0.01 M 162.0 144.0 h 0.01 M 162.0 147.0 h 0.01 M 162.0 150.0 h 0.01 M 162.0 153.0 h 0.01 M 162.0 156.0 h 0.01 M 162.0 159.0 h 0.01 M 162.0 162.0 h 0.01 M 165.0 57.0 h 0.01 M 165.0 60.0 h 0.01 M 165.0 63.0 h 0.01 M 165.0 66.0 h 0.01 M 165.0 69.0 h 0.01 M 165.0 72.0 h 0.01 M 165.0 75.0 h 0.01 M 165.0 144.0 h 0.01 M 165.0 147.0 h 0.01 M 165.0 150.0 h 0.01 M 165.0 153.0 h 0.01 M 165.0 156.0 h 0.01 M 165.0 159.0 h 0.01 M 165.0 162.0 h 0.01 M 168.0 57.0 h 0.01 M 168.0 60.0 h 0.01 M 168.0 63.0 h 0.01 M 168.0 66.0 h 0.01 M 168.0 69.0 h 0.01 M 168.0 72.0 h 0.01 M 168.0 144.0 h 0.01 M 168.0 147.0 h 0.01 M 168.0 150.0 h 0.01 M 168.0 153.0 h 0.01 M 168.0 156.0 h 0.01 M 171.0 57.0 h 0.01 M 171.0 60.0 h 0.01 M 171.0 63.0 h 0.01 M 171.0 66.0 h 0.01 M 171.0 69.0 h 0.01 M 171.0 72.0 h 0.01 M 171.0 147.0 h 0.01 M 171.0 150.0 h 0.01 M 174.0 57.0 h 0.01 M 174.0 60.0 h 0.01 M 174.0 63.0 h 0.01 M 174.0 66.0 h 0.01 M 174.0 69.0 h 0.01 M 177.0 57.0 h 0.01 M 177.0 60.0 h 0.01 M 177.0 63.0 h 0.01 M 177.0 66.0 h 0.01 M 177.0 69.0 h 0.01 M 180.0 57.0 h 0.01 M 180.0 60.0 h 0.01 M 180.0 63.0 h 0.01 M 180.0 66.0 h 0.01 M 180.0 69.0 h 0.01 M 183.0 57.0 h 0.01 M 183.0 60.0 h 0.01 M 183.0 63.0 h 0.01 M 183.0 66.0 h 0.01 M 186.0 57.0 h 0.01 M 186.0 60.0 h 0.01 M 186.0 63.0 h 0.01 M 189.0 57.0 h 0.01 M 189.0 63.0 h 0.01 M 189.0 75.0 h 0.01 M 192.0 57.0 h 0.01 M 192.0 117.0 h 0.01 M 192.0 120.0 h 0.01 M 192.0 123.0 h 0.01 M 195.0 114.0 h 0.01 M 195.0 117.0 h 0.01 M 195.0 120.0 h 0.01 M 195.0 123.0 h 0.01 M 195.0 126.0 h 0.01 M 195.0 129.0 h 0.01 M 195.0 132.0 h 0.01 M 198.0 87.0 h 0.01 M 198.0 108.0 h 0.01 M 198.0 111.0 h 0.01 M 198.0 114.0 h 0.01 M 198.0 117.0 h 0.01 M 198.0 120.0 h 0.01 M 198.0 123.0 h 0.01 M 198.0 126.0 h 0.01 M 198.0 129.0 h 0.01 M 198.0 132.0 h 0.01 M 201.0 84.0 h 0.01 M 201.0 96.0 h 0.01 M 201.0 99.0 h 0.01 M 201.0 105.0 h 0.01 M 201.0 108.0 h 0.01 M 201.0 111.0 h 0.01 M 201.0 114.0 h 0.01 M 201.0 117.0 h 0.01 M 201.0 120.0 h 0.01 M 201.0 123.0 h 0.01 M 201.0 126.0 h 0.01 M 201.0 129.0 h 0.01 M 201.0 132.0 h 0.01 M 204.0 81.0 h 0.01 M 204.0 87.0 h 0.01 M 204.0 96.0 h 0.01 M 204.0 99.0 h 0.01 M 204.0 102.0 h 0.01 M 204.0 105.0 h 0.01 M 204.0 108.0 h 0.01 M 204.0 111.0 h 0.01 M 204.0 114.0 h 0.01 M 204.0 117.0 h 0.01 M 204.0 120.0 h 0.01 M 204.0 123.0 h 0.01 M 204.0 126.0 h 0.01 M 204.0 129.0 h 0.01 M 204.0 132.0 h 0.01 M 207.0 87.0 h 0.01 M 207.0 90.0 h 0.01 M 207.0 93.0 h 0.01 M 207.0 96.0 h 0.01 M 207.0 99.0 h 0.01 M 207.0 105.0 h 0.01 M 207.0 108.0 h 0.01 M 207.0 111.0 h 0.01 M 207.0 114.0 h 0.01 M 207.0 117.0 h 0.01 M 207.0 120.0 h 0.01 M 207.0 123.0 h 0.01 M 207.0 126.0 h 0.01 M 207.0 129.0 h 0.01 M 207.0 132.0 h 0.01 M 210.0 90.0 h 0.01 M 210.0 93.0 h 0.01 M 210.0 96.0 h 0.01 M 210.0 105.0 h 0.01 M 210.0 108.0 h 0.01 M 210.0 111.0 h 0.01 M 210.0 114.0 h 0.01 M 210.0 117.0 h 0.01 M 210.0 120.0 h 0.01 M 210.0 123.0 h 0.01 M 210.0 126.0 h 0.01 M 210.0 129.0 h 0.01 M 210.0 132.0 h 0.01 M 213.0 87.0 h 0.01 M 213.0 90.0 h 0.01 M 213.0 93.0 h 0.01 M 213.0 105.0 h 0.01 M 213.0 108.0 h 0.01 M 213.0 111.0 h 0.01 M 213.0 114.0 h 0.01 M 213.0 117.0 h 0.01 M 213.0 120.0 h 0.01 M 213.0 123.0 h 0.01 M 213.0 126.0 h 0.01 M 213.0 129.0 h 0.01 M 213.0 132.0 h 0.01 M 216.0 78.0 h 0.01 M 216.0 87.0 h 0.01 M 216.0 90.0 h 0.01 M 216.0 93.0 h 0.01 M 216.0 105.0 h 0.01 M 216.0 108.0 h 0.01 M 216.0 111.0 h 0.01 M 216.0 114.0 h 0.01 M 216.0 117.0 h 0.01 M 216.0 120.0 h 0.01 M 216.0 123.0 h 0.01 M 216.0 126.0 h 0.01 M 216.0 129.0 h 0.01 M 216.0 132.0 h 0.01 M 216.0 135.0 h 0.01 M 219.0 75.0 h 0.01 M 219.0 78.0 h 0.01 M 219.0 87.0 h 0.01 M 219.0 90.0 h 0.01 M 219.0 93.0 h 0.01 M 219.0 96.0 h 0.01 M 219.0 108.0 h 0.01 M 219.0 111.0 h 0.01 M 219.0 114.0 h 0.01 M 219.0 117.0 h 0.01 M 219.0 120.0 h 0.01 M 219.0 123.0 h 0.01 M 219.0 126.0 h 0.01 M 219.0 129.0 h 0.01 M 219.0 132.0 h 0.01 M 219.0 135.0 h 0.01 M 219.0 138.0 h 0.01 M 219.0 141.0 h 0.01 M 222.0 72.0 h 0.01 M 222.0 75.0 h 0.01 M 222.0 78.0 h 0.01 M 222.0 81.0 h 0.01 M 222.0 87.0 h 0.01 M 222.0 90.0 h 0.01 M 222.0 93.0 h 0.01 M 222.0 96.0 h 0.01 M 222.0 108.0 h 0.01 M 222.0 111.0 h 0.01 M 222.0 114.0 h 0.01 M 222.0 117.0 h 0.01 M 222.0 120.0 h 0.01 M 222.0 123.0 h 0.01 M 222.0 126.0 h 0.01 M 222.0 129.0 h 0.01 M 222.0 132.0 h 0.01 M 222.0 135.0 h 0.01 M 222.0 138.0 h 0.01 M 222.0 141.0 h 0.01 M 222.0 144.0 h 0.01 M 222.0 147.0 h 0.01 M 222.0 150.0 h 0.01 M 222.0 153.0 h 0.01 M 222.0 156.0 h 0.01 M 222.0 159.0 h 0.01 M 225.0 60.0 h 0.01 M 225.0 72.0 h 0.01 M 225.0 75.0 h 0.01 M 225.0 78.0 h 0.01 M 225.0 87.0 h 0.01 M 225.0 90.0 h 0.01 M 225.0 93.0 h 0.01 M 225.0 108.0 h 0.01 M 225.0 111.0 h 0.01 M 225.0 114.0 h 0.01 M 225.0 117.0 h 0.01 M 225.0 120.0 h 0.01 M 225.0 123.0 h 0.01 M 225.0 126.0 h 0.01 M 225.0 129.0 h 0.01 M 225.0 132.0 h 0.01 M 225.0 135.0 h 0.01 M 225.0 138.0 h 0.01 M 225.0 141.0 h 0.01 M 225.0 144.0 h 0.01 M 225.0 147.0 h 0.01 M 225.0 150.0 h 0.01 M 225.0 153.0 h 0.01 M 225.0 156.0 h 0.01 M 225.0 159.0 h 0.01 M 225.0 162.0 h 0.01 M 225.0 165.0 h 0.01 M 225.0 168.0 h 0.01 M 228.0 69.0 h 0.01 M 228.0 72.0 h 0.01 M 228.0 75.0 h 0.01 M 228.0 87.0 h 0.01 M 228.0 90.0 h 0.01 M 228.0 93.0 h 0.01 M 228.0 96.0 h 0.01 M 228.0 111.0 h 0.01 M 228.0 114.0 h 0.01 M 228.0 117.0 h 0.01 M 228.0 120.0 h 0.01 M 228.0 123.0 h 0.01 M 228.0 126.0 h 0.01 M 228.0 129.0 h 0.01 M 228.0 132.0 h 0.01 M 228.0 135.0 h 0.01 M 228.0 138.0 h 0.01 M 228.0 141.0 h 0.01 M 228.0 144.0 h 0.01 M 228.0 147.0 h 0.01 M 228.0 150.0 h 0.01 M 228.0 153.0 h 0.01 M 228.0 156.0 h 0.01 M 228.0 159.0 h 0.01 M 228.0 162.0 h 0.01 M 228.0 165.0 h 0.01 M 228.0 168.0 h 0.01 M 228.0 171.0 h 0.01 M 228.0 174.0 h 0.01 M 231.0 60.0 h 0.01 M 231.0 69.0 h 0.01 M 231.0 72.0 h 0.01 M 231.0 75.0 h 0.01 M 231.0 78.0 h 0.01 M 231.0 81.0 h 0.01 M 231.0 84.0 h 0.01 M 231.0 87.0 h 0.01 M 231.0 90.0 h 0.01 M 231.0 93.0 h 0.01 M 231.0 96.0 h 0.01 M 231.0 99.0 h 0.01 M 231.0 102.0 h 0.01 M 231.0 108.0 h 0.01 M 231.0 111.0 h 0.01 M 231.0 114.0 h 0.01 M 231.0 117.0 h 0.01 M 231.0 120.0 h 0.01 M 231.0 123.0 h 0.01 M 231.0 126.0 h 0.01 M 231.0 129.0 h 0.01 M 231.0 132.0 h 0.01 M 231.0 135.0 h 0.01 M 231.0 138.0 h 0.01 M 231.0 141.0 h 0.01 M 231.0 144.0 h 0.01 M 231.0 147.0 h 0.01 M 231.0 150.0 h 0.01 M 231.0 153.0 h 0.01 M 231.0 156.0 h 0.01 M 231.0 159.0 h 0.01 M 231.0 162.0 h 0.01 M 231.0 165.0 h 0.01 M 231.0 168.0 h 0.01 M 231.0 171.0 h 0.01 M 231.0 174.0 h 0.01 M 234.0 69.0 h 0.01 M 234.0 72.0 h 0.01 M 234.0 75.0 h 0.01 M 234.0 78.0 h 0.01 M 234.0 81.0 h 0.01 M 234.0 84.0 h 0.01 M 234.0 87.0 h 0.01 M 234.0 90.0 h 0.01 M 234.0 93.0 h 0.01 M 234.0 96.0 h 0.01 M 234.0 102.0 h 0.01 M 234.0 108.0 h 0.01 M 234.0 111.0 h 0.01 M 234.0 114.0 h 0.01 M 234.0 117.0 h 0.01 M 234.0 120.0 h 0.01 M 234.0 123.0 h 0.01 M 234.0 126.0 h 0.01 M 234.0 129.0 h 0.01 M 234.0 132.0 h 0.01 M 234.0 135.0 h 0.01 M 234.0 138.0 h 0.01 M 234.0 141.0 h 0.01 M 234.0 144.0 h 0.01 M 234.0 147.0 h 0.01 M 234.0 150.0 h 0.01 M 234.0 153.0 h 0.01 M 234.0 156.0 h 0.01 M 234.0 159.0 h 0.01 M 234.0 162.0 h 0.01 M 234.0 165.0 h 0.01 M 234.0 168.0 h 0.01 M 234.0 171.0 h 0.01 M 234.0 174.0 h 0.01 M 237.0 69.0 h 0.01 M 237.0 72.0 h 0.01 M 237.0 75.0 h 0.01 M 237.0 81.0 h 0.01 M 237.0 84.0 h 0.01 M 237.0 87.0 h 0.01 M 237.0 90.0 h 0.01 M 237.0 93.0 h 0.01 M 237.0 99.0 h 0.01 M 237.0 102.0 h 0.01 M 237.0 111.0 h 0.01 M 237.0 114.0 h 0.01 M 237.0 117.0 h 0.01 M 237.0 120.0 h 0.01 M 237.0 123.0 h 0.01 M 237.0 126.0 h 0.01 M 237.0 129.0 h 0.01 M 237.0 132.0 h 0.01 M 237.0 135.0 h 0.01 M 237.0 138.0 h 0.01 M 237.0 141.0 h 0.01 M 237.0 144.0 h 0.01 M 237.0 147.0 h 0.01 M 237.0 150.0 h 0.01 M 237.0 153.0 h 0.01 M 237.0 156.0 h 0.01 M 237.0 159.0 h 0.01 M 237.0 162.0 h 0.01 M 237.0 165.0 h 0.01 M 237.0 168.0 h 0.01 M 237.0 171.0 h 0.01 M 240.0 69.0 h 0.01 M 240.0 72.0 h 0.01 M 240.0 75.0 h 0.01 M 240.0 78.0 h 0.01 M 240.0 81.0 h 0.01 M 240.0 84.0 h 0.01 M 240.0 87.0 h 0.01 M 240.0 90.0 h 0.01 M 240.0 99.0 h 0.01 M 240.0 102.0 h 0.01 M 240.0 108.0 h 0.01 M 240.0 111.0 h 0.01 M 240.0 114.0 h 0.01 M 240.0 117.0 h 0.01 M 240.0 120.0 h 0.01 M 240.0 123.0 h 0.01 M 240.0 126.0 h 0.01 M 240.0 129.0 h 0.01 M 240.0 132.0 h 0.01 M 240.0 135.0 h 0.01 M 240.0 138.0 h 0.01 M 240.0 141.0 h 0.01 M 240.0 144.0 h 0.01 M 240.0 147.0 h 0.01 M 240.0 150.0 h 0.01 M 240.0 153.0 h 0.01 M 240.0 156.0 h 0.01 M 240.0 159.0 h 0.01 M 240.0 162.0 h 0.01 M 240.0 165.0 h 0.01 M 240.0 168.0 h 0.01 M 243.0 75.0 h 0.01 M 243.0 78.0 h 0.01 M 243.0 81.0 h 0.01 M 243.0 84.0 h 0.01 M 243.0 87.0 h 0.01 M 243.0 90.0 h 0.01 M 243.0 93.0 h 0.01 M 243.0 99.0 h 0.01 M 243.0 102.0 h 0.01 M 243.0 108.0 h 0.01 M 243.0 111.0 h 0.01 M 243.0 114.0 h 0.01 M 243.0 117.0 h 0.01 M 243.0 120.0 h 0.01 M 243.0 123.0 h 0.01 M 243.0 126.0 h 0.01 M 243.0 129.0 h 0.01 M 243.0 132.0 h 0.01 M 243.0 135.0 h 0.01 M 243.0 138.0 h 0.01 M 243.0 141.0 h 0.01 M 243.0 144.0 h 0.01 M 243.0 147.0 h 0.01 M 243.0 150.0 h 0.01 M 243.0 153.0 h 0.01 M 243.0 156.0 h 0.01 M 243.0 159.0 h 0.01 M 243.0 162.0 h 0.01 M 243.0 165.0 h 0.01 M 246.0 72.0 h 0.01 M 246.0 75.0 h 0.01 M 246.0 78.0 h 0.01 M 246.0 81.0 h 0.01 M 246.0 84.0 h 0.01 M 246.0 87.0 h 0.01 M 246.0 90.0 h 0.01 M 246.0 99.0 h 0.01 M 246.0 102.0 h 0.01 M 246.0 105.0 h 0.01 M 246.0 108.0 h 0.01 M 246.0 111.0 h 0.01 M 246.0 114.0 h 0.01 M 246.0 123.0 h 0.01 M 246.0 126.0 h 0.01 M 246.0 129.0 h 0.01 M 246.0 132.0 h 0.01 M 246.0 135.0 h 0.01 M 246.0 138.0 h 0.01 M 246.0 141.0 h 0.01 M 246.0 144.0 h 0.01 M 246.0 147.0 h 0.01 M 246.0 150.0 h 0.01 M 246.0 153.0 h 0.01 M 246.0 156.0 h 0.01 M 249.0 72.0 h 0.01 M 249.0 75.0 h 0.01 M 249.0 78.0 h 0.01 M 249.0 81.0 h 0.01 M 249.0 84.0 h 0.01 M 249.0 87.0 h 0.01 M 249.0 90.0 h 0.01 M 249.0 93.0 h 0.01 M 249.0 99.0 h 0.01 M 249.0 102.0 h 0.01 M 249.0 105.0 h 0.01 M 249.0 108.0 h 0.01 M 249.0 111.0 h 0.01 M 249.0 114.0 h 0.01 M 249.0 117.0 h 0.01 M 249.0 126.0 h 0.01 M 249.0 129.0 h 0.01 M 249.0 132.0 h 0.01 M 249.0 135.0 h 0.01 M 249.0 138.0 h 0.01 M 249.0 141.0 h 0.01 M 249.0 153.0 h 0.01 M 252.0 72.0 h 0.01 M 252.0 75.0 h 0.01 M 252.0 78.0 h 0.01 M 252.0 81.0 h 0.01 M 252.0 84.0 h 0.01 M 252.0 87.0 h 0.01 M 252.0 90.0 h 0.01 M 252.0 93.0 h 0.01 M 252.0 96.0 h 0.01 M 252.0 99.0 h 0.01 M 252.0 102.0 h 0.01 M 252.0 105.0 h 0.01 M 252.0 108.0 h 0.01 M 252.0 111.0 h 0.01 M 252.0 114.0 h 0.01 M 252.0 117.0 h 0.01 M 252.0 120.0 h 0.01 M 252.0 123.0 h 0.01 M 252.0 129.0 h 0.01 M 252.0 132.0 h 0.01 M 252.0 135.0 h 0.01 M 252.0 138.0 h 0.01 M 255.0 72.0 h 0.01 M 255.0 75.0 h 0.01 M 255.0 78.0 h 0.01 M 255.0 81.0 h 0.01 M 255.0 84.0 h 0.01 M 255.0 87.0 h 0.01 M 255.0 90.0 h 0.01 M 255.0 93.0 h 0.01 M 255.0 96.0 h 0.01 M 255.0 99.0 h 0.01 M 255.0 102.0 h 0.01 M 255.0 105.0 h 0.01 M 255.0 108.0 h 0.01 M 255.0 111.0 h 0.01 M 255.0 114.0 h 0.01 M 255.0 117.0 h 0.01 M 255.0 120.0 h 0.01 M 255.0 123.0 h 0.01 M 255.0 126.0 h 0.01 M 255.0 129.0 h 0.01 M 255.0 132.0 h 0.01 M 255.0 135.0 h 0.01 M 255.0 156.0 h 0.01 M 255.0 159.0 h 0.01 M 255.0 162.0 h 0.01 M 255.0 165.0 h 0.01 M 258.0 69.0 h 0.01 M 258.0 72.0 h 0.01 M 258.0 75.0 h 0.01 M 258.0 78.0 h 0.01 M 258.0 81.0 h 0.01 M 258.0 84.0 h 0.01 M 258.0 87.0 h 0.01 M 258.0 90.0 h 0.01 M 258.0 93.0 h 0.01 M 258.0 96.0 h 0.01 M 258.0 99.0 h 0.01 M 258.0 102.0 h 0.01 M 258.0 105.0 h 0.01 M 258.0 108.0 h 0.01 M 258.0 114.0 h 0.01 M 258.0 117.0 h 0.01 M 258.0 120.0 h 0.01 M 258.0 123.0 h 0.01 M 258.0 129.0 h 0.01 M 258.0 132.0 h 0.01 M 258.0 153.0 h 0.01 M 258.0 156.0 h 0.01 M 258.0 159.0 h 0.01 M 261.0 72.0 h 0.01 M 261.0 75.0 h 0.01 M 261.0 78.0 h 0.01 M 261.0 81.0 h 0.01 M 261.0 84.0 h 0.01 M 261.0 87.0 h 0.01 M 261.0 90.0 h 0.01 M 261.0 93.0 h 0.01 M 261.0 96.0 h 0.01 M 261.0 99.0 h 0.01 M 261.0 102.0 h 0.01 M 261.0 105.0 h 0.01 M 261.0 108.0 h 0.01 M 261.0 111.0 h 0.01 M 261.0 117.0 h 0.01 M 261.0 120.0 h 0.01 M 261.0 123.0 h 0.01 M 264.0 66.0 h 0.01 M 264.0 72.0 h 0.01 M 264.0 75.0 h 0.01 M 264.0 78.0 h 0.01 M 264.0 81.0 h 0.01 M 264.0 84.0 h 0.01 M 264.0 87.0 h 0.01 M 264.0 90.0 h 0.01 M 264.0 93.0 h 0.01 M 264.0 96.0 h 0.01 M 264.0 99.0 h 0.01 M 264.0 102.0 h 0.01 M 264.0 105.0 h 0.01 M 264.0 108.0 h 0.01 M 264.0 111.0 h 0.01 M 264.0 117.0 h 0.01 M 264.0 120.0 h 0.01 M 267.0 63.0 h 0.01 M 267.0 72.0 h 0.01 M 267.0 75.0 h 0.01 M 267.0 78.0 h 0.01 M 267.0 81.0 h 0.01 M 267.0 84.0 h 0.01 M 267.0 87.0 h 0.01 M 267.0 90.0 h 0.01 M 267.0 93.0 h 0.01 M 267.0 96.0 h 0.01 M 267.0 99.0 h 0.01 M 267.0 102.0 h 0.01 M 267.0 105.0 h 0.01 M 267.0 108.0 h 0.01 M 267.0 111.0 h 0.01 M 267.0 117.0 h 0.01 M 270.0 63.0 h 0.01 M 270.0 69.0 h 0.01 M 270.0 72.0 h 0.01 M 270.0 75.0 h 0.01 M 270.0 78.0 h 0.01 M 270.0 81.0 h 0.01 M 270.0 84.0 h 0.01 M 270.0 87.0 h 0.01 M 270.0 90.0 h 0.01 M 270.0 93.0 h 0.01 M 270.0 96.0 h 0.01 M 270.0 99.0 h 0.01 M 270.0 102.0 h 0.01 M 270.0 105.0 h 0.01 M 270.0 108.0 h 0.01 M 270.0 111.0 h 0.01 M 273.0 69.0 h 0.01 M 273.0 72.0 h 0.01 M 273.0 75.0 h 0.01 M 273.0 78.0 h 0.01 M 273.0 81.0 h 0.01 M 273.0 84.0 h 0.01 M 273.0 87.0 h 0.01 M 273.0 90.0 h 0.01 M 273.0 93.0 h 0.01 M 273.0 96.0 h 0.01 M 273.0 99.0 h 0.01 M 273.0 102.0 h 0.01 M 273.0 105.0 h 0.01 M 273.0 108.0 h 0.01 M 273.0 111.0 h 0.01 M 276.0 72.0 h 0.01 M 276.0 75.0 h 0.01 M 276.0 78.0 h 0.01 M 276.0 81.0 h 0.01 M 276.0 84.0 h 0.01 M 276.0 87.0 h 0.01 M 276.0 90.0 h 0.01 M 276.0 93.0 h 0.01 M 276.0 96.0 h 0.01 M 276.0 99.0 h 0.01 M 276.0 102.0 h 0.01 M 276.0 105.0 h 0.01 M 276.0 108.0 h 0.01 M 276.0 111.0 h 0.01 M 276.0 114.0 h 0.01 M 279.0 66.0 h 0.01 M 279.0 69.0 h 0.01 M 279.0 72.0 h 0.01 M 279.0 75.0 h 0.01 M 279.0 78.0 h 0.01 M 279.0 81.0 h 0.01 M 279.0 84.0 h 0.01 M 279.0 87.0 h 0.01 M 279.0 90.0 h 0.01 M 279.0 93.0 h 0.01 M 279.0 96.0 h 0.01 M 279.0 99.0 h 0.01 M 279.0 102.0 h 0.01 M 279.0 105.0 h 0.01 M 282.0 66.0 h 0.01 M 282.0 72.0 h 0.01 M 282.0 75.0 h 0.01 M 282.0 78.0 h 0.01 M 282.0 81.0 h 0.01 M 282.0 84.0 h 0.01 M 282.0 87.0 h 0.01 M 282.0 90.0 h 0.01 M 282.0 93.0 h 0.01 M 282.0 96.0 h 0.01 M 282.0 99.0 h 0.01 M 282.0 102.0 h 0.01 M 282.0 105.0 h 0.01 M 285.0 66.0 h 0.01 M 285.0 69.0 h 0.01 M 285.0 72.0 h 0.01 M 285.0 75.0 h 0.01 M 285.0 78.0 h 0.01 M 285.0 81.0 h 0.01 M 285.0 84.0 h 0.01 M 285.0 87.0 h 0.01 M 285.0 90.0 h 0.01 M 285.0 93.0 h 0.01 M 285.0 96.0 h 0.01 M 285.0 99.0 h 0.01 M 285.0 102.0 h 0.01 M 288.0 66.0 h 0.01 M 288.0 69.0 h 0.01 M 288.0 72.0 h 0.01 M 288.0 75.0 h 0.01 M 288.0 78.0 h 0.01 M 288.0 81.0 h 0.01 M 288.0 84.0 h 0.01 M 288.0 87.0 h 0.01 M 288.0 90.0 h 0.01 M 288.0 93.0 h 0.01 M 288.0 96.0 h 0.01 M 288.0 99.0 h 0.01 M 288.0 102.0 h 0.01 M 291.0 69.0 h 0.01 M 291.0 72.0 h 0.01 M 291.0 75.0 h 0.01 M 291.0 78.0 h 0.01 M 291.0 81.0 h 0.01 M 291.0 84.0 h 0.01 M 291.0 87.0 h 0.01 M 291.0 90.0 h 0.01 M 291.0 93.0 h 0.01 M 291.0 96.0 h 0.01 M 291.0 99.0 h 0.01 M 291.0 102.0 h 0.01 M 291.0 105.0 h 0.01 M 294.0 66.0 h 0.01 M 294.0 69.0 h 0.01 M 294.0 72.0 h 0.01 M 294.0 75.0 h 0.01 M 294.0 78.0 h 0.01 M 294.0 81.0 h 0.01 M 294.0 84.0 h 0.01 M 294.0 87.0 h 0.01 M 294.0 90.0 h 0.01 M 294.0 93.0 h 0.01 M 294.0 96.0 h 0.01 M 294.0 99.0 h 0.01 M 294.0 102.0 h 0.01 M 294.0 105.0 h 0.01 M 297.0 66.0 h 0.01 M 297.0 69.0 h 0.01 M 297.0 72.0 h 0.01 M 297.0 75.0 h 0.01 M 297.0 78.0 h 0.01 M 297.0 81.0 h 0.01 M 297.0 84.0 h 0.01 M 297.0 87.0 h 0.01 M 297.0 90.0 h 0.01 M 297.0 93.0 h 0.01 M 297.0 96.0 h 0.01 M 297.0 99.0 h 0.01 M 297.0 102.0 h 0.01 M 297.0 105.0 h 0.01 M 300.0 57.0 h 0.01 M 300.0 63.0 h 0.01 M 300.0 66.0 h 0.01 M 300.0 69.0 h 0.01 M 300.0 72.0 h 0.01 M 300.0 75.0 h 0.01 M 300.0 78.0 h 0.01 M 300.0 81.0 h 0.01 M 300.0 84.0 h 0.01 M 300.0 87.0 h 0.01 M 300.0 90.0 h 0.01 M 300.0 93.0 h 0.01 M 300.0 96.0 h 0.01 M 300.0 99.0 h 0.01 M 300.0 102.0 h 0.01 M 300.0 105.0 h 0.01 M 300.0 108.0 h 0.01 M 303.0 63.0 h 0.01 M 303.0 66.0 h 0.01 M 303.0 69.0 h 0.01 M 303.0 72.0 h 0.01 M 303.0 75.0 h 0.01 M 303.0 78.0 h 0.01 M 303.0 81.0 h 0.01 M 303.0 84.0 h 0.01 M 303.0 87.0 h 0.01 M 303.0 90.0 h 0.01 M 303.0 93.0 h 0.01 M 303.0 96.0 h 0.01 M 303.0 99.0 h 0.01 M 303.0 102.0 h 0.01 M 303.0 105.0 h 0.01 M 303.0 108.0 h 0.01 M 303.0 117.0 h 0.01 M 306.0 57.0 h 0.01 M 306.0 63.0 h 0.01 M 306.0 66.0 h 0.01 M 306.0 69.0 h 0.01 M 306.0 72.0 h 0.01 M 306.0 75.0 h 0.01 M 306.0 78.0 h 0.01 M 306.0 81.0 h 0.01 M 306.0 84.0 h 0.01 M 306.0 87.0 h 0.01 M 306.0 90.0 h 0.01 M 306.0 93.0 h 0.01 M 306.0 96.0 h 0.01 M 306.0 99.0 h 0.01 M 306.0 102.0 h 0.01 M 306.0 105.0 h 0.01 M 306.0 108.0 h 0.01 M 306.0 114.0 h 0.01 M 306.0 117.0 h 0.01 M 306.0 120.0 h 0.01 M 306.0 123.0 h 0.01 M 306.0 135.0 h 0.01 M 309.0 63.0 h 0.01 M 309.0 66.0 h 0.01 M 309.0 69.0 h 0.01 M 309.0 72.0 h 0.01 M 309.0 75.0 h 0.01 M 309.0 78.0 h 0.01 M 309.0 81.0 h 0.01 M 309.0 84.0 h 0.01 M 309.0 87.0 h 0.01 M 309.0 90.0 h 0.01 M 309.0 93.0 h 0.01 M 309.0 96.0 h 0.01 M 309.0 99.0 h 0.01 M 309.0 102.0 h 0.01 M 309.0 105.0 h 0.01 M 309.0 108.0 h 0.01 M 309.0 111.0 h 0.01 M 309.0 114.0 h 0.01 M 309.0 117.0 h 0.01 M 309.0 120.0 h 0.01 M 309.0 123.0 h 0.01 M 309.0 126.0 h 0.01 M 309.0 129.0 h 0.01 M 309.0 132.0 h 0.01 M 309.0 138.0 h 0.01 M 312.0 63.0 h 0.01 M 312.0 66.0 h 0.01 M 312.0 69.0 h 0.01 M 312.0 72.0 h 0.01 M 312.0 75.0 h 0.01 M 312.0 78.0 h 0.01 M 312.0 81.0 h 0.01 M 312.0 84.0 h 0.01 M 312.0 87.0 h 0.01 M 312.0 90.0 h 0.01 M 312.0 93.0 h 0.01 M 312.0 96.0 h 0.01 M 312.0 99.0 h 0.01 M 312.0 102.0 h 0.01 M 312.0 105.0 h 0.01 M 312.0 108.0 h 0.01 M 312.0 111.0 h 0.01 M 312.0 114.0 h 0.01 M 312.0 117.0 h 0.01 M 312.0 120.0 h 0.01 M 312.0 123.0 h 0.01 M 312.0 126.0 h 0.01 M 312.0 135.0 h 0.01 M 312.0 141.0 h 0.01 M 315.0 63.0 h 0.01 M 315.0 66.0 h 0.01 M 315.0 69.0 h 0.01 M 315.0 72.0 h 0.01 M 315.0 75.0 h 0.01 M 315.0 78.0 h 0.01 M 315.0 81.0 h 0.01 M 315.0 84.0 h 0.01 M 315.0 87.0 h 0.01 M 315.0 90.0 h 0.01 M 315.0 93.0 h 0.01 M 315.0 96.0 h 0.01 M 315.0 99.0 h 0.01 M 315.0 102.0 h 0.01 M 315.0 105.0 h 0.01 M 315.0 108.0 h 0.01 M 315.0 111.0 h 0.01 M 315.0 114.0 h 0.01 M 315.0 117.0 h 0.01 M 315.0 120.0 h 0.01 M 315.0 123.0 h 0.01 M 315.0 126.0 h 0.01 M 315.0 129.0 h 0.01 M 315.0 144.0 h 0.01 M 318.0 63.0 h 0.01 M 318.0 66.0 h 0.01 M 318.0 69.0 h 0.01 M 318.0 72.0 h 0.01 M 318.0 75.0 h 0.01 M 318.0 78.0 h 0.01 M 318.0 81.0 h 0.01 M 318.0 84.0 h 0.01 M 318.0 87.0 h 0.01 M 318.0 90.0 h 0.01 M 318.0 93.0 h 0.01 M 318.0 96.0 h 0.01 M 318.0 99.0 h 0.01 M 318.0 102.0 h 0.01 M 318.0 105.0 h 0.01 M 318.0 108.0 h 0.01 M 318.0 111.0 h 0.01 M 318.0 114.0 h 0.01 M 318.0 117.0 h 0.01 M 318.0 126.0 h 0.01 M 318.0 147.0 h 0.01 M 321.0 63.0 h 0.01 M 321.0 66.0 h 0.01 M 321.0 69.0 h 0.01 M 321.0 72.0 h 0.01 M 321.0 75.0 h 0.01 M 321.0 78.0 h 0.01 M 321.0 81.0 h 0.01 M 321.0 84.0 h 0.01 M 321.0 87.0 h 0.01 M 321.0 90.0 h 0.01 M 321.0 93.0 h 0.01 M 321.0 96.0 h 0.01 M 321.0 99.0 h 0.01 M 321.0 102.0 h 0.01 M 321.0 105.0 h 0.01 M 321.0 108.0 h 0.01 M 321.0 111.0 h 0.01 M 321.0 114.0 h 0.01 M 321.0 117.0 h 0.01 M 321.0 141.0 h 0.01 M 321.0 147.0 h 0.01 M 324.0 66.0 h 0.01 M 324.0 69.0 h 0.01 M 324.0 72.0 h 0.01 M 324.0 75.0 h 0.01 M 324.0 78.0 h 0.01 M 324.0 81.0 h 0.01 M 324.0 84.0 h 0.01 M 324.0 87.0 h 0.01 M 324.0 90.0 h 0.01 M 324.0 93.0 h 0.01 M 324.0 96.0 h 0.01 M 324.0 99.0 h 0.01 M 324.0 102.0 h 0.01 M 324.0 105.0 h 0.01 M 324.0 108.0 h 0.01 M 324.0 111.0 h 0.01 M 324.0 114.0 h 0.01 M 324.0 138.0 h 0.01 M 324.0 141.0 h 0.01 M 324.0 165.0 h 0.01 M 327.0 66.0 h 0.01 M 327.0 69.0 h 0.01 M 327.0 72.0 h 0.01 M 327.0 75.0 h 0.01 M 327.0 78.0 h 0.01 M 327.0 81.0 h 0.01 M 327.0 84.0 h 0.01 M 327.0 87.0 h 0.01 M 327.0 90.0 h 0.01 M 327.0 93.0 h 0.01 M 327.0 96.0 h 0.01 M 327.0 99.0 h 0.01 M 327.0 102.0 h 0.01 M 327.0 105.0 h 0.01 M 327.0 108.0 h 0.01 M 327.0 111.0 h 0.01 M 327.0 114.0 h 0.01 M 327.0 135.0 h 0.01 M 327.0 138.0 h 0.01 M 327.0 141.0 h 0.01 M 327.0 162.0 h 0.01 M 327.0 165.0 h 0.01 M 327.0 168.0 h 0.01 M 327.0 171.0 h 0.01 M 327.0 174.0 h 0.01 M 330.0 66.0 h 0.01 M 330.0 69.0 h 0.01 M 330.0 72.0 h 0.01 M 330.0 75.0 h 0.01 M 330.0 78.0 h 0.01 M 330.0 81.0 h 0.01 M 330.0 84.0 h 0.01 M 330.0 87.0 h 0.01 M 330.0 90.0 h 0.01 M 330.0 93.0 h 0.01 M 330.0 96.0 h 0.01 M 330.0 99.0 h 0.01 M 330.0 102.0 h 0.01 M 330.0 105.0 h 0.01 M 330.0 108.0 h 0.01 M 330.0 111.0 h 0.01 M 330.0 129.0 h 0.01 M 330.0 141.0 h 0.01 M 330.0 144.0 h 0.01 M 330.0 162.0 h 0.01 M 330.0 165.0 h 0.01 M 330.0 168.0 h 0.01 M 330.0 171.0 h 0.01 M 330.0 174.0 h 0.01 M 333.0 66.0 h 0.01 M 333.0 69.0 h 0.01 M 333.0 72.0 h 0.01 M 333.0 75.0 h 0.01 M 333.0 78.0 h 0.01 M 333.0 81.0 h 0.01 M 333.0 84.0 h 0.01 M 333.0 87.0 h 0.01 M 333.0 90.0 h 0.01 M 333.0 93.0 h 0.01 M 333.0 96.0 h 0.01 M 333.0 99.0 h 0.01 M 333.0 126.0 h 0.01 M 333.0 129.0 h 0.01 M 333.0 144.0 h 0.01 M 333.0 159.0 h 0.01 M 333.0 162.0 h 0.01 M 333.0 165.0 h 0.01 M 333.0 168.0 h 0.01 M 333.0 171.0 h 0.01 M 333.0 174.0 h 0.01 M 336.0 66.0 h 0.01 M 336.0 69.0 h 0.01 M 336.0 72.0 h 0.01 M 336.0 75.0 h 0.01 M 336.0 78.0 h 0.01 M 336.0 81.0 h 0.01 M 336.0 84.0 h 0.01 M 336.0 87.0 h 0.01 M 336.0 90.0 h 0.01 M 336.0 93.0 h 0.01 M 336.0 96.0 h 0.01 M 336.0 99.0 h 0.01 M 336.0 132.0 h 0.01 M 336.0 156.0 h 0.01 M 336.0 159.0 h 0.01 M 336.0 162.0 h 0.01 M 336.0 165.0 h 0.01 M 336.0 168.0 h 0.01 M 336.0 171.0 h 0.01 M 339.0 66.0 h 0.01 M 339.0 69.0 h 0.01 M 339.0 72.0 h 0.01 M 339.0 75.0 h 0.01 M 339.0 78.0 h 0.01 M 339.0 81.0 h 0.01 M 339.0 84.0 h 0.01 M 339.0 87.0 h 0.01 M 339.0 90.0 h 0.01 M 339.0 93.0 h 0.01 M 339.0 96.0 h 0.01 M 339.0 102.0 h 0.01 M 339.0 156.0 h 0.01 M 339.0 159.0 h 0.01 M 339.0 162.0 h 0.01 M 339.0 165.0 h 0.01 M 339.0 168.0 h 0.01 M 339.0 171.0 h 0.01 M 342.0 69.0 h 0.01 M 342.0 72.0 h 0.01 M 342.0 75.0 h 0.01 M 342.0 78.0 h 0.01 M 342.0 81.0 h 0.01 M 342.0 84.0 h 0.01 M 342.0 87.0 h 0.01 M 342.0 90.0 h 0.01 M 342.0 93.0 h 0.01 M 342.0 96.0 h 0.01 M 342.0 105.0 h 0.01 M 342.0 141.0 h 0.01 M 342.0 153.0 h 0.01 M 342.0 156.0 h 0.01 M 342.0 159.0 h 0.01 M 342.0 162.0 h 0.01 M 342.0 165.0 h 0.01 M 342.0 168.0 h 0.01 M 342.0 171.0 h 0.01 M 345.0 69.0 h 0.01 M 345.0 72.0 h 0.01 M 345.0 75.0 h 0.01 M 345.0 78.0 h 0.01 M 345.0 81.0 h 0.01 M 345.0 84.0 h 0.01 M 345.0 87.0 h 0.01 M 345.0 90.0 h 0.01 M 345.0 93.0 h 0.01 M 345.0 105.0 h 0.01 M 345.0 153.0 h 0.01 M 345.0 156.0 h 0.01 M 345.0 159.0 h 0.01 M 345.0 162.0 h 0.01 M 345.0 165.0 h 0.01 M 345.0 168.0 h 0.01 M 345.0 171.0 h 0.01 M 348.0 63.0 h 0.01 M 348.0 69.0 h 0.01 M 348.0 72.0 h 0.01 M 348.0 75.0 h 0.01 M 348.0 78.0 h 0.01 M 348.0 81.0 h 0.01 M 348.0 87.0 h 0.01 M 348.0 90.0 h 0.01 M 348.0 93.0 h 0.01 M 348.0 144.0 h 0.01 M 348.0 159.0 h 0.01 M 348.0 162.0 h 0.01 M 348.0 165.0 h 0.01 M 348.0 168.0 h 0.01 M 348.0 171.0 h 0.01 M 351.0 63.0 h 0.01 M 351.0 66.0 h 0.01 M 351.0 69.0 h 0.01 M 351.0 72.0 h 0.01 M 351.0 75.0 h 0.01 M 351.0 78.0 h 0.01 M 351.0 87.0 h 0.01 M 351.0 99.0 h 0.01 M 351.0 102.0 h 0.01 M 351.0 144.0 h 0.01 M 351.0 147.0 h 0.01 M 351.0 159.0 h 0.01 M 351.0 162.0 h 0.01 M 351.0 165.0 h 0.01 M 351.0 168.0 h 0.01 M 351.0 171.0 h 0.01 M 351.0 174.0 h 0.01 M 351.0 177.0 h 0.01 M 354.0 63.0 h 0.01 M 354.0 66.0 h 0.01 M 354.0 69.0 h 0.01 M 354.0 72.0 h 0.01 M 354.0 75.0 h 0.01 M 354.0 78.0 h 0.01 M 354.0 87.0 h 0.01 M 354.0 96.0 h 0.01 M 354.0 144.0 h 0.01 M 354.0 147.0 h 0.01 M 354.0 153.0 h 0.01 M 354.0 156.0 h 0.01 M 354.0 159.0 h 0.01 M 354.0 162.0 h 0.01 M 354.0 165.0 h 0.01 M 354.0 168.0 h 0.01 M 354.0 171.0 h 0.01 M 354.0 174.0 h 0.01 M 354.0 177.0 h 0.01 M 357.0 66.0 h 0.01 M 357.0 69.0 h 0.01 M 357.0 72.0 h 0.01 M 357.0 75.0 h 0.01 M 357.0 78.0 h 0.01 M 357.0 147.0 h 0.01 M 357.0 159.0 h 0.01 M 357.0 162.0 h 0.01 M 357.0 165.0 h 0.01 M 357.0 168.0 h 0.01 M 357.0 171.0 h 0.01 M 357.0 174.0 h 0.01 M 357.0 177.0 h 0.01 M 357.0 183.0 h 0.01 M 360.0 63.0 h 0.01 M 360.0 69.0 h 0.01 M 360.0 72.0 h 0.01 M 360.0 75.0 h 0.01 M 360.0 78.0 h 0.01 M 360.0 150.0 h 0.01 M 360.0 162.0 h 0.01 M 360.0 165.0 h 0.01 M 360.0 168.0 h 0.01 M 360.0 171.0 h 0.01 M 360.0 174.0 h 0.01 M 360.0 177.0 h 0.01 M 363.0 69.0 h 0.01 M 363.0 72.0 h 0.01 M 363.0 75.0 h 0.01 M 363.0 78.0 h 0.01 M 363.0 165.0 h 0.01 M 363.0 168.0 h 0.01 M 363.0 171.0 h 0.01 M 366.0 69.0 h 0.01 M 366.0 72.0 h 0.01 M 366.0 75.0 h 0.01 M 366.0 78.0 h 0.01 M 369.0 69.0 h 0.01 M 369.0 72.0 h 0.01 M 369.0 75.0 h 0.01 M 369.0 81.0 h 0.01 M 369.0 84.0 h 0.01 M 369.0 87.0 h 0.01 M 372.0 69.0 h 0.01 M 372.0 72.0 h 0.01 M 372.0 75.0 h 0.01 M 372.0 81.0 h 0.01 M 372.0 84.0 h 0.01 M 375.0 69.0 h 0.01 M 375.0 72.0 h 0.01 M 375.0 75.0 h 0.01 M 375.0 78.0 h 0.01 M 378.0 69.0 h 0.01 M 378.0 72.0 h 0.01 M 378.0 75.0 h 0.01 M 378.0 78.0 h 0.01 M 381.0 72.0 h 0.01 M 381.0 75.0 h 0.01 M 381.0 78.0 h 0.01 M 381.0 186.0 h 0.01 M 384.0 69.0 h 0.01 M 384.0 72.0 h 0.01 M 384.0 75.0 h 0.01 M 384.0 183.0 h 0.01 M 387.0 69.0 h 0.01 M 387.0 72.0 h 0.01 M 387.0 75.0 h 0.01 M 387.0 180.0 h 0.01 M 390.0 69.0 h 0.01 M 390.0 72.0 h 0.01 M 390.0 75.0 h 0.01" class="map-dots-world" />
+
+  <!-- India Concentrated Ambient Glow -->
+  <circle cx="288" cy="122" r="34" fill="url(#hyd-india-glow)" />
+
+  <!-- India Subcontinent Highlighted Dots (Coral-Red) -->
+  <path d="M 279.0 108.0 h 0.01 M 279.0 111.0 h 0.01 M 279.0 114.0 h 0.01 M 279.0 117.0 h 0.01 M 282.0 108.0 h 0.01 M 282.0 111.0 h 0.01 M 282.0 114.0 h 0.01 M 282.0 117.0 h 0.01 M 285.0 105.0 h 0.01 M 285.0 108.0 h 0.01 M 285.0 111.0 h 0.01 M 285.0 114.0 h 0.01 M 285.0 117.0 h 0.01 M 285.0 120.0 h 0.01 M 285.0 123.0 h 0.01 M 285.0 126.0 h 0.01 M 288.0 105.0 h 0.01 M 288.0 108.0 h 0.01 M 288.0 111.0 h 0.01 M 288.0 114.0 h 0.01 M 288.0 117.0 h 0.01 M 288.0 120.0 h 0.01 M 288.0 123.0 h 0.01 M 288.0 126.0 h 0.01 M 288.0 129.0 h 0.01 M 291.0 108.0 h 0.01 M 291.0 111.0 h 0.01 M 291.0 114.0 h 0.01 M 291.0 117.0 h 0.01 M 291.0 120.0 h 0.01 M 291.0 123.0 h 0.01 M 291.0 132.0 h 0.01 M 294.0 108.0 h 0.01 M 294.0 111.0 h 0.01 M 294.0 114.0 h 0.01 M 294.0 117.0 h 0.01 M 294.0 120.0 h 0.01 M 297.0 108.0 h 0.01 M 297.0 111.0 h 0.01 M 297.0 114.0 h 0.01 M 297.0 117.0 h 0.01 M 300.0 111.0 h 0.01 M 300.0 114.0 h 0.01 M 300.0 117.0 h 0.01 M 303.0 111.0 h 0.01 M 303.0 114.0 h 0.01 M 306.0 111.0 h 0.01" class="map-dots-india" />
+
+  <!-- Hyderabad Location Pulse & Core Marker Dot -->
+  <circle cx="288" cy="122" r="14" class="map-pulse-outer" />
+  <circle cx="288" cy="122" r="6" class="map-pulse-middle" />
+  <circle cx="288" cy="122" r="3" class="map-pulse-center" />
+
+  <!-- Dotted Leader Line from Hyderabad to Badge -->
+  <polyline points="288,122 306,122 306,138 314,138" class="map-leader-line" />
+
+  <!-- Technical Callout Badge: HYDERABAD, INDIA + Coordinates -->
+  <rect x="314" y="122" width="134" height="34" rx="2" class="map-badge-rect" />
+  <text x="323" y="135" class="map-badge-text-city">HYDERABAD, INDIA</text>
+  <text x="323" y="147" class="map-badge-text-country">17.3850° N · 78.4867° E</text>
+</svg>
+            </div>
+          </div>
+
+
+          <!-- RIGHT COLUMN: Technical Framed Contact Form -->
+          <div class="contact-form-col">
+            <div class="contact-form-frame">
+              <!-- Corner Brackets in Coral Red -->
+              <span class="corner-bracket corner-tl" aria-hidden="true"></span>
+              <span class="corner-bracket corner-tr" aria-hidden="true"></span>
+              <span class="corner-bracket corner-bl" aria-hidden="true"></span>
+              <span class="corner-bracket corner-br" aria-hidden="true"></span>
+
+              <!-- Bottom-Left Subtle Ticks -->
+              <div class="frame-bottom-ticks" aria-hidden="true">
+                <span></span>
+                <span></span>
+              </div>
+
+              <!-- Outside Frame Right Spaced + Markers -->
+              <div class="frame-plus-decor" aria-hidden="true">
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+              </div>
+
+              <!-- Frame Top Header -->
+              <div class="form-frame-header">
+                <span class="frame-title">
+                  <span class="coral-accent">//</span> SEND A MESSAGE
+                </span>
+                <span class="frame-tag">#01</span>
+              </div>
+
+              <!-- Contact Form -->
+              <form id="contact-form" class="contact-terminal-form" novalidate>
                 <!-- Honeypot -->
-                <input type="text" name="_honey" style="display: none" tabindex="-1" autocomplete="off" />
-                <input type="hidden" name="time" id="email-time" />
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+                <input type="hidden" id="email-time" name="email_time" />
 
-                <!-- Submit Button -->
-                <button type="submit" class="btn-send">
-                  <span>Hit Send </span>
-                  <i class="fas fa-paper-plane"></i>
+                <!-- 01: FULL NAME -->
+                <div class="form-group">
+                  <div class="form-label-row">
+                    <label for="contact-name" class="field-label">FULL NAME</label>
+                    <span class="field-index">01</span>
+                  </div>
+                  <div class="input-container" id="name-container">
+                    <span class="input-icon" aria-hidden="true">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                    </span>
+                    <input
+                      type="text"
+                      id="contact-name"
+                      name="name"
+                      class="form-control"
+                      placeholder="John Doe"
+                      required
+                      autocomplete="name"
+                      aria-describedby="name-feedback"
+                    />
+                  </div>
+                  <span class="field-feedback" id="name-feedback" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- 02: EMAIL ADDRESS -->
+                <div class="form-group">
+                  <div class="form-label-row">
+                    <label for="contact-email" class="field-label">EMAIL ADDRESS</label>
+                    <span class="field-index">02</span>
+                  </div>
+                  <div class="input-container" id="email-container">
+                    <span class="input-icon" aria-hidden="true">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                    </span>
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="email"
+                      class="form-control"
+                      placeholder="john@example.com"
+                      required
+                      autocomplete="email"
+                      aria-describedby="email-feedback"
+                    />
+                  </div>
+                  <span class="field-feedback" id="email-feedback" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- 03: YOUR MESSAGE -->
+                <div class="form-group">
+                  <div class="form-label-row">
+                    <label for="contact-message" class="field-label">YOUR MESSAGE</label>
+                    <span class="field-index">03</span>
+                  </div>
+                  <div class="input-container textarea-container" id="message-container">
+                    <span class="input-icon textarea-icon" aria-hidden="true">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                    </span>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      class="form-control form-textarea"
+                      placeholder="Tell me about your idea..."
+                      rows="4"
+                      required
+                      aria-describedby="message-feedback"
+                    ></textarea>
+                  </div>
+                  <span class="field-feedback" id="message-feedback" role="alert" aria-live="polite"></span>
+                </div>
+
+                <!-- Terminal-Inspired Send Button -->
+                <button type="submit" id="contact-submit-btn" class="terminal-send-button" aria-label="Send Message">
+                  <span class="btn-arrow-box" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
+                  <span class="btn-label-text">Send Message</span>
+                  <span class="btn-chamfer-edge" aria-hidden="true">
+                    <span class="chamfer-hatch"></span>
+                    <span class="chamfer-dots"></span>
+                  </span>
                 </button>
+
+                <!-- Privacy Note -->
+                <div class="contact-privacy-note">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span>Your information is safe and will only be used to respond to your message.</span>
+                </div>
               </form>
             </div>
           </div>
+
+        </div>
+
+        <!-- Section Footer Bar -->
+        <div class="contact-footer-bar">
+          <a href="mailto:saketh1805@gmail.com" class="footer-email-link">saketh1805@gmail.com</a>
+          <span class="footer-center-slashes" aria-hidden="true">//</span>
+          <div class="footer-social-cluster">
+            <a href="https://github.com/sakethlingerker" target="_blank" rel="noopener noreferrer" class="footer-social-link">
+              <i class="fab fa-github" aria-hidden="true"></i> <span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com/in/sakethlingerker/" target="_blank" rel="noopener noreferrer" class="footer-social-link">
+              <i class="fab fa-linkedin" aria-hidden="true"></i> <span>LinkedIn</span>
+            </a>
+            <a href="mailto:saketh1805@gmail.com" class="footer-social-link">
+              <i class="fas fa-envelope" aria-hidden="true"></i> <span>Email</span>
+            </a>
+            <button class="back-to-top-btn" id="back-to-top" aria-label="Back to top">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- Resume Modal -->
-  <div id="resume-modal" class="modal">
-    <div class="modal-content" id="resume-modal-content">
-      <span class="close-modal" id="close-resume-modal">
-        <i class="fas fa-times"></i>
-      </span>
-      <h2 style="
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-align: center;
-            color: var(--text);
-          ">
-        My Resume
-      </h2>
-      <div id="pdf-container">
-        <!-- Desktop: PDF Iframe -->
-        <iframe id="resume-iframe" src="assets/Saketh_Lingerker_8688791352.pdf" width="100%" height="100%"
-          title="Resume PDF Preview" style="border: none" class="desktop-view">
-        </iframe>
+  <!-- ======================================================================
+       Modals & Interactive Overlays (Finder Lightbox, Project Modal, Terminal)
+       ====================================================================== -->
 
-        <!-- Mobile: Single Image Preview -->
-        <div id="mobile-preview" class="mobile-view" style="display: none">
-          <div style="text-align: center; margin-bottom: 15px">
-            <p style="color: var(--text-secondary); font-size: 0.9rem">
-              Tap image to zoom • Pinch to zoom out
-            </p>
-          </div>
-
-          <!-- Single Resume Image -->
-          <img src="src/assets/Saketh_Lingerker_8688791352.jpg" alt="Saketh Lingerker Resume" class="resume-image"
-            loading="lazy" style="
-                width: 100%;
-                border-radius: 8px;
-                cursor: zoom-in;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-              " />
-
-          <div style="
-                text-align: center;
-                margin-top: 20px;
-                padding: 15px;
-                background: rgba(139, 92, 246, 0.1);
-                border-radius: 8px;
-              ">
-            <p style="
-                  color: var(--text-secondary);
-                  margin-bottom: 15px;
-                  font-size: 0.9rem;
-                ">
-              For the best experience with clickable links:
-            </p>
-            <div style="
-                  display: flex;
-                  gap: 10px;
-                  justify-content: center;
-                  flex-wrap: wrap;
-                ">
-              <button id="open-pdf-btn" class="btn" style="padding: 10px 20px; font-size: 0.9rem">
-                Open Full PDF
-              </button>
-              <a href="assets/Saketh_Lingerker_8688791352.pdf" download class="btn btn-outline"
-                style="padding: 10px 20px; font-size: 0.9rem">
-                Download PDF
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Desktop Download Button -->
-      <a href="assets/Saketh_Lingerker_8688791352.pdf" download class="btn btn-primary mt-4 desktop-view"
-        style="margin-top: 20px; display: inline-flex">
-        <i class="fas fa-download"></i> Download Resume
-      </a>
+  <!-- Finder Image Zoom Lightbox Modal -->
+  <div id="finder-lightbox" class="finder-lightbox" aria-hidden="true">
+    <div class="finder-lightbox-backdrop" id="finder-lightbox-backdrop"></div>
+    <div class="finder-lightbox-container">
+      <button id="finder-lightbox-close" class="finder-lightbox-close" aria-label="Close zoomed view">
+        <i class="fas fa-times"></i> <span>Close</span>
+      </button>
+      <img id="finder-lightbox-img" src="" alt="Project Image Preview" class="finder-lightbox-img" />
+      <div id="finder-lightbox-caption" class="finder-lightbox-caption"></div>
     </div>
   </div>
 
-  <!-- Project Modal -->
+  <!-- Detailed Project Modal -->
   <div id="project-modal" class="modal">
     <div class="modal-content project-modal-content">
-      <button class="close-modal" id="close-project-modal" aria-label="Close modal">
-        &times;
-      </button>
+      <button class="close-modal" id="close-project-modal" aria-label="Close modal">&times;</button>
       <div class="modal-body">
-        <!-- 1. Top Tags -->
         <div id="modal-tags" class="top-tags"></div>
-
-        <!-- 2. Project Title -->
-        <h2 id="modal-title">Project Title</h2>
-
-        <!-- 3. Sections Container -->
+        <h2 id="modal-title" style="font-family: var(--font-display); margin: 15px 0;">Project Title</h2>
         <div class="modal-sections-container">
-          <!-- Problem Section -->
           <div class="modal-section" id="modal-problem-section">
             <h3 class="minimal-heading">PROBLEM</h3>
             <p id="modal-problem"></p>
           </div>
-
-          <!-- Solution/Highlights Section -->
           <div class="modal-section" id="modal-solution-section">
             <h3 class="minimal-heading">SOLUTION</h3>
             <ul id="modal-highlights" class="clean-list"></ul>
           </div>
-
-          <!-- Impact Section -->
           <div class="modal-section" id="modal-impact-section">
             <h3 class="minimal-heading">IMPACT</h3>
             <p id="modal-impact"></p>
           </div>
         </div>
-
-        <!-- 4. Bottom Links -->
-        <div id="modal-links" class="bottom-links"></div>
+        <div id="modal-links" class="bottom-links" style="margin-top: 25px;"></div>
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <span class="footer-copy">© 2025 Saketh Lingerker. All rights reserved.</span>
-      <div class="footer-center">
-        <nav class="footer-nav">
-          <a href="#home">Home</a>
-          <span>|</span>
-          <a href="#experience">Experience</a>
-          <span>|</span>
-          <a href="#skills">Skills</a>
-          <span>|</span>
-          <a href="#projects">Projects</a>
-          <span>|</span>
-          <a href="#achievements">Achievements</a>
-          <span>|</span>
-          <a href="#contact">Contact</a>
-          <span>|</span>
-          <a href="javascript:void(0)" id="privacy-policy-link">Privacy Policy</a>
-        </nav>
-      </div>
-    </div>
-  </footer>
 
-  <!-- Privacy Policy Modal -->
-  <div id="privacy-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal" id="close-privacy">&times;</span>
-      <div class="modal-body">
-        <h2 id="modal-title">Privacy Policy</h2>
-
-        <div class="modal-sections-container">
-          <p style="margin-bottom: 24px; color: var(--text-secondary)">
-            Your privacy is important. This explains how I handle your data
-            when you use the contact form.
-          </p>
-
-          <div class="modal-section">
-            <span class="minimal-heading">Information Collection</span>
-            <p>
-              I only collect information you explicitly provide via the
-              contact form:
-            </p>
-            <ul class="clean-list">
-              <li>Full Name</li>
-              <li>Email Address</li>
-              <li>Message</li>
-            </ul>
-          </div>
-
-          <div class="modal-section">
-            <span class="minimal-heading">How I Use Your Information</span>
-            <ul class="clean-list">
-              <li>Respond to your inquiries or job opportunities</li>
-              <li>Maintain professional communication records</li>
-            </ul>
-          </div>
-
-          <div class="modal-section">
-            <span class="minimal-heading">Data Protection</span>
-            <p>
-              I do not sell, trade, or transfer your information. Data is
-              handled securely through EmailJS for delivery to my inbox.
-            </p>
-          </div>
-
-          <div class="modal-section">
-            <span class="minimal-heading">Consent</span>
-            <p>
-              By using the contact form, you consent to this privacy policy.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- AI Portfolio Assistant (Ask Saketh) UI -->
-  <div id="ai-chatbot" class="ai-chatbot-container">
-    <div id="ai-chatbot-header" class="ai-chatbot-header">
-      <div class="ai-chatbot-title">
-        <div class="ai-avatar-icon"><i class="fas fa-sparkles"></i></div>
-        <div>
-          <div class="chatbot-brand-name">Ask Saketh</div>
-          <div class="chatbot-brand-sub">Technical Portfolio Assistant</div>
-        </div>
-      </div>
-      <div class="chatbot-header-actions">
-        <button id="clear-chatbot" class="chatbot-header-btn" title="Clear Conversation"><i
-            class="fas fa-rotate-right"></i></button>
-        <button id="close-chatbot" class="close-chatbot" aria-label="Close Assistant">&times;</button>
-      </div>
-    </div>
-
-    <div id="ai-chatbot-messages" class="ai-chatbot-messages">
-      <!-- Welcome Screen -->
-      <div id="chatbot-welcome-screen" class="chatbot-welcome-screen">
-        <div class="welcome-badge"><i class="fas fa-brain"></i> Verified Portfolio AI</div>
-        <h3 class="welcome-heading">Ask Saketh</h3>
-        <p class="welcome-tagline">Technical Portfolio Assistant</p>
-        <p class="welcome-desc">
-          Ask me anything about Saketh's experience, projects, research, technical skills, or career journey.<br />
-          Responses are generated using verified portfolio information.
-        </p>
-
-        <div class="suggested-prompts-label">SUGGESTED QUESTIONS</div>
-        <div class="suggested-prompts-grid">
-          <button class="prompt-chip" data-prompt="Tell me about Saketh"><i class="fas fa-user-circle"></i> Tell me
-            about Saketh</button>
-          <button class="prompt-chip" data-prompt="Why should I hire Saketh?"><i class="fas fa-bullseye"></i> Why should
-            I hire Saketh?</button>
-          <button class="prompt-chip" data-prompt="Explain the Enterprise RAG Agent"><i class="fas fa-rocket"></i>
-            Enterprise RAG Agent</button>
-          <button class="prompt-chip" data-prompt="Explain Smart Feedback Collection"><i class="fas fa-comments"></i>
-            Smart Feedback Collection</button>
-          <button class="prompt-chip" data-prompt="Tell me about IIIT Hyderabad research"><i class="fas fa-flask"></i>
-            IIIT Hyderabad Research</button>
-          <button class="prompt-chip" data-prompt="Tell me about the TCS Digital offer"><i class="fas fa-building"></i>
-            TCS Digital Offer</button>
-          <button class="prompt-chip" data-prompt="Recommend projects for AI Engineer"><i class="fas fa-brain"></i>
-            Recommend for AI Engineer</button>
-          <button class="prompt-chip" data-prompt="Recommend projects for Backend Developer"><i
-              class="fas fa-server"></i> Recommend for Backend Dev</button>
-          <button class="prompt-chip" data-prompt="Compare Enterprise RAG and Smart Feedback"><i
-              class="fas fa-scale-balanced"></i> Compare RAG & Feedback</button>
-          <button class="prompt-chip" data-prompt="Summarize Saketh's resume"><i class="fas fa-file-alt"></i> Summarize
-            Resume</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="ai-chatbot-input-container">
-      <input type="text" id="chatbot-input" placeholder="Ask Saketh a question..." aria-label="Ask Saketh" />
-      <button id="send-chatbot" aria-label="Send message">
-        <i class="fas fa-paper-plane"></i>
-      </button>
-    </div>
-  </div>
-
-  <button id="chatbot-toggle" class="chatbot-toggle" title="Chat with AI Agent" aria-label="Open Chatbot">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-    </svg>
-  </button>
 
   <!-- Interactive Terminal UI -->
   <div id="portfolio-terminal" class="terminal-container">
@@ -1282,19 +1507,279 @@
         <span class="control yellow"></span>
         <span class="control green"></span>
       </div>
-      <div class="terminal-title">saketh@portfolio: ~</div>
+      <div class="terminal-title">saketh@systems: ~</div>
       <button id="close-terminal" class="close-terminal">&times;</button>
     </div>
     <div id="terminal-output" class="terminal-output">
-      <div class="terminal-line">
-        Welcome to Saketh's Interactive Terminal v1.0.0
-      </div>
-      <div class="terminal-line">Type 'help' to see available commands.</div>
+      <div class="terminal-line">Welcome to Saketh's Systems Terminal v2.0</div>
+      <div class="terminal-line">Type 'help' to see available commands (e.g. projects, skills, research, contact).</div>
     </div>
     <div class="terminal-input-line">
-      <span class="terminal-prompt">saketh@portfolio:~ %</span>
+      <span class="terminal-prompt">saketh@systems:~ %</span>
       <input type="text" id="terminal-input" spellcheck="false" autocomplete="off" aria-label="Terminal input"
         placeholder="type 'help' or explore..." />
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Engineering Workbench Modal (<SL /> Diagnostic & Investigation Suite)
+       ====================================================================== -->
+  <div id="workbench-modal" class="workbench-modal" role="dialog" aria-modal="true" aria-labelledby="workbench-modal-title" aria-hidden="true">
+    <div class="workbench-backdrop" id="workbench-backdrop"></div>
+    <div class="workbench-dialog">
+      <!-- 1. Header -->
+      <header class="workbench-header">
+        <div class="workbench-brand">
+          <span class="workbench-logo">&lt;SL /&gt;</span>
+          <span id="workbench-modal-title" class="workbench-title">ENGINEERING WORKBENCH</span>
+          <span class="workbench-version">v1.0</span>
+        </div>
+        <div class="workbench-header-actions">
+          <span class="workbench-shortcut-pill"><kbd>⌘</kbd> <kbd>K</kbd> to open anytime</span>
+          <button id="workbench-close-btn" class="workbench-close-btn" aria-label="Close Engineering Workbench">&times;</button>
+        </div>
+      </header>
+
+      <!-- 2. Search Field Area -->
+      <div class="workbench-search-area">
+        <div class="workbench-search-wrapper">
+          <i class="fas fa-search workbench-search-icon" aria-hidden="true"></i>
+          <input type="text" id="workbench-search-input" class="workbench-search-input"
+            placeholder="Search projects, tech, concepts, tools, or ask a question..." autocomplete="off" spellcheck="false" />
+          <span class="workbench-search-shortcut-badge">⌘ K</span>
+        </div>
+        <!-- Quick "Try:" tags -->
+        <div class="workbench-try-row" aria-label="Try quick queries">
+          <span class="workbench-try-label">Try:</span>
+          <button class="workbench-try-chip" data-query="rag">rag</button>
+          <button class="workbench-try-chip" data-query="aws">aws</button>
+          <button class="workbench-try-chip" data-query="docker">docker</button>
+          <button class="workbench-try-chip" data-query="system design">system design</button>
+          <button class="workbench-try-chip" data-query="machine learning">machine learning</button>
+          <button class="workbench-try-chip" data-query="data pipeline">data pipeline</button>
+          <button class="workbench-try-chip" data-query="finance">finance</button>
+          <button class="workbench-try-chip" data-query="react">react</button>
+          <button class="workbench-try-chip" data-query="resume">resume</button>
+        </div>
+      </div>
+
+      <!-- 3. Feature Modes Grid (4 Interactive Tabs) -->
+      <nav class="workbench-modes-grid" aria-label="Workbench modes">
+        <button class="workbench-mode-card active" data-mode="projects" id="mode-btn-projects">
+          <div class="workbench-mode-top">
+            <i class="fas fa-search workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">01</span>
+          </div>
+          <h3 class="workbench-mode-name">Find Projects</h3>
+          <p class="workbench-mode-desc">Search by tech, domain, or problem</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="architecture" id="mode-btn-architecture">
+          <div class="workbench-mode-top">
+            <i class="fas fa-project-diagram workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">02</span>
+          </div>
+          <h3 class="workbench-mode-name">Inspect Architecture</h3>
+          <p class="workbench-mode-desc">Explore system components &amp; decisions</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="compare" id="mode-btn-compare">
+          <div class="workbench-mode-top">
+            <i class="fas fa-layer-group workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">03</span>
+          </div>
+          <h3 class="workbench-mode-name">Compare Projects</h3>
+          <p class="workbench-mode-desc">Side-by-side tech, features &amp; use cases</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="ask" id="mode-btn-ask">
+          <div class="workbench-mode-top">
+            <i class="fas fa-comment-dots workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">04</span>
+          </div>
+          <h3 class="workbench-mode-name">Ask About My Work</h3>
+          <p class="workbench-mode-desc">Get answers from my portfolio data</p>
+        </button>
+      </nav>
+
+      <!-- 4. Content Area (Split-View) -->
+      <div class="workbench-content-area">
+        <!-- Main Left Column -->
+        <main class="workbench-main-view">
+          <!-- View 1: Find Projects -->
+          <div id="workbench-pane-projects" class="workbench-view-pane active">
+            <div class="workbench-section-header">
+              <span class="workbench-section-title">// PROJECTS MATCHING <span id="workbench-query-display">"all"</span></span>
+              <span class="workbench-section-meta" id="workbench-results-count">10 results</span>
+            </div>
+            <div id="workbench-results-list" class="workbench-results-list" role="list">
+              <!-- Dynamically populated project items -->
+            </div>
+            <div class="workbench-suggested-area">
+              <div class="workbench-section-header">
+                <span class="workbench-section-title">// SUGGESTED QUESTIONS</span>
+              </div>
+              <div class="workbench-questions-grid">
+                <button class="workbench-question-card" data-question="How does the Enterprise RAG system work?">
+                  <i class="fas fa-comment workbench-question-icon"></i>
+                  <span class="workbench-question-text">How does the Enterprise RAG system work?</span>
+                </button>
+                <button class="workbench-question-card" data-question="Which projects use AWS and cloud deployment?">
+                  <i class="fas fa-chart-line workbench-question-icon"></i>
+                  <span class="workbench-question-text">Which projects use AWS and cloud deployment?</span>
+                </button>
+                <button class="workbench-question-card" data-question="Explain the architecture of Vehicle Insurance MLOps">
+                  <i class="fas fa-layer-group workbench-question-icon"></i>
+                  <span class="workbench-question-text">Explain the architecture of Vehicle Insurance MLOps</span>
+                </button>
+                <button class="workbench-question-card" data-question="What technologies and frameworks do you specialize in?">
+                  <i class="fas fa-book-open workbench-question-icon"></i>
+                  <span class="workbench-question-text">What technologies and frameworks do you specialize in?</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- View 2: Architecture Inspector -->
+          <div id="workbench-pane-architecture" class="workbench-view-pane">
+            <div class="workbench-arch-container">
+              <div class="workbench-arch-header">
+                <span class="workbench-section-title">// SYSTEM ARCHITECTURE INSPECTOR</span>
+                <select id="workbench-arch-project-select" class="workbench-project-select">
+                  <option value="enterprise_rag">Enterprise-Ready RAG Agent</option>
+                  <option value="mlops">Vehicle Insurance MLOps Pipeline</option>
+                </select>
+              </div>
+              <div id="workbench-arch-flow" class="workbench-arch-flow">
+                <!-- 6 Interactive Stage Nodes -->
+              </div>
+              <div id="workbench-arch-detail" class="workbench-arch-detail-card">
+                <!-- Stage Details Rendered Here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- View 3: Compare Projects -->
+          <div id="workbench-pane-compare" class="workbench-view-pane">
+            <div class="workbench-compare-container">
+              <div class="workbench-section-header">
+                <span class="workbench-section-title">// SIDE-BY-SIDE SPECIFICATION COMPARISON</span>
+              </div>
+              <div class="workbench-compare-selectors">
+                <div>
+                  <label for="compare-select-a" class="workbench-detail-label">Project A</label>
+                  <select id="compare-select-a" class="workbench-project-select" style="width: 100%;">
+                    <!-- Options populated dynamically -->
+                  </select>
+                </div>
+                <div>
+                  <label for="compare-select-b" class="workbench-detail-label">Project B</label>
+                  <select id="compare-select-b" class="workbench-project-select" style="width: 100%;">
+                    <!-- Options populated dynamically -->
+                  </select>
+                </div>
+              </div>
+              <div id="workbench-compare-matrix" class="workbench-compare-grid">
+                <!-- Side-by-side details -->
+              </div>
+            </div>
+          </div>
+
+          <!-- View 4: Ask About My Work -->
+          <div id="workbench-pane-ask" class="workbench-view-pane">
+            <div class="workbench-ask-container">
+              <div class="workbench-section-header">
+                <span class="workbench-section-title">// GROUNDED PORTFOLIO DIGITAL TWIN</span>
+                <span class="workbench-section-meta"><i class="fas fa-shield-alt" style="color: #F45135;"></i> Verified Data Only</span>
+              </div>
+              <div id="workbench-chat-messages" class="workbench-chat-messages">
+                <div class="workbench-chat-bubble assistant">
+                  Welcome to my portfolio assistant. Ask me anything about my projects, architecture decisions, tech stack, research internship at IIIT Hyderabad, or verified credentials.
+                </div>
+              </div>
+              <div class="workbench-suggested-area" style="margin-top: 6px; padding-top: 8px;">
+                <div class="workbench-try-row" style="margin-top: 0;">
+                  <span class="workbench-try-label">Ask:</span>
+                  <button class="workbench-try-chip" data-ask="Summarize your experience and TCS status">TCS Status</button>
+                  <button class="workbench-try-chip" data-ask="Tell me about your IIIT Hyderabad research">IIIT Research</button>
+                  <button class="workbench-try-chip" data-ask="What is your highest impact ML project?">Best ML Project</button>
+                  <button class="workbench-try-chip" data-ask="Which certifications do you hold?">Certifications</button>
+                </div>
+              </div>
+              <div class="workbench-chat-input-bar" style="display: flex; gap: 8px; margin-top: 10px; align-items: center;">
+                <input type="text" id="workbench-ask-input" class="workbench-search-input" style="padding: 9px 14px; font-size: 13px;" placeholder="Ask about TCS status, IIIT research, projects, architecture, certifications..." autocomplete="off" spellcheck="false" />
+                <button type="button" id="workbench-ask-submit-btn" class="workbench-tag accent-tag" style="height: 38px; padding: 0 16px; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 12px;">
+                  <span>Send</span> <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- Right Sidebar: Quick Actions & Recent Searches -->
+        <aside class="workbench-sidebar-area">
+          <div>
+            <div class="workbench-section-header">
+              <span class="workbench-section-title" style="color: #F45135;">// QUICK ACTIONS</span>
+            </div>
+            <div class="workbench-quick-list">
+              <button class="workbench-quick-item" id="quick-action-terminal">
+                <span class="workbench-quick-label"><i class="fas fa-terminal"></i> Open Terminal</span>
+                <span class="workbench-quick-key">T</span>
+              </button>
+              <a href="assets/Saketh_Lingerker_8688791352.pdf" target="_blank" rel="noopener" class="workbench-quick-item" id="quick-action-resume">
+                <span class="workbench-quick-label"><i class="fas fa-file-alt"></i> View Résumé</span>
+                <span class="workbench-quick-key">R</span>
+              </a>
+              <a href="https://github.com/sakethlingerker" target="_blank" rel="noopener" class="workbench-quick-item" id="quick-action-github">
+                <span class="workbench-quick-label"><i class="fab fa-github"></i> Open GitHub</span>
+                <span class="workbench-quick-key">G</span>
+              </a>
+              <a href="https://www.linkedin.com/in/sakethlingerker/" target="_blank" rel="noopener" class="workbench-quick-item" id="quick-action-linkedin">
+                <span class="workbench-quick-label"><i class="fab fa-linkedin-in"></i> Open LinkedIn</span>
+                <span class="workbench-quick-key">L</span>
+              </a>
+              <a href="mailto:saketh1805@gmail.com" class="workbench-quick-item" id="quick-action-email">
+                <span class="workbench-quick-label"><i class="fas fa-envelope"></i> Send an Email</span>
+                <span class="workbench-quick-key">E</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <div class="workbench-section-header">
+              <span class="workbench-section-title">// RECENT</span>
+              <button class="workbench-recent-clear-btn" id="workbench-recent-clear">Clear</button>
+            </div>
+            <div class="workbench-recent-list" id="workbench-recent-list">
+              <button class="workbench-recent-item" data-query="RAG architecture">
+                <span>RAG architecture</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+              <button class="workbench-recent-item" data-query="MLOps pipeline">
+                <span>MLOps pipeline</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+              <button class="workbench-recent-item" data-query="AWS projects">
+                <span>AWS projects</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- 5. Footer Status Bar -->
+      <footer class="workbench-footer">
+        <div class="workbench-footer-keys">
+          <span><kbd style="color: #F45135;">&uarr;&darr;</kbd> Navigate</span>
+          <span><kbd style="color: #F45135;">&crarr;</kbd> Select</span>
+          <span><kbd style="color: #F45135;">esc</kbd> Close</span>
+        </div>
+        <div class="workbench-footer-tagline">
+          <span class="workbench-status-dot">&bull;</span> SEARCH &middot; EXPLORE &middot; INSPECT &middot; COMPARE &middot; ASK
+        </div>
+      </footer>
     </div>
   </div>
 
@@ -1302,33 +1787,7 @@
     <i class="fas fa-terminal"></i>
   </button>
 
-  <!-- Skill Assessment Quiz Modal -->
-  <div id="quiz-modal" class="modal">
-    <div class="modal-content quiz-content">
-      <span class="close-modal" id="close-quiz">&times;</span>
-      <h2 class="modal-title">Project Matchmaker</h2>
-      <p class="modal-subtitle">
-        Find the project that matches your interests!
-      </p>
-
-      <div id="quiz-container" class="quiz-container">
-        <!-- Questions will be injected here -->
-        <div id="quiz-question" class="quiz-question"></div>
-        <div id="quiz-options" class="quiz-options"></div>
-      </div>
-
-      <div id="quiz-result" class="quiz-result hidden">
-        <h3>Your Perfect Match:</h3>
-        <div id="matched-project-display" class="matched-project-display"></div>
-        <button id="restart-quiz" class="btn primary-btn mt-4">
-          Try Again
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- External JS (at end for performance) -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- JavaScript Entry Point -->
   <script type="module" src="src/scripts/main.js"></script>
 </body>
 

@@ -24,8 +24,8 @@
 @import './components/modals.css';
 @import './components/modal-enhancements.css';
 @import './components/loading.css';
-@import './components/chatbot.css';
 @import './components/terminal.css';
+@import './components/workbench.css';
 @import './components/quiz.css';
 @import './components/cursor.css';
 @import './components/toast.css';
@@ -34,3 +34,6 @@
 /* Utilities */
 @import './utils/animations.css';
 @import './utils/print.css';
+
+/* Master Editorial Cinematic System */
+@import './editorial-cinematic.css';

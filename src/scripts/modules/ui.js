@@ -16,15 +16,7 @@ export function initUI() {
     });
   }
 
-  // Tilt effect for cards
-  if (typeof VanillaTilt !== 'undefined') {
-    VanillaTilt.init(document.querySelectorAll(".project-card, .experience-card, .skill-card"), {
-      max: 10,
-      speed: 400,
-      glare: true,
-      "max-glare": 0.2,
-    });
-  }
+
 
   // Smooth scrolling
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -71,15 +63,17 @@ export function initUI() {
   const mobileMenuClose = document.getElementById("mobile-menu-close");
   const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
 
-  if (mobileMenuToggle) mobileMenuToggle.addEventListener("click", () => mobileNavOverlay.classList.add("active"));
-  if (mobileMenuClose) mobileMenuClose.addEventListener("click", () => mobileNavOverlay.classList.remove("active"));
-  document.querySelectorAll(".mobile-nav-links a").forEach((link) => {
-    link.addEventListener("click", () => mobileNavOverlay.classList.remove("active"));
-  });
+  if (mobileMenuToggle && mobileNavOverlay) mobileMenuToggle.addEventListener("click", () => mobileNavOverlay.classList.add("active"));
+  if (mobileMenuClose && mobileNavOverlay) mobileMenuClose.addEventListener("click", () => mobileNavOverlay.classList.remove("active"));
+  if (mobileNavOverlay) {
+    document.querySelectorAll(".mobile-nav-links a").forEach((link) => {
+      link.addEventListener("click", () => mobileNavOverlay.classList.remove("active"));
+    });
+  }
 
   // Close mobile menu on resize to desktop
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 900 && mobileNavOverlay.classList.contains('active')) {
+    if (window.innerWidth > 900 && mobileNavOverlay && mobileNavOverlay.classList.contains('active')) {
       mobileNavOverlay.classList.remove('active');
     }
   });
@@ -270,5 +264,334 @@ export function initUI() {
         document.body.style.overflow = "auto";
       });
     }
+  });
+
+  // Initialize Skills Connected Ecosystem paths & animations
+  initSkillsEcosystemConnectors();
+}
+
+function initSkillsEcosystemConnectors() {
+  const svg = document.querySelector('.skills-connector-svg');
+  if (!svg) return;
+
+  const hub = document.getElementById('skills-hub');
+  const nodeAi = document.getElementById('node-ai-ml');
+  const nodeSe = document.getElementById('node-soft-eng');
+  const nodeDa = document.getElementById('node-data-anal');
+
+  // Main paths
+  const pathHubAi = document.getElementById('path-hub-ai');
+  const pathHubSe = document.getElementById('path-hub-se');
+  const pathHubDa = document.getElementById('path-hub-da');
+  const pathMobileSpine = document.getElementById('path-mobile-spine');
+
+  // Main static nodes indicators
+  const dotHubAi = document.getElementById('node-dot-hub-ai');
+  const dotHubSe = document.getElementById('node-dot-hub-se');
+  const dotHubDa = document.getElementById('node-dot-hub-da');
+
+  function updateEcosystemGeometry() {
+    const isMobile = window.innerWidth <= 767;
+    const svgRect = svg.getBoundingClientRect();
+
+    if (!hub || !nodeAi || !nodeSe || !nodeDa) return;
+
+    const rectHub = hub.getBoundingClientRect();
+    const rectAi = nodeAi.getBoundingClientRect();
+    const rectSe = nodeSe.getBoundingClientRect();
+    const rectDa = nodeDa.getBoundingClientRect();
+
+    // Hub center coordinates relative to SVG
+    const xh = rectHub.left + rectHub.width / 2 - svgRect.left;
+    const yh = rectHub.top + rectHub.height / 2 - svgRect.top;
+
+    // AI & ML card bottom-center coordinates
+    const x_ai = rectAi.left + rectAi.width / 2 - svgRect.left;
+    const y_ai = rectAi.bottom - svgRect.top;
+
+    // SE card top-right (or right center) coordinates
+    const x_se = rectSe.right - svgRect.left;
+    const y_se = rectSe.top + rectSe.height / 2 - svgRect.top;
+    const x_se_top = rectSe.left + rectSe.width / 2 - svgRect.left;
+    const y_se_top = rectSe.top - svgRect.top;
+
+    // DA card top-left coordinates
+    const x_da = rectDa.left - svgRect.left;
+    const y_da = rectDa.top + rectDa.height / 2 - svgRect.top;
+    const x_da_top = rectDa.left + rectDa.width / 2 - svgRect.left;
+    const y_da_top = rectDa.top - svgRect.top;
+
+    if (!isMobile) {
+      // 1. Draw main paths
+      const d_hub_ai = `M ${xh} ${yh} L ${x_ai} ${y_ai}`;
+      pathHubAi.setAttribute('d', d_hub_ai);
+
+      const d_hub_se = `M ${xh} ${yh} C ${xh - 60} ${yh + 20}, ${x_se + 60} ${y_se}, ${x_se} ${y_se}`;
+      pathHubSe.setAttribute('d', d_hub_se);
+
+      const d_hub_da = `M ${xh} ${yh} C ${xh + 60} ${yh + 20}, ${x_da - 60} ${y_da}, ${x_da} ${y_da}`;
+      pathHubDa.setAttribute('d', d_hub_da);
+
+      // Position static visual dots at center of connector curves
+      try {
+        if (dotHubAi) {
+          const len = pathHubAi.getTotalLength();
+          if (len > 0) {
+            const pt = pathHubAi.getPointAtLength(len * 0.5);
+            dotHubAi.setAttribute('cx', pt.x);
+            dotHubAi.setAttribute('cy', pt.y);
+          }
+        }
+        if (dotHubSe) {
+          const len = pathHubSe.getTotalLength();
+          if (len > 0) {
+            const pt = pathHubSe.getPointAtLength(len * 0.5);
+            dotHubSe.setAttribute('cx', pt.x);
+            dotHubSe.setAttribute('cy', pt.y);
+          }
+        }
+        if (dotHubDa) {
+          const len = pathHubDa.getTotalLength();
+          if (len > 0) {
+            const pt = pathHubDa.getPointAtLength(len * 0.5);
+            dotHubDa.setAttribute('cx', pt.x);
+            dotHubDa.setAttribute('cy', pt.y);
+          }
+        }
+      } catch (err) {
+        // SVG paths might not have computed length yet
+      }
+
+      // 2. Draw branch paths for each individual skill dots
+      const drawBranch = (dotId, pathId, startX, startY, side) => {
+        const dot = document.getElementById(dotId);
+        const path = document.getElementById(pathId);
+        if (!dot || !path) return;
+        const dotRect = dot.getBoundingClientRect();
+        const xd = dotRect.left + dotRect.width / 2 - svgRect.left;
+        const yd = dotRect.top + dotRect.height / 2 - svgRect.top;
+
+        let d_branch = '';
+        if (side === 'left') {
+          d_branch = `M ${startX} ${startY} C ${startX - 35} ${startY}, ${xd + 35} ${yd}, ${xd} ${yd}`;
+        } else {
+          d_branch = `M ${startX} ${startY} C ${startX + 35} ${startY}, ${xd - 35} ${yd}, ${xd} ${yd}`;
+        }
+        path.setAttribute('d', d_branch);
+      };
+
+      // AI branches: left
+      const x_ai_left = rectAi.left - svgRect.left;
+      const y_ai_left = rectAi.top + rectAi.height / 2 - svgRect.top;
+      drawBranch('dot-ai-ml1', 'path-ai-ml1', x_ai_left, y_ai_left, 'left');
+      drawBranch('dot-ai-ml2', 'path-ai-ml2', x_ai_left, y_ai_left, 'left');
+      drawBranch('dot-ai-ml3', 'path-ai-ml3', x_ai_left, y_ai_left, 'left');
+
+      // AI branches: right
+      const x_ai_right = rectAi.right - svgRect.left;
+      const y_ai_right = rectAi.top + rectAi.height / 2 - svgRect.top;
+      drawBranch('dot-ai-tf', 'path-ai-tf', x_ai_right, y_ai_right, 'right');
+      drawBranch('dot-ai-pt', 'path-ai-pt', x_ai_right, y_ai_right, 'right');
+      drawBranch('dot-ai-sl', 'path-ai-sl', x_ai_right, y_ai_right, 'right');
+      drawBranch('dot-ai-kr', 'path-ai-kr', x_ai_right, y_ai_right, 'right');
+
+      // SE branches: left
+      const x_se_left = rectSe.left - svgRect.left;
+      const y_se_left = rectSe.top + rectSe.height / 2 - svgRect.top;
+      drawBranch('dot-se-py', 'path-se-py', x_se_left, y_se_left, 'left');
+      drawBranch('dot-se-ja', 'path-se-ja', x_se_left, y_se_left, 'left');
+      drawBranch('dot-se-c', 'path-se-c', x_se_left, y_se_left, 'left');
+      drawBranch('dot-se-js', 'path-se-js', x_se_left, y_se_left, 'left');
+
+      // SE branches: right
+      const x_se_right = rectSe.right - svgRect.left;
+      const y_se_right = rectSe.top + rectSe.height / 2 - svgRect.top;
+      drawBranch('dot-se-ht', 'path-se-ht', x_se_right, y_se_right, 'right');
+      drawBranch('dot-se-cs', 'path-se-cs', x_se_right, y_se_right, 'right');
+      drawBranch('dot-se-bs', 'path-se-bs', x_se_right, y_se_right, 'right');
+      drawBranch('dot-se-fk', 'path-se-fk', x_se_right, y_se_right, 'right');
+
+      // DA branches: left
+      const x_da_left = rectDa.left - svgRect.left;
+      const y_da_left = rectDa.top + rectDa.height / 2 - svgRect.top;
+      drawBranch('dot-da-pd', 'path-da-pd', x_da_left, y_da_left, 'left');
+      drawBranch('dot-da-np', 'path-da-np', x_da_left, y_da_left, 'left');
+      drawBranch('dot-da-sq', 'path-da-sq', x_da_left, y_da_left, 'left');
+      drawBranch('dot-da-ss', 'path-da-ss', x_da_left, y_da_left, 'left');
+
+      // DA branches: right
+      const x_da_right = rectDa.right - svgRect.left;
+      const y_da_right = rectDa.top + rectDa.height / 2 - svgRect.top;
+      drawBranch('dot-da-eda', 'path-da-eda', x_da_right, y_da_right, 'right');
+      drawBranch('dot-da-da', 'path-da-da', x_da_right, y_da_right, 'right');
+      drawBranch('dot-da-mp', 'path-da-mp', x_da_right, y_da_right, 'right');
+      drawBranch('dot-da-pl', 'path-da-pl', x_da_right, y_da_right, 'right');
+      drawBranch('dot-da-pb', 'path-da-pb', x_da_right, y_da_right, 'right');
+
+    } else {
+      // Mobile vertical journey spine
+      const d_spine = `M ${xh} ${y_ai} L ${xh} ${yh} L ${xh} ${Math.min(y_se_top, y_da_top)}`;
+      pathMobileSpine.setAttribute('d', d_spine);
+    }
+  }
+
+  // Hover animations & One-shot signal trigger function
+  function triggerOneShotSignal(pathId, color) {
+    const pathElement = document.getElementById(pathId);
+    if (!pathElement) return;
+
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("r", "3");
+    circle.setAttribute("fill", color);
+    circle.style.pointerEvents = "none";
+
+    const anim = document.createElementNS("http://www.w3.org/2000/svg", "animateMotion");
+    anim.setAttribute("dur", "0.6s");
+    anim.setAttribute("repeatCount", "1");
+    anim.setAttribute("fill", "remove");
+
+    const mpath = document.createElementNS("http://www.w3.org/2000/svg", "mpath");
+    mpath.setAttribute("href", `#${pathId}`);
+
+    anim.appendChild(mpath);
+    circle.appendChild(anim);
+    svg.appendChild(circle);
+
+    try {
+      anim.beginElement();
+    } catch (e) {
+      // browser compatibility fallback
+    }
+
+    setTimeout(() => {
+      circle.remove();
+    }, 650);
+  }
+
+  function bindEcosystemEvents() {
+    const bindNodeHover = (nodeEl, mainPathEl, activeColor, branchPaths) => {
+      if (!nodeEl || !mainPathEl) return;
+      nodeEl.addEventListener('mouseenter', () => {
+        mainPathEl.classList.add('active');
+        branchPaths.forEach(id => {
+          const path = document.getElementById(id);
+          if (path) path.classList.add('active');
+        });
+      });
+
+      nodeEl.addEventListener('mouseleave', () => {
+        mainPathEl.classList.remove('active');
+        branchPaths.forEach(id => {
+          const path = document.getElementById(id);
+          if (path) path.classList.remove('active');
+        });
+      });
+    };
+
+    const aiBranches = ['path-ai-ml1', 'path-ai-ml2', 'path-ai-ml3', 'path-ai-tf', 'path-ai-pt', 'path-ai-sl', 'path-ai-kr'];
+    const seBranches = ['path-se-py', 'path-se-ja', 'path-se-c', 'path-se-js', 'path-se-ht', 'path-se-cs', 'path-se-bs', 'path-se-fk'];
+    const daBranches = ['path-da-pd', 'path-da-np', 'path-da-sq', 'path-da-ss', 'path-da-eda', 'path-da-da', 'path-da-mp', 'path-da-pl', 'path-da-pb'];
+
+    bindNodeHover(nodeAi, pathHubAi, 'var(--accent-purple)', aiBranches);
+    bindNodeHover(nodeSe, pathHubSe, 'var(--accent-blue)', seBranches);
+    bindNodeHover(nodeDa, pathHubDa, 'var(--accent-green)', daBranches);
+
+    // Bind skill labels to highlight path and fire a one-shot signal dot
+    document.querySelectorAll('.skill-label-item').forEach(label => {
+      const pathId = label.getAttribute('data-path');
+      const wrapper = label.closest('.skills-node-wrapper');
+      if (!wrapper) return;
+      const containerClass = wrapper.className;
+      let color = 'var(--accent-blue)';
+      if (containerClass.includes('container-ai')) color = 'var(--accent-purple)';
+      if (containerClass.includes('container-da')) color = 'var(--accent-green)';
+
+      label.addEventListener('mouseenter', () => {
+        const path = document.getElementById(pathId);
+        if (path) path.classList.add('active');
+        triggerOneShotSignal(pathId, color);
+      });
+
+      label.addEventListener('mouseleave', () => {
+        const path = document.getElementById(pathId);
+        if (path) path.classList.remove('active');
+      });
+    });
+  }
+
+  // Debounced draw logic for performance and handling layout transitions
+  let resizeTimeout = null;
+  function debouncedDraw() {
+    if (resizeTimeout) clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      updateEcosystemGeometry();
+    }, 100);
+  }
+
+  window.addEventListener('resize', debouncedDraw);
+  window.addEventListener('orientationchange', debouncedDraw);
+
+  // Stagger draw to allow page offsets, fonts, and grid rendering to complete
+  setTimeout(updateEcosystemGeometry, 100);
+  setTimeout(updateEcosystemGeometry, 500);
+  setTimeout(updateEcosystemGeometry, 1000);
+
+  // ResizeObserver on the right ecosystem column to handle reactive grid changes instantly
+  if ('ResizeObserver' in window) {
+    const rightCol = document.querySelector('.skills-right-col');
+    if (rightCol) {
+      const colObserver = new ResizeObserver(() => {
+        debouncedDraw();
+      });
+      colObserver.observe(rightCol);
+    }
+  }
+
+  // IntersectionObserver to pause/draw when section is scrolled out of viewport
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Trigger drawing when entering
+        if (entry.isIntersecting) {
+          updateEcosystemGeometry();
+        }
+      });
+    }, { threshold: 0.1 });
+    const skillsEl = document.getElementById('skills') || document.getElementById('toolkit');
+    if (skillsEl) observer.observe(skillsEl);
+  }
+
+  bindEcosystemEvents();
+  initJourneyTimeline();
+}
+
+export function initJourneyTimeline() {
+  const toggleButtons = document.querySelectorAll('.timeline-toggle-btn');
+  toggleButtons.forEach((btn) => {
+    if (btn.dataset.bound) return;
+    btn.dataset.bound = "true";
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const controlsId = btn.getAttribute('aria-controls');
+      const target = document.getElementById(controlsId);
+      if (!target) return;
+
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const willExpand = !isExpanded;
+      btn.setAttribute('aria-expanded', String(willExpand));
+
+      if (willExpand) {
+        target.removeAttribute('hidden');
+        target.style.display = 'block';
+      } else {
+        target.setAttribute('hidden', '');
+        target.style.display = 'none';
+      }
+
+      const textSpan = btn.querySelector('.toggle-text');
+      if (textSpan) {
+        textSpan.textContent = willExpand ? 'Hide details' : 'View details';
+      }
+    });
   });
 }

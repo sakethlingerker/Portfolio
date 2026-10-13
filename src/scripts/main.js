@@ -3,50 +3,53 @@
 // import '../css/main.css';
 import { initTheme } from "./modules/theme.js";
 import "./preloader.js"; // Import preloader to run its IIFE
-import { initUI } from "./modules/ui.js";
+import { initUI, initJourneyTimeline } from "./modules/ui.js";
 import { initEmail } from "./modules/email.js";
-import { showToast, setupGlobalErrorHandling } from "./modules/utils.js";
-import { initChatbot } from "./modules/chatbot.js";
+import { setupGlobalErrorHandling } from "./modules/utils.js";
 import { initTerminal } from "./modules/terminal.js";
+import { initWorkbench } from "./modules/workbench.js";
 import { initProjects } from "./modules/projects.js";
 import { initMatchmaker } from "./modules/matchmaker.js";
 import { initCertifications } from "./modules/certifications.js";
-import { initMagneticButtons } from "./modules/magnetic-buttons.js";
-import { initCustomCursor } from "./modules/custom-cursor.js";
+import { initCinematicUI } from "./modules/cinematic.js";
 import { toast } from "./modules/toast.js";
 
-document.addEventListener("DOMContentLoaded", async function () {
+async function initApp() {
   // Initialize AOS
   if (window.AOS) AOS.init();
 
   setupGlobalErrorHandling();
 
+  initCinematicUI();
   initTheme();
   initUI();
+  initJourneyTimeline();
   try {
-    await initEmail(); // Now async
+    await initEmail();
   } catch (error) {
     console.error("EmailJS initialization failed:", error);
   }
   await initProjects();
-  await initChatbot();
+  await initWorkbench();
   await initMatchmaker();
   initCertifications();
   initTerminal();
-  initMagneticButtons();
-  initCustomCursor();
 
   // Register Service Worker
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       navigator.serviceWorker
         .register("./sw.js")
-        .then((registration) => {
-          // console.log('SW registered: ', registration);
-        })
         .catch((registrationError) => {
-          // console.log('SW registration failed: ', registrationError);
+          console.warn('SW registration skipped: ', registrationError);
         });
     });
   }
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  initApp();
+}
+

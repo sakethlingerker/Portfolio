@@ -8,6 +8,16 @@ import { loadProjectsData, getProjectsList, getProjectById } from './projects-da
 let projectsMap = {};
 let activeProjectId = 'enterprise_rag';
 let activeCategory = 'all';
+let searchQuery = '';
+
+export function getAssetUrl(path) {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  const base = import.meta.env?.BASE_URL || './';
+  const cleanPath = path.startsWith('./') ? path.slice(2) : (path.startsWith('/') ? path.slice(1) : path);
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+  return `${normalizedBase}${cleanPath}`;
+}
 
 export async function initProjects() {
   const finderWindow = document.querySelector('.finder-window');
@@ -21,14 +31,36 @@ export async function initProjects() {
     return;
   }
 
+  // Update Dynamic Counts
+  updateCategoryCounts();
+
   // Bind Event Listeners
   setupCategoryFilters();
+  setupSearchInput();
   setupMobileToggle();
   setupImageLightbox();
+  setupStudioToggle();
 
   // Initial Render
   renderSidebarList();
   renderProjectDetail(activeProjectId);
+}
+
+function updateCategoryCounts() {
+  const list = Object.values(projectsMap);
+  const countAll = document.querySelector('#count-all');
+  const countFeatured = document.querySelector('#count-featured');
+  const countAiMl = document.querySelector('#count-ai-ml');
+  const countFullstack = document.querySelector('#count-fullstack');
+  const countMlops = document.querySelector('#count-mlops');
+  const countDataScience = document.querySelector('#count-datascience');
+
+  if (countAll) countAll.textContent = list.length;
+  if (countFeatured) countFeatured.textContent = list.filter((p) => p.isFeatured === true).length;
+  if (countAiMl) countAiMl.textContent = list.filter((p) => p.category === 'ai-ml').length;
+  if (countFullstack) countFullstack.textContent = list.filter((p) => p.category === 'fullstack').length;
+  if (countMlops) countMlops.textContent = list.filter((p) => p.category === 'mlops').length;
+  if (countDataScience) countDataScience.textContent = list.filter((p) => p.category === 'datascience').length;
 }
 
 function setupCategoryFilters() {
@@ -40,6 +72,16 @@ function setupCategoryFilters() {
       activeCategory = btn.getAttribute('data-category');
       renderSidebarList();
     });
+  });
+}
+
+function setupSearchInput() {
+  const searchInput = document.querySelector('#finder-project-search');
+  if (!searchInput) return;
+
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = (e.target.value || '').toLowerCase().trim();
+    renderSidebarList();
   });
 }
 
@@ -96,7 +138,7 @@ function openImageLightbox(imgSrc, title) {
   lightboxImg.src = imgSrc;
   lightboxImg.alt = title;
   if (caption) {
-    caption.textContent = `${title} — Click outside to close`;
+    caption.textContent = `${title} — Click outside or Esc to close`;
   }
 
   lightbox.classList.add('active');
@@ -104,11 +146,128 @@ function openImageLightbox(imgSrc, title) {
   document.body.classList.add('finder-lightbox-open');
 }
 
+function setupStudioToggle() {
+  const toggleBtn = document.querySelector('#toggle-finder-studio');
+  const studioSection = document.querySelector('#projects');
+  const closeDot = document.querySelector('#close-finder-dot');
+
+  if (toggleBtn && studioSection) {
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isCollapsed = studioSection.classList.contains('studio-collapsed');
+      if (isCollapsed) {
+        studioSection.classList.remove('studio-collapsed');
+        toggleBtn.innerHTML = '<i class="fas fa-times"></i> Close System Studio';
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        studioSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        studioSection.classList.add('studio-collapsed');
+        toggleBtn.innerHTML = '<i class="fas fa-folder-open"></i> Launch System Studio';
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  if (closeDot && studioSection) {
+    closeDot.addEventListener('click', (e) => {
+      e.preventDefault();
+      studioSection.classList.add('studio-collapsed');
+      if (toggleBtn) {
+        toggleBtn.innerHTML = '<i class="fas fa-folder-open"></i> Launch System Studio';
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Keyboard shortcut: Escape closes studio when open
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && studioSection && !studioSection.classList.contains('studio-collapsed')) {
+      const lightbox = document.getElementById('finder-lightbox');
+      const workbenchModal = document.getElementById('workbench-modal');
+      const isWorkbenchOpen = workbenchModal && workbenchModal.classList.contains('active');
+      const isLightboxOpen = lightbox && lightbox.classList.contains('active');
+      if (!isLightboxOpen && !isWorkbenchOpen) {
+        studioSection.classList.add('studio-collapsed');
+        if (toggleBtn) {
+          toggleBtn.innerHTML = '<i class="fas fa-folder-open"></i> Launch System Studio';
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+    }
+  });
+}
+
+export function openProjectInStudio(projectId) {
+  if (!projectId) return;
+
+  const studioSection = document.querySelector('#projects');
+  const toggleBtn = document.querySelector('#toggle-finder-studio');
+
+  // 1. Reveal System Studio section if collapsed
+  if (studioSection && studioSection.classList.contains('studio-collapsed')) {
+    studioSection.classList.remove('studio-collapsed');
+    if (toggleBtn) {
+      toggleBtn.innerHTML = '<i class="fas fa-times"></i> Close System Studio';
+      toggleBtn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  // 2. Reset filters so the target project is guaranteed to be in the list
+  activeCategory = 'all';
+  searchQuery = '';
+  const searchInput = document.querySelector('#finder-project-search');
+  if (searchInput) searchInput.value = '';
+  document.querySelectorAll('.finder-cat-btn').forEach((btn) => {
+    btn.classList.toggle('active', btn.getAttribute('data-category') === 'all');
+  });
+  renderSidebarList();
+
+  // 3. Select project and render details
+  if (projectsMap[projectId]) {
+    selectProject(projectId);
+  } else {
+    console.warn(`Projects: Unknown project ID "${projectId}"`);
+  }
+
+  // 4. Scroll smoothly to the studio section
+  if (studioSection) {
+    studioSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // 5. If mobile drawer is open, close it
+  const sidebar = document.querySelector('#finder-sidebar');
+  if (sidebar && sidebar.classList.contains('mobile-open')) {
+    sidebar.classList.remove('mobile-open');
+    const mobileToggle = document.querySelector('#finder-mobile-toggle');
+    if (mobileToggle) {
+      mobileToggle.innerHTML = `<i class="fas fa-list"></i> <span>Projects</span>`;
+    }
+  }
+}
+
+// Global reference for seamless interop
+if (typeof window !== 'undefined') {
+  window.openProjectInStudio = openProjectInStudio;
+}
+
 function getFilteredProjects() {
   const allProjects = Object.values(projectsMap);
-  if (activeCategory === 'all') return allProjects;
-  if (activeCategory === 'featured') return allProjects.filter((p) => p.isFeatured === true);
-  return allProjects.filter((p) => p.category === activeCategory);
+  return allProjects.filter((p) => {
+    let matchCat = true;
+    if (activeCategory === 'featured') {
+      matchCat = p.isFeatured === true;
+    } else if (activeCategory !== 'all') {
+      matchCat = p.category === activeCategory;
+    }
+
+    let matchSearch = true;
+    if (searchQuery) {
+      const haystack = `${p.title} ${p.subtitle || ''} ${p.overview || ''} ${p.category || ''} ${(p.tags || []).join(' ')} ${(p.techStackDetailed || []).map((t) => t.name).join(' ')}`.toLowerCase();
+      matchSearch = haystack.includes(searchQuery);
+    }
+
+    return matchCat && matchSearch;
+  });
 }
 
 function renderSidebarList() {
@@ -130,7 +289,7 @@ function renderSidebarList() {
   listContainer.innerHTML = filtered
     .map((p) => {
       const isActive = p.id === activeProjectId ? 'active' : '';
-      const thumb = p.heroImage || 'assets/projects/enterprise_rag_agent.png';
+      const thumb = getAssetUrl(p.heroImage || 'assets/projects/enterprise_rag_agent.png');
 
       return `
         <div class="finder-nav-item ${isActive}" data-id="${p.id}" tabindex="0" role="button" aria-label="Select ${p.title}">
@@ -354,13 +513,13 @@ function renderProjectDetail(id) {
   // Update Breadcrumb
   const breadcrumb = document.querySelector('#finder-breadcrumb');
   if (breadcrumb) {
-    breadcrumb.textContent = `Projects / ${p.title}`;
+    breadcrumb.innerHTML = `<span class="finder-bc-prefix">Projects / </span><span class="finder-bc-name">${p.title}</span>`;
   }
 
   const workspaceContainer = document.querySelector('#finder-detail-container');
   if (!workspaceContainer) return;
 
-  const heroImg = p.heroImage || 'assets/projects/enterprise_rag_agent.png';
+  const heroImg = getAssetUrl(p.heroImage || 'assets/projects/enterprise_rag_agent.png');
 
   // Tech stack shield badges
   const techBadgesHtml = p.techStackDetailed
@@ -411,7 +570,7 @@ function renderProjectDetail(id) {
           if (!rel) return '';
           return `
         <div class="finder-related-card" data-rel-id="${rel.id}" tabindex="0" role="button" aria-label="View related project ${rel.title}">
-          <img src="${rel.heroImage || 'assets/projects/enterprise_rag_agent.png'}" alt="${rel.title}" class="finder-related-thumb" />
+          <img src="${getAssetUrl(rel.heroImage || 'assets/projects/enterprise_rag_agent.png')}" alt="${rel.title}" class="finder-related-thumb" />
           <div class="finder-related-info">
             <div class="finder-related-title">${rel.title}</div>
             <span class="finder-related-cat">${rel.category}</span>

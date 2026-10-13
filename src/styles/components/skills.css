@@ -1,157 +1,922 @@
-/* Skills Section */
-.skills {
-    padding: 60px 0;
-    position: relative;
-    margin-left: 40px;
-    margin-right: 40px;
+/* ==========================================================================
+   Radial Tech Ecosystem CSS Style Rules
+   ========================================================================== */
+
+:root {
+  --accent-purple: #8b5cf6;
+  --accent-purple-light: rgba(139, 92, 246, 0.4);
+  --accent-blue: #3b82f6;
+  --accent-blue-light: rgba(59, 130, 246, 0.4);
+  --accent-green: #10b981;
+  --accent-green-light: rgba(16, 185, 129, 0.4);
+  --glass-bg: rgba(24, 24, 27, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  --text-main: #fafafa;
+  --text-muted: #a1a1aa;
 }
 
-.skills-grid {
+body.light-mode {
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+  --text-main: #1f2937;
+  --text-muted: #4b5563;
+}
+
+/* Base section wrapper */
+.skills-ecosystem-section {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+  background-color: var(--dark-bg);
+}
+
+.skills-ecosystem-section .container {
+  max-width: 1440px;
+  width: 100%;
+}
+
+body.light-mode .skills-ecosystem-section {
+  background-color: #f8fafc; /* Very pale gray background */
+}
+
+/* Ambient gradients */
+.skills-ambient-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.glow-sphere {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.12;
+  transition: all 0.5s ease;
+}
+
+body.light-mode .glow-sphere {
+  opacity: 0.15;
+  filter: blur(100px);
+}
+
+.glow-purple {
+  top: -10%;
+  left: 30%;
+  width: 450px;
+  height: 450px;
+  background: var(--accent-purple);
+}
+
+.glow-blue {
+  bottom: 10%;
+  left: 10%;
+  width: 400px;
+  height: 400px;
+  background: var(--accent-blue);
+}
+
+.glow-green {
+  bottom: 10%;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  background: var(--accent-green);
+}
+
+/* Container Split Layout */
+.skills-split-layout {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .skills-split-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+/* Left Column Styling */
+.skills-left-col {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .skills-left-col {
+    position: sticky;
+    top: 130px;
+  }
+}
+
+.skills-pre-title {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.skills-editorial-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.gradient-accent-text {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skills-glowing-line {
+  position: relative;
+  width: 80px;
+  height: 2px;
+  margin-bottom: 2rem;
+}
+
+.skills-glowing-line .line-path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, rgba(139, 92, 246, 0.1) 100%);
+}
+
+.skills-glowing-line .line-glow-dot {
+  position: absolute;
+  top: -3px;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.skills-editorial-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* Right Column & Ecosystem Container */
+.skills-right-col {
+  position: relative;
+  width: 100%;
+}
+
+.skills-ecosystem-wrapper {
+  position: relative;
+  width: 100%;
+  height: 780px;
+  border-radius: 24px;
+  overflow: visible;
+}
+
+/* Connection SVG Layer */
+.skills-connector-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+}
+
+.main-connector-path,
+.branch-path {
+  transition: stroke 0.4s ease, stroke-width 0.4s ease, opacity 0.4s ease;
+}
+
+.main-connector-path.active {
+  stroke-width: 2.2px;
+  opacity: 0.8 !important;
+}
+
+.branch-path.active {
+  stroke-width: 1.8px;
+  opacity: 0.7 !important;
+}
+
+/* Mobile-only SVG path and circle visibility */
+.mobile-only-path,
+.mobile-only-circle {
+  display: none;
+}
+
+.pulse-signal-dot {
+  pointer-events: none;
+}
+
+.connection-indicator-dot {
+  stroke-width: 1.5;
+  transition: r 0.3s ease, fill 0.3s ease;
+}
+
+.connection-indicator-dot.stroke-purple { stroke: var(--accent-purple); }
+.connection-indicator-dot.stroke-blue { stroke: var(--accent-blue); }
+.connection-indicator-dot.stroke-green { stroke: var(--accent-green); }
+
+/* Central Core Hub */
+.skills-central-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hub-concentric-rings {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hub-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(139, 92, 246, 0.15);
+  pointer-events: none;
+}
+
+body.light-mode .hub-ring {
+  border-color: rgba(139, 92, 246, 0.08);
+}
+
+.hub-ring-outer {
+  width: 180px;
+  height: 180px;
+  animation: rotateCounterClockwise 45s linear infinite;
+  border-style: dotted;
+}
+
+.hub-ring-mid {
+  width: 140px;
+  height: 140px;
+  animation: rotateClockwise 35s linear infinite;
+}
+
+.hub-ring-inner {
+  width: 100px;
+  height: 100px;
+  border-style: solid;
+  border-color: rgba(139, 92, 246, 0.05);
+}
+
+.hub-center-glass {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(24, 24, 27, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(139, 92, 246, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: hubPulse 4s ease-in-out infinite;
+}
+
+body.light-mode .hub-center-glass {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 0 20px rgba(139, 92, 246, 0.08);
+}
+
+.hub-code-icon {
+  font-family: var(--font-mono, monospace);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* Organic Technology Node wrappers */
+.skills-node-wrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.skills-node-wrapper * {
+  pointer-events: auto;
+}
+
+/* Position Category Containers on Desktop */
+.container-ai {
+  left: 50%;
+  top: 18%;
+  transform: translate(-50%, -50%);
+  width: 620px;
+  z-index: 4;
+}
+
+.container-se {
+  left: -2%;
+  top: 64%;
+  transform: translateY(-50%);
+  width: 510px;
+  z-index: 4;
+}
+
+.container-da {
+  right: -2%;
+  top: 64%;
+  transform: translateY(-50%);
+  width: 510px;
+  z-index: 4;
+}
+
+/* Individual Branch List Placement on Desktop */
+.skills-branch {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 185px;
+  z-index: 3;
+}
+
+.container-se .skills-branch,
+.container-da .skills-branch {
+  width: 140px;
+}
+
+/* Shift right/left branch of bottom cards to avoid central hub overlap */
+.container-se .branch-right {
+  align-self: flex-start;
+  margin-top: 65px;
+}
+
+.container-da .branch-left {
+  align-self: flex-start;
+  margin-top: 65px;
+}
+
+/* Node Cards */
+.ecosystem-node-card {
+  position: relative;
+  width: 220px;
+  z-index: 5;
+}
+
+.container-se .ecosystem-node-card,
+.container-da .ecosystem-node-card {
+  width: 210px;
+}
+
+/* Irregular Polygon Node Cards */
+.ecosystem-node-card {
+  position: relative;
+  width: 220px;
+  padding: 30px 24px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+  z-index: 5;
+}
+
+/* Organic Shapes via border-radius values matching reference style */
+.card-purple {
+  border-radius: 40% 40% 35% 35% / 28% 28% 55% 55%;
+  animation: floatNodeTop 6s ease-in-out infinite;
+}
+
+.card-blue {
+  border-radius: 35% 55% 35% 55% / 55% 35% 55% 35%;
+  animation: floatNodeLeft 7s ease-in-out infinite;
+}
+
+.card-green {
+  border-radius: 55% 35% 55% 35% / 35% 55% 35% 55%;
+  animation: floatNodeRight 8s ease-in-out infinite;
+}
+
+/* Elevation on hover */
+.ecosystem-node-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+}
+
+.card-purple:hover {
+  box-shadow: 0 25px 45px rgba(139, 92, 246, 0.22);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.card-blue:hover {
+  box-shadow: 0 25px 45px rgba(59, 130, 246, 0.22);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.card-green:hover {
+  box-shadow: 0 25px 45px rgba(16, 185, 129, 0.22);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Anchor Point for dynamic line routing (placed in middle of card) */
+.anchor-point {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Icons within cards */
+.node-icon-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.node-icon-bg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.08);
+}
+
+.bg-purple {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--accent-purple);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+.bg-blue {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--accent-blue);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.bg-green {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.node-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0;
+}
+
+/* Skills branches */
+
+.skill-label-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.branch-left .skill-label-item {
+  justify-content: flex-end;
+}
+
+.branch-right .skill-label-item {
+  justify-content: flex-start;
+}
+
+/* Text label styles */
+.skill-text {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Anchor dot markers on the endpoints of connector branches */
+.skill-dot-anchor {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--text-muted);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.branch-left .skill-dot-anchor {
+  margin-left: 10px;
+}
+
+.branch-right .skill-dot-anchor {
+  margin-right: 10px;
+}
+
+/* Skill Hover Interactions */
+.skill-label-item:hover .skill-text {
+  color: var(--text-main);
+}
+
+.container-ai .skill-label-item:hover .skill-text {
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+}
+
+.container-se .skill-label-item:hover .skill-text {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+.container-da .skill-label-item:hover .skill-text {
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.skill-label-item:hover .skill-dot-anchor {
+  opacity: 1;
+  transform: scale(1.6);
+}
+
+.container-ai .skill-label-item:hover .skill-dot-anchor {
+  background-color: var(--accent-purple);
+  box-shadow: 0 0 8px var(--accent-purple);
+}
+
+.container-se .skill-label-item:hover .skill-dot-anchor {
+  background-color: var(--accent-blue);
+  box-shadow: 0 0 8px var(--accent-blue);
+}
+
+.container-da .skill-label-item:hover .skill-dot-anchor {
+  background-color: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+}
+
+/* Wide Floating Dock Panel (Development Toolbox) */
+.toolbox-dock-section {
+  grid-column: 1 / -1;
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.toolbox-dock-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.toolbox-dock-header h3 {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.toolbox-dock-header p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.toolbox-dock-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 24px 40px;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.toolbox-dock-card:hover {
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+.toolbox-dock-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.toolbox-dock-item {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toolbox-dock-item i {
+  font-size: 2.2rem;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.toolbox-dock-svg-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.toolbox-dock-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+/* Dock hover states */
+.toolbox-dock-item:hover {
+  transform: translateY(-6px);
+}
+
+.toolbox-dock-item:hover .toolbox-dock-label {
+  color: var(--text-main);
+}
+
+.toolbox-dock-item:hover i,
+.toolbox-dock-item:hover .toolbox-dock-svg-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.3));
+}
+
+.toolbox-dock-divider {
+  width: 1px;
+  height: 40px;
+  background-color: var(--glass-border);
+}
+
+/* Responsive Table / Landscape Rules */
+@media (max-width: 1023px) {
+  .skills-ecosystem-wrapper {
+    transform: scale(0.82);
+    transform-origin: top center;
+    margin-bottom: -130px; /* Offset the scale height shrink */
+  }
+  .toolbox-dock-divider {
+    display: none;
+  }
+}
+
+/* Responsive Mobile Journey Stack Layout */
+@media (max-width: 767px) {
+  .skills-ecosystem-section {
+    padding: 60px 0;
+  }
+
+  .skills-ecosystem-wrapper {
+    height: auto;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-}
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem 0;
+    transform: none !important;
+    margin-bottom: 0 !important;
+  }
 
-@media (min-width: 768px) {
-    .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-}
+  /* Hide connection lines on mobile and show simple spine */
+  .skills-connector-svg {
+    height: 100%;
+    z-index: 1;
+  }
 
-@media (min-width: 1100px) {
-    .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
+  .branch-path,
+  .main-connector-path,
+  .connection-indicator-dot,
+  .pulse-signal-dot {
+    display: none !important;
+  }
 
-.skill-card {
-    background: rgba(24, 24, 27, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 35px;
-    transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  .mobile-only-path,
+  .mobile-only-circle {
+    display: block !important;
+  }
+
+  /* Stack wrappers vertically */
+  .skills-node-wrapper {
+    display: flex !important;
     position: relative;
-    overflow: hidden;
-}
-
-/* Light mode styling for skill cards */
-body.light-mode .skill-card {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.skill-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
-    border-color: rgba(139, 92, 246, 0.4);
-    background: rgba(24, 24, 27, 0.85);
-}
-
-/* Light mode hover */
-body.light-mode .skill-card:hover {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
-    border-color: rgba(139, 92, 246, 0.3);
-}
-
-.skill-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    transform: none !important;
     width: 100%;
-    height: 4px;
-    background: var(--accent);
-    opacity: 0;
-    transition: var(--transition);
-}
+    max-width: 420px;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    z-index: 2;
+  }
 
-.skill-card:hover::before {
-    opacity: 1;
-}
+  /* Reset absolute positioning for node cards on mobile */
+  #node-ai-ml,
+  #node-soft-eng,
+  #node-data-anal {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 220px !important;
+    margin: 0 auto;
+  }
 
-.skill-icon {
-    font-size: 2.8rem;
-    color: var(--accent);
-    margin-bottom: 25px;
-    display: flex;
-    justify-content: center;
-}
-
-.skill-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 25px;
-    text-align: center;
-    color: var(--accent-light);
-}
-
-.skill-items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-}
-
-@media (max-width: 767px) {
-    .skill-items {
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: center;
-    }
-
-    .skill-tag {
-        font-size: 0.92rem;
-        padding: 7px 14px;
-    }
-}
-
-.skill-tag {
-    background: rgba(37, 99, 235, 0.1);
-    color: var(--accent);
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: var(--transition);
+  .skills-central-hub {
     position: relative;
+    top: auto;
+    left: auto;
+    transform: none !important;
+    margin: 1.5rem 0;
+    z-index: 2;
+  }
+
+  /* Order nodes into a vertical stack: AI -> Hub -> SE -> DA */
+  .container-ai {
+    order: 1;
+  }
+
+  .skills-central-hub {
+    order: 2;
+  }
+
+  .container-se {
+    order: 3;
+  }
+
+  .container-da {
+    order: 4;
+  }
+
+  /* Simplify branch elements into vertical list stack on mobile */
+  .skills-branch {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    margin-top: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  .branch-left,
+  .branch-right {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .skill-label-item {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid var(--glass-border) !important;
+    padding: 8px 16px !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  body.light-mode .skill-label-item {
+    background: rgba(0, 0, 0, 0.03) !important;
+  }
+
+  .skill-dot-anchor {
+    display: none !important;
+  }
+
+  .skill-text {
+    font-size: 0.82rem;
+  }
+
+  /* Organic Card dimensions adjusted for mobile */
+  .ecosystem-node-card {
+    width: 200px;
+    padding: 24px 20px;
+    animation: none !important; /* Turn off floating animations to save paint cycles */
+  }
+
+  /* Toolbox Dock mobile adaptions */
+  .toolbox-dock-card {
+    padding: 20px;
+  }
+
+  .toolbox-dock-items {
+    gap: 1rem;
+  }
+
+  .toolbox-dock-item {
+    min-width: 80px;
+  }
+
+  .toolbox-dock-item i {
+    font-size: 1.8rem;
+  }
+
+  .toolbox-dock-svg-icon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .toolbox-dock-divider {
+    display: none;
+  }
 }
 
-.skill-tag:hover {
-    background: var(--accent);
-    color: white;
-    transform: translateY(-3px);
+/* Respect user's prefers-reduced-motion media query */
+@media (prefers-reduced-motion: reduce) {
+  .hub-ring-outer,
+  .hub-ring-mid,
+  .hub-center-glass,
+  .card-purple,
+  .card-blue,
+  .card-green,
+  .pulse-signal-dot,
+  .mobile-only-circle {
+    animation: none !important;
+  }
 }
 
-/* Tooltip Styles */
-.skill-tag[data-tooltip]:not([data-tooltip=""]):hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 120%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--card-bg);
-    color: var(--text);
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--accent);
-    z-index: 10;
-    pointer-events: none;
-    opacity: 0;
-    animation: fadeInTooltip 0.3s forwards;
+/* ==========================================================================
+   Keyframes Key Animation Frames
+   ========================================================================== */
+@keyframes rotateClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-@keyframes fadeInTooltip {
-    to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(-5px);
-    }
+@keyframes rotateCounterClockwise {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes hubPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(139, 92, 246, 0.15);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.22), 0 0 28px rgba(139, 92, 246, 0.28);
+  }
+}
+
+@keyframes floatNodeTop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes floatNodeLeft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes floatNodeRight {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }

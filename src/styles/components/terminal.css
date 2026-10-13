@@ -324,7 +324,7 @@ body #portfolio-terminal .terminal-input-line input {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Toggle Button - Matches Chatbot Style */
+/* Toggle Button */
 .terminal-toggle {
     position: fixed;
     bottom: 30px;
@@ -400,7 +400,6 @@ body.light-mode .terminal-toggle {
 }
 
 /* Mobile */
-/* Mobile - Matches chatbot toggle dimensions and position */
 @media (max-width: 768px) {
     #portfolio-terminal.terminal-container {
         width: 95vw;

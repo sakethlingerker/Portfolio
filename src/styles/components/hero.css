@@ -1,35 +1,42 @@
 /* ==========================================================================
-   HERO SECTION (CLEAN PREMIUM VISUAL ANCHOR DESIGN)
+   HERO SECTION (ALIGNED TO DARK CINEMATIC EDITORIAL THEME)
    ========================================================================== */
 
 .hero {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
-    padding: 120px 0 80px 0;
+    justify-content: center;
+    padding: clamp(70px, 8vh, 88px) 0 clamp(24px, 3vh, 36px) 0;
+    box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    background-color: var(--dark-bg);
-    background-image: radial-gradient(rgba(139, 92, 246, 0.14) 1px, transparent 1px);
-    background-size: 24px 24px;
+    background-color: var(--bg, #090c0b);
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+    background-size: 44px 44px;
 }
 
 body.light-mode .hero,
 body.light .hero {
-    background-color: var(--dark-bg);
-    background-image: radial-gradient(rgba(99, 102, 241, 0.12) 1px, transparent 1px);
+    background-color: #f8faf9;
+    background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
 }
 
 .hero::before {
     content: "";
     position: absolute;
-    top: 10%;
-    left: -5%;
+    top: 5%;
+    left: -8%;
     width: 480px;
     height: 480px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%);
-    filter: blur(80px);
+    background: radial-gradient(circle, rgba(244, 81, 53, 0.02) 0%, transparent 70%);
+    filter: blur(90px);
     pointer-events: none;
     z-index: 0;
 }
@@ -39,11 +46,11 @@ body.light .hero {
     position: absolute;
     bottom: 5%;
     right: -5%;
-    width: 520px;
-    height: 520px;
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
-    filter: blur(85px);
+    background: radial-gradient(circle, rgba(244, 81, 53, 0.015) 0%, transparent 70%);
+    filter: blur(90px);
     pointer-events: none;
     z-index: 0;
 }
@@ -60,156 +67,318 @@ body.light .hero {
     align-items: center;
 }
 
-/* Eyebrow Header */
+.hero-text {
+    min-width: 0;
+}
+
+/* Eyebrow Header: Muted gray text with subtle coral status indicator */
 .hero-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    font-weight: 700;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.74rem;
+    font-weight: 500;
     letter-spacing: 0.12em;
-    color: var(--accent);
-    margin-bottom: 12px;
+    color: #A5AAA6;
+    margin-bottom: 14px;
+    text-transform: uppercase;
 }
 
 .hero-eyebrow-dot {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
+    background: #F45135;
+    box-shadow: 0 0 6px rgba(244, 81, 53, 0.5);
     flex-shrink: 0;
 }
 
-/* Main Name Heading (SEO H1) */
+body.light-mode .hero-eyebrow,
+body.light .hero-eyebrow {
+    color: #626864;
+}
+
+body.light-mode .hero-eyebrow-dot,
+body.light .hero-eyebrow-dot {
+    background: #e03e23;
+    box-shadow: 0 0 6px rgba(224, 62, 35, 0.4);
+}
+
 .hero-name {
-    font-size: clamp(2.8rem, 4.8vw, 4.2rem);
+    font-family: var(--font-display, 'Syne', sans-serif);
+    font-size: clamp(2.4rem, 4.2vw, 3.8rem);
     font-weight: 800;
     line-height: 1.08;
-    color: var(--text);
+    color: #F1F1ED;
     letter-spacing: -0.025em;
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
+}
+
+.hero-name-first,
+.hero-name-last {
+    display: inline;
 }
 
 body.light-mode .hero-name,
 body.light .hero-name {
-    color: #0f172a;
+    color: #121915;
 }
 
-/* Role Title Badge */
+/* Role Title Badge: Off-white role text with subtle coral icon accent */
 .hero-role-badge {
-    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
-    font-weight: 700;
-    color: var(--accent-light);
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+    font-weight: 500;
+    color: #F1F1ED;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 9px;
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
 }
 
 .hero-role-badge i {
-    font-size: 1.05rem;
-    color: var(--accent-light);
+    font-size: 0.95rem;
+    color: #F45135;
     flex-shrink: 0;
 }
 
 body.light-mode .hero-role-badge,
 body.light .hero-role-badge {
-    color: var(--accent);
+    color: #121915;
 }
 
 body.light-mode .hero-role-badge i,
 body.light .hero-role-badge i {
-    color: var(--accent);
+    color: #e03e23;
 }
 
 /* Positioning Statement */
 .hero-description {
-    font-size: clamp(0.98rem, 1.3vw, 1.1rem);
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0 0 12px 0;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    color: #A5AAA6;
+    line-height: 1.65;
+    margin: 0 0 10px 0;
     max-width: 580px;
     font-weight: 400;
 }
 
 body.light-mode .hero-description,
 body.light .hero-description {
-    color: #475569;
+    color: #4a594d;
 }
 
 /* Secondary Subtitle Line */
 .hero-secondary-line {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    opacity: 0.88;
-    margin-bottom: 28px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.88rem;
+    color: #A5AAA6;
+    margin-bottom: 20px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .hero-secondary-line i {
     font-size: 0.95rem;
-    color: var(--accent-light);
+    color: #F45135;
     flex-shrink: 0;
 }
 
 body.light-mode .hero-secondary-line,
 body.light .hero-secondary-line {
-    color: #64748b;
-    opacity: 1;
+    color: #5d6d60;
 }
 
-/* CTAs Action Buttons */
+body.light-mode .hero-secondary-line i,
+body.light .hero-secondary-line i {
+    color: #e03e23;
+}
+
+/* ==========================================================================
+   Terminal-Inspired Hero Action Buttons (Option 3: Terminal Style)
+   ========================================================================== */
+
+@keyframes terminalCursorBlink {
+    0%, 49% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
+}
+
 .hero-actions {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 32px;
+    gap: 14px;
+    margin-bottom: 34px;
     flex-wrap: wrap;
 }
 
-.hero-cta-primary {
+/* Base Terminal Button */
+.hero-actions .hero-cta-primary,
+.hero-actions .hero-cta-secondary {
+    display: inline-flex;
+    align-items: stretch;
+    height: 48px;
+    min-height: 48px;
+    border-radius: 6px;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.86rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    overflow: hidden;
+    background: #131614;
+    position: relative;
+    user-select: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.hero-actions .hero-cta-primary:focus-visible,
+.hero-actions .hero-cta-secondary:focus-visible {
+    outline: 2px solid #F45135;
+    outline-offset: 3px;
+}
+
+/* 1. Primary CTA: explore_projects */
+.hero-actions .hero-cta-primary {
+    border: 1px solid #F45135 !important;
+    background: #131614 !important;
+    color: #F1F1ED !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 14px rgba(244, 81, 53, 0.15) !important;
+}
+
+.hero-actions .terminal-accent-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F45135;
+    color: #090c0b;
+    width: 42px;
+    min-width: 42px;
+    height: 100%;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease;
+}
+
+.hero-actions .terminal-prompt-icon {
+    display: block;
+    stroke: #090c0b;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-actions .terminal-content {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 13px 26px;
-    font-weight: 600;
-    border-radius: 12px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 0 16px 0 14px;
+    white-space: nowrap;
+    color: #F1F1ED;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.86rem;
+    font-weight: 500;
+    line-height: 1;
 }
 
-.hero-cta-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+/* Coral Blinking Cursor */
+.hero-actions .terminal-cursor {
+    color: #F45135;
+    font-weight: 700;
+    margin-left: 2px;
+    display: inline-block;
+    animation: terminalCursorBlink 1.05s infinite steps(1);
 }
 
-.hero-cta-secondary {
+/* Primary Hover & Active */
+.hero-actions .hero-cta-primary:hover {
+    border-color: #FF664C !important;
+    background: #181d19 !important;
+    box-shadow: 0 4px 18px rgba(244, 81, 53, 0.25) !important;
+    transform: translateY(-1px) !important;
+}
+
+.hero-actions .hero-cta-primary:hover .terminal-accent-block {
+    background: #FF664C;
+}
+
+.hero-actions .hero-cta-primary:hover .terminal-prompt-icon {
+    transform: translateX(3px);
+}
+
+.hero-actions .hero-cta-primary:active {
+    transform: translateY(0) !important;
+}
+
+/* 2. Secondary CTA: resume.pdf */
+.hero-actions .hero-cta-secondary {
+    border: 1px solid #343A36 !important;
+    background: #131614 !important;
+    color: #F1F1ED !important;
+    padding: 0 !important;
+    align-items: center;
+    box-shadow: none !important;
+}
+
+.hero-actions .hero-cta-secondary .terminal-content {
+    padding: 0 18px;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 13px 24px;
-    font-weight: 600;
-    border-radius: 12px;
-    transition: transform 0.2s ease, background 0.2s ease;
+    gap: 9px;
+    color: #F1F1ED;
 }
 
-.hero-cta-secondary:hover {
-    transform: translateY(-2px);
+.hero-actions .terminal-doc-icon {
+    display: block;
+    stroke: #A5AAA6;
+    color: #A5AAA6;
+    flex-shrink: 0;
+    transition: stroke 0.2s ease, color 0.2s ease;
 }
 
-/* Professional Proof Strip */
+.hero-actions .terminal-cursor-subtle {
+    color: #F45135;
+    animation: terminalCursorBlink 1.05s infinite steps(1);
+    animation-delay: 0.3s;
+}
+
+/* Secondary Hover & Active */
+.hero-actions .hero-cta-secondary:hover {
+    border-color: #F45135 !important;
+    background: #181d19 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+    transform: translateY(-1px) !important;
+}
+
+.hero-actions .hero-cta-secondary:hover .terminal-doc-icon {
+    stroke: #F1F1ED;
+    color: #F1F1ED;
+}
+
+.hero-actions .hero-cta-secondary:hover .terminal-content {
+    color: #ffffff;
+}
+
+.hero-actions .hero-cta-secondary:active {
+    transform: translateY(0) !important;
+}
+
+/* Professional Proof Strip: Matching shared surface, border, and typography tokens */
 .hero-proof-strip {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 14px 20px;
-    background: rgba(24, 24, 27, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
+    padding: 12px 20px;
+    background: var(--bg-surface, #101513);
+    border: 1px solid var(--line, #222b26);
+    border-radius: 10px;
     backdrop-filter: blur(12px);
     width: fit-content;
     max-width: 100%;
@@ -218,7 +387,7 @@ body.light .hero-secondary-line {
 body.light-mode .hero-proof-strip,
 body.light .hero-proof-strip {
     background: #ffffff;
-    border-color: rgba(0, 0, 0, 0.08);
+    border-color: #d8dfd6;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
 }
 
@@ -226,57 +395,74 @@ body.light .hero-proof-strip {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    min-width: 0;
 }
 
-.proof-title,
-.proof-val {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--text);
+.hero-proof-strip .proof-title,
+.proof-item .proof-title {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.86rem !important;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #F1F1ED;
     white-space: nowrap;
+    margin: 0;
+    letter-spacing: normal;
 }
 
-body.light-mode .proof-title,
-body.light-mode .proof-val,
-body.light .proof-title,
-body.light .proof-val {
-    color: #0f172a;
+body.light-mode .hero-proof-strip .proof-title,
+body.light .hero-proof-strip .proof-title {
+    color: #121915;
 }
 
-.proof-val {
-    color: var(--accent-light);
+.hero-proof-strip .proof-val,
+.proof-item .proof-val {
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.96rem !important;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #F45135 !important;
+    white-space: nowrap;
+    margin: 0;
+    letter-spacing: -0.01em;
 }
 
-body.light-mode .proof-val,
-body.light .proof-val {
-    color: var(--accent);
+body.light-mode .hero-proof-strip .proof-val,
+body.light .hero-proof-strip .proof-val {
+    color: #e03e23 !important;
 }
 
 .proof-subtitle {
-    font-size: 0.72rem;
-    color: var(--text-secondary);
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 0.70rem;
+    color: #A5AAA6;
     white-space: nowrap;
+    letter-spacing: 0.03em;
 }
 
 body.light-mode .proof-subtitle,
 body.light .proof-subtitle {
-    color: #64748b;
+    color: #56634f;
 }
 
 .proof-divider {
     width: 1px;
-    height: 26px;
-    background: rgba(255, 255, 255, 0.1);
+    height: 24px;
+    background: var(--line, #222b26);
     flex-shrink: 0;
 }
 
 body.light-mode .proof-divider,
 body.light .proof-divider {
-    background: rgba(0, 0, 0, 0.1);
+    background: #d8dfd6;
 }
 
-/* Right Column: Profile Image as the Main Visual Anchor */
+/* ==========================================================================
+   Cinematic Animated Hero Portrait (Futuristic HUD System)
+   ========================================================================== */
+
 .hero-visual {
+    min-width: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -284,95 +470,529 @@ body.light .proof-divider {
     width: 100%;
 }
 
-.profile-card-wrapper {
+.cinematic-portrait-wrapper {
     position: relative;
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+/* Left Technical Telemetry Axis & Nodes */
+.portrait-telemetry-axis {
+    position: absolute;
+    left: -14px;
+    top: 24px;
+    bottom: 24px;
+    width: 1px;
+    background: rgba(244, 81, 53, 0.25);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 360px;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.6s ease;
 }
 
-.profile-card-frame {
+.telemetry-node {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #F45135;
+    box-shadow: 0 0 8px rgba(244, 81, 53, 0.6);
+    flex-shrink: 0;
+}
+
+.telemetry-node.node-mid {
+    width: 7px;
+    height: 7px;
+    box-shadow: 0 0 10px rgba(244, 81, 53, 0.9);
+}
+
+.telemetry-tick {
+    width: 7px;
+    height: 1px;
+    background: rgba(244, 81, 53, 0.45);
+    flex-shrink: 0;
+}
+
+/* Main HUD Card Frame */
+.cinematic-portrait-card {
+    position: relative;
     width: 100%;
-    max-width: 350px;
-    aspect-ratio: 1 / 1;
-    border-radius: 26px;
+    aspect-ratio: 1 / 1.06;
+    background: #0B0E0D;
+    border: none;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), inset 0 0 32px rgba(0, 0, 0, 0.8);
+    overflow: visible;
+}
+
+body.light-mode .cinematic-portrait-card {
+    background: #ffffff;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+/* Inner Clipping Media Frame (Precision Chamfered Polygon Silhouette) */
+.portrait-media-frame {
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(
+        32px 0,
+        calc(100% - 32px) 0,
+        100% 32px,
+        100% calc(100% - 32px),
+        calc(100% - 32px) 100%,
+        32px 100%,
+        0 calc(100% - 32px),
+        0 32px
+    );
     overflow: hidden;
-    border: 2px solid rgba(139, 92, 246, 0.28);
-    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.45);
-    background: var(--card-bg);
-    transition: transform 0.35 ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
-body.light-mode .profile-card-frame,
-body.light .profile-card-frame {
-    border-color: rgba(99, 102, 241, 0.25);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.09);
-}
-
-.profile-card-frame:hover {
-    transform: translateY(-6px);
-    border-color: var(--accent);
-    box-shadow: 0 30px 65px rgba(139, 92, 246, 0.28);
-}
-
-.profile-img {
+/* Layer 1: Base Blurred Photograph (Silhouette & Pre-Reveal Foundation) */
+.cinematic-portrait-base {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center center;
     display: block;
+    filter: blur(18px) brightness(0.18);
+    opacity: 0.2;
+    transform: scale(1.02);
+    transition: filter 0.8s ease, brightness 0.8s ease, opacity 0.8s ease;
 }
 
-/* Status Indicator Chip */
-.profile-status-indicator {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 14px;
-    padding: 7px 16px;
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.25);
-    border-radius: 50px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #10b981;
+/* Layer 2: Particle Matrix Canvas (Stages 2 & 3: Particle Assembly & Vector Contours) */
+.portrait-particle-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.4s ease;
 }
 
-.status-pulse-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 8px #10b981;
-    animation: statusPulse 2s infinite ease-in-out;
+/* Layer 3: Progressive Reveal Photograph (Unmasked by Horizontal Scan) */
+.portrait-reveal-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+    overflow: hidden;
+    clip-path: inset(0 0 100% 0);
 }
 
-@keyframes statusPulse {
-    0% { transform: scale(0.95); opacity: 0.8; }
-    50% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(0.95); opacity: 0.8; }
+.portrait-reveal-layer .cinematic-portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    filter: blur(2.5px);
+    transform: scale(1.01);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+/* Layer 4: Digital Grid Overlay */
+.portrait-grid-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+    background-image: 
+        linear-gradient(rgba(244, 81, 53, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(244, 81, 53, 0.08) 1px, transparent 1px);
+    background-size: 26px 26px;
+    opacity: 0.45;
+    transition: opacity 0.8s ease;
+}
+
+/* Layer 5: Horizontal Glowing Laser Scan Beam (Stage 4) */
+.portrait-scan-beam {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 40px;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    transform: translateY(-40px);
+    will-change: transform, opacity;
+}
+
+.scan-beam-line {
+    height: 2.5px;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(244, 81, 53, 0.4) 0%, #FFFFFF 30%, #F45135 65%, rgba(244, 81, 53, 0.4) 100%);
+    box-shadow: 0 0 14px #F45135, 0 0 28px rgba(244, 81, 53, 0.95), 0 0 5px #FFFFFF;
+}
+
+.scan-beam-glow {
+    height: 38px;
+    width: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(244, 81, 53, 0.35) 0%,
+        rgba(244, 81, 53, 0.06) 65%,
+        transparent 100%
+    );
 }
 
 /* ==========================================================================
-   MOBILE RESPONSIVE FLEX ORDERING & ICON ALIGNMENT REFINEMENTS
+   High-Precision Glowing Orange HUD Frame Overlay
+   ========================================================================== */
+.hud-border-svg {
+    position: absolute;
+    inset: -14px;
+    width: calc(100% + 28px);
+    height: calc(100% + 28px);
+    z-index: 6;
+    pointer-events: none;
+    overflow: visible;
+}
+
+/* 1. Base Thin Chamfered Frame Outline */
+.hud-frame-path {
+    fill: none;
+    stroke: rgba(255, 69, 26, 0.38);
+    stroke-width: 1.2px;
+}
+
+/* 2. Distinctive Clipped/Chamfered Glowing Corner Brackets */
+.hud-corner-bracket {
+    fill: none;
+    stroke: #FF451A;
+    stroke-width: 3.5px;
+    stroke-linecap: square;
+    filter: drop-shadow(0 0 3.5px #FF451A) drop-shadow(0 0 7.5px rgba(255, 69, 26, 0.48));
+    animation: hudCornerPulse 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes hudCornerPulse {
+    0% {
+        stroke: #FF451A;
+        filter: drop-shadow(0 0 2.5px #FF451A) drop-shadow(0 0 6px rgba(255, 69, 26, 0.4));
+    }
+    100% {
+        stroke: #FF5A36;
+        filter: drop-shadow(0 0 4px #FF451A) drop-shadow(0 0 9px rgba(255, 69, 26, 0.55));
+    }
+}
+
+/* 3. Traveling Animated Light Beams along the perimeter */
+.hud-beam-segment {
+    fill: none;
+    stroke: #FFA085;
+    stroke-width: 2.2px;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 3px #FF451A);
+}
+
+.hud-beam-segment.beam-1 {
+    stroke-dasharray: 60 1150;
+    animation: hudBeamTravel1 7s linear infinite;
+}
+
+.hud-beam-segment.beam-2 {
+    stroke-dasharray: 90 1150;
+    stroke-dashoffset: -550;
+    animation: hudBeamTravel2 9s linear infinite;
+}
+
+@keyframes hudBeamTravel1 {
+    0% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -1210; }
+}
+
+@keyframes hudBeamTravel2 {
+    0% { stroke-dashoffset: -550; }
+    100% { stroke-dashoffset: -1760; }
+}
+
+/* 4. Left & Right Circuit Traces */
+.hud-circuit-line {
+    stroke: rgba(255, 69, 26, 0.45);
+    stroke-width: 1px;
+}
+
+.hud-circuit-line.left-rail {
+    stroke: rgba(255, 69, 26, 0.55);
+    stroke-dasharray: 6 3;
+}
+
+.hud-circuit-line.right-inner-rail {
+    stroke: rgba(255, 69, 26, 0.45);
+    stroke-width: 1px;
+}
+
+.hud-circuit-stem {
+    stroke: #FF451A;
+    stroke-width: 1.6px;
+    filter: drop-shadow(0 0 4px #FF451A);
+}
+
+/* 5. Glowing Circuit Nodes */
+.hud-node-circle {
+    fill: #FF451A;
+    filter: drop-shadow(0 0 5px #FF451A) drop-shadow(0 0 10px rgba(255, 69, 26, 0.75));
+    animation: hudNodePulse 3s ease-in-out infinite;
+}
+
+.hud-node-core {
+    fill: #FFFFFF;
+}
+
+.hud-node-square {
+    fill: #FF451A;
+    filter: drop-shadow(0 0 3px #FF451A);
+}
+
+.hud-node-dot {
+    fill: #FF451A;
+    filter: drop-shadow(0 0 4px #FF451A);
+}
+
+.hud-node-circle.pulse-1 { animation-delay: 0s; }
+.hud-node-circle.pulse-2 { animation-delay: 1.5s; }
+.hud-node-circle.pulse-3 { animation-delay: 0.8s; }
+
+@keyframes hudNodePulse {
+    0%, 100% {
+        opacity: 0.85;
+    }
+    50% {
+        opacity: 1;
+        filter: drop-shadow(0 0 7px #FF451A) drop-shadow(0 0 14px rgba(255, 69, 26, 0.95));
+    }
+}
+
+/* Top-Left Plain Text Monogram: <SL /> (Zero Background Box, Directly on Page) */
+.hud-tag-sl {
+    position: absolute;
+    top: 22px;
+    left: 24px;
+    z-index: 7;
+    pointer-events: none;
+    font-family: var(--font-display, 'Syne', sans-serif);
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hud-tag-sl .hud-bracket {
+    color: #FF451A;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 69, 26, 0.85), 0 0 20px rgba(255, 69, 26, 0.5);
+}
+
+.hud-tag-sl .hud-logo-text {
+    color: #FFFFFF;
+    font-weight: 800;
+    margin: 0 2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+body.light-mode .hud-tag-sl .hud-logo-text {
+    color: #121915;
+    text-shadow: none;
+}
+
+/* Portrait Motto Stack: THINK. BUILD. EVOLVE. (Text-Only, Static, No Background) */
+.hud-motto-stack {
+    position: absolute;
+    right: 28px;
+    bottom: 34px;
+    z-index: 7;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+}
+
+.hud-motto-line {
+    font-family: var(--font-display, 'Syne', sans-serif);
+    font-size: 13.5px;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0.16em;
+    color: #F0F0EB;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.9);
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.hud-motto-dot {
+    color: #FF451A;
+    font-weight: 900;
+    text-shadow: 0 0 6px rgba(255, 69, 26, 0.75);
+}
+
+body.light-mode .hud-motto-line {
+    color: #121915;
+    text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9);
+}
+
+/* ==========================================================================
+   Coordinated 8-Stage Animation State Transitions
    ========================================================================== */
 
-@media (max-width: 1024px) {
+/* Stage 1 — Dark blurred silhouette */
+.cinematic-portrait-wrapper.stage-1 .cinematic-portrait-base {
+    filter: blur(18px) brightness(0.18);
+    opacity: 0.2;
+}
+.cinematic-portrait-wrapper.stage-1 .hud-corner {
+    opacity: 0.55;
+}
+
+/* Stage 2-4 — Particle emergence & scan reveal */
+.cinematic-portrait-wrapper.stage-2 .cinematic-portrait-base,
+.cinematic-portrait-wrapper.stage-3 .cinematic-portrait-base,
+.cinematic-portrait-wrapper.stage-4 .cinematic-portrait-base {
+    filter: blur(14px) brightness(0.22);
+    opacity: 0.22;
+}
+
+/* Stage 5 — Scanning */
+.cinematic-portrait-wrapper.stage-5 .portrait-particle-canvas,
+.cinematic-portrait-wrapper.stage-6 .portrait-particle-canvas,
+.cinematic-portrait-wrapper.stage-7 .portrait-particle-canvas,
+.cinematic-portrait-wrapper.stage-8 .portrait-particle-canvas {
+    opacity: 1;
+}
+.cinematic-portrait-wrapper.stage-6 .hud-tag-sl,
+.cinematic-portrait-wrapper.stage-7 .hud-tag-sl,
+.cinematic-portrait-wrapper.stage-8 .hud-tag-sl {
+    opacity: 1;
+    transform: translateY(0);
+}
+.cinematic-portrait-wrapper.stage-6 .portrait-telemetry-axis,
+.cinematic-portrait-wrapper.stage-7 .portrait-telemetry-axis,
+.cinematic-portrait-wrapper.stage-8 .portrait-telemetry-axis {
+    opacity: 1;
+}
+.cinematic-portrait-wrapper.stage-6 .portrait-grid-overlay,
+.cinematic-portrait-wrapper.stage-7 .portrait-grid-overlay,
+.cinematic-portrait-wrapper.stage-8 .portrait-grid-overlay {
+    opacity: 0.14;
+}
+.cinematic-portrait-wrapper.stage-6 .portrait-reveal-layer .cinematic-portrait-img {
+    filter: blur(0.8px);
+    transform: scale(1);
+}
+
+/* Stage 7: Glow and polish */
+.cinematic-portrait-wrapper.stage-7 .portrait-reveal-layer .cinematic-portrait-img,
+.cinematic-portrait-wrapper.stage-8 .portrait-reveal-layer .cinematic-portrait-img {
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+.cinematic-portrait-wrapper.stage-7 .hud-corner {
+    opacity: 1;
+    box-shadow: 0 0 16px rgba(244, 81, 53, 0.75);
+}
+
+/* Stage 8: Final state */
+.cinematic-portrait-wrapper.stage-8 .hud-corner {
+    animation: hudCornerIdlePulse 4s ease-in-out infinite;
+}
+
+@keyframes hudCornerIdlePulse {
+    0%, 100% {
+        opacity: 0.95;
+        box-shadow: 0 0 12px rgba(244, 81, 53, 0.5);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 18px rgba(244, 81, 53, 0.8), inset 0 0 4px rgba(244, 81, 53, 0.3);
+    }
+}
+
+/* Prefers-reduced-motion: Instant Sharp Static Display */
+@media (prefers-reduced-motion: reduce) {
+    .cinematic-portrait-wrapper *,
+    .cinematic-portrait-img,
+    .hud-corner,
+    .hud-tag-sl,
+    .hud-motto-stack,
+    .portrait-telemetry-axis,
+    .portrait-scan-beam {
+        animation: none !important;
+        transition: none !important;
+        filter: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .portrait-scan-beam,
+    .portrait-scanlines-overlay {
+        display: none !important;
+    }
+    .portrait-grid-overlay {
+        opacity: 0.14 !important;
+    }
+}
+
+/* Responsive Content Toggle Helpers (Default Desktop) */
+.eyebrow-mobile,
+.desc-mobile,
+.cta-mobile,
+.status-mobile {
+    display: none !important;
+}
+
+.eyebrow-desktop,
+.desc-desktop,
+.cta-desktop,
+.status-desktop {
+    display: inline;
+}
+
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE LAYOUT
+   ========================================================================== */
+
+@media (max-width: 1024px) and (min-width: 769px) {
     .hero-content {
         display: flex;
         flex-direction: column;
-        gap: 18px;
+        gap: 20px;
         text-align: center;
     }
 
-    /* Unwrap containers on mobile so their children become direct flex items */
     .hero-text,
     .hero-visual {
         display: contents;
     }
 
-    /* 1. Top Details Block */
     .hero-top-info {
         order: 1;
         width: 100%;
@@ -382,78 +1002,16 @@ body.light .profile-card-frame {
         text-align: center;
     }
 
-    /* Eyebrow: Centered inline-flex group */
-    .hero-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        margin: 0 auto 8px auto;
-        text-align: center;
-        width: fit-content;
-    }
-
-    .hero-name {
-        margin: 0 auto 8px auto;
-        text-align: center;
-    }
-
-    /* Unified Centered Role Badge & Inline Briefcase Icon */
-    .hero-role-badge {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        margin: 0 auto 12px auto;
-        text-align: center;
-        width: fit-content;
-        max-width: 100%;
-        font-size: clamp(1rem, 4vw, 1.25rem);
-    }
-
-    .hero-role-badge i {
-        font-size: 1rem; /* 16-20px range */
-        color: var(--accent-light);
-        flex-shrink: 0;
-    }
-
-    .hero-description {
-        margin: 0 auto 12px auto;
-        text-align: center;
-    }
-
-    /* Unified Centered Research Internship Line & Inline Flask Icon */
-    .hero-secondary-line {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        margin: 0 auto 18px auto;
-        text-align: center;
-        width: fit-content;
-        max-width: 100%;
-        font-size: 0.88rem;
-    }
-
-    .hero-secondary-line i {
-        font-size: 0.9rem;
-        color: var(--accent-light);
-        flex-shrink: 0;
-    }
-
-    /* 2. Photo: Placed right AFTER IIIT Hyderabad secondary line */
-    .profile-card-wrapper {
+    .cinematic-portrait-wrapper {
         order: 2;
-        margin: 6px 0 16px 0;
-        align-items: center;
-        max-width: 280px;
+        margin: 10px 0 20px 0;
+        max-width: 320px;
     }
 
-    .profile-status-indicator {
-        margin-top: 10px;
+    .portrait-telemetry-axis {
+        display: none;
     }
 
-    /* 3. Bottom Details: Action CTAs (Explore My Work / View Resume) + Proof Strip */
     .hero-bottom-info {
         order: 3;
         width: 100%;
@@ -468,56 +1026,444 @@ body.light .profile-card-frame {
     }
 
     .hero-proof-strip {
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
         justify-content: center;
         flex-wrap: wrap;
     }
 }
 
-@media (max-width: 640px) {
-    .hero {
-        padding: 90px 0 45px 0;
-        min-height: auto;
+/* Minimal, Clean & Informative Mobile Hero (<= 768px) */
+@media (max-width: 768px) {
+    /* Responsive Content Switches */
+    .eyebrow-desktop,
+    .desc-desktop,
+    .cta-desktop,
+    .status-desktop {
+        display: none !important;
     }
 
-    .hero-proof-strip {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        padding: 14px;
+    .eyebrow-mobile,
+    .desc-mobile,
+    .cta-mobile,
+    .status-mobile {
+        display: inline !important;
+    }
+
+    .hero {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: calc(56px + clamp(14px, 2.5vh, 20px));
+        padding-bottom: clamp(16px, 2.5vh, 24px);
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .hero .container {
+        padding: 0 6%;
         width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 0;
+        width: 100%;
+    }
+
+    .hero-text,
+    .hero-visual {
+        display: contents;
+    }
+
+    /* 1. Introduction Block (Left-Aligned Editorial) */
+    .hero-top-info {
+        order: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        margin: 0;
+    }
+
+    /* Small category label */
+    .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        font-family: var(--font-mono, 'JetBrains Mono', monospace);
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        margin: 0 0 12px 0;
+        line-height: 1.2;
+        color: #8E9591;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .hero-eyebrow-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #F45135;
+        box-shadow: 0 0 6px rgba(244, 81, 53, 0.6);
+        flex-shrink: 0;
+    }
+
+    /* Large editorial heading with deliberate line breaks */
+    .hero-name {
+        font-family: var(--font-display, 'Syne', sans-serif);
+        font-size: clamp(2rem, 8.5vw, 3.2rem);
+        line-height: 1.01;
+        margin: 0 0 14px 0;
+        letter-spacing: -0.035em;
+        font-weight: 800;
+        text-align: left;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+
+    .hero-name-first {
+        display: block;
+        color: #F1F1ED;
+    }
+
+    .hero-name-last {
+        display: block;
+        color: #7E8581;
+    }
+
+    /* Role Line */
+    .hero-role-badge {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 10px 0;
+        font-family: var(--font-mono, 'JetBrains Mono', monospace);
+        font-size: clamp(0.82rem, 3.4vw, 0.95rem);
+        line-height: 1.35;
+        font-weight: 600;
+        color: #F1F1ED;
+        text-align: left;
+    }
+
+    .hero-role-badge i {
+        font-size: 0.88rem;
+        color: #F45135;
+        flex-shrink: 0;
+    }
+
+    /* Short positioning statement */
+    .hero-description {
+        font-family: var(--font-body, 'Inter', sans-serif);
+        font-size: clamp(0.9rem, 3.5vw, 0.98rem);
+        line-height: 1.48;
+        color: #8E9591;
+        margin: 0 0 20px 0;
+        max-width: 340px;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    /* Remove former research intern secondary line from mobile hero */
+    .hero-secondary-line {
+        display: none !important;
+    }
+
+    /* 2. Cinematic Portrait (Tablet moderate scaling, centered horizontally) */
+    .cinematic-portrait-wrapper {
+        order: 2;
+        width: 100%;
+        max-width: 340px;
+        position: relative;
+        margin: 16px auto 22px auto;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .cinematic-portrait-card {
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 0;
+    }
+
+    .portrait-media-frame {
+        clip-path: polygon(
+            28px 0,
+            calc(100% - 28px) 0,
+            100% 28px,
+            100% calc(100% - 28px),
+            calc(100% - 28px) 100%,
+            28px 100%,
+            0 calc(100% - 28px),
+            0 28px
+        );
+        overflow: hidden;
+    }
+
+    .hud-border-svg {
+        inset: -10px;
+        width: calc(100% + 20px);
+        height: calc(100% + 20px);
+    }
+
+    .hud-corner-bracket {
+        stroke-width: 3px;
+        filter: drop-shadow(0 0 2.5px #FF451A) drop-shadow(0 0 6px rgba(255, 69, 26, 0.45));
+    }
+
+    .hud-tag-sl {
+        top: 16px;
+        left: 18px;
+        font-size: 15.5px;
+    }
+
+    .hud-motto-stack {
+        right: 20px;
+        bottom: 24px;
+        gap: 3px;
+        padding: 0 !important;
+    }
+
+    .hud-motto-line {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        line-height: 1.25;
+    }
+
+    .portrait-telemetry-axis {
+        display: none !important;
+    }
+
+    /* Mobile portrait scaling and HUD optimization (<= 480px, including 440px, 412px, 375px) */
+    @media (max-width: 480px) {
+        .cinematic-portrait-wrapper {
+            width: min(calc(100vw - 48px), 304px);
+            max-width: 304px;
+            margin: 14px auto 18px auto;
+            align-self: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cinematic-portrait-card {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+        }
+
+        .portrait-media-frame {
+            clip-path: polygon(
+                24px 0,
+                calc(100% - 24px) 0,
+                100% 24px,
+                100% calc(100% - 24px),
+                calc(100% - 24px) 100%,
+                24px 100%,
+                0 calc(100% - 24px),
+                0 24px
+            );
+            overflow: hidden;
+        }
+
+        .hud-border-svg {
+            inset: -8px;
+            width: calc(100% + 16px);
+            height: calc(100% + 16px);
+        }
+
+        /* Prevent protruding outer rail elements from causing overflow on mobile */
+        .hud-border-svg .left-rail,
+        .hud-border-svg circle[cx="-12"],
+        .hud-border-svg rect[x="-14.5"],
+        .hud-border-svg line[x1="-12"],
+        .hud-border-svg circle[cx="410"],
+        .hud-border-svg rect[x="407.5"],
+        .hud-border-svg line[x2="410"] {
+            display: none !important;
+        }
+
+        .hud-corner-bracket {
+            stroke-width: 2.6px;
+            animation: hudCornerPulseMobile 3.5s ease-in-out infinite alternate;
+        }
+
+        .hud-beam-segment {
+            stroke-width: 1.8px;
+            filter: drop-shadow(0 0 2px #FF451A);
+        }
+
+        .scan-beam-line {
+            height: 2px;
+            box-shadow: 0 0 8px #F45135, 0 0 16px rgba(244, 81, 53, 0.8), 0 0 3px #FFFFFF;
+        }
+
+        .scan-beam-glow {
+            height: 28px;
+        }
+
+        .hud-tag-sl {
+            top: 13px;
+            left: 15px;
+            font-size: 13.5px;
+        }
+
+        .hud-motto-stack {
+            right: 16px;
+            bottom: 18px;
+            gap: 2.5px;
+            padding: 0 !important;
+        }
+
+        .hud-motto-line {
+            font-size: 9.5px;
+            letter-spacing: 0.12em;
+            line-height: 1.25;
+        }
+
+        .hud-motto-dot {
+            text-shadow: 0 0 4px rgba(255, 69, 26, 0.7);
+        }
+    }
+
+    @keyframes hudCornerPulseMobile {
+        0% {
+            stroke: #FF451A;
+            filter: drop-shadow(0 0 2px #FF451A) drop-shadow(0 0 5px rgba(255, 69, 26, 0.4));
+        }
+        100% {
+            stroke: #FF5A36;
+            filter: drop-shadow(0 0 3px #FF451A) drop-shadow(0 0 7px rgba(255, 69, 26, 0.5));
+        }
+    }
+
+    /* 3. Actions Block (Left-aligned, Side-by-Side CTAs matching portrait width) */
+    .hero-bottom-info {
+        order: 3;
+        width: 100%;
+        max-width: 340px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        width: 100%;
+        max-width: 340px;
+        margin: 0;
+    }
+
+    .hero-actions .hero-cta-primary,
+    .hero-actions .hero-cta-secondary {
+        flex: 1 1 50%;
+        min-width: 0;
+        height: 48px;
+        min-height: 48px;
+        border-radius: 6px;
         box-sizing: border-box;
     }
 
-    .proof-divider {
-        display: none;
+    .hero-actions .hero-cta-primary .terminal-accent-block {
+        width: 38px;
+        min-width: 38px;
     }
 
-    .proof-item {
-        align-items: center;
-        text-align: center;
+    .hero-actions .hero-cta-primary .terminal-content {
+        padding: 0 8px 0 10px;
+        font-size: clamp(0.72rem, 2.9vw, 0.82rem);
+    }
+
+    .hero-actions .hero-cta-secondary .terminal-content {
+        padding: 0 10px;
+        font-size: clamp(0.72rem, 2.9vw, 0.82rem);
+        gap: 7px;
+    }
+
+    .hero-actions .hero-cta-secondary {
+        justify-content: center;
+    }
+
+    /* 4. Remove Clutter: Hide Proof Strip on Mobile Hero */
+    .hero-proof-strip {
+        display: none !important;
+    }
+}
+
+/* Extra-Narrow Screens (<= 340px, e.g. 320px) */
+@media (max-width: 340px) {
+    .hero-name {
+        font-size: 2.1rem;
+    }
+
+    .cinematic-portrait-wrapper {
+        width: min(calc(100vw - 32px), 280px);
+        max-width: 280px;
+        margin: 12px auto 16px auto;
+    }
+
+    .hud-tag-sl {
+        font-size: 12px;
+        top: 11px;
+        left: 13px;
+    }
+
+    .hud-motto-stack {
+        right: 14px;
+        bottom: 15px;
+        gap: 2px;
+    }
+
+    .hud-motto-line {
+        font-size: 8.5px;
+        letter-spacing: 0.1em;
     }
 
     .hero-actions {
         flex-direction: column;
-        width: 100%;
+        gap: 9px;
+        max-width: 100%;
     }
 
-    .hero-actions .btn {
+    .hero-actions .hero-cta-primary,
+    .hero-actions .hero-cta-secondary {
         width: 100%;
-        justify-content: center;
+        flex: none;
+        height: 48px;
     }
 
-    .profile-card-frame,
-    .profile-card-wrapper {
-        max-width: 250px;
+    .hero-actions .hero-cta-primary .terminal-content,
+    .hero-actions .hero-cta-secondary .terminal-content {
+        font-size: 0.82rem;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .terminal-cursor,
+    .terminal-cursor-subtle {
+        animation: none !important;
+        opacity: 1 !important;
+    }
     .hero-cta-primary,
     .hero-cta-secondary,
+    .terminal-prompt-icon,
     .profile-card-frame,
     .status-pulse-dot {
         transition: none !important;

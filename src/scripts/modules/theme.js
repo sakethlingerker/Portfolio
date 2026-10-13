@@ -17,8 +17,15 @@ export function initTheme() {
     }
   }
 
-  // Always start in light mode (no persistence)
-  setTheme(true);
+  // Default to dark mode for the cinematic editorial experience
+  let savedTheme = null;
+  try {
+    savedTheme = localStorage.getItem("theme");
+  } catch (e) {
+    // localStorage might be denied or restricted in certain browser modes
+  }
+  const isLight = savedTheme === "light";
+  setTheme(isLight);
 
   let rotation = 0;
   if (toggleBtn) {
@@ -26,9 +33,13 @@ export function initTheme() {
       rotation += 360;
       if (icon) icon.style.transform = `rotate(${rotation}deg)`;
       
-      const isLight = !body.classList.contains("light-mode");
-      setTheme(isLight);
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      const newIsLight = !body.classList.contains("light-mode");
+      setTheme(newIsLight);
+      try {
+        localStorage.setItem('theme', newIsLight ? 'light' : 'dark');
+      } catch (e) {
+        // Silently ignore storage restriction
+      }
     });
   }
 }

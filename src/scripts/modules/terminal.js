@@ -233,6 +233,9 @@ export function initTerminal() {
   
   // Keyboard shortcut (backtick) to toggle terminal
   window.addEventListener("keydown", (e) => { 
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) {
+      return;
+    }
     if (e.key === "`" && !e.ctrlKey && !e.metaKey) {
       e.preventDefault();
       terminal.classList.toggle("active");

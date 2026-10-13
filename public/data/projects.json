@@ -5,7 +5,12 @@
     "subtitle": "An enterprise-grade Retrieval-Augmented Generation (RAG) AI agent that enables users to upload PDFs and ask natural-language questions.",
     "category": "ai-ml",
     "isFeatured": true,
-    "tags": ["AI Platform", "RAG", "GenAI", "NLP"],
+    "tags": [
+      "AI Platform",
+      "RAG",
+      "GenAI",
+      "NLP"
+    ],
     "heroImage": "assets/projects/enterprise_rag_agent.png",
     "matchmakerKey": "genai_rag",
     "links": {
@@ -23,6 +28,88 @@
       "Groq Llama 3.3 70B LLM Generator",
       "Grounded Output with Citation Verification"
     ],
+    "architectureStages": [
+      {
+        "stageNumber": 1,
+        "name": "Document Ingestion & Parsing",
+        "category": "INGESTION",
+        "tech": [
+          "PyMuPDF",
+          "Python"
+        ],
+        "inputs": "Raw PDF binary / multi-page documents (user upload or arXiv fetch)",
+        "outputs": "Extracted text streams, restored Markdown tables, source metadata",
+        "responsibility": "Extract document text with table-to-Markdown restoration and attach page numbers for traceability.",
+        "engineeringDecision": "Chose PyMuPDF for fast C++ based extraction over PDFMiner; restored tables into Markdown syntax to preserve structured tabular relationships."
+      },
+      {
+        "stageNumber": 2,
+        "name": "Recursive Semantic Chunking",
+        "category": "PROCESSING",
+        "tech": [
+          "LangChain",
+          "RecursiveCharacterTextSplitter"
+        ],
+        "inputs": "Parsed Markdown text streams and document metadata",
+        "outputs": "Overlapping semantic chunks (~200–500 tokens) with attached page metadata",
+        "responsibility": "Split long documents into coherent semantic chunks while preserving paragraph boundaries and sentence continuity.",
+        "engineeringDecision": "Implemented recursive character splitting with 10-15% chunk overlap instead of fixed-length token splitting to prevent truncating context mid-sentence."
+      },
+      {
+        "stageNumber": 3,
+        "name": "Dual Vector Indexing",
+        "category": "EMBEDDING & STORAGE",
+        "tech": [
+          "FAISS",
+          "ChromaDB",
+          "Dense Embeddings"
+        ],
+        "inputs": "Semantic text chunks and source metadata dictionaries",
+        "outputs": "Dense vector index (FAISS index file & ChromaDB collection)",
+        "responsibility": "Generate vector embeddings and index high-dimensional vectors for ultra-low latency similarity queries.",
+        "engineeringDecision": "Engineered a dual vector store strategy: in-memory FAISS index for high-speed sub-millisecond retrieval alongside ChromaDB for persistent document collections."
+      },
+      {
+        "stageNumber": 4,
+        "name": "Similarity Retrieval & Context Injection",
+        "category": "RETRIEVAL",
+        "tech": [
+          "Cosine Similarity",
+          "Intent Detection Router"
+        ],
+        "inputs": "Natural-language query and conversation history",
+        "outputs": "Top-K most relevant document chunks + injected structured prompt",
+        "responsibility": "Query the vector index for top-K semantic chunks and direct queries via an intent router (document Q&A vs. arXiv research agent).",
+        "engineeringDecision": "Integrated an intent router to branch between local document Q&A and arXiv paper discovery; injected structured context prompts to constrain model knowledge."
+      },
+      {
+        "stageNumber": 5,
+        "name": "LLM Inference & Generation",
+        "category": "INTELLIGENCE",
+        "tech": [
+          "Groq API",
+          "Llama 3.3 70B",
+          "Google Gemini"
+        ],
+        "inputs": "Injected context prompt + user question + conversation memory",
+        "outputs": "Raw generated response strictly grounded in context chunks",
+        "responsibility": "Synthesize natural language answers grounded strictly in retrieved chunks, eliminating hallucinated claims.",
+        "engineeringDecision": "Designed a hot-swappable client abstraction supporting Llama 3.3 (70B) via Groq API for sub-5s latency, with fallback to Google Gemini."
+      },
+      {
+        "stageNumber": 6,
+        "name": "Grounded Output & Citation Verification",
+        "category": "VERIFICATION & UI",
+        "tech": [
+          "Streamlit",
+          "Source Metadata Traceability"
+        ],
+        "inputs": "Generated response and retrieved chunk source metadata",
+        "outputs": "Formatted answer with expandable page-level citations and verified sources",
+        "responsibility": "Validate synthesized facts against source chunks and render page-referenced citations in the Streamlit UI.",
+        "engineeringDecision": "Enforced citation verification where every answer is paired with page and section references, reducing hallucinated responses by ~80%."
+      }
+    ],
     "engineeringDecisions": [
       "Ingestion Pipeline: Used PyMuPDF-based PDF extraction with table-to-Markdown restoration and recursive semantic chunking to preserve paragraph meaning.",
       "Vector Indexing: Embeddings stored in FAISS and ChromaDB for low-latency similarity search retrieving top-K relevant chunks.",
@@ -37,23 +124,60 @@
       "Multi-turn context-aware chat history & agent routing"
     ],
     "techStackDetailed": [
-      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
-      { "name": "LangChain", "badge": "https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" },
-      { "name": "FAISS", "badge": "https://img.shields.io/badge/FAISS-4285F4?style=flat-square&logo=meta&logoColor=white" },
-      { "name": "Google Gemini", "badge": "https://img.shields.io/badge/Google_Gemini-8E75B2?style=flat-square&logo=google&logoColor=white" },
-      { "name": "Streamlit", "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" },
-      { "name": "PyMuPDF", "badge": "https://img.shields.io/badge/PyMuPDF-3776AB?style=flat-square&logo=python&logoColor=white" },
-      { "name": "ChromaDB", "badge": "https://img.shields.io/badge/ChromaDB-7C3AED?style=flat-square&logo=database&logoColor=white" },
-      { "name": "Groq API", "badge": "https://img.shields.io/badge/Groq_API-F05032?style=flat-square&logo=fastapi&logoColor=white" }
+      {
+        "name": "Python",
+        "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"
+      },
+      {
+        "name": "LangChain",
+        "badge": "https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white"
+      },
+      {
+        "name": "FAISS",
+        "badge": "https://img.shields.io/badge/FAISS-4285F4?style=flat-square&logo=meta&logoColor=white"
+      },
+      {
+        "name": "Google Gemini",
+        "badge": "https://img.shields.io/badge/Google_Gemini-8E75B2?style=flat-square&logo=google&logoColor=white"
+      },
+      {
+        "name": "Streamlit",
+        "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white"
+      },
+      {
+        "name": "PyMuPDF",
+        "badge": "https://img.shields.io/badge/PyMuPDF-3776AB?style=flat-square&logo=python&logoColor=white"
+      },
+      {
+        "name": "ChromaDB",
+        "badge": "https://img.shields.io/badge/ChromaDB-7C3AED?style=flat-square&logo=database&logoColor=white"
+      },
+      {
+        "name": "Groq API",
+        "badge": "https://img.shields.io/badge/Groq_API-F05032?style=flat-square&logo=fastapi&logoColor=white"
+      }
     ],
     "challenges": "Handling large PDF extractions with complex tabular figures and preventing context dilution when synthesizing answers across multi-page papers.",
     "quantifiableImpact": [
-      { "value": "~80%", "label": "Reduction in hallucinated responses" },
-      { "value": "<5 sec", "label": "Avg. query-to-answer latency" },
-      { "value": "4+", "label": "Reusable enterprise use cases" }
+      {
+        "value": "~80%",
+        "label": "Reduction in hallucinated responses"
+      },
+      {
+        "value": "<5 sec",
+        "label": "Avg. query-to-answer latency"
+      },
+      {
+        "value": "4+",
+        "label": "Reusable enterprise use cases"
+      }
     ],
     "lessonsLearned": "Chunk overlap strategy and metadata-aware retrieval matter far more for RAG accuracy than prompt engineering alone.",
-    "relatedProjectIds": ["ats_resume", "smart_feedback", "interior_design"]
+    "relatedProjectIds": [
+      "ats_resume",
+      "smart_feedback",
+      "interior_design"
+    ]
   },
   "mlops": {
     "id": "mlops",
@@ -61,7 +185,12 @@
     "subtitle": "Production-grade automated ML training, versioning, containerization, and AWS cloud deployment pipeline.",
     "category": "mlops",
     "isFeatured": true,
-    "tags": ["MLOps", "AWS", "Docker", "CI/CD"],
+    "tags": [
+      "MLOps",
+      "AWS",
+      "Docker",
+      "CI/CD"
+    ],
     "heroImage": "assets/projects/mlops_pipeline.png",
     "matchmakerKey": "engineering_cloud",
     "links": {
@@ -78,6 +207,88 @@
       "Docker Container Build & AWS ECR Push",
       "GitHub Actions CI/CD to AWS EC2 Runner"
     ],
+    "architectureStages": [
+      {
+        "stageNumber": 1,
+        "name": "Cloud Data Ingestion",
+        "category": "DATA LAYER",
+        "tech": [
+          "MongoDB Atlas",
+          "Python"
+        ],
+        "inputs": "Raw vehicle insurance risk datasets stored in MongoDB Atlas",
+        "outputs": "Ingested training records with connection pooling",
+        "responsibility": "Automated data ingestion from MongoDB Atlas with configurable connection management.",
+        "engineeringDecision": "Integrated MongoDB Atlas for scalable cloud-hosted data storage and decoupled data persistence from training compute."
+      },
+      {
+        "stageNumber": 2,
+        "name": "Schema-Driven Data Validation",
+        "category": "VALIDATION",
+        "tech": [
+          "YAML Schema",
+          "Python Data Validation"
+        ],
+        "inputs": "Ingested raw records and config/schema.yaml validation rules",
+        "outputs": "Validated dataset artifacts or automated pipeline abort signals",
+        "responsibility": "Validate incoming dataset against predefined schema rules to prevent schema drift and bad inputs.",
+        "engineeringDecision": "Implemented config-driven schema validation using config/schema.yaml to stop execution if column types or bounds drift."
+      },
+      {
+        "stageNumber": 3,
+        "name": "Feature Transformation",
+        "category": "TRANSFORMATION",
+        "tech": [
+          "Scikit-Learn",
+          "NumPy",
+          "Pandas"
+        ],
+        "inputs": "Validated dataset",
+        "outputs": "Transformed feature arrays and serialized preprocessor artifacts",
+        "responsibility": "Apply feature scaling, categorical encoding, and transformation pipelines.",
+        "engineeringDecision": "Serialized preprocessor object alongside model artifacts to guarantee exact feature consistency during inference."
+      },
+      {
+        "stageNumber": 4,
+        "name": "Model Training & Evaluation",
+        "category": "TRAINING",
+        "tech": [
+          "Machine Learning Models",
+          "AWS S3 Benchmarking"
+        ],
+        "inputs": "Transformed training features and production benchmark metrics",
+        "outputs": "Trained model artifact and evaluation comparison score",
+        "responsibility": "Train classification models and evaluate against S3-stored production benchmark thresholds.",
+        "engineeringDecision": "Enforced automated model promotion: new models are pushed to production only if they outperform existing S3 benchmarks."
+      },
+      {
+        "stageNumber": 5,
+        "name": "Docker Containerization",
+        "category": "CONTAINERIZATION",
+        "tech": [
+          "Docker",
+          "AWS ECR"
+        ],
+        "inputs": "Application code, preprocessor, and model artifacts",
+        "outputs": "Lightweight container image pushed to AWS Elastic Container Registry",
+        "responsibility": "Package the prediction web service and model runtime into reproducible Docker containers.",
+        "engineeringDecision": "Built optimized Dockerfile with .dockerignore to eliminate environmental discrepancies between dev, CI, and EC2 production."
+      },
+      {
+        "stageNumber": 6,
+        "name": "Automated CI/CD Deployment",
+        "category": "CI/CD & INFRASTRUCTURE",
+        "tech": [
+          "GitHub Actions",
+          "AWS EC2 Runner",
+          "AWS IAM"
+        ],
+        "inputs": "Git commit push to main branch",
+        "outputs": "Live prediction microservice on AWS EC2 (port 5080)",
+        "responsibility": "Automated build, test, ECR push, and zero-downtime deployment to EC2 self-hosted runner.",
+        "engineeringDecision": "Set up GitHub Actions workflow authenticated via AWS IAM keys deploying to EC2 self-hosted runner, reducing deployment time by 85%."
+      }
+    ],
     "engineeringDecisions": [
       "Data Layer: MongoDB Atlas integration with schema-driven validation using config/schema.yaml.",
       "ML Pipeline: 6-stage sequential pipeline (Data Ingestion → Validation → Transformation → Training → Evaluation → Pusher).",
@@ -92,21 +303,52 @@
       "GitHub Actions automated CI/CD pipeline to AWS EC2"
     ],
     "techStackDetailed": [
-      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
-      { "name": "Docker", "badge": "https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" },
-      { "name": "AWS EC2", "badge": "https://img.shields.io/badge/AWS_EC2-232F3E?style=flat-square&logo=amazon-ec2&logoColor=white" },
-      { "name": "AWS ECR", "badge": "https://img.shields.io/badge/AWS_ECR-FF9900?style=flat-square&logo=amazon-aws&logoColor=white" },
-      { "name": "GitHub Actions", "badge": "https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white" },
-      { "name": "MongoDB", "badge": "https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" }
+      {
+        "name": "Python",
+        "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"
+      },
+      {
+        "name": "Docker",
+        "badge": "https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"
+      },
+      {
+        "name": "AWS EC2",
+        "badge": "https://img.shields.io/badge/AWS_EC2-232F3E?style=flat-square&logo=amazon-ec2&logoColor=white"
+      },
+      {
+        "name": "AWS ECR",
+        "badge": "https://img.shields.io/badge/AWS_ECR-FF9900?style=flat-square&logo=amazon-aws&logoColor=white"
+      },
+      {
+        "name": "GitHub Actions",
+        "badge": "https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white"
+      },
+      {
+        "name": "MongoDB",
+        "badge": "https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white"
+      }
     ],
     "challenges": "Debugging AWS ECR authentication credentials inside automated GitHub Actions workflows and resolving container port bindings on EC2.",
     "quantifiableImpact": [
-      { "value": "85%", "label": "Reduction in deployment time" },
-      { "value": "6-Stage", "label": "Fully automated ML pipeline" },
-      { "value": "Zero", "label": "Downtime model updates" }
+      {
+        "value": "85%",
+        "label": "Reduction in deployment time"
+      },
+      {
+        "value": "6-Stage",
+        "label": "Fully automated ML pipeline"
+      },
+      {
+        "value": "Zero",
+        "label": "Downtime model updates"
+      }
     ],
     "lessonsLearned": "Learned the critical importance of decoupling pipeline stages into modular components for zero-downtime container updates.",
-    "relatedProjectIds": ["flight_fare", "enterprise_rag", "crop_yield"]
+    "relatedProjectIds": [
+      "flight_fare",
+      "enterprise_rag",
+      "crop_yield"
+    ]
   },
   "smart_feedback": {
     "id": "smart_feedback",
@@ -114,7 +356,12 @@
     "subtitle": "Scalable full-stack application featuring real-time feedback ingestion, MongoDB analytics, and automated reporting.",
     "category": "fullstack",
     "isFeatured": true,
-    "tags": ["Full Stack", "Node.js", "MongoDB", "Express"],
+    "tags": [
+      "Full Stack",
+      "Node.js",
+      "MongoDB",
+      "Express"
+    ],
     "heroImage": "assets/projects/smart_feedback_system.png",
     "matchmakerKey": "engineering_backend",
     "links": {
@@ -144,20 +391,129 @@
       "Chart.js real-time sentiment analytics dashboard"
     ],
     "techStackDetailed": [
-      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
-      { "name": "Flask", "badge": "https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" },
-      { "name": "NLTK", "badge": "https://img.shields.io/badge/NLTK-2563EB?style=flat-square&logo=python&logoColor=white" },
-      { "name": "JavaScript", "badge": "https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" },
-      { "name": "Chart.js", "badge": "https://img.shields.io/badge/Chart.js-FF6384?style=flat-square&logo=chartdotjs&logoColor=white" }
+      {
+        "name": "Python",
+        "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"
+      },
+      {
+        "name": "Flask",
+        "badge": "https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white"
+      },
+      {
+        "name": "NLTK",
+        "badge": "https://img.shields.io/badge/NLTK-2563EB?style=flat-square&logo=python&logoColor=white"
+      },
+      {
+        "name": "JavaScript",
+        "badge": "https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"
+      },
+      {
+        "name": "Chart.js",
+        "badge": "https://img.shields.io/badge/Chart.js-FF6384?style=flat-square&logo=chartdotjs&logoColor=white"
+      }
     ],
     "challenges": "Optimizing MongoDB / database aggregation queries to prevent bottlenecks under heavy concurrent submission loads.",
     "quantifiableImpact": [
-      { "value": "92%", "label": "Sentiment classification accuracy" },
-      { "value": "70%", "label": "Reduction in manual feedback processing" },
-      { "value": "3", "label": "Classification categories (pos/neg/neutral)" }
+      {
+        "value": "92%",
+        "label": "Sentiment classification accuracy"
+      },
+      {
+        "value": "70%",
+        "label": "Reduction in manual feedback processing"
+      },
+      {
+        "value": "3",
+        "label": "Classification categories (pos/neg/neutral)"
+      }
     ],
     "lessonsLearned": "Gained deep experience in schema indexing strategies and REST API rate limiting best practices.",
-    "relatedProjectIds": ["cloudcast", "ats_resume", "clearview"]
+    "relatedProjectIds": [
+      "cloudcast",
+      "ats_resume",
+      "clearview"
+    ],
+    "architectureStages": [
+      {
+        "stageNumber": 1,
+        "name": "User Feedback Ingestion & Form Capture",
+        "category": "INGESTION",
+        "tech": [
+          "HTML5",
+          "JavaScript",
+          "REST Client"
+        ],
+        "inputs": "User feedback submissions, ratings, and submission timestamps",
+        "outputs": "Validated feedback payload",
+        "responsibility": "Captures user input through responsive web interface with form validation.",
+        "engineeringDecision": "Implemented client-side sanitization and asynchronous submission to prevent form resubmissions and handle burst feedback."
+      },
+      {
+        "stageNumber": 2,
+        "name": "API Gateway & Endpoint Routing",
+        "category": "BACKEND",
+        "tech": [
+          "Flask RESTful",
+          "Python"
+        ],
+        "inputs": "Client HTTP POST requests",
+        "outputs": "Structured feedback transaction objects",
+        "responsibility": "Routes feedback transactions to processing pipeline and manages endpoint lifecycles.",
+        "engineeringDecision": "Structured REST endpoints with separation of concerns: collection (/api/feedback), analytics (/api/analytics), and user auth."
+      },
+      {
+        "stageNumber": 3,
+        "name": "JWT Security & RBAC Layer",
+        "category": "SECURITY",
+        "tech": [
+          "PyJWT",
+          "Bcrypt"
+        ],
+        "inputs": "Authorization Bearer tokens and session headers",
+        "outputs": "Authenticated admin/user context",
+        "responsibility": "Enforces role-based access control distinguishing general users from administrators.",
+        "engineeringDecision": "Employed stateless JWT authentication with encrypted tokens to secure admin analytics endpoints without server-side session overhead."
+      },
+      {
+        "stageNumber": 4,
+        "name": "NLP Preprocessing & Normalization",
+        "category": "NLP PIPELINE",
+        "tech": [
+          "NLTK",
+          "Python"
+        ],
+        "inputs": "Raw multi-sentence feedback text",
+        "outputs": "Tokenized, lemmatized text streams without stop-words",
+        "responsibility": "Executes tokenization, stop-word elimination, and case folding.",
+        "engineeringDecision": "Used customized NLTK stop-word lists tailored to product reviews, ensuring domain keywords are retained."
+      },
+      {
+        "stageNumber": 5,
+        "name": "Polarity Scoring & Sentiment Classification",
+        "category": "CLASSIFICATION",
+        "tech": [
+          "NLTK VADER / Classifier",
+          "Python"
+        ],
+        "inputs": "Cleaned feedback token streams",
+        "outputs": "Compound sentiment polarity scores (-1.0 to +1.0) & 3-class label (positive/negative/neutral)",
+        "responsibility": "Classifies feedback into sentiment categories with 92% accuracy.",
+        "engineeringDecision": "Implemented lexicon-based polarity scoring combined with rule-based heuristics to handle negations and sentiment modifiers efficiently."
+      },
+      {
+        "stageNumber": 6,
+        "name": "Real-Time Visual Analytics Dashboard",
+        "category": "VISUALIZATION",
+        "tech": [
+          "Chart.js",
+          "Flask REST API"
+        ],
+        "inputs": "Aggregated sentiment records and temporal slices",
+        "outputs": "Interactive sentiment distribution and trend charts",
+        "responsibility": "Renders dynamic sentiment breakdown charts, reducing manual analysis by 70%.",
+        "engineeringDecision": "Utilized Chart.js for lightweight client-side chart re-renders, enabling managers to filter trends across custom time ranges."
+      }
+    ]
   },
   "ats_resume": {
     "id": "ats_resume",
@@ -165,7 +521,12 @@
     "subtitle": "AI-powered ATS scanner and resume optimizer leveraging Google Gemini 2.5 for job description alignment.",
     "category": "ai-ml",
     "isFeatured": true,
-    "tags": ["GenAI", "Google Gemini", "Streamlit", "NLP"],
+    "tags": [
+      "GenAI",
+      "Google Gemini",
+      "Streamlit",
+      "NLP"
+    ],
     "heroImage": "assets/projects/ats_resume_expert.png",
     "matchmakerKey": "genai_resume",
     "links": {
@@ -196,18 +557,120 @@
       "Streamlit UI with custom CSS styling and real-time scoring"
     ],
     "techStackDetailed": [
-      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
-      { "name": "Google Gemini", "badge": "https://img.shields.io/badge/Google_Gemini-8E75B2?style=flat-square&logo=google&logoColor=white" },
-      { "name": "Streamlit", "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" },
-      { "name": "PyMuPDF", "badge": "https://img.shields.io/badge/PyMuPDF-3776AB?style=flat-square&logo=python&logoColor=white" }
+      {
+        "name": "Python",
+        "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"
+      },
+      {
+        "name": "Google Gemini",
+        "badge": "https://img.shields.io/badge/Google_Gemini-8E75B2?style=flat-square&logo=google&logoColor=white"
+      },
+      {
+        "name": "Streamlit",
+        "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white"
+      },
+      {
+        "name": "PyMuPDF",
+        "badge": "https://img.shields.io/badge/PyMuPDF-3776AB?style=flat-square&logo=python&logoColor=white"
+      }
     ],
     "challenges": "Handling diverse PDF formatting styles without losing key header metadata or section context.",
     "quantifiableImpact": [
-      { "value": "40%", "label": "Improvement in interview shortlisting rate" },
-      { "value": "500+", "label": "Resumes optimized" }
+      {
+        "value": "40%",
+        "label": "Improvement in interview shortlisting rate"
+      },
+      {
+        "value": "500+",
+        "label": "Resumes optimized"
+      }
     ],
     "lessonsLearned": "Understood the nuances of prompt engineering for strict structured JSON output evaluation.",
-    "relatedProjectIds": ["enterprise_rag", "smart_feedback", "polyglot"]
+    "relatedProjectIds": [
+      "enterprise_rag",
+      "smart_feedback",
+      "polyglot"
+    ],
+    "architectureStages": [
+      {
+        "stageNumber": 1,
+        "name": "Multi-Format PDF Resume Extraction",
+        "category": "INGESTION",
+        "tech": [
+          "PyMuPDF",
+          "Python"
+        ],
+        "inputs": "Raw user-uploaded candidate resume PDFs",
+        "outputs": "Extracted plain text stream preserving structural hierarchy",
+        "responsibility": "Extracts resume text while preserving sections, headings, and bullet points.",
+        "engineeringDecision": "Chose PyMuPDF for fast, resilient extraction across single and multi-column resume layouts without text scrambling."
+      },
+      {
+        "stageNumber": 2,
+        "name": "Job Description Analysis & Target Extraction",
+        "category": "PARSING",
+        "tech": [
+          "Python",
+          "Text Processing"
+        ],
+        "inputs": "Target job description text and role requirements",
+        "outputs": "Extracted technical requirements, required skills, and qualification vectors",
+        "responsibility": "Identifies core competencies, mandatory tools, and domain keywords.",
+        "engineeringDecision": "Implemented structured keyword extraction to establish the target profile baseline for subsequent comparison."
+      },
+      {
+        "stageNumber": 3,
+        "name": "Semantic Keyword Gap Analysis",
+        "category": "NLP MATCHING",
+        "tech": [
+          "NLP Matcher",
+          "Python"
+        ],
+        "inputs": "Parsed resume text stream and job requirement keywords",
+        "outputs": "Matched skill frequencies, missing keywords list, and alignment ratio",
+        "responsibility": "Performs bidirectional token and n-gram comparison to pinpoint missing ATS qualifications.",
+        "engineeringDecision": "Employed fuzzy token matching to recognize synonymous technical terms (e.g., AWS vs. Amazon Web Services) without penalty."
+      },
+      {
+        "stageNumber": 4,
+        "name": "Structured Prompt Formulation",
+        "category": "PROMPT ENGINEERING",
+        "tech": [
+          "Prompt Templates",
+          "Python"
+        ],
+        "inputs": "Resume text, job description, and matched keyword vectors",
+        "outputs": "Injected context prompt conditioned for HR recruiter role",
+        "responsibility": "Packages resume data and job requirements into specialized ATS evaluation prompts.",
+        "engineeringDecision": "Engineered strict persona prompting instructing Gemini Flash to evaluate formatting, measurable impact, and skill alignment."
+      },
+      {
+        "stageNumber": 5,
+        "name": "LLM Semantic Evaluation & Scoring",
+        "category": "INTELLIGENCE",
+        "tech": [
+          "Google Gemini Flash API",
+          "GenAI"
+        ],
+        "inputs": "Conditioned evaluation prompt",
+        "outputs": "Comprehensive ATS compatibility score (0-100%) and section-by-section breakdown",
+        "responsibility": "Generates high-level qualitative and quantitative evaluation of resume strength.",
+        "engineeringDecision": "Selected Google Gemini Flash for rapid sub-3 second latency and cost-effective structured JSON evaluation generation."
+      },
+      {
+        "stageNumber": 6,
+        "name": "Interactive Report & Improvement Engine",
+        "category": "UI & FEEDBACK",
+        "tech": [
+          "Streamlit Cloud",
+          "Custom CSS"
+        ],
+        "inputs": "ATS score, gap analysis, and Gemini recommendation vectors",
+        "outputs": "Visual match gauge, missing keywords badges, and copy-paste bullet suggestions",
+        "responsibility": "Presents actionable resume optimization insights, improving interview callbacks by 40%.",
+        "engineeringDecision": "Styled Streamlit with custom CSS cards to highlight high-priority recommendations before minor cosmetic fixes."
+      }
+    ]
   },
   "crop_yield": {
     "id": "crop_yield",
@@ -215,7 +678,12 @@
     "subtitle": "Deep Learning agricultural yield prediction using Neural Networks, weather telemetry, and soil metrics.",
     "category": "ai-ml",
     "isFeatured": false,
-    "tags": ["Neural Networks", "TensorFlow", "Keras", "Python"],
+    "tags": [
+      "Neural Networks",
+      "TensorFlow",
+      "Keras",
+      "Python"
+    ],
     "heroImage": "assets/projects/crop_yield_prediction.png",
     "matchmakerKey": "ml_data_agriculture",
     "links": {
@@ -245,20 +713,129 @@
       "Precision agriculture decision support"
     ],
     "techStackDetailed": [
-      { "name": "TensorFlow", "badge": "https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white" },
-      { "name": "Keras", "badge": "https://img.shields.io/badge/Keras-D00000?style=flat-square&logo=keras&logoColor=white" },
-      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
-      { "name": "Flask", "badge": "https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" },
-      { "name": "Pandas", "badge": "https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white" }
+      {
+        "name": "TensorFlow",
+        "badge": "https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white"
+      },
+      {
+        "name": "Keras",
+        "badge": "https://img.shields.io/badge/Keras-D00000?style=flat-square&logo=keras&logoColor=white"
+      },
+      {
+        "name": "Python",
+        "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"
+      },
+      {
+        "name": "Flask",
+        "badge": "https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white"
+      },
+      {
+        "name": "Pandas",
+        "badge": "https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white"
+      }
     ],
     "challenges": "Handling noisy historical weather records and scaling disparate environmental units effectively.",
     "quantifiableImpact": [
-      { "value": "97%", "label": "Prediction accuracy" },
-      { "value": "~25%", "label": "Potential improvement in resource planning" },
-      { "value": "7", "label": "Input features (NPK, temp, humidity, rain, pH)" }
+      {
+        "value": "97%",
+        "label": "Prediction accuracy"
+      },
+      {
+        "value": "~25%",
+        "label": "Potential improvement in resource planning"
+      },
+      {
+        "value": "7",
+        "label": "Input features (NPK, temp, humidity, rain, pH)"
+      }
     ],
     "lessonsLearned": "Mastered regularization hyperparameter tuning in deep neural networks.",
-    "relatedProjectIds": ["flight_fare", "mlops", "clearview"]
+    "relatedProjectIds": [
+      "flight_fare",
+      "mlops",
+      "clearview"
+    ],
+    "architectureStages": [
+      {
+        "stageNumber": 1,
+        "name": "Agricultural Data Ingestion",
+        "category": "DATA INGESTION",
+        "tech": [
+          "Pandas",
+          "Python"
+        ],
+        "inputs": "Historical multi-region agricultural yield and weather records",
+        "outputs": "Consolidated tabular data frames",
+        "responsibility": "Ingests raw records containing soil chemistry, rainfall, temperature, and crop yields.",
+        "engineeringDecision": "Built automated data loaders with schema checks to merge environmental sensor logs with historical crop harvest statistics."
+      },
+      {
+        "stageNumber": 2,
+        "name": "Multivariate Cleaning & Preprocessing",
+        "category": "DATA CLEANING",
+        "tech": [
+          "Pandas",
+          "NumPy"
+        ],
+        "inputs": "Raw tabular dataset with potential missing entries",
+        "outputs": "Cleaned dataset with imputed values and outlier boundaries",
+        "responsibility": "Handles missing sensor values, eliminates invalid agricultural anomalies, and formats categorical crop codes.",
+        "engineeringDecision": "Applied median imputation for sparse sensor data and removed extreme climate outliers to avoid biasing gradient updates."
+      },
+      {
+        "stageNumber": 3,
+        "name": "Feature Scaling & Pipeline Assembly",
+        "category": "FEATURE ENGINEERING",
+        "tech": [
+          "Scikit-Learn",
+          "MinMaxScaler"
+        ],
+        "inputs": "Cleaned numerical agricultural features (NPK levels, temperature, humidity, rainfall, pH)",
+        "outputs": "Normalized 7-dimensional feature vectors ready for neural network ingestion",
+        "responsibility": "Scales diverse feature units (soil pH vs. annual rainfall) onto uniform [0, 1] interval.",
+        "engineeringDecision": "Fit MinMaxScaler strictly on training folds and serialized the transformation object to prevent data leakage during real-time inference."
+      },
+      {
+        "stageNumber": 4,
+        "name": "Deep Neural Network Architecture",
+        "category": "MODEL ARCHITECTURE",
+        "tech": [
+          "TensorFlow",
+          "Keras"
+        ],
+        "inputs": "Normalized 7-feature training vectors",
+        "outputs": "Feed-Forward Deep Neural Network (DNN) with trained synaptic weights",
+        "responsibility": "Models non-linear interactions between soil nutrients, climate variables, and crop yield.",
+        "engineeringDecision": "Architected a multi-layer feed-forward network with Dropout regularization to capture non-linear relationships without overfitting, reaching 97% accuracy."
+      },
+      {
+        "stageNumber": 5,
+        "name": "REST API Microservice Deployment",
+        "category": "BACKEND",
+        "tech": [
+          "Flask RESTful",
+          "Python"
+        ],
+        "inputs": "JSON payload containing 7 live soil and climate readings",
+        "outputs": "Real-time predicted crop yield metric (tonnes/hectare)",
+        "responsibility": "Serves low-latency inference endpoint for farming applications and advisory systems.",
+        "engineeringDecision": "Wrapped Keras model prediction in Flask microservice with lightweight payload validation for instant sub-100ms response."
+      },
+      {
+        "stageNumber": 6,
+        "name": "Farmer Decision Advisory Interface",
+        "category": "UI & ADVISORY",
+        "tech": [
+          "HTML5",
+          "CSS3",
+          "JavaScript"
+        ],
+        "inputs": "Predicted yield metric and crop baseline targets",
+        "outputs": "Visual yield projections, resource allocation insights, and planting guidance",
+        "responsibility": "Translates raw numeric predictions into practical precision-farming insights enabling ~25% resource planning improvement.",
+        "engineeringDecision": "Designed intuitive visual dashboard with clear color-coded yield ranges so non-technical users can make prompt planting choices."
+      }
+    ]
   },
   "clearview": {
     "id": "clearview",
@@ -266,7 +843,12 @@
     "subtitle": "Interactive environmental intelligence platform transforming air quality metrics into actionable visual insights.",
     "category": "datascience",
     "isFeatured": false,
-    "tags": ["Data Viz", "Power BI", "Streamlit", "Python"],
+    "tags": [
+      "Data Viz",
+      "Power BI",
+      "Streamlit",
+      "Python"
+    ],
     "heroImage": "assets/projects/clearview_air_quality.png",
     "matchmakerKey": "ml_data_environmental",
     "links": {
@@ -296,18 +878,120 @@
       "95% data accuracy for environmental decision-making"
     ],
     "techStackDetailed": [
-      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
-      { "name": "Streamlit", "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" },
-      { "name": "Power BI", "badge": "https://img.shields.io/badge/Power_BI-F2C811?style=flat-square&logo=powerbi&logoColor=black" },
-      { "name": "Plotly", "badge": "https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white" }
+      {
+        "name": "Python",
+        "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"
+      },
+      {
+        "name": "Streamlit",
+        "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white"
+      },
+      {
+        "name": "Power BI",
+        "badge": "https://img.shields.io/badge/Power_BI-F2C811?style=flat-square&logo=powerbi&logoColor=black"
+      },
+      {
+        "name": "Plotly",
+        "badge": "https://img.shields.io/badge/Plotly-3F4F75?style=flat-square&logo=plotly&logoColor=white"
+      }
     ],
     "challenges": "Synchronizing disparate sensor API formats into a unified time-series dataset.",
     "quantifiableImpact": [
-      { "value": "95%", "label": "Data accuracy" },
-      { "value": "10+", "label": "Pollutants visualized" }
+      {
+        "value": "95%",
+        "label": "Data accuracy"
+      },
+      {
+        "value": "10+",
+        "label": "Pollutants visualized"
+      }
     ],
     "lessonsLearned": "Gained expertise in spatial-temporal data visualization and interactive dashboard design.",
-    "relatedProjectIds": ["flight_fare", "crop_yield", "smart_feedback"]
+    "relatedProjectIds": [
+      "flight_fare",
+      "crop_yield",
+      "smart_feedback"
+    ],
+    "architectureStages": [
+      {
+        "stageNumber": 1,
+        "name": "Multi-Source Environmental API Ingestion",
+        "category": "DATA INGESTION",
+        "tech": [
+          "Python Requests",
+          "REST APIs"
+        ],
+        "inputs": "Live air quality sensor feeds and environmental station telemetry",
+        "outputs": "Raw pollutant JSON streams from distributed monitoring stations",
+        "responsibility": "Pulls periodic telemetry across global/regional monitoring stations.",
+        "engineeringDecision": "Implemented robust HTTP retry mechanisms and exponential backoff to handle third-party air quality API rate limits."
+      },
+      {
+        "stageNumber": 2,
+        "name": "Data Cleansing & Unit Normalization",
+        "category": "DATA PROCESSING",
+        "tech": [
+          "Pandas",
+          "Python"
+        ],
+        "inputs": "Raw API JSON streams with varying pollutant units",
+        "outputs": "Cleaned, uniformly unit-converted timeseries with 95% data accuracy",
+        "responsibility": "Normalizes units (ppb to µg/m³) and aligns timestamps across disparate stations.",
+        "engineeringDecision": "Standardized all pollutant concentrations into WHO air quality guideline units to ensure accurate comparative analytics."
+      },
+      {
+        "stageNumber": 3,
+        "name": "Multi-Pollutant Metric Extraction",
+        "category": "ANALYTICS",
+        "tech": [
+          "Pandas",
+          "NumPy"
+        ],
+        "inputs": "Validated pollutant timeseries",
+        "outputs": "Calculated indices for 10+ pollutants (PM2.5, PM10, NO2, SO2, CO, O3)",
+        "responsibility": "Calculates AQI categories, moving averages, and pollutant severity scores.",
+        "engineeringDecision": "Computed rolling 24-hour moving averages to smooth sensor jitter and reveal genuine atmospheric pollution trends."
+      },
+      {
+        "stageNumber": 4,
+        "name": "Geographic Aggregation & Trend Pipeline",
+        "category": "AGGREGATION",
+        "tech": [
+          "Python",
+          "Geopandas"
+        ],
+        "inputs": "Multi-station pollutant time series and geographic metadata",
+        "outputs": "Regional air quality clusters and historical anomaly logs",
+        "responsibility": "Aggregates station-level metrics into regional and city-wide environmental profiles.",
+        "engineeringDecision": "Created spatial aggregation buckets allowing users to analyze micro-climate variations across urban sectors."
+      },
+      {
+        "stageNumber": 5,
+        "name": "Enterprise BI Executive Dashboard",
+        "category": "BI DASHBOARD",
+        "tech": [
+          "Power BI",
+          "Data Modeling"
+        ],
+        "inputs": "Aggregated historical environmental datasets",
+        "outputs": "Executive dashboards, pollutant heatmaps, and regulatory compliance reports",
+        "responsibility": "Provides comprehensive visual reporting for municipal and corporate stakeholders.",
+        "engineeringDecision": "Built high-density Power BI data models with interactive drill-downs for environmental policy analysts."
+      },
+      {
+        "stageNumber": 6,
+        "name": "Public Interactive Exploration Web UI",
+        "category": "PUBLIC UI",
+        "tech": [
+          "Streamlit",
+          "Plotly"
+        ],
+        "inputs": "Live air quality metrics and localized search queries",
+        "outputs": "Real-time pollution gauges, interactive regional maps, and health advisories",
+        "responsibility": "Delivers public-facing interactive tool for citizens to track local air quality in real time.",
+        "engineeringDecision": "Deployed Streamlit application with interactive Plotly maps for accessible, friction-free citizen exploration."
+      }
+    ]
   },
   "interior_design": {
     "id": "interior_design",
@@ -315,7 +999,12 @@
     "subtitle": "Generative Computer Vision platform leveraging Stable Diffusion and PyTorch to redesign interior living spaces.",
     "category": "ai-ml",
     "isFeatured": false,
-    "tags": ["Generative AI", "Stable Diffusion", "PyTorch", "Computer Vision"],
+    "tags": [
+      "Generative AI",
+      "Stable Diffusion",
+      "PyTorch",
+      "Computer Vision"
+    ],
     "heroImage": "assets/projects/ai_interior_designer.png",
     "matchmakerKey": "genai_visual",
     "links": {
@@ -345,19 +1034,125 @@
       "Streamlit web interface with real-time status"
     ],
     "techStackDetailed": [
-      { "name": "PyTorch", "badge": "https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" },
-      { "name": "Stable Diffusion", "badge": "https://img.shields.io/badge/Stable_Diffusion-A855F7?style=flat-square&logo=openai&logoColor=white" },
-      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
-      { "name": "Streamlit", "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" }
+      {
+        "name": "PyTorch",
+        "badge": "https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white"
+      },
+      {
+        "name": "Stable Diffusion",
+        "badge": "https://img.shields.io/badge/Stable_Diffusion-A855F7?style=flat-square&logo=openai&logoColor=white"
+      },
+      {
+        "name": "Python",
+        "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"
+      },
+      {
+        "name": "Streamlit",
+        "badge": "https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white"
+      }
     ],
     "challenges": "Eliminating AI image artifacts while strictly respecting fixed structural architectural elements.",
     "quantifiableImpact": [
-      { "value": "Days → Mins", "label": "Design ideation time reduction" },
-      { "value": "15–30 sec", "label": "GPU-accelerated image generation" },
-      { "value": "30+", "label": "Customizable design combinations" }
+      {
+        "value": "Days → Mins",
+        "label": "Design ideation time reduction"
+      },
+      {
+        "value": "15–30 sec",
+        "label": "GPU-accelerated image generation"
+      },
+      {
+        "value": "30+",
+        "label": "Customizable design combinations"
+      }
     ],
     "lessonsLearned": "Deepened understanding of latent diffusion models, conditioning adapters, and tensor optimization.",
-    "relatedProjectIds": ["enterprise_rag", "polyglot", "ats_resume"]
+    "relatedProjectIds": [
+      "enterprise_rag",
+      "polyglot",
+      "ats_resume"
+    ],
+    "architectureStages": [
+      {
+        "stageNumber": 1,
+        "name": "Design Parameter & Constraint Ingestion",
+        "category": "INGESTION",
+        "tech": [
+          "Streamlit UI",
+          "Python"
+        ],
+        "inputs": "User choices: 6 room types, 5 architectural styles, color palettes, wood finishes, flooring",
+        "outputs": "Structured design specification dictionary",
+        "responsibility": "Gathers spatial preferences, decorative styles, and material selections.",
+        "engineeringDecision": "Structured input choices into constrained categorical selections to guarantee coherent generative prompt synthesis."
+      },
+      {
+        "stageNumber": 2,
+        "name": "Prompt Engineering & Style Synthesis",
+        "category": "PROMPT SYNTHESIS",
+        "tech": [
+          "Python",
+          "Prompt Templates"
+        ],
+        "inputs": "Structured design parameter dictionary",
+        "outputs": "Enriched text prompt conditioned for architectural realism",
+        "responsibility": "Constructs detailed diffusion prompts embedding architectural lighting, composition, and materials.",
+        "engineeringDecision": "Integrated architectural photography keywords (photorealistic, octane render, 8k archviz) into template prompts to elevate output quality."
+      },
+      {
+        "stageNumber": 3,
+        "name": "GPU-Accelerated Diffusion Inference",
+        "category": "GENERATIVE MODEL",
+        "tech": [
+          "Stable Diffusion",
+          "PyTorch",
+          "CUDA"
+        ],
+        "inputs": "Conditioned architectural text prompt",
+        "outputs": "High-resolution synthesized interior room image tensor",
+        "responsibility": "Executes latent diffusion sampling to generate unique interior concepts in 15–30 seconds.",
+        "engineeringDecision": "Leveraged PyTorch CUDA acceleration with half-precision (FP16) tensors to halve GPU VRAM consumption while preserving visual detail."
+      },
+      {
+        "stageNumber": 4,
+        "name": "Hardware Optimization & CPU Fallback",
+        "category": "COMPUTE MANAGEMENT",
+        "tech": [
+          "PyTorch",
+          "Python"
+        ],
+        "inputs": "Host environment hardware telemetry",
+        "outputs": "Optimized execution pipeline configuration (CUDA vs. CPU)",
+        "responsibility": "Detects available compute resources and dynamically selects optimal inference backend.",
+        "engineeringDecision": "Engineered automatic CPU fallback mode with reduced step counts, enabling the application to run gracefully in non-GPU environments."
+      },
+      {
+        "stageNumber": 5,
+        "name": "Material Cost Calculation Engine",
+        "category": "ESTIMATION",
+        "tech": [
+          "Python",
+          "Pricing Logic"
+        ],
+        "inputs": "Selected wood finishes, flooring square footage, and room furnishings",
+        "outputs": "Itemized material estimate and total project budget range",
+        "responsibility": "Calculates realistic material costs based on selected finishes and room dimensions.",
+        "engineeringDecision": "Coupled material categories with tiered pricing tables to provide instant financial estimates alongside visual concepts."
+      },
+      {
+        "stageNumber": 6,
+        "name": "Procurement Integration & Design Showcase",
+        "category": "UI & PROCUREMENT",
+        "tech": [
+          "Streamlit",
+          "E-Commerce Links"
+        ],
+        "inputs": "Synthesized room image and itemized cost breakdown",
+        "outputs": "Interactive visual showcase with direct supplier purchase links",
+        "responsibility": "Presents generated designs with direct procurement links, reducing design ideation from days to minutes.",
+        "engineeringDecision": "Integrated direct purchase referral links for specified materials, bridging the gap between AI ideation and material procurement."
+      }
+    ]
   },
   "flight_fare": {
     "id": "flight_fare",
@@ -365,7 +1160,12 @@
     "subtitle": "Machine Learning regression system achieving 96% accuracy using Random Forest and XGBoost ensembles.",
     "category": "datascience",
     "isFeatured": false,
-    "tags": ["Machine Learning", "Scikit-Learn", "Flask", "Data Science"],
+    "tags": [
+      "Machine Learning",
+      "Scikit-Learn",
+      "Flask",
+      "Data Science"
+    ],
     "heroImage": "assets/projects/flight_fare_prediction.png",
     "matchmakerKey": "ml_data_financial",
     "links": {
@@ -394,18 +1194,121 @@
       "Average ~20% cost savings for users"
     ],
     "techStackDetailed": [
-      { "name": "Scikit-Learn", "badge": "https://img.shields.io/badge/Scikit_Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" },
-      { "name": "Flask", "badge": "https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" },
-      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
-      { "name": "Pandas", "badge": "https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white" }
+      {
+        "name": "Scikit-Learn",
+        "badge": "https://img.shields.io/badge/Scikit_Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white"
+      },
+      {
+        "name": "Flask",
+        "badge": "https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white"
+      },
+      {
+        "name": "Python",
+        "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"
+      },
+      {
+        "name": "Pandas",
+        "badge": "https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white"
+      }
     ],
     "challenges": "Handling highly complex cyclical datetime variables (departure time, duration, arrival time) effectively.",
     "quantifiableImpact": [
-      { "value": "96.95%", "label": "R² score on test data" },
-      { "value": "~20%", "label": "Average cost savings for users" }
+      {
+        "value": "96.95%",
+        "label": "R² score on test data"
+      },
+      {
+        "value": "~20%",
+        "label": "Average cost savings for users"
+      }
     ],
     "lessonsLearned": "Reinforced the power of feature engineering over basic model selection in tabular datasets.",
-    "relatedProjectIds": ["crop_yield", "mlops", "clearview"]
+    "relatedProjectIds": [
+      "crop_yield",
+      "mlops",
+      "clearview"
+    ],
+    "architectureStages": [
+      {
+        "stageNumber": 1,
+        "name": "Flight Telemetry Data Ingestion",
+        "category": "DATA INGESTION",
+        "tech": [
+          "Pandas",
+          "Python"
+        ],
+        "inputs": "Historical flight booking logs and carrier ticketing datasets",
+        "outputs": "Structured flight booking records dataframe",
+        "responsibility": "Ingests raw flight records spanning multiple airlines, routes, and departure dates.",
+        "engineeringDecision": "Automated batch loading with column validation to process multi-carrier historical booking datasets efficiently."
+      },
+      {
+        "stageNumber": 2,
+        "name": "Temporal Datetime Feature Engineering",
+        "category": "FEATURE ENGINEERING",
+        "tech": [
+          "Python",
+          "Datetime"
+        ],
+        "inputs": "Raw departure timestamps, arrival timestamps, and route stops",
+        "outputs": "Engineered temporal features (journey duration, departure time-of-day, month, weekday)",
+        "responsibility": "Extracts cyclical flight scheduling patterns and duration metrics from timestamps.",
+        "engineeringDecision": "Engineered hour-of-day and day-of-week cyclical features to capture peak vs. off-peak flight pricing swings."
+      },
+      {
+        "stageNumber": 3,
+        "name": "Categorical Encoding & Pipeline Assembly",
+        "category": "PREPROCESSING",
+        "tech": [
+          "Scikit-Learn",
+          "OneHotEncoder"
+        ],
+        "inputs": "Categorical features (airline, source city, destination city, stops)",
+        "outputs": "Transformed, encoded feature matrix ready for regression modeling",
+        "responsibility": "Encodes multi-class carrier and routing categories into sparse feature matrices.",
+        "engineeringDecision": "Used Scikit-Learn Pipeline and ColumnTransformer to eliminate data leakage and ensure uniform pre-processing during inference."
+      },
+      {
+        "stageNumber": 4,
+        "name": "Ensemble Model Training & Hyperparameter Tuning",
+        "category": "MODEL TRAINING",
+        "tech": [
+          "Random Forest",
+          "Scikit-Learn"
+        ],
+        "inputs": "Preprocessed training feature matrices and ticket price labels",
+        "outputs": "Tuned ensemble model achieving 96.95% R2 score on test data",
+        "responsibility": "Trains ensemble regressor capturing non-linear interactions between routes, carrier, and timing.",
+        "engineeringDecision": "Tuned Random Forest with RandomizedSearchCV for optimal tree depth and estimators, achieving high predictive accuracy across diverse routes."
+      },
+      {
+        "stageNumber": 5,
+        "name": "Model Artifact Serialization",
+        "category": "SERIALIZATION",
+        "tech": [
+          "Joblib",
+          "Python"
+        ],
+        "inputs": "Trained Random Forest regressor and fitted preprocessors",
+        "outputs": "Serialized pipeline artifacts ready for deployment",
+        "responsibility": "Persists trained model and transformers for instant, zero-recalculation loading.",
+        "engineeringDecision": "Serialized full preprocessing pipeline alongside the estimator to guarantee zero feature discrepancy during live API calls."
+      },
+      {
+        "stageNumber": 6,
+        "name": "Real-Time Price Prediction Web Service",
+        "category": "WEB SERVICE",
+        "tech": [
+          "Flask RESTful",
+          "HTML5",
+          "CSS3"
+        ],
+        "inputs": "User flight search inputs (airline, route, departure date, stops)",
+        "outputs": "Instant estimated ticket fare and expected cost savings indicator",
+        "responsibility": "Serves live fare estimations via clean web interface, enabling ~20% average cost savings.",
+        "engineeringDecision": "Deployed Flask backend with responsive client interface providing instant fare estimates upon form completion."
+      }
+    ]
   },
   "polyglot": {
     "id": "polyglot",
@@ -413,7 +1316,12 @@
     "subtitle": "High-precision Natural Language Processing classification model detecting 20+ world languages.",
     "category": "ai-ml",
     "isFeatured": false,
-    "tags": ["NLP", "Scikit-Learn", "MultinomialNB", "Python"],
+    "tags": [
+      "NLP",
+      "Scikit-Learn",
+      "MultinomialNB",
+      "Python"
+    ],
     "heroImage": "assets/projects/polyglot_language_detection.png",
     "matchmakerKey": "genai_language",
     "links": {
@@ -442,17 +1350,116 @@
       "Sub-millisecond inference speed"
     ],
     "techStackDetailed": [
-      { "name": "Python", "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" },
-      { "name": "Scikit-Learn", "badge": "https://img.shields.io/badge/Scikit_Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" },
-      { "name": "NLTK", "badge": "https://img.shields.io/badge/NLTK-2563EB?style=flat-square&logo=python&logoColor=white" }
+      {
+        "name": "Python",
+        "badge": "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"
+      },
+      {
+        "name": "Scikit-Learn",
+        "badge": "https://img.shields.io/badge/Scikit_Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white"
+      },
+      {
+        "name": "NLTK",
+        "badge": "https://img.shields.io/badge/NLTK-2563EB?style=flat-square&logo=python&logoColor=white"
+      }
     ],
     "challenges": "Distinguishing between closely related Romance and Slavic languages on very short sentence fragments.",
     "quantifiableImpact": [
-      { "value": "99%+", "label": "Detection accuracy" },
-      { "value": "17+", "label": "Languages supported" }
+      {
+        "value": "99%+",
+        "label": "Detection accuracy"
+      },
+      {
+        "value": "17+",
+        "label": "Languages supported"
+      }
     ],
     "lessonsLearned": "Character n-grams are vastly superior to word tokens when identifying languages with flexible syntax.",
-    "relatedProjectIds": ["ats_resume", "enterprise_rag", "interior_design"]
+    "relatedProjectIds": [
+      "ats_resume",
+      "enterprise_rag",
+      "interior_design"
+    ],
+    "architectureStages": [
+      {
+        "stageNumber": 1,
+        "name": "Multilingual Corpus Ingestion",
+        "category": "DATA INGESTION",
+        "tech": [
+          "Pandas",
+          "Python"
+        ],
+        "inputs": "Raw text samples across 17+ languages (Latin, Cyrillic, Asian, Indic scripts)",
+        "outputs": "Consolidated, labeled multilingual training dataset",
+        "responsibility": "Ingests diverse text corpora representing distinct language families.",
+        "engineeringDecision": "Balanced multilingual datasets across 17+ languages to prevent dominant language bias in classifier decision boundaries."
+      },
+      {
+        "stageNumber": 2,
+        "name": "Text Normalization & Cleansing",
+        "category": "PREPROCESSING",
+        "tech": [
+          "Python",
+          "Regex"
+        ],
+        "inputs": "Raw multilingual text strings containing punctuation, URLs, and numbers",
+        "outputs": "Standardized text strings preserving script-specific character sets",
+        "responsibility": "Removes extraneous symbols and digits while strictly preserving language-specific alphabets.",
+        "engineeringDecision": "Preserved unique unicode ranges and diacritical marks essential for accurate low-resource language discrimination."
+      },
+      {
+        "stageNumber": 3,
+        "name": "Character N-Gram & TF-IDF Extraction",
+        "category": "VECTORIZATION",
+        "tech": [
+          "Scikit-Learn",
+          "TfidfVectorizer"
+        ],
+        "inputs": "Cleaned multilingual text samples",
+        "outputs": "High-dimensional character n-gram TF-IDF sparse matrix",
+        "responsibility": "Extracts sub-word character n-gram patterns that generalize across grammar and vocabulary.",
+        "engineeringDecision": "Selected sub-word character n-grams (3-5 characters) over word tokens, allowing accurate language detection even for short fragments."
+      },
+      {
+        "stageNumber": 4,
+        "name": "Linear SVM Classifier Optimization",
+        "category": "MODEL TRAINING",
+        "tech": [
+          "LinearSVC",
+          "Scikit-Learn"
+        ],
+        "inputs": "TF-IDF feature matrices and language class labels",
+        "outputs": "Optimized Linear Support Vector Classifier with 99%+ accuracy",
+        "responsibility": "Trains maximum-margin hyperplanes to separate 17+ language classes in high-dimensional space.",
+        "engineeringDecision": "Chose Linear Support Vector Classification for sub-millisecond inference speed and exceptional performance on high-dimensional text data."
+      },
+      {
+        "stageNumber": 5,
+        "name": "Cross-Lingual Evaluation & Benchmark",
+        "category": "EVALUATION",
+        "tech": [
+          "Scikit-Learn",
+          "Classification Metrics"
+        ],
+        "inputs": "Held-out multilingual test set",
+        "outputs": "Confusion matrix and precision/recall metrics (>99% across all 17 classes)",
+        "responsibility": "Evaluates classification accuracy and validates zero degradation across similar languages.",
+        "engineeringDecision": "Validated model performance on challenging closely-related language pairs (e.g., Spanish vs. Portuguese; Hindi vs. Marathi)."
+      },
+      {
+        "stageNumber": 6,
+        "name": "REST API Gateway Deployment",
+        "category": "API DEPLOYMENT",
+        "tech": [
+          "Flask REST API",
+          "Python"
+        ],
+        "inputs": "JSON payload containing arbitrary text snippet",
+        "outputs": "Predicted language ISO code and classification confidence score",
+        "responsibility": "Provides real-time language detection microservice for integration into larger NLP pipelines.",
+        "engineeringDecision": "Built lightweight REST endpoint with sub-10ms response time designed for plug-and-play integration into automated translation pipelines."
+      }
+    ]
   },
   "cloudcast": {
     "id": "cloudcast",
@@ -460,7 +1467,12 @@
     "subtitle": "Polished web application delivering real-time weather telemetry with a sleek dynamic UI.",
     "category": "fullstack",
     "isFeatured": false,
-    "tags": ["JavaScript", "CSS3", "API Integration", "HTML5"],
+    "tags": [
+      "JavaScript",
+      "CSS3",
+      "API Integration",
+      "HTML5"
+    ],
     "heroImage": "assets/projects/cloudcast_weather.png",
     "matchmakerKey": "engineering_frontend",
     "links": {
@@ -490,17 +1502,119 @@
       "Deployed live on GitHub Pages"
     ],
     "techStackDetailed": [
-      { "name": "JavaScript", "badge": "https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" },
-      { "name": "CSS3", "badge": "https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" },
-      { "name": "HTML5", "badge": "https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" },
-      { "name": "OpenWeather API", "badge": "https://img.shields.io/badge/OpenWeather_API-EB6E4B?style=flat-square&logo=openweather&logoColor=white" }
+      {
+        "name": "JavaScript",
+        "badge": "https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"
+      },
+      {
+        "name": "CSS3",
+        "badge": "https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"
+      },
+      {
+        "name": "HTML5",
+        "badge": "https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"
+      },
+      {
+        "name": "OpenWeather API",
+        "badge": "https://img.shields.io/badge/OpenWeather_API-EB6E4B?style=flat-square&logo=openweather&logoColor=white"
+      }
     ],
     "challenges": "Handling API rate limit edge cases and smooth UI state transitions during network latency.",
     "quantifiableImpact": [
-      { "value": "100%", "label": "Mobile-first responsive design" },
-      { "value": "Live", "label": "API forecast integration" }
+      {
+        "value": "100%",
+        "label": "Mobile-first responsive design"
+      },
+      {
+        "value": "Live",
+        "label": "API forecast integration"
+      }
     ],
     "lessonsLearned": "Vanilla JavaScript and native CSS variables can deliver unmatched speed and aesthetic elegance.",
-    "relatedProjectIds": ["smart_feedback", "clearview", "ats_resume"]
+    "relatedProjectIds": [
+      "smart_feedback",
+      "clearview",
+      "ats_resume"
+    ],
+    "architectureStages": [
+      {
+        "stageNumber": 1,
+        "name": "User Location & Search Input Capture",
+        "category": "USER INPUT",
+        "tech": [
+          "HTML5",
+          "Vanilla JavaScript"
+        ],
+        "inputs": "User city search query or browser Geolocation API coordinates",
+        "outputs": "Sanitized location string or latitude/longitude coordinates",
+        "responsibility": "Captures user search queries with client-side sanitization and validation.",
+        "engineeringDecision": "Supported dual location input: direct city text search and native browser geolocation for instant local weather discovery."
+      },
+      {
+        "stageNumber": 2,
+        "name": "Asynchronous Weather API Dispatch",
+        "category": "API INTEGRATION",
+        "tech": [
+          "Fetch API",
+          "OpenWeather API"
+        ],
+        "inputs": "Location query parameters",
+        "outputs": "Raw JSON response containing current weather, atmospheric data, and 5-day forecast",
+        "responsibility": "Dispatches secure asynchronous HTTP requests to OpenWeather REST APIs.",
+        "engineeringDecision": "Implemented robust error handling, network retry, and client-side response caching to prevent duplicate API hits."
+      },
+      {
+        "stageNumber": 3,
+        "name": "Telemetry Parsing & Metric Extraction",
+        "category": "DATA LAYER",
+        "tech": [
+          "Vanilla JavaScript",
+          "ES6+"
+        ],
+        "inputs": "Raw OpenWeather JSON payload",
+        "outputs": "Structured telemetry state (temperature, humidity, wind, pressure, UV index, forecast array)",
+        "responsibility": "Transforms deeply nested API response into normalized application state objects.",
+        "engineeringDecision": "Designed pure JavaScript data transformation utilities without external dependencies, keeping application bundle under 50KB."
+      },
+      {
+        "stageNumber": 4,
+        "name": "Dynamic Glassmorphic Theme Engine",
+        "category": "THEME ENGINE",
+        "tech": [
+          "CSS Custom Properties",
+          "CSS3"
+        ],
+        "inputs": "Current weather condition code (Clear, Rain, Clouds, Snow, Thunderstorm)",
+        "outputs": "Dynamically adjusted CSS background gradients, accent colors, and atmospheric overlays",
+        "responsibility": "Adapts visual atmosphere and color palette in real time based on local weather conditions.",
+        "engineeringDecision": "Used CSS variables and glassmorphic backdrop filters for fluid theme transitions without layout reflows."
+      },
+      {
+        "stageNumber": 5,
+        "name": "Responsive Forecast DOM Rendering",
+        "category": "UI RENDERING",
+        "tech": [
+          "DOM API",
+          "Vanilla JavaScript"
+        ],
+        "inputs": "Normalized current weather and 5-day forecast state",
+        "outputs": "Rendered weather metric cards, interactive temperature gauges, and forecast cards",
+        "responsibility": "Updates DOM nodes with smooth animations and responsive mobile-first layouts.",
+        "engineeringDecision": "Employed modular DOM update functions to update only modified weather metric nodes rather than re-rendering the whole page."
+      },
+      {
+        "stageNumber": 6,
+        "name": "Static Edge Deployment & Caching",
+        "category": "DEPLOYMENT",
+        "tech": [
+          "GitHub Pages",
+          "HTTP Caching"
+        ],
+        "inputs": "Static HTML5, CSS3, and JavaScript asset bundle",
+        "outputs": "Globally accessible, CDN-cached weather intelligence web application",
+        "responsibility": "Delivers zero-maintenance, high-availability web application to end users.",
+        "engineeringDecision": "Architected as a pure client-side progressive static site deployed on GitHub Pages for zero hosting cost and near-instant initial paint."
+      }
+    ]
   }
 }

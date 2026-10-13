@@ -1,6 +1,9 @@
 node_modules
 dist
 .env
+.env*.local
+.env.production
+!.env.example
 .DS_Store
 *.log
 npm-debug.log*
@@ -10,5 +13,6 @@ yarn-error.log*
 coverage/
 .idea/
 portfolio_code.zip
+scratch/
 
 

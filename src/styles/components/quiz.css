@@ -37,7 +37,6 @@
 .quiz-option:hover {
     background: var(--accent);
     color: white;
-    transform: translateX(5px);
 }
 
 .quiz-result.hidden {
@@ -185,7 +184,6 @@ body.light-mode .quiz-option {
 .quiz-option-btn:hover {
     background: rgba(139, 92, 246, 0.1);
     border-color: var(--accent);
-    transform: translateX(8px) translateY(-2px);
     box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
 }
 

@@ -1,49 +1,88 @@
 /* ==========================================================================
-   macOS Finder-Inspired Projects Section - Refined Design System
+   macOS Finder-Inspired System Studio (10 Projects) - Dark Cinematic Theme
+   Aligned with Editorial Architecture & Coral-Red Accent (#F45135)
    ========================================================================== */
 
 .projects {
-  background-color: var(--dark-bg);
-  padding: 50px 0 80px 0;
+  background-color: #070a09;
+  padding: 60px 5% 64px 5%;
   position: relative;
+  border-top: 1px solid var(--line);
+}
+
+.projects.studio-collapsed {
+  display: none !important;
 }
 
 .projects .container {
-  max-width: 1440px !important;
-  padding: 0 20px;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 auto;
+}
+
+/* Studio Section Header (Matches Engineering Workbench Typography) */
+.studio-header {
+  margin-bottom: 28px;
+}
+
+.studio-header .mono {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.studio-header h2 {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin: 6px 0 12px 0;
+}
+
+.studio-header p {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 14px;
+  color: #8E9591;
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0;
 }
 
 /* ==========================================================================
-   1. Finder Window Container Frame (No Nested Window Scroll)
+   1. Finder Window Container Frame
    ========================================================================== */
 
 .finder-window {
-  background: rgba(18, 18, 24, 0.9);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  background: #0b0f0d;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.03);
   display: flex;
   flex-direction: column;
-  height: 800px;
-  max-height: calc(100vh - 110px);
-  min-height: 600px;
+  height: 820px;
+  max-height: calc(100vh - 100px);
+  min-height: 620px;
   overflow: hidden;
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 body.light-mode .finder-window {
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
-/* 2. Top Bar & Window Controls Chrome */
+/* 2. Top Chrome Bar & Window Controls */
 .finder-header {
-  height: 48px;
-  background: rgba(24, 24, 34, 0.98);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  height: 46px;
+  background: #0e1411;
+  border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -53,14 +92,14 @@ body.light-mode .finder-window {
 }
 
 body.light-mode .finder-header {
-  background: rgba(241, 245, 249, 0.98);
+  background: #f4f6f5;
   border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
 .finder-controls {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   width: 90px;
 }
 
@@ -69,24 +108,38 @@ body.light-mode .finder-header {
   height: 11px;
   border-radius: 50%;
   display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 
-.finder-dot.red { background: #ff5f56; }
+.finder-dot.red {
+  background: #ff5f56;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.finder-dot.red:hover {
+  transform: scale(1.15);
+  opacity: 0.85;
+}
+
 .finder-dot.yellow { background: #ffbd2e; }
 .finder-dot.green { background: #27c93f; }
 
 .finder-title {
-  font-family: var(--font-main, system-ui, -apple-system, sans-serif);
-  font-size: 0.84rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.78rem;
   font-weight: 500;
-  color: var(--text-secondary, #94a3b8);
+  color: var(--muted);
   display: flex;
   align-items: center;
   gap: 8px;
+  letter-spacing: 0.02em;
 }
 
 body.light-mode .finder-title {
-  color: #475569;
+  color: #556059;
 }
 
 .finder-title i {
@@ -95,17 +148,22 @@ body.light-mode .finder-title {
 
 #finder-breadcrumb {
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink);
+}
+
+body.light-mode #finder-breadcrumb {
+  color: #111a15;
 }
 
 .finder-mobile-toggle {
   display: none;
-  background: var(--accent);
-  color: #ffffff;
-  border: none;
+  background: #141c18;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
   padding: 5px 12px;
   border-radius: 6px;
-  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
   align-items: center;
@@ -114,11 +172,12 @@ body.light-mode .finder-title {
 }
 
 .finder-mobile-toggle:hover {
-  opacity: 0.9;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* ==========================================================================
-   Split-Screen Body Layout
+   3. Split-Screen Body Layout
    ========================================================================== */
 
 .finder-body {
@@ -134,80 +193,141 @@ body.light-mode .finder-title {
    ========================================================================== */
 
 .finder-sidebar {
-  width: 290px;
-  background: rgba(14, 14, 20, 0.95);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  width: 295px;
+  background: #090d0b;
+  border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   padding: 14px 12px;
   flex-shrink: 0;
-  gap: 14px;
+  gap: 12px;
   height: 100%;
   min-height: 0;
   overflow-y: auto;
 }
 
 body.light-mode .finder-sidebar {
-  background: rgba(248, 250, 252, 0.98);
+  background: #f8faf9;
   border-right-color: rgba(0, 0, 0, 0.08);
 }
 
-/* Sidebar Studio Badge Header */
+.finder-sidebar-header {
+  padding-bottom: 2px;
+}
+
 .finder-studio-badge {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
+  padding: 4px 4px 8px 4px;
+  border-bottom: 1px solid var(--line);
   width: 100%;
 }
 
 body.light-mode .finder-studio-badge {
-  background: rgba(0, 0, 0, 0.03);
-  border-color: rgba(0, 0, 0, 0.06);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
 }
 
 .finder-studio-icon {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%);
-  color: #ffffff;
-  font-size: 0.95rem;
+  border-radius: 7px;
+  background: #121815;
+  border: 1px solid var(--line-strong);
+  color: var(--accent);
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
   flex-shrink: 0;
 }
 
+body.light-mode .finder-studio-icon {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: var(--accent);
+}
+
 .finder-studio-title {
-  font-size: 0.84rem;
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 0.88rem;
   font-weight: 700;
-  color: var(--text);
+  letter-spacing: 0.02em;
+  color: var(--ink);
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.finder-studio-subtitle {
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  display: block;
-  margin-top: 1px;
+body.light-mode .finder-studio-title {
+  color: #111a15;
 }
 
+.finder-studio-subtitle {
+  font-size: 0.7rem;
+  color: var(--muted);
+  display: block;
+  margin-top: 1px;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+}
 
+/* Quick Search Box */
+.finder-search-box {
+  position: relative;
+  width: 100%;
+}
+
+.finder-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 0.72rem;
+  pointer-events: none;
+}
+
+#finder-project-search {
+  width: 100%;
+  padding: 7px 10px 7px 28px;
+  background: #121815;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+
+#finder-project-search::placeholder {
+  color: #616e66;
+}
+
+#finder-project-search:focus {
+  border-color: var(--accent);
+  background: #151e19;
+}
+
+body.light-mode #finder-project-search {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #111a15;
+}
+
+body.light-mode #finder-project-search:focus {
+  border-color: var(--accent);
+  background: #ffffff;
+}
 
 .finder-section-title {
-  font-family: 'JetBrains Mono', monospace, sans-serif;
+  font-family: var(--font-mono, monospace);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: var(--text-secondary);
+  color: var(--muted);
   text-transform: uppercase;
   margin-bottom: 6px;
   display: block;
@@ -229,8 +349,9 @@ body.light-mode .finder-studio-badge {
   border-radius: 6px;
   background: transparent;
   border: none;
-  color: var(--text-secondary);
-  font-size: 0.8rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -245,8 +366,8 @@ body.light-mode .finder-studio-badge {
 }
 
 .finder-cat-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink);
 }
 
 body.light-mode .finder-cat-btn:hover {
@@ -255,22 +376,36 @@ body.light-mode .finder-cat-btn:hover {
 }
 
 .finder-cat-btn.active {
-  background: rgba(139, 92, 246, 0.14);
+  background: rgba(244, 81, 53, 0.1);
   color: var(--accent);
   font-weight: 600;
 }
 
+body.light-mode .finder-cat-btn.active {
+  background: rgba(244, 81, 53, 0.08);
+  color: var(--accent);
+}
+
 .finder-count {
-  font-size: 0.7rem;
-  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.68rem;
+  background: #141c18;
+  border: 1px solid var(--line);
   padding: 1px 6px;
   border-radius: 10px;
-  color: var(--text-secondary);
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+body.light-mode .finder-count {
+  background: #e9eceb;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #556059;
 }
 
 .finder-cat-btn.active .finder-count {
   background: var(--accent);
   color: #ffffff;
+  border-color: var(--accent);
 }
 
 /* Compact Sidebar Nav Project Items (10 Items) */
@@ -295,7 +430,7 @@ body.light-mode .finder-cat-btn:hover {
 
 .finder-nav-item:hover {
   background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.06);
+  border-color: var(--line);
 }
 
 body.light-mode .finder-nav-item:hover {
@@ -305,33 +440,39 @@ body.light-mode .finder-nav-item:hover {
 
 .finder-nav-item:focus-visible {
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 0 2px rgba(244, 81, 53, 0.25);
 }
 
 .finder-nav-item.active {
-  background: linear-gradient(90deg, rgba(139, 92, 246, 0.18) 0%, rgba(59, 130, 246, 0.08) 100%);
-  border-color: rgba(139, 92, 246, 0.35);
+  background: rgba(244, 81, 53, 0.08);
+  border-color: rgba(244, 81, 53, 0.3);
 }
 
 body.light-mode .finder-nav-item.active {
-  background: linear-gradient(90deg, rgba(139, 92, 246, 0.12) 0%, rgba(59, 130, 246, 0.06) 100%);
-  border-color: rgba(139, 92, 246, 0.3);
+  background: rgba(244, 81, 53, 0.06);
+  border-color: rgba(244, 81, 53, 0.25);
 }
 
 .finder-item-thumb-wrapper {
   width: 36px;
   height: 36px;
-  border-radius: 7px;
+  border-radius: 6px;
   overflow: hidden;
   flex-shrink: 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--line);
+  background: #121815;
+}
+
+body.light-mode .finder-item-thumb-wrapper {
+  background: #eef1f0;
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
 .finder-item-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .finder-item-info {
@@ -340,18 +481,24 @@ body.light-mode .finder-nav-item.active {
 }
 
 .finder-item-title {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text);
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.25;
 }
 
+body.light-mode .finder-item-title {
+  color: #111a15;
+}
+
 .finder-item-subtitle {
-  font-size: 0.71rem;
-  color: var(--text-secondary);
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.72rem;
+  color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -365,7 +512,7 @@ body.light-mode .finder-nav-item.active {
   border-radius: 50%;
   background: var(--accent);
   display: none;
-  box-shadow: 0 0 8px var(--accent);
+  box-shadow: 0 0 6px rgba(244, 81, 53, 0.7);
   flex-shrink: 0;
 }
 
@@ -374,14 +521,15 @@ body.light-mode .finder-nav-item.active {
 }
 
 .finder-empty-state {
-  padding: 18px 8px;
+  padding: 24px 8px;
   text-align: center;
-  color: var(--text-secondary);
+  color: var(--muted);
   font-size: 0.78rem;
+  font-family: var(--font-mono);
 }
 
 /* ==========================================================================
-   5 & 9. Right Detail Workspace & Spacing Refinements
+   5. Right Detail Workspace
    ========================================================================== */
 
 .finder-workspace {
@@ -390,40 +538,39 @@ body.light-mode .finder-nav-item.active {
   height: 100%;
   min-height: 0;
   overflow-y: auto;
-  background: rgba(10, 10, 15, 0.4);
+  background: #0b0f0d;
 }
 
 body.light-mode .finder-workspace {
-  background: rgba(255, 255, 255, 0.5);
+  background: #ffffff;
 }
 
 .finder-detail-container {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .finder-detail-container.finder-fade-out {
   opacity: 0;
-  transform: translateY(4px);
 }
 
-/* 3. Strict Title Hierarchy Header & Hero Screenshot Frame */
+/* Top Workspace Header (Category -> Title -> Subtitle -> Actions -> Preview) */
 .finder-workspace-header {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   align-items: center;
-  background: rgba(24, 24, 34, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
+  background: #0e1411;
+  border: 1px solid var(--line);
+  border-radius: 12px;
   padding: 24px;
 }
 
 body.light-mode .finder-workspace-header {
-  background: rgba(255, 255, 255, 0.85);
+  background: #f8faf9;
   border-color: rgba(0, 0, 0, 0.08);
 }
 
@@ -431,75 +578,129 @@ body.light-mode .finder-workspace-header {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 
 .finder-category-badge {
-  font-family: 'JetBrains Mono', monospace, sans-serif;
-  font-size: 0.7rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  padding: 4px 9px;
-  border-radius: 6px;
-  background: rgba(139, 92, 246, 0.15);
-  color: var(--accent-light, #a78bfa);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: rgba(244, 81, 53, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(244, 81, 53, 0.25);
 }
 
 .finder-featured-badge {
-  font-size: 0.7rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
   font-weight: 600;
+  letter-spacing: 0.06em;
   padding: 4px 9px;
-  border-radius: 6px;
-  background: rgba(234, 179, 8, 0.15);
+  border-radius: 4px;
+  background: rgba(234, 179, 8, 0.1);
   color: #facc15;
-  border: 1px solid rgba(234, 179, 8, 0.3);
+  border: 1px solid rgba(234, 179, 8, 0.25);
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
 }
 
 .finder-project-title {
-  font-family: var(--font-heading, 'Playfair Display', Georgia, serif);
-  font-size: 2.1rem;
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: clamp(24px, 2.4vw, 32px);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.2;
   margin-bottom: 10px;
-  color: var(--text);
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+body.light-mode .finder-project-title {
+  color: #111a15;
 }
 
 .finder-project-subtitle {
-  font-size: 0.94rem;
-  color: var(--text-secondary);
-  line-height: 1.55;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.92rem;
+  color: #8E9591;
+  line-height: 1.6;
   margin-bottom: 20px;
 }
 
 .finder-action-links {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 .finder-btn-cta {
-  padding: 8px 16px;
-  font-size: 0.84rem;
-  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-/* Browser Frame Preview Component & Image Zoom Lightbox */
+.finder-btn-cta.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+  border: 1px solid var(--accent);
+  box-shadow: none;
+}
+
+.finder-btn-cta.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(244, 81, 53, 0.25);
+}
+
+.finder-btn-cta.btn-outline {
+  background: #121815;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+}
+
+.finder-btn-cta.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: #17211c;
+  transform: translateY(-2px);
+}
+
+body.light-mode .finder-btn-cta.btn-outline {
+  background: #ffffff;
+  color: #111a15;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .finder-btn-cta.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: #f8faf9;
+}
+
+/* Browser Frame Preview Component & Image Zoom */
 .finder-preview-frame {
   background: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
   cursor: zoom-in;
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -510,7 +711,7 @@ body.light-mode .finder-workspace-header {
 .finder-preview-frame:focus-visible {
   transform: translateY(-2px);
   border-color: var(--accent);
-  box-shadow: 0 18px 40px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
 }
 
 .finder-preview-img-wrapper {
@@ -524,55 +725,36 @@ body.light-mode .finder-workspace-header {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 10, 18, 0.65);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(7, 10, 9, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   color: #ffffff !important;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.3px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   opacity: 0;
   transition: opacity 0.25s ease;
   pointer-events: none;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .finder-zoom-overlay span {
   color: #ffffff !important;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(18, 24, 21, 0.85);
   padding: 6px 14px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  border: 1px solid var(--line-strong);
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
 .finder-zoom-overlay i {
-  color: #ffffff !important;
-}
-
-/* Explicit Light Theme White Font Override */
-body.light-mode .finder-zoom-overlay,
-body.light-mode .finder-zoom-overlay *,
-body.light-mode .finder-zoom-overlay span,
-body.light-mode .finder-zoom-overlay i,
-body.light .finder-zoom-overlay,
-body.light .finder-zoom-overlay *,
-body.light .finder-zoom-overlay span,
-body.light .finder-zoom-overlay i {
-  color: #ffffff !important;
-}
-
-body.light-mode .finder-zoom-overlay span,
-body.light .finder-zoom-overlay span {
-  background: rgba(0, 0, 0, 0.65) !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: var(--accent) !important;
 }
 
 .finder-preview-frame:hover .finder-zoom-overlay,
@@ -581,20 +763,25 @@ body.light .finder-zoom-overlay span {
 }
 
 .finder-frame-bar {
-  height: 28px;
-  background: #1e1e2d;
+  height: 26px;
+  background: #121815;
   display: flex;
   align-items: center;
   padding: 0 10px;
   gap: 5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--line);
+}
+
+body.light-mode .finder-frame-bar {
+  background: #eef1f0;
+  border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
 .finder-frame-url {
   margin-left: auto;
-  font-family: 'JetBrains Mono', monospace, sans-serif;
-  font-size: 0.7rem;
-  color: #64748b;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  color: var(--muted);
 }
 
 .finder-preview-img {
@@ -604,7 +791,349 @@ body.light .finder-zoom-overlay span {
   display: block;
 }
 
-/* Lightbox Modal Overlay */
+/* ==========================================================================
+   6. Bento Details Cards Grid & Case Study Formatting
+   ========================================================================== */
+
+.finder-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.finder-card {
+  background: #0e1411;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+body.light-mode .finder-card {
+  background: #f8faf9;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.span-full { grid-column: span 2; }
+.span-half { grid-column: span 1; }
+
+.finder-card-header {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #E8ECE6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+body.light-mode .finder-card-header {
+  color: #111a15;
+}
+
+.finder-card-header i {
+  color: var(--accent);
+}
+
+.finder-card-text {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #9EABA3;
+  margin: 0;
+}
+
+/* System Architecture Flow ("How It Works") */
+.finder-system-architecture-card {
+  gap: 14px;
+}
+
+.finder-system-flow-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.finder-sys-eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.finder-system-flow-container {
+  width: 100%;
+  padding: 16px 14px;
+  background: #090d0b;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+body.light-mode .finder-system-flow-container {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.finder-system-flow-track {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+  min-width: min-content;
+}
+
+.finder-sys-stage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 165px;
+}
+
+.finder-sys-stage-box {
+  flex: 1;
+  background: #121815;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease;
+}
+
+body.light-mode .finder-sys-stage-box {
+  background: #f4f6f5;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.finder-sys-stage-box:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.finder-sys-stage-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.finder-sys-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.finder-sys-cat {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.finder-sys-title {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.3;
+}
+
+body.light-mode .finder-sys-title {
+  color: #111a15;
+}
+
+.finder-sys-desc {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.finder-sys-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  opacity: 0.8;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  padding: 0 4px;
+}
+
+.finder-sys-connector i,
+.sys-conn-arrow {
+  color: var(--accent);
+}
+
+/* 7. Quantified Impact Metrics Cards */
+.finder-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.finder-impact-card {
+  background: #121815;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 10px;
+  text-align: center;
+}
+
+body.light-mode .finder-impact-card {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.finder-impact-val {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.finder-impact-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* 8. Technology Stack Badges */
+.finder-tech-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.finder-tech-badge img {
+  height: 22px;
+  border-radius: 3px;
+  display: block;
+}
+
+.finder-tag-pill {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #121815;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+body.light-mode .finder-tag-pill {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #111a15;
+}
+
+/* 9. Features & Engineering Decisions Lists */
+.finder-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.finder-features-list li {
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.45;
+}
+
+.finder-features-list li i {
+  color: var(--accent);
+  margin-top: 3px;
+  flex-shrink: 0;
+  font-size: 0.78rem;
+}
+
+/* 10. Related Projects Cards */
+.finder-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.finder-related-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #121815;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+body.light-mode .finder-related-card {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.finder-related-card:hover,
+.finder-related-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.finder-related-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+}
+
+.finder-related-title {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+body.light-mode .finder-related-title {
+  color: #111a15;
+}
+
+.finder-related-cat {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   11. Image Zoom Lightbox Modal
+   ========================================================================== */
+
 .finder-lightbox {
   position: fixed;
   top: 0;
@@ -636,7 +1165,7 @@ body.finder-lightbox-open {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(10, 10, 16, 0.9);
+  background: rgba(7, 10, 9, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   cursor: zoom-out;
@@ -651,7 +1180,7 @@ body.finder-lightbox-open {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  transform: scale(0.95);
+  transform: scale(0.96);
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -663,12 +1192,13 @@ body.finder-lightbox-open {
   position: absolute;
   top: -42px;
   right: 0;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: #121815;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
   padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 0.82rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -680,407 +1210,52 @@ body.finder-lightbox-open {
 .finder-lightbox-close:hover {
   background: var(--accent);
   border-color: var(--accent);
+  color: #ffffff;
 }
 
 .finder-lightbox-img {
   max-width: 90vw;
   max-height: 78vh;
   object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
   cursor: zoom-out;
 }
 
 .finder-lightbox-caption {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(0, 0, 0, 0.6);
-  padding: 6px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--muted);
+  background: #121815;
+  border: 1px solid var(--line);
+  padding: 5px 14px;
   border-radius: 20px;
-  backdrop-filter: blur(8px);
-}
-
-/* 6. Bento Details Cards Grid & Case Study Formatting */
-.finder-details-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.finder-card {
-  background: rgba(24, 24, 34, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-body.light-mode .finder-card {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
-.span-full { grid-column: span 2; }
-.span-half { grid-column: span 1; }
-
-.finder-card-header {
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-}
-
-.finder-card-header i {
-  color: var(--accent);
-}
-
-.finder-card-text {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
-/* Editorial System Architecture Flow Component */
-.finder-system-architecture-card {
-  gap: 16px;
-}
-
-.finder-system-flow-header {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.finder-sys-eyebrow {
-  font-family: 'JetBrains Mono', monospace, sans-serif;
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--accent-light, #a78bfa);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-body.light-mode .finder-sys-eyebrow {
-  color: var(--accent);
-}
-
-.finder-system-flow-container {
-  width: 100%;
-  padding: 16px 12px;
-  background: rgba(14, 14, 22, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  overflow-x: auto;
-}
-
-body.light-mode .finder-system-flow-container {
-  background: rgba(248, 250, 252, 0.85);
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
-.finder-system-flow-track {
-  display: flex;
-  align-items: stretch;
-  gap: 10px;
-  width: 100%;
-  min-width: min-content;
-}
-
-.finder-sys-stage {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  min-width: 165px;
-}
-
-.finder-sys-stage-box {
-  flex: 1;
-  background: rgba(24, 24, 34, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 12px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-body.light-mode .finder-sys-stage-box {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-}
-
-.finder-sys-stage-box:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.22);
-}
-
-.finder-sys-stage-meta {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.finder-sys-num {
-  font-family: 'JetBrains Mono', monospace, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: var(--accent-light, #a78bfa);
-}
-
-body.light-mode .finder-sys-num {
-  color: var(--accent);
-}
-
-.finder-sys-cat {
-  font-family: 'JetBrains Mono', monospace, sans-serif;
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-}
-
-.finder-sys-title {
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0;
-  line-height: 1.3;
-}
-
-.finder-sys-desc {
-  font-size: 0.74rem;
-  color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.3;
-}
-
-/* Thin Elegant Connectors */
-.finder-sys-connector {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  opacity: 0.85;
-  font-size: 0.95rem;
-  flex-shrink: 0;
-  padding: 0 4px;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.finder-sys-connector i,
-.sys-conn-arrow {
-  font-size: 0.95rem;
-  color: var(--accent);
-  display: inline-block;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.finder-sys-stage:hover .finder-sys-connector {
-  opacity: 1;
-}
-
-.finder-sys-stage:hover .finder-sys-connector i,
-.finder-sys-stage:hover .sys-conn-arrow {
-  transform: scale(1.15);
-}
-
-/* Responsive Flow Adaptations (Desktop / Tablet / Mobile) */
-@media (max-width: 1024px) {
-  .finder-system-flow-track {
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 768px) {
-  .finder-system-flow-track {
-    flex-direction: column;
-    min-width: 0;
-    width: 100%;
-    gap: 0;
-  }
-
-  .finder-sys-stage {
-    flex-direction: column;
-    width: 100%;
-    min-width: 0;
-    gap: 0;
-    align-items: center;
-  }
-
-  .finder-sys-stage-box {
-    width: 100%;
-  }
-
-  .finder-sys-connector {
-    padding: 12px 0;
-    margin: 0 auto;
-    width: 100%;
-    justify-content: center;
-    align-self: center;
-  }
-
-  .finder-sys-connector i,
-  .sys-conn-arrow {
-    transform: rotate(90deg) !important;
-  }
-
-  .finder-sys-stage:hover .finder-sys-connector i,
-  .finder-sys-stage:hover .sys-conn-arrow {
-    transform: rotate(90deg) scale(1.18) !important;
-  }
-}
-
-/* 8. Quantified Impact Metrics Cards */
-.finder-impact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 10px;
-}
-
-.finder-impact-card {
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  border-radius: 10px;
-  padding: 12px 10px;
-  text-align: center;
-}
-
-.finder-impact-val {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--accent-light, #a78bfa);
-}
-
-.finder-impact-lbl {
-  font-size: 0.74rem;
-  color: var(--text-secondary);
-  margin-top: 3px;
-}
-
-/* 7. Technology Stack Badges */
-.finder-tech-badges {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.finder-tech-badge img {
-  height: 24px;
-  border-radius: 4px;
-}
-
-.finder-tag-pill {
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
-}
-
-/* Features & Engineering Decisions Lists */
-.finder-features-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.finder-features-list li {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  line-height: 1.45;
-}
-
-.finder-features-list li i {
-  color: var(--accent);
-  margin-top: 3px;
-  flex-shrink: 0;
-}
-
-/* Related Projects Cards */
-.finder-related-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-}
-
-.finder-related-card {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  outline: none;
-}
-
-body.light-mode .finder-related-card {
-  background: rgba(0, 0, 0, 0.03);
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
-.finder-related-card:hover,
-.finder-related-card:focus-visible {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.2);
-}
-
-.finder-related-thumb {
-  width: 42px;
-  height: 42px;
-  border-radius: 7px;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.finder-related-title {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.25;
-}
-
-.finder-related-cat {
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  text-transform: uppercase;
 }
 
 /* ==========================================================================
-   10. Responsive Behavior (Mobile & Tablet Refinements)
+   12. Responsive Adaptations (Mobile & Tablet)
    ========================================================================== */
+
+.btn-mobile-details-toggle {
+  display: none;
+}
 
 @media (max-width: 1024px) {
   .finder-workspace-header {
     grid-template-columns: 1fr;
   }
+
+  .finder-system-flow-track {
+    flex-wrap: wrap;
+  }
 }
 
 @media (max-width: 868px) {
+  .projects {
+    padding: 60px 4% 80px 4%;
+  }
+
   .finder-window {
     height: auto;
     max-height: none;
@@ -1104,6 +1279,93 @@ body.light-mode .finder-related-card {
 
   .finder-mobile-toggle {
     display: inline-flex;
+    flex-shrink: 0;
+    padding: 3px 7px;
+    font-size: 0.68rem;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  /* Optimized Mobile Header Bar: generous space beside dots */
+  .finder-header {
+    height: 44px;
+    padding: 0 8px;
+    gap: 8px;
+  }
+
+  .finder-controls {
+    width: auto !important;
+    flex-shrink: 0;
+    gap: 6px;
+    margin-right: 4px;
+  }
+
+  .finder-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .finder-title {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.71rem;
+    gap: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .finder-title i {
+    font-size: 0.72rem;
+    flex-shrink: 0;
+  }
+
+  #finder-breadcrumb {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+
+  /* Hide redundant 'Projects / ' prefix on mobile to give maximum room beside dots for project name */
+  .finder-bc-prefix {
+    display: none !important;
+  }
+
+  .finder-bc-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Keep Action Buttons Side by Side on Mobile */
+  .finder-action-links {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-top: 14px;
+  }
+
+  .finder-btn-cta {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 10px 6px !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.04em !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    gap: 6px !important;
+  }
+
+  .finder-btn-cta i {
+    font-size: 0.75rem;
+    flex-shrink: 0;
   }
 
   .finder-sidebar {
@@ -1115,7 +1377,7 @@ body.light-mode .finder-related-card {
     height: 100vh;
     overflow-y: auto;
     z-index: 1000;
-    box-shadow: 10px 0 35px rgba(0, 0, 0, 0.6);
+    box-shadow: 10px 0 35px rgba(0, 0, 0, 0.8);
     transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -1130,95 +1392,46 @@ body.light-mode .finder-related-card {
   .span-half {
     grid-column: span 2;
   }
-}
 
-@media (max-width: 600px) {
-  .finder-workspace {
-    padding: 12px 10px;
-  }
-
-  .finder-workspace-header {
-    padding: 16px;
-  }
-
-  .finder-project-title {
-    font-size: 1.5rem;
-  }
-
-  .span-full, .span-half {
-    grid-column: span 1;
-  }
-
-  .finder-arch-node {
-    flex-wrap: wrap;
-  }
-}
-
-/* ==========================================================================
-   MOBILE-ONLY COLLAPSIBLE PROJECT DETAILS TOGGLE
-   ========================================================================== */
-
-.btn-mobile-details-toggle {
-  display: none;
-}
-
-@media (max-width: 768px) {
+  /* Mobile Collapsible Details Button */
   .btn-mobile-details-toggle {
     display: flex !important;
     align-items: center;
     justify-content: center;
     gap: 10px;
     width: 100%;
-    height: 48px;
-    margin: 18px 0 16px 0;
-    padding: 0 18px;
-    background: rgba(24, 24, 34, 0.95);
-    border: 1.5px solid rgba(139, 92, 246, 0.35);
-    border-radius: 12px;
-    color: var(--accent-light, #a78bfa);
-    font-family: inherit;
-    font-size: 0.95rem;
+    height: 44px;
+    margin: 16px 0 14px 0;
+    padding: 0 16px;
+    background: #121815;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.15);
-    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+    transition: all 0.2s ease;
     box-sizing: border-box;
   }
 
-  body.light-mode .btn-mobile-details-toggle,
-  body.light .btn-mobile-details-toggle {
-    background: #ffffff;
-    border-color: rgba(99, 102, 241, 0.35);
-    color: #6366f1;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
-  }
-
-  .btn-mobile-details-toggle:hover,
-  .btn-mobile-details-toggle:focus-visible {
-    background: rgba(139, 92, 246, 0.12);
+  .btn-mobile-details-toggle:hover {
+    background: #17211c;
     border-color: var(--accent);
-    transform: translateY(-1px);
   }
 
-  .btn-mobile-details-toggle .toggle-chevron {
-    font-size: 0.85rem;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .finder-details-grid-wrapper.mobile-collapsed,
-  .bento-studio-grid-wrapper.mobile-collapsed {
+  .finder-details-grid-wrapper.mobile-collapsed {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
     pointer-events: none;
     margin: 0;
     padding: 0;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin 0.3s ease;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
   }
 
-  .finder-details-grid-wrapper.expanded,
-  .bento-studio-grid-wrapper.expanded {
-    max-height: 5000px;
+  .finder-details-grid-wrapper.expanded {
+    max-height: 6000px;
     opacity: 1;
     overflow: visible;
     pointer-events: auto;
@@ -1227,13 +1440,73 @@ body.light-mode .finder-related-card {
   }
 }
 
-@media (min-width: 769px) {
+@media (max-width: 768px) {
+  .finder-system-flow-track {
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+    gap: 0;
+  }
+
+  .finder-sys-stage {
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    gap: 0;
+    align-items: center;
+  }
+
+  .finder-sys-stage-box {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .finder-sys-connector {
+    padding: 10px 0;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .finder-sys-connector i,
+  .sys-conn-arrow {
+    transform: rotate(90deg) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .finder-workspace {
+    padding: 12px 8px;
+  }
+
+  .finder-workspace-header {
+    padding: 16px;
+  }
+
+  .finder-project-title {
+    font-size: 1.4rem;
+  }
+
+  .span-full, .span-half {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 44px 5% 48px 5%;
+  }
+  .studio-header {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 869px) {
   .btn-mobile-details-toggle {
     display: none !important;
   }
 
-  .finder-details-grid-wrapper,
-  .bento-studio-grid-wrapper {
+  .finder-details-grid-wrapper {
     max-height: none !important;
     opacity: 1 !important;
     overflow: visible !important;

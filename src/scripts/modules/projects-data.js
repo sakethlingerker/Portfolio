@@ -17,7 +17,15 @@ export async function loadProjectsData() {
 
   fetchPromise = (async () => {
     try {
-      const response = await fetch('./data/projects.json');
+      const base = import.meta.env?.BASE_URL || './';
+      const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+      let response = await fetch(`${normalizedBase}data/projects.json`);
+      if (!response.ok) {
+        response = await fetch('./data/projects.json');
+      }
+      if (!response.ok) {
+        response = await fetch('data/projects.json');
+      }
       if (!response.ok) {
         throw new Error(`Failed to load projects.json (${response.status})`);
       }
