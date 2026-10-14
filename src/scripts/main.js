@@ -20,6 +20,8 @@ async function initApp() {
 
   setupGlobalErrorHandling();
 
+  initRoleBadgeAnimation();
+
   initCinematicUI();
   initTheme();
   initUI();
@@ -44,6 +46,41 @@ async function initApp() {
           console.warn('SW registration skipped: ', registrationError);
         });
     });
+  }
+}
+
+function initRoleBadgeAnimation() {
+  const badge = document.querySelector('.hero-role-badge');
+  if (!badge) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    badge.classList.add('animate-in');
+    return;
+  }
+
+  const triggerAnimation = () => {
+    if (badge.classList.contains('animate-in')) return;
+    badge.classList.add('animate-in');
+  };
+
+  const isPreloaderActive = () => {
+    const boot = document.querySelector('.boot:not(.boot-hidden)');
+    const preloader = document.getElementById('preloader');
+    return !!((boot && getComputedStyle(boot).display !== 'none') || 
+              (preloader && !preloader.classList.contains('slide-out')) || 
+              document.body.classList.contains('preloader-active'));
+  };
+
+  if (!isPreloaderActive() || document.body.classList.contains('hero-ready')) {
+    setTimeout(triggerAnimation, 200);
+  } else {
+    window.addEventListener('hero:ready', () => {
+      // 120ms pause after boot begins fading so the hero is visible and user clearly witnesses the entrance
+      setTimeout(triggerAnimation, 120);
+    }, { once: true });
+    // Fallback if hero:ready event is missed or preloader finishes early
+    setTimeout(triggerAnimation, 4000);
   }
 }
 

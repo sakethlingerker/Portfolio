@@ -11,15 +11,19 @@ export function initCinematicUI() {
   const bootScreen = document.querySelector('.boot');
   if (bootScreen) {
     const hideBoot = () => {
+      if (bootScreen.classList.contains('boot-hidden')) return;
       bootScreen.classList.add('boot-hidden');
+      document.body.classList.remove('preloader-active');
+      document.body.classList.add('hero-ready');
+      window.dispatchEvent(new CustomEvent('hero:ready'));
       setTimeout(() => {
         bootScreen.style.display = 'none';
-      }, 600);
+      }, 800);
     };
     if (document.readyState === 'complete') {
-      setTimeout(hideBoot, 300);
+      setTimeout(hideBoot, 400);
     } else {
-      window.addEventListener('load', () => setTimeout(hideBoot, 300));
+      window.addEventListener('load', () => setTimeout(hideBoot, 400));
     }
   }
 

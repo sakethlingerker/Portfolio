@@ -451,12 +451,18 @@ body.light-mode .timeline-cert-link:hover {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  max-width: 960px;
+  width: 100%;
 }
 
 .journey-statement {
   font-size: 12px;
   color: var(--muted);
+}
+
+.journey-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
 .journey-resume-link {
@@ -559,11 +565,20 @@ body.light-mode .journey-resume-link:hover {
     font-size: 14px;
   }
 
+}
+
+@media (max-width: 768px) {
   .journey-footer-bar {
     margin-top: 28px;
     padding-top: 20px;
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
+  }
+
+  .journey-actions {
+    margin-left: 0;
+    width: auto;
   }
 }
 

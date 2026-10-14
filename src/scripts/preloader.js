@@ -4,7 +4,7 @@
  */
 
 (function initPreloader() {
-  const preloader = document.getElementById('preloader');
+  const preloader = document.getElementById('preloader') || document.querySelector('.boot');
   
   if (!preloader) return;
 
@@ -13,30 +13,42 @@
 
   // 2. Define removal function
   const removePreloader = () => {
-    // Add slide-out class to trigger CSS transition
+    if (preloader.classList.contains('slide-out') || preloader.classList.contains('boot-hidden')) return;
+
     preloader.classList.add('slide-out');
+    preloader.classList.add('boot-hidden');
+    
+    // Immediately unlock and signal hero readiness as preloader slides out
+    document.body.classList.remove('preloader-active');
+    document.body.classList.add('hero-ready');
+    window.dispatchEvent(new CustomEvent('hero:ready'));
 
     // Wait for transition to finish (matches CSS 0.8s)
     setTimeout(() => {
-      // Unlock scrolling
-      document.body.classList.remove('preloader-active');
-      
-      // Remove from DOM to cleanup
-      preloader.remove();
+      if (typeof preloader.remove === 'function') {
+        preloader.remove();
+      } else {
+        preloader.style.display = 'none';
+      }
     }, 800);
   };
 
   // 3. Listen for window load (all assets loaded)
-  window.addEventListener('load', () => {
-    // Minimum viewing time for the cool animation (e.g., 2.5s)
-    setTimeout(removePreloader, 2500); 
-  });
+  const onReady = () => {
+    setTimeout(removePreloader, 400); 
+  };
 
-  // Fallback: If load event doesn't fire within 8 seconds, remove anyway
+  if (document.readyState === 'complete') {
+    onReady();
+  } else {
+    window.addEventListener('load', onReady);
+  }
+
+  // Fallback: If load event doesn't fire within 6 seconds, remove anyway
   setTimeout(() => {
     if (document.body.classList.contains('preloader-active')) {
       removePreloader();
     }
-  }, 8000);
+  }, 6000);
 
 })();

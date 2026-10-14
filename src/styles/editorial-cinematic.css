@@ -150,7 +150,6 @@ p {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  display: none !important;
 }
 
 .boot > span:first-child {
