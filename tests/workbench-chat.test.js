@@ -35,7 +35,7 @@ test("lists every project from public/data/projects.json", () => {
   assert.equal(Object.keys(projectData).length, 10);
   assert.match(result.html, /10 software projects/);
   for (const project of Object.values(projectData)) {
-    assert.ok(result.html.includes(project.title), "Missing project: " + project.title);
+    assert.ok(result.html.includes(project.title.replace(/&/g, "&amp;")), "Missing project: " + project.title);
   }
 });
 
