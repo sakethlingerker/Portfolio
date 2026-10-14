@@ -66,6 +66,17 @@ test("answers project technology and deployment follow-ups using the selected pr
   assert.match(deployment.html, /deployment|project data|demo|hosting|pipeline/i);
 });
 
+test("retrieves stage inputs and outputs and resolves challenge follow-ups without pronouns", () => {
+  const chat = createChat();
+  chat.answer("Tell me about the Enterprise RAG project.");
+  const dataflow = chat.answer("What are the inputs and outputs in stage 2?");
+  assert.match(dataflow.html, /Stage 2: Recursive Semantic Chunking/);
+  assert.match(dataflow.html, /Inputs:/);
+  assert.match(dataflow.html, /Outputs:/);
+  const challenge = chat.answer("What were the main challenges?");
+  assert.match(challenge.html, /Documented challenge/);
+});
+
 test("compares current context with the MLOps project", () => {
   const chat = createChat();
   chat.answer("Tell me about your projects.");
