@@ -241,7 +241,7 @@ function renderProjectList(projects) {
     }).join("") + "</ol>";
 }
 
-function renderComparison(a, b) {
+function renderComparison(a, b, note = "") {
   function col(project) {
     const impacts = (project.quantifiableImpact || []).map(function (item) { return item.value + " — " + item.label; });
     return '<section class="workbench-chat-compare-column"><h4>' + escapeHtml(project.title) + '</h4>' +
@@ -251,7 +251,8 @@ function renderComparison(a, b) {
       '<p><strong>Documented impact</strong><br>' + escapeHtml(impacts.join("; ") || "No quantified impact is listed.") + '</p>' +
       projectLinkArea(project) + '</section>';
   }
-  return "<p>Here is a source-based comparison of the two projects.</p><div class=\"workbench-chat-compare\">" + col(a) + col(b) + "</div>";
+  return (note ? "<p>" + escapeHtml(note) + "</p>" : "") +
+    "<p>Here is a source-based comparison of the two projects.</p><div class=\"workbench-chat-compare\">" + col(a) + col(b) + "</div>";
 }
 
 function profileAnswer(intent, knowledgeBase, question) {
@@ -455,10 +456,19 @@ export function createPortfolioChat(projectsSource, knowledgeBase) {
     }
 
     if (intent === "compare") {
+      let comparisonNote = "";
       if (ids.length < 2 && state.lastListProjectIds.length >= 2) {
         const selected = state.selectedProjectId || state.lastListProjectIds[0];
+        const explicitTarget = ids[0] || "";
+        const sameAsContext = Boolean(state.selectedProjectId && explicitTarget === selected &&
+          /\b(it|that|this)\b/.test(query));
         const other = ids.find(function (id) { return id !== selected; }) ||
           state.lastListProjectIds.find(function (id) { return id !== selected; });
+        if (sameAsContext) {
+          comparisonNote = "The leading project from the previous answer is already " +
+            ((projectById(projects, selected) || {}).title || "the selected project") +
+            ". To avoid comparing a project against itself, I’m comparing it with the next documented architecture candidate.";
+        }
         ids = [selected, other].filter(Boolean);
       }
       if (ids.length < 2) {
@@ -472,7 +482,7 @@ export function createPortfolioChat(projectsSource, knowledgeBase) {
       if (a && b) {
         state.lastListProjectIds = [a.id, b.id];
         state.selectedProjectId = a.id;
-        return record(question, renderComparison(a, b), [a.id, b.id]);
+        return record(question, renderComparison(a, b, comparisonNote), [a.id, b.id]);
       }
       return record(question, "<p>I couldn't identify two projects in the available portfolio data to compare.</p>", []);
     }
