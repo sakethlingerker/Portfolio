@@ -6,6 +6,7 @@
 
 import { loadProjectsData } from './projects-data.js';
 import { openProjectInStudio } from './projects.js';
+import { createPortfolioChat } from './workbench-chat.js';
 
 // Verified Grounded Knowledge Base for "Ask About My Work"
 const VERIFIED_KNOWLEDGE_BASE = {
@@ -57,6 +58,8 @@ const VERIFIED_KNOWLEDGE_BASE = {
 
 let isInitialized = false;
 let projectsMap = {};
+let portfolioChat = null;
+let chatSubmissionQueue = Promise.resolve();
 let activeMode = 'projects';
 let activeArchProjectId = 'enterprise_rag';
 let activeArchStageIndex = 0;
@@ -76,6 +79,7 @@ export async function initWorkbench() {
     console.error('Workbench: Failed to load projects data:', err);
   }
 
+  portfolioChat = createPortfolioChat(() => projectsMap, VERIFIED_KNOWLEDGE_BASE);
   setupEventListeners();
   populateInitialData();
   isInitialized = true;
@@ -189,13 +193,20 @@ function setupEventListeners() {
 
   // Dedicated Ask Pane Input & Button
   askInput?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+      e.preventDefault();
       const query = askInput.value.trim();
       if (query) {
         handleAskSubmit(query);
         askInput.value = '';
+        askInput.style.height = '';
       }
     }
+  });
+
+  askInput?.addEventListener('input', () => {
+    askInput.style.height = 'auto';
+    askInput.style.height = Math.min(112, Math.max(38, askInput.scrollHeight)) + 'px';
   });
 
   askSubmitBtn?.addEventListener('click', () => {
@@ -741,294 +752,79 @@ function renderComparisonMatrix() {
    ========================================================================== */
 
 function handleAskSubmit(questionText) {
+  const question = String(questionText || '').trim();
   const messagesContainer = document.getElementById('workbench-chat-messages');
-  if (!messagesContainer || !questionText) return;
+  if (!messagesContainer || !question) return;
 
-  // Append user message bubble
+  if (!portfolioChat) {
+    portfolioChat = createPortfolioChat(() => projectsMap, VERIFIED_KNOWLEDGE_BASE);
+  }
+
   const userBubble = document.createElement('div');
   userBubble.className = 'workbench-chat-bubble user';
-  userBubble.textContent = questionText;
+  userBubble.textContent = question;
+  userBubble.setAttribute('dir', 'auto');
   messagesContainer.appendChild(userBubble);
-  messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
 
-  // Generate grounded answer
-  const answer = generateGroundedAnswer(questionText);
+  const assistantBubble = document.createElement('div');
+  assistantBubble.className = 'workbench-chat-bubble assistant is-typing';
+  assistantBubble.dataset.typing = 'true';
+  assistantBubble.setAttribute('role', 'status');
+  assistantBubble.setAttribute('aria-label', 'Generating response');
+  assistantBubble.innerHTML = '<span class="workbench-typing-indicator" aria-hidden="true"><span></span><span></span><span></span></span>';
+  messagesContainer.appendChild(assistantBubble);
+  scrollChatToLatest(messagesContainer);
 
-  // Append assistant message bubble with slight delay for realistic feel
-  setTimeout(() => {
-    const aiBubble = document.createElement('div');
-    aiBubble.className = 'workbench-chat-bubble assistant';
-    aiBubble.innerHTML = answer;
-    messagesContainer.appendChild(aiBubble);
-
-    // Wire any project action buttons inside the answer
-    aiBubble.querySelectorAll('[data-open-project]').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const pId = btn.getAttribute('data-open-project');
-        if (pId) navigateToProject(pId);
-      });
+  // Queue messages in order so conversation references resolve deterministically.
+  chatSubmissionQueue = chatSubmissionQueue
+    .then(() => new Promise((resolve) => window.setTimeout(resolve, 280)))
+    .then(() => {
+      const result = portfolioChat.answer(question);
+      assistantBubble.innerHTML = result.html;
+      assistantBubble.removeAttribute('data-typing');
+      assistantBubble.removeAttribute('aria-label');
+      assistantBubble.classList.remove('is-typing');
+      bindChatActions(assistantBubble);
+      scrollChatToLatest(messagesContainer);
+    })
+    .catch((error) => {
+      console.error('Workbench chat response error:', error);
+      assistantBubble.textContent = 'A response could not be generated from the available portfolio data.';
+      assistantBubble.removeAttribute('data-typing');
+      assistantBubble.removeAttribute('aria-label');
+      assistantBubble.classList.remove('is-typing');
+      scrollChatToLatest(messagesContainer);
     });
-
-    aiBubble.querySelectorAll('[data-inspect-arch]').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const pId = btn.getAttribute('data-inspect-arch');
-        if (pId) {
-          activeArchProjectId = pId;
-          activeArchStageIndex = 0;
-          switchMode('architecture');
-        }
-      });
-    });
-
-    messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
-  }, 100);
 }
 
-function normalizeQuery(text) {
-  return (text || '')
-    .toLowerCase()
-    .replace(/[?.,!/\\#@$%^&*()_+=\[\]{};:"'<>~`]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+function scrollChatToLatest(container) {
+  if (!container) return;
+  window.requestAnimationFrame(() => {
+    container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+  });
 }
 
-function generateGroundedAnswer(rawQuery) {
-  const q = normalizeQuery(rawQuery);
+function bindChatActions(messageBubble) {
+  messageBubble.querySelectorAll('[data-open-project]').forEach((button) => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      const projectId = button.getAttribute('data-open-project');
+      if (projectId) navigateToProject(projectId);
+    });
+  });
 
-  // 1. TCS Status & Employment Verification
-  if (
-    q.includes('tcs') ||
-    q.includes('tata consultancy') ||
-    q.includes('joining') ||
-    q.includes('onboarding') ||
-    q.includes('systems engineer') ||
-    q.includes('current role') ||
-    q.includes('current job') ||
-    q.includes('work at tcs') ||
-    (q.includes('offer') && !q.includes('certif'))
-  ) {
-    return `
-      <strong>TCS Status & Verified Assessment Record:</strong><br/>
-      Saketh accepted the competitive <strong>TCS Digital (Systems Engineer)</strong> offer following verified technical evaluations:<br/>
-      &bull; <strong>TCS iON GET-IT:</strong> 89% score (Proficiency Certificate)<br/>
-      &bull; <strong>TCS iON Cognitive NQT:</strong> 91.51% percentile<br/>
-      &bull; <strong>Current Status:</strong> Offer accepted; Saketh is currently awaiting his official joining letter and onboarding schedule.<br/>
-      <em>Note: He does <u>not</u> currently work as an active employee at TCS until official joining commences.</em>
-    `;
-  }
-
-  // 2. IIIT Hyderabad Research Internship
-  if (
-    q.includes('iiit') ||
-    q.includes('research') ||
-    q.includes('hyderabad') ||
-    q.includes('vad') ||
-    q.includes('voice activity') ||
-    q.includes('acoustic') ||
-    q.includes('internship') ||
-    q.includes('intern')
-  ) {
-    return `
-      <strong>IIIT Hyderabad Research Internship (Nov 2024 &ndash; Jun 2025):</strong><br/>
-      Saketh completed a 7-month documented AI/ML research internship at the International Institute of Information Technology, Hyderabad:<br/>
-      &bull; <strong>Voice Activity Detection (VAD):</strong> Investigated signal processing &amp; deep learning algorithms for speech segment detection in severe acoustic noise.<br/>
-      &bull; <strong>AI Video Summarization:</strong> Built automated summarization pipelines using acoustic and semantic cues.<br/>
-      &bull; <strong>Acoustic Feature Extraction:</strong> Conducted quantitative evaluations across spectral representations.<br/>
-      &bull; <strong>Verification:</strong> Official IIIT Hyderabad Research Certificate issued and verified on file.
-    `;
-  }
-
-  // 3. Best ML Project / Strongest Engineering Projects / Highest Impact
-  if (
-    q.includes('best ml') ||
-    q.includes('highest impact') ||
-    q.includes('strongest ml') ||
-    q.includes('top ml') ||
-    q.includes('best project') ||
-    q.includes('strongest project') ||
-    q.includes('strongest engineering') ||
-    q.includes('top project') ||
-    q.includes('flagship') ||
-    q.includes('favorite project') ||
-    q.includes('recommended project')
-  ) {
-    return `
-      <strong>Strongest Documented Engineering Projects:</strong><br/>
-      Saketh's portfolio highlights two flagship production systems based on architecture depth and verified results:<br/><br/>
-      <strong>1. Enterprise-Ready RAG Agent (AI Platform / GenAI):</strong><br/>
-      &bull; PyMuPDF ingestion, table-to-Markdown restoration, dual vector search (FAISS + ChromaDB), Groq Llama 3.3 70B, arXiv paper routing, and page-level citation verification.<br/>
-      &bull; <em>Impact:</em> ~80% reduction in hallucinations with &lt;5s query latency.<br/>
-      <div style="margin: 6px 0 10px 0;">
-        <button class="workbench-tag accent-tag" data-open-project="enterprise_rag" style="cursor: pointer;">Open Enterprise-RAG in Studio &rarr;</button>
-      </div>
-      <strong>2. Vehicle Insurance MLOps Pipeline (Cloud / MLOps):</strong><br/>
-      &bull; Automated 6-stage delivery on AWS (EC2, S3, ECR) with MongoDB Atlas, schema validation, Docker containerization, and GitHub Actions CI/CD.<br/>
-      &bull; <em>Impact:</em> 85% reduction in deployment time with zero-downtime releases.<br/>
-      <div style="margin-top: 6px;">
-        <button class="workbench-tag accent-tag" data-open-project="mlops" style="cursor: pointer;">Open Insurance MLOps in Studio &rarr;</button>
-      </div>
-    `;
-  }
-
-  // 4. AWS & Cloud Deployment Projects
-  if (
-    q.includes('aws') ||
-    q.includes('cloud deployment') ||
-    q.includes('cloud project') ||
-    q.includes('ec2') ||
-    q.includes('ecr') ||
-    q.includes('s3') ||
-    q.includes('amazon web services')
-  ) {
-    return `
-      <strong>Projects Utilizing AWS &amp; Cloud Infrastructure:</strong><br/>
-      &bull; <strong>Vehicle Insurance MLOps Pipeline:</strong> Production cloud pipeline utilizing AWS EC2 (self-hosted runner &amp; prediction API on port 5080), AWS S3 (model artifact benchmarking and versioning), AWS ECR (Docker container registry), and IAM authentication.<br/>
-      &bull; <strong>Enterprise-Ready RAG Agent:</strong> Deployed cloud instance on Streamlit Cloud with Groq API cloud acceleration for 70B parameter models.<br/>
-      <div style="margin-top: 8px; display: flex; gap: 8px;">
-        <button class="workbench-tag accent-tag" data-open-project="mlops" style="cursor: pointer;">View MLOps AWS Architecture &rarr;</button>
-        <button class="workbench-tag" data-open-project="enterprise_rag" style="cursor: pointer;">View RAG Cloud System &rarr;</button>
-      </div>
-    `;
-  }
-
-  // 5. RAG Architecture Explanation
-  if (
-    q.includes('rag') ||
-    q.includes('retrieval augmented') ||
-    q.includes('pdf') ||
-    q.includes('llama 3') ||
-    q.includes('chromadb') ||
-    q.includes('faiss')
-  ) {
-    return `
-      <strong>Enterprise-Ready RAG Agent Architecture:</strong><br/>
-      A 6-stage retrieval-augmented generation pipeline engineered to eliminate LLM hallucinations:<br/>
-      1. <strong>Document Ingestion:</strong> PyMuPDF extracts text streams with table-to-Markdown restoration.<br/>
-      2. <strong>Semantic Chunking:</strong> Recursive chunking (~200&ndash;500 tokens) with 10&ndash;15% overlap.<br/>
-      3. <strong>Dual Indexing:</strong> High-speed in-memory FAISS indexing alongside persistent ChromaDB collections.<br/>
-      4. <strong>Intent Routing &amp; Retrieval:</strong> Branches between local document Q&A and automated arXiv paper discovery.<br/>
-      5. <strong>Inference:</strong> Low-latency inference via Groq Llama 3.3 70B (or Google Gemini fallback).<br/>
-      6. <strong>Citation Verification:</strong> Injects page-referenced source citations (~80% reduction in hallucinations).<br/>
-      <div style="margin-top: 8px; display: flex; gap: 8px;">
-        <button class="workbench-tag accent-tag" data-open-project="enterprise_rag" style="cursor: pointer;">Open in Studio &rarr;</button>
-        <button class="workbench-tag" data-inspect-arch="enterprise_rag" style="cursor: pointer;">Inspect Architecture Stages &rarr;</button>
-      </div>
-    `;
-  }
-
-  // 6. MLOps Architecture Explanation
-  if (
-    q.includes('mlops') ||
-    q.includes('insurance') ||
-    q.includes('pipeline') ||
-    q.includes('ci cd') ||
-    q.includes('github actions')
-  ) {
-    return `
-      <strong>Vehicle Insurance MLOps Pipeline Architecture:</strong><br/>
-      An end-to-end continuous training &amp; deployment workflow on AWS:<br/>
-      1. <strong>Cloud Ingestion:</strong> Automated ingestion from MongoDB Atlas.<br/>
-      2. <strong>Schema Validation:</strong> Config-driven validation using schema rules to prevent drift.<br/>
-      3. <strong>Transformation:</strong> Serialized preprocessor ensuring feature parity in inference.<br/>
-      4. <strong>Model Evaluation:</strong> Automated promotion comparing candidates against S3 production benchmarks.<br/>
-      5. <strong>Containerization:</strong> Docker container packaging prediction microservice.<br/>
-      6. <strong>Automated CI/CD:</strong> GitHub Actions pushes to ECR and deploys to EC2 runner (85% faster releases).<br/>
-      <div style="margin-top: 8px; display: flex; gap: 8px;">
-        <button class="workbench-tag accent-tag" data-open-project="mlops" style="cursor: pointer;">Open in Studio &rarr;</button>
-        <button class="workbench-tag" data-inspect-arch="mlops" style="cursor: pointer;">Inspect Architecture Stages &rarr;</button>
-      </div>
-    `;
-  }
-
-  // 7. Certifications & Verified Assessment Records
-  if (
-    q.includes('certif') ||
-    q.includes('credential') ||
-    q.includes('license') ||
-    q.includes('nqt') ||
-    q.includes('get it') ||
-    q.includes('assessment') ||
-    q.includes('score') ||
-    q.includes('exam')
-  ) {
-    return `
-      <strong>Verified Certifications &amp; Assessments:</strong><br/>
-      <strong>Competitive Technical Assessments:</strong><br/>
-      &bull; <strong>TCS iON NPT &ndash; GET IT:</strong> 89% score (Certificate of Proficiency)<br/>
-      &bull; <strong>TCS iON NQT &ndash; Cognitive:</strong> 91.51% percentile<br/>
-      &bull; <strong>TCS iON Psychometric Assessment:</strong> High Performance<br/>
-      <strong>Language &amp; Academic Credentials:</strong><br/>
-      &bull; <strong>British Council English:</strong> CEFR B1 (Speaking) / B2+ (Writing)<br/>
-      &bull; <strong>IIIT Hyderabad AI/ML Research Certificate:</strong> Completed 7-month research internship<br/>
-      <strong>Industry Simulations &amp; Cloud:</strong><br/>
-      &bull; <strong>Deloitte Australia Data Analytics Simulation:</strong> Job simulation credential<br/>
-      &bull; <strong>Tata Group Data Analytics Simulation:</strong> Job simulation credential<br/>
-      &bull; <strong>AWS Cloud Practitioner Essentials:</strong> Course completion certificate
-    `;
-  }
-
-  // 8. Tech Stack & Engineering Skills
-  if (
-    q.includes('tech stack') ||
-    q.includes('technologies') ||
-    q.includes('framework') ||
-    q.includes('skills') ||
-    q.includes('languages') ||
-    q.includes('tools') ||
-    q.includes('specialize in') ||
-    q.includes('tech')
-  ) {
-    return `
-      <strong>Core Technical Specializations:</strong><br/>
-      &bull; <strong>Programming Languages:</strong> Python, JavaScript, SQL, HTML5, CSS3, C/C++<br/>
-      &bull; <strong>AI / GenAI / ML:</strong> LangChain, FAISS, ChromaDB, Groq Llama 3.3 70B, Google Gemini API, PyTorch, TensorFlow/Keras, Scikit-Learn, OpenCV, NLTK, Stable Diffusion<br/>
-      &bull; <strong>Cloud &amp; DevOps:</strong> AWS (EC2, ECR, S3), Docker Containerization, GitHub Actions CI/CD, Git, Streamlit<br/>
-      &bull; <strong>Backend &amp; Databases:</strong> Flask RESTful APIs, JWT Auth &amp; RBAC, SQLite, MongoDB Atlas.
-    `;
-  }
-
-  // 9. Education & Academic Background
-  if (
-    q.includes('education') ||
-    q.includes('college') ||
-    q.includes('degree') ||
-    q.includes('jntuh') ||
-    q.includes('university') ||
-    q.includes('gpa') ||
-    q.includes('cgpa') ||
-    q.includes('btech') ||
-    q.includes('b tech')
-  ) {
-    return `
-      <strong>Academic Background:</strong><br/>
-      &bull; <strong>Degree:</strong> Bachelor of Technology (B.Tech) in Computer Science &amp; Engineering<br/>
-      &bull; <strong>Institution:</strong> JNTUH University College of Engineering, Manthani (2021 &ndash; 2025)<br/>
-      &bull; <strong>Cumulative GPA:</strong> 7.47 / 10.0<br/>
-      &bull; <strong>Leadership:</strong> College Fest Coordinator &middot; Lead Technical Coordinator (headed tech infrastructure and hack tracks).
-    `;
-  }
-
-  // 10. Contact Information
-  if (
-    q.includes('contact') ||
-    q.includes('email') ||
-    q.includes('phone') ||
-    q.includes('reach out') ||
-    q.includes('hire')
-  ) {
-    return `
-      <strong>Contact &amp; Profiles:</strong><br/>
-      &bull; <strong>Email:</strong> <a href="mailto:saketh1805@gmail.com" style="color: #F45135;">saketh1805@gmail.com</a><br/>
-      &bull; <strong>Phone:</strong> +91 8688791352<br/>
-      &bull; <strong>GitHub:</strong> <a href="https://github.com/sakethlingerker" target="_blank" rel="noopener" style="color: #F45135;">github.com/sakethlingerker</a><br/>
-      &bull; <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sakethlingerker/" target="_blank" rel="noopener" style="color: #F45135;">linkedin.com/in/sakethlingerker</a>
-    `;
-  }
-
-  // Honest fallback for unverified queries
-  return `I don't have verified information about that in Saketh's portfolio. You can ask about his projects, architecture decisions, tech stack, research internship at IIIT Hyderabad, TCS status, or verified credentials.`;
+  messageBubble.querySelectorAll('[data-inspect-arch]').forEach((button) => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      const projectId = button.getAttribute('data-inspect-arch');
+      if (!projectId) return;
+      activeArchProjectId = projectId;
+      activeArchStageIndex = 0;
+      const selector = document.getElementById('workbench-arch-project-select');
+      if (selector) selector.value = projectId;
+      switchMode('architecture');
+    });
+  });
 }
 
 /* ==========================================================================
