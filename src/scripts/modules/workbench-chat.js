@@ -282,7 +282,7 @@ function profileAnswer(intent, knowledgeBase, question) {
     return "<p><strong>Education</strong></p><p>" + escapeHtml(profile.education || "Education details are not present in the profile knowledge base.") + "</p>";
   }
   if (intent === "skills") {
-    const groups = profile.skills || {};
+    const groups = kb.skills || profile.skills || {};
     const names = Object.entries(groups).map(function (entry) {
       return "<li><strong>" + escapeHtml(entry[0].replace(/_/g, " ")) + ":</strong> " + escapeHtml(asText(entry[1])) + "</li>";
     }).join("");
