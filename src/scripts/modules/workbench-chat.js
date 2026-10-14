@@ -450,7 +450,8 @@ export function createPortfolioChat(projectsSource, knowledgeBase) {
       ids = [state.selectedProjectId].concat(ids.filter(function (id) { return id !== state.selectedProjectId; }));
     } else if (!ids.length && refersToContext && state.selectedProjectId) {
       ids = [state.selectedProjectId];
-    } else if (!ids.length && state.selectedProjectId && ["technology","deployment","challenge","impact","features","architecture","decision","problem","overview"].includes(intent) &&
+    } else if (!ids.length && refersToContext && state.selectedProjectId &&
+               ["technology","deployment","challenge","impact","features","architecture","decision","problem","overview"].includes(intent) &&
                !/\b(my skills|your skills|what technologies do you know|tech stack)\b/.test(query)) {
       ids = [state.selectedProjectId];
     }
