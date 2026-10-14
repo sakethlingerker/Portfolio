@@ -1,0 +1,54 @@
+name: Engineering Workbench Chat Regression
+
+on:
+  push:
+    branches:
+      - main
+      - feature/conversational-workbench-chatbot
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install project dependencies
+        run: npm ci
+
+      - name: Run conversational retrieval tests
+        run: npm test
+
+      - name: Build portfolio
+        run: npm run build
+
+      - name: Install browser test runtime
+        run: npm install --no-save --package-lock=false playwright@1.55.0
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Start built portfolio preview
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/portfolio-preview.log 2>&1 &
+          for i in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:4173/Portfolio/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/portfolio-preview.log
+          exit 1
+
+      - name: Run browser regression tests
+        run: npm run test:browser

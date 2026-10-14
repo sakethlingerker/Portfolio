@@ -1707,15 +1707,10 @@
                 <span class="workbench-section-meta"><i class="fas fa-shield-alt" style="color: #F45135;"></i> Verified
                   Data Only</span>
               </div>
-              <div id="workbench-chat-messages" class="workbench-chat-messages">
-                <div class="workbench-chat-bubble assistant">
-                  Welcome to my portfolio assistant. Ask me anything about my projects, architecture decisions, tech
-                  stack, research internship at IIIT Hyderabad, or verified credentials.
-                </div>
-              </div>
+              <div id="workbench-chat-messages" class="workbench-chat-messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
               <div class="workbench-suggested-area" style="margin-top: 6px; padding-top: 8px;">
                 <div class="workbench-try-row" style="margin-top: 0;">
-                  <span class="workbench-try-label">Ask:</span>
+                  <span class="workbench-try-label">SUGGESTED</span>
                   <button class="workbench-try-chip" data-ask="Summarize your experience and TCS status">TCS
                     Status</button>
                   <button class="workbench-try-chip" data-ask="Tell me about your IIIT Hyderabad research">IIIT
@@ -1728,11 +1723,11 @@
               </div>
               <div class="workbench-chat-input-bar"
                 style="display: flex; gap: 8px; margin-top: 10px; align-items: center;">
-                <input type="text" id="workbench-ask-input" class="workbench-search-input"
-                  style="padding: 9px 14px; font-size: 13px;"
-                  placeholder="Ask about TCS status, IIIT research, projects, architecture, certifications..."
-                  autocomplete="off" spellcheck="false" />
-                <button type="button" id="workbench-ask-submit-btn" class="workbench-tag accent-tag"
+                <textarea id="workbench-ask-input" class="workbench-search-input workbench-chat-textarea"
+                  style="padding: 9px 14px; font-size: 13px; min-height: 38px; max-height: 112px; resize: vertical;"
+                  placeholder="Ask me about a project, technology, or engineering decision..."
+                  aria-label="Ask about my work" autocomplete="off" spellcheck="false" rows="1"></textarea>
+                <button type="button" id="workbench-ask-submit-btn" class="workbench-tag accent-tag" aria-label="Send message"
                   style="height: 38px; padding: 0 16px; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 12px;">
                   <span>Send</span> <i class="fas fa-paper-plane"></i>
                 </button>
