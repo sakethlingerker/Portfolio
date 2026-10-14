@@ -148,9 +148,9 @@ function detectIntent(query) {
       /\b(project|architecture|engineering|system|work)\b/.test(q)) return "best";
   if (/\b(which project|what project)\b/.test(q) && /\b(architecture|strongest|best|complex)\b/.test(q)) return "best";
   if (includesAny(q, INTENT_TERMS.decision) || /\bwhy\b/.test(q)) return "decision";
-  if (includesAny(q, INTENT_TERMS.challenge) || /\\bchallenge(s)?\\b/.test(q)) return "challenge";
+  if (includesAny(q, INTENT_TERMS.challenge) || /\bchallenge(s)?\b/.test(q)) return "challenge";
   if (includesAny(q, INTENT_TERMS.deployment)) return "deployment";
-  if (includesAny(q, INTENT_TERMS.dataflow) || /\\b(stage|step)\\s*(\\d+|first|second|third|fourth|fifth|sixth)\\b/.test(q)) return "dataflow";
+  if (includesAny(q, INTENT_TERMS.dataflow) || /\b(stage|step)\s*(\d+|first|second|third|fourth|fifth|sixth)\b/.test(q)) return "dataflow";
   if (includesAny(q, INTENT_TERMS.technology)) return "technology";
   if (includesAny(q, INTENT_TERMS.architecture)) return "architecture";
   if (includesAny(q, INTENT_TERMS.impact)) return "impact";
@@ -310,17 +310,17 @@ function projectAnswer(project, intent, rawQuery = "") {
   if (intent === "dataflow") {
     if (!stages.length) return title + "<p>Stage-level inputs and outputs are not documented for this project.</p>" + projectLinkArea(project);
     const numberWords = { first: 1, second: 2, third: 3, fourth: 4, fifth: 5, sixth: 6 };
-    const stageMatch = query.match(/\\b(?:stage|step)\\s*(\\d+|first|second|third|fourth|fifth|sixth)\\b/) ||
-      query.match(/\\b(first|second|third|fourth|fifth|sixth)\\s+(?:stage|step)\\b/);
+    const stageMatch = query.match(/\b(?:stage|step)\s*(\d+|first|second|third|fourth|fifth|sixth)\b/) ||
+      query.match(/\b(first|second|third|fourth|fifth|sixth)\s+(?:stage|step)\b/);
     let selectedStages = stages;
     if (stageMatch) {
       const rawNumber = stageMatch[1] || stageMatch[2];
-      const index = /^\\d+$/.test(rawNumber) ? Number(rawNumber) - 1 : (numberWords[rawNumber] || 0) - 1;
+      const index = /^\d+$/.test(rawNumber) ? Number(rawNumber) - 1 : (numberWords[rawNumber] || 0) - 1;
       if (index >= 0 && index < stages.length) selectedStages = [stages[index]];
       else return title + "<p>The requested stage isn't present in the documented architecture stages.</p>" + projectLinkArea(project);
     }
-    const inputsOnly = /\\binputs?\\b|\\bwhat goes into\\b/.test(query) && !/\\boutputs?\\b/.test(query);
-    const outputsOnly = /\\boutputs?\\b|\\bwhat comes out\\b/.test(query) && !/\\binputs?\\b/.test(query);
+    const inputsOnly = /\binputs?\b|\bwhat goes into\b/.test(query) && !/\boutputs?\b/.test(query);
+    const outputsOnly = /\boutputs?\b|\bwhat comes out\b/.test(query) && !/\binputs?\b/.test(query);
     const lines = selectedStages.map(function (stage, index) {
       const stageName = "Stage " + (stage.stageNumber || stages.indexOf(stage) + 1) + ": " + stage.name;
       const details = [];
