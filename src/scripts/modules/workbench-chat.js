@@ -163,7 +163,7 @@ function detectProfileIntent(query, knowledgeBase, hasProjectContext) {
   if (/\b(tcs|tata consultancy|onboarding|joining letter|employment status|current job|offer status|systems engineer offer)\b/.test(q)) return "tcs";
   if (/\b(iiit|research internship|research intern|voice activity|vad|acoustic feature|research work)\b/.test(q)) return "research";
   if (/\b(certifications?|credentials?|nqt|get it assessment|exam score|assessment score|certificate)\b/.test(q)) return "certifications";
-  if (/\b(education|college|degree|jntuh|cgpa|gpa|b tech|btech|university)\b/.test(q)) return "education";
+  if (/\b(education|college|degree|jntuh|cgpa|gpa|b tech|btech|university|study|studied|academic|school)\b/.test(q)) return "education";
   if (/\b(contact|email address|phone number|linkedin|github profile|hire you|reach you)\b/.test(q)) return "contact";
   const generalSkillsQuestion = /\b(my|your) (technical )?skills\b|\bskill set\b|\bwhat (programming )?languages do you know\b|\bwhat technologies do you know\b|\btech stack\b/.test(q);
   if (generalSkillsQuestion && !hasProjectContext && !/\b(used|uses|use in|project|it)\b/.test(q)) return "skills";
