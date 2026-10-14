@@ -92,8 +92,9 @@ test("retrieves profile skills, education and assessments without mixing them wi
   assert.match(chat.answer("What is your NQT score?").html, /91\.51%/);
 });
 
-test("returns a specific unavailable-information response for unrelated questions", () => {
+test("returns a specific unavailable-information response for unrelated questions even after project context", () => {
   const chat = createChat();
+  chat.answer("Tell me about the Vehicle Insurance MLOps Pipeline.");
   const result = chat.answer("Who won the Nobel Prize in Physics in 1980?");
   assert.match(result.html, /couldn't find portfolio information/i);
   assert.doesNotMatch(result.html, /Welcome to my portfolio assistant/i);
