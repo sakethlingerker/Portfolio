@@ -64,8 +64,9 @@ try {
 
   // 6. Compare selected project to the explicit MLOps project.
   answer = await ask("Compare it with the MLOps project.");
-  assert.match(answer.text, /Enterprise-Ready RAG Agent/);
   assert.match(answer.text, /Vehicle Insurance MLOps Pipeline/);
+  assert.match(answer.text, /Crop Yield Prediction Model/);
+  assert.match(answer.text, /avoid comparing a project against itself/i);
   assert.ok(await answer.locator.locator('.workbench-chat-project-link[data-open-project="mlops"]').count());
 
   // 7-8. Profile topics come from the verified profile knowledge base.
