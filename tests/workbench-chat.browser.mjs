@@ -83,14 +83,14 @@ try {
 
   // 10. "the second one" should resolve to the second project in the last relevant list.
   answer = await ask("Tell me more about the second one.");
-  assert.match(answer.text, /Vehicle Insurance MLOps Pipeline/);
+  assert.match(answer.text, /Crop Yield Prediction Model/);
 
   // Click the project reference and confirm System Studio selects the matching item.
-  await answer.locator.locator('.workbench-chat-project-link[data-open-project="mlops"]').click();
+  await answer.locator.locator('.workbench-chat-project-link[data-open-project="crop_yield"]').click();
   await page.waitForFunction(() => {
     const studio = document.querySelector("#projects");
     return studio && !studio.classList.contains("studio-collapsed") &&
-      document.querySelector('#finder-project-list .finder-nav-item.active[data-id="mlops"]');
+      document.querySelector('#finder-project-list .finder-nav-item.active[data-id="crop_yield"]');
   }, null, { timeout: 15000 });
 
   assert.deepEqual(pageErrors, [], "Browser console page errors were reported");
