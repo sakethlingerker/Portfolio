@@ -30,7 +30,8 @@ const INTENT_TERMS = {
   compare: ["compare", "comparison", "versus", "vs", "difference between"],
   decision: ["why", "tradeoff", "trade off", "engineering decision", "design decision", "why choose", "why did you choose"],
   deployment: ["deploy", "deployed", "deployment", "hosting", "hosted", "production", "release", "ci cd", "cloud"],
-  technology: ["technology", "technologies", "tech stack", "framework", "libraries", "tools used", "what stack"],
+  technology: ["technology", "technologies", "tech stack", "framework", "libraries", "tools used", "what stack", "api", "apis", "database", "databases", "storage"],
+  dataflow: ["inputs", "input", "outputs", "output", "what goes into", "what comes out"],
   architecture: ["architecture", "system design", "pipeline", "stages", "components", "flow"],
   challenge: ["challenge", "challenges", "difficult", "difficulty", "bottleneck", "tradeoff", "trade off"],
   impact: ["impact", "result", "results", "metric", "metrics", "performance", "outcome", "improvement", "accuracy"],
@@ -147,8 +148,9 @@ function detectIntent(query) {
       /\b(project|architecture|engineering|system|work)\b/.test(q)) return "best";
   if (/\b(which project|what project)\b/.test(q) && /\b(architecture|strongest|best|complex)\b/.test(q)) return "best";
   if (includesAny(q, INTENT_TERMS.decision) || /\bwhy\b/.test(q)) return "decision";
-  if (includesAny(q, INTENT_TERMS.challenge)) return "challenge";
+  if (includesAny(q, INTENT_TERMS.challenge) || /\\bchallenge(s)?\\b/.test(q)) return "challenge";
   if (includesAny(q, INTENT_TERMS.deployment)) return "deployment";
+  if (includesAny(q, INTENT_TERMS.dataflow) || /\\b(stage|step)\\s*(\\d+|first|second|third|fourth|fifth|sixth)\\b/.test(q)) return "dataflow";
   if (includesAny(q, INTENT_TERMS.technology)) return "technology";
   if (includesAny(q, INTENT_TERMS.architecture)) return "architecture";
   if (includesAny(q, INTENT_TERMS.impact)) return "impact";
@@ -300,10 +302,36 @@ function profileAnswer(intent, knowledgeBase, question) {
   return "<p>I couldn't find profile information related to “" + escapeHtml(question) + "” in the available portfolio sources.</p>";
 }
 
-function projectAnswer(project, intent) {
+function projectAnswer(project, intent, rawQuery = "") {
+  const query = normalizeChatQuery(rawQuery);
   const title = "<p><strong>" + escapeHtml(project.title) + "</strong></p>";
   const stages = project.architectureStages || [];
   const allTech = techList(project);
+  if (intent === "dataflow") {
+    if (!stages.length) return title + "<p>Stage-level inputs and outputs are not documented for this project.</p>" + projectLinkArea(project);
+    const numberWords = { first: 1, second: 2, third: 3, fourth: 4, fifth: 5, sixth: 6 };
+    const stageMatch = query.match(/\\b(?:stage|step)\\s*(\\d+|first|second|third|fourth|fifth|sixth)\\b/) ||
+      query.match(/\\b(first|second|third|fourth|fifth|sixth)\\s+(?:stage|step)\\b/);
+    let selectedStages = stages;
+    if (stageMatch) {
+      const rawNumber = stageMatch[1] || stageMatch[2];
+      const index = /^\\d+$/.test(rawNumber) ? Number(rawNumber) - 1 : (numberWords[rawNumber] || 0) - 1;
+      if (index >= 0 && index < stages.length) selectedStages = [stages[index]];
+      else return title + "<p>The requested stage isn't present in the documented architecture stages.</p>" + projectLinkArea(project);
+    }
+    const inputsOnly = /\\binputs?\\b|\\bwhat goes into\\b/.test(query) && !/\\boutputs?\\b/.test(query);
+    const outputsOnly = /\\boutputs?\\b|\\bwhat comes out\\b/.test(query) && !/\\binputs?\\b/.test(query);
+    const lines = selectedStages.map(function (stage, index) {
+      const stageName = "Stage " + (stage.stageNumber || stages.indexOf(stage) + 1) + ": " + stage.name;
+      const details = [];
+      if (!outputsOnly) details.push("Inputs: " + (stage.inputs || "Not documented for this stage."));
+      if (!inputsOnly) details.push("Outputs: " + (stage.outputs || "Not documented for this stage."));
+      if (selectedStages.length === 1 && stage.responsibility) details.push("Responsibility: " + stage.responsibility);
+      return stageName + " — " + details.join(" ");
+    });
+    return title + "<p>Documented " + (selectedStages.length === 1 ? "stage data" : "pipeline data flow") + ":</p>" +
+      renderBullets(lines) + projectLinkArea(project);
+  }
   if (intent === "technology") {
     return title + "<p><strong>Documented technologies:</strong> " + escapeHtml(allTech.join(", ") || "No technology list is available for this project.") + ".</p>" +
       projectLinkArea(project);
@@ -450,9 +478,11 @@ export function createPortfolioChat(projectsSource, knowledgeBase) {
       ids = [state.selectedProjectId].concat(ids.filter(function (id) { return id !== state.selectedProjectId; }));
     } else if (!ids.length && refersToContext && state.selectedProjectId) {
       ids = [state.selectedProjectId];
-    } else if (!ids.length && refersToContext && state.selectedProjectId &&
-               ["technology","deployment","challenge","impact","features","architecture","decision","problem","overview"].includes(intent) &&
+    } else if (!ids.length && state.selectedProjectId &&
+               ["technology","deployment","challenge","impact","features","architecture","decision","problem","dataflow"].includes(intent) &&
                !/\b(my skills|your skills|what technologies do you know|tech stack)\b/.test(query)) {
+      // Specific engineering-topic questions are natural follow-ups even if they omit "it" or "that project".
+      // General overview questions are not implicitly attached to prior context, so unrelated questions stay unrelated.
       ids = [state.selectedProjectId];
     }
 
@@ -502,7 +532,7 @@ export function createPortfolioChat(projectsSource, knowledgeBase) {
     }
     state.selectedProjectId = project.id;
     if (ids.length > 1) state.lastListProjectIds = ids.slice();
-    const html = projectAnswer(project, intent);
+    const html = projectAnswer(project, intent, question);
     return record(question, html, [project.id]);
   }
 
