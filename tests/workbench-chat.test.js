@@ -89,7 +89,7 @@ test("retrieves profile skills, education and assessments without mixing them wi
   const chat = createChat();
   assert.match(chat.answer("What are your technical skills?").html, /Python/);
   assert.match(chat.answer("Where did you study?").html, /JNTUH/);
-  assert.match(chat.answer("Which assessments have scores?").html, /91\.51%/);
+  assert.match(chat.answer("What is your NQT score?").html, /91\.51%/);
 });
 
 test("returns a specific unavailable-information response for unrelated questions", () => {
