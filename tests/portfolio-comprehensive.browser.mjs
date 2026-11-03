@@ -630,6 +630,10 @@ try {
   console.log("🎉 ALL 19 VERIFICATION REQUIREMENTS SUCCESSFULLY PASSED!");
   console.log("=======================================================\n");
 
+} catch (err) {
+  console.error("\n❌ TEST FAILED:", err.message);
+  console.error(err.stack);
+  process.exitCode = 1;
 } finally {
   await browser.close();
   if (previewServer?.httpServer) {

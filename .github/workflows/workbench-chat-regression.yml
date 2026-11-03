@@ -51,4 +51,12 @@ jobs:
         run: npm run test:browser
 
       - name: Run comprehensive website regression tests
-        run: npm run test:regression
+        run: |
+          npm run test:regression 2>&1 | tee /tmp/regression-test.log || {
+            STATUS=$?
+            echo "## Comprehensive Regression Test Output" >> $GITHUB_STEP_SUMMARY
+            echo '```text' >> $GITHUB_STEP_SUMMARY
+            cat /tmp/regression-test.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            exit $STATUS
+          }
