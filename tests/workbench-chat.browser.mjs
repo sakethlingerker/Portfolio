@@ -1,7 +1,34 @@
 import assert from "node:assert/strict";
+import http from "node:http";
 import { chromium } from "playwright";
 
 const baseUrl = process.env.PORTFOLIO_TEST_URL || "http://127.0.0.1:4173/Portfolio/";
+
+async function checkIsReachable(url) {
+  return new Promise((res) => {
+    const req = http.get(url, (response) => {
+      res(response.statusCode >= 200 && response.statusCode < 400);
+    });
+    req.on("error", () => res(false));
+    req.setTimeout(1500, () => {
+      req.destroy();
+      res(false);
+    });
+  });
+}
+
+let previewServer = null;
+const isUp = await checkIsReachable(baseUrl);
+if (!isUp) {
+  const { preview } = await import("vite");
+  previewServer = await preview({
+    preview: {
+      port: 4173,
+      host: "127.0.0.1"
+    }
+  });
+}
+
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
 const pageErrors = [];
@@ -97,4 +124,7 @@ try {
   console.log("PASS: conversational Workbench browser regression (10 prompt cases, follow-ups, input, project navigation)");
 } finally {
   await browser.close();
+  if (previewServer?.httpServer) {
+    await new Promise((res) => previewServer.httpServer.close(res));
+  }
 }
