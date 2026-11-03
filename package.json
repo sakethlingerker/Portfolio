@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "test": "node --test",
     "test:browser": "node tests/workbench-chat.browser.mjs",
-    "test:regression": "node tests/portfolio-comprehensive.browser.mjs"
+    "test:regression": "node tests/portfolio-comprehensive.browser.mjs",
+    "test:baseline": "node scripts/generate-baseline.mjs"
   },
   "keywords": [],
   "author": "",

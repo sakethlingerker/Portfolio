@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: "Setup Node.js (Active LTS: Node 26)"
         uses: actions/setup-node@v4
@@ -39,6 +41,9 @@ jobs:
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
+
+      - name: Generate baseline fixtures from commit ee53012
+        run: node scripts/generate-baseline.mjs
 
       - name: Build production portfolio
         run: npm run build
@@ -63,7 +68,15 @@ jobs:
         run: npm run test:browser
 
       - name: Run comprehensive website regression tests
-        run: npm run test:regression
+        run: |
+          npm run test:regression 2>&1 | tee /tmp/regression-test.log || {
+            STATUS=$?
+            echo "## Comprehensive Regression Test Output" >> $GITHUB_STEP_SUMMARY
+            echo '```text' >> $GITHUB_STEP_SUMMARY
+            cat /tmp/regression-test.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            exit $STATUS
+          }
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
