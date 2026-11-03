@@ -39,13 +39,19 @@ async function initApp() {
 
   // Register Service Worker
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
+    const registerSW = () => {
       navigator.serviceWorker
         .register("./sw.js")
         .catch((registrationError) => {
           console.warn('SW registration skipped: ', registrationError);
         });
-    });
+    };
+
+    if (document.readyState === "complete") {
+      registerSW();
+    } else {
+      window.addEventListener("load", registerSW);
+    }
   }
 }
 
@@ -89,4 +95,3 @@ if (document.readyState === "loading") {
 } else {
   initApp();
 }
-

@@ -1,10 +1,10 @@
-name: Engineering Workbench Chat Regression
+name: "Engineering Workbench Chat & Portfolio Regression"
 
 on:
   push:
     branches:
       - main
-      - feature/conversational-workbench-chatbot
+      - "feature/**"
   pull_request:
     branches:
       - main
@@ -17,26 +17,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: "Set up Node.js (Active LTS: Node 26)"
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "26"
           cache: npm
 
       - name: Install project dependencies
         run: npm ci
 
-      - name: Run conversational retrieval tests
+      - name: Run unit tests
         run: npm test
-
-      - name: Build portfolio
-        run: npm run build
-
-      - name: Install browser test runtime
-        run: npm install --no-save --package-lock=false playwright@1.55.0
 
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
+
+      - name: Build portfolio
+        run: npm run build
 
       - name: Start built portfolio preview
         run: |
@@ -50,5 +47,16 @@ jobs:
           cat /tmp/portfolio-preview.log
           exit 1
 
-      - name: Run browser regression tests
+      - name: Run Workbench chat browser regression tests
         run: npm run test:browser
+
+      - name: Run comprehensive website regression tests
+        run: |
+          npm run test:regression 2>&1 | tee /tmp/regression-test.log || {
+            STATUS=$?
+            echo "## Comprehensive Regression Test Output" >> $GITHUB_STEP_SUMMARY
+            echo '```text' >> $GITHUB_STEP_SUMMARY
+            cat /tmp/regression-test.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            exit $STATUS
+          }
