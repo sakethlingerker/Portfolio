@@ -1,3 +1,4 @@
+import { gsap } from 'gsap';
 /**
  * Projects Module - Refined macOS Finder Split-View Interface
  * Single source of truth: Consumes public/data/projects.json via projects-data.js.
@@ -71,6 +72,7 @@ function setupCategoryFilters() {
       btn.classList.add('active');
       activeCategory = btn.getAttribute('data-category');
       renderSidebarList();
+      if (window.scrollAnimationController) window.scrollAnimationController.refresh();
     });
   });
 }
@@ -159,6 +161,7 @@ function setupStudioToggle() {
         studioSection.classList.remove('studio-collapsed');
         toggleBtn.innerHTML = '<i class="fas fa-times"></i> Close System Studio';
         toggleBtn.setAttribute('aria-expanded', 'true');
+        animateFinderNavItems();
         studioSection.scrollIntoView({ behavior: 'smooth' });
       } else {
         studioSection.classList.add('studio-collapsed');
@@ -271,6 +274,7 @@ function getFilteredProjects() {
 }
 
 function renderSidebarList() {
+  // Render and animate
   const listContainer = document.querySelector('#finder-project-list');
   if (!listContainer) return;
 
@@ -332,7 +336,7 @@ function renderSidebarList() {
         handleSelect();
       }
     });
-  });
+  });  animateFinderNavItems();
 }
 
 function selectProject(id) {
@@ -774,4 +778,17 @@ function renderProjectDetail(id) {
       }
     });
   });
+}
+
+export function animateFinderNavItems() {
+  if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+  const items = document.querySelectorAll('#finder-project-list .finder-nav-item');
+  if (items.length > 0) {
+    gsap.fromTo(items,
+      { opacity: 0, y: 8 },
+      { opacity: 1, y: 0, duration: 0.25, stagger: 0.025, ease: 'power2.out', clearProps: 'transform,opacity' }
+    );
+  }
 }

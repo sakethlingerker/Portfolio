@@ -31,32 +31,7 @@ export function initUI() {
       }
     });
   });
-
-  // Animation on scroll
-  const elementsToAnimate = [
-    ...document.querySelectorAll(".project-card"),
-    ...document.querySelectorAll(".experience-card"),
-    ...document.querySelectorAll(".skill-card"),
-    ...document.querySelectorAll(".skill-tag"),
-  ];
-
-  elementsToAnimate.forEach((el) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-  });
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-  elementsToAnimate.forEach((el) => observer.observe(el));
+  // Note: Scroll reveals are consolidated under GSAP ScrollTrigger (src/scripts/animations/scroll-reveal.ts)
 
   // Mobile Menu
   const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
@@ -591,6 +566,9 @@ export function initJourneyTimeline() {
       const textSpan = btn.querySelector('.toggle-text');
       if (textSpan) {
         textSpan.textContent = willExpand ? 'Hide details' : 'View details';
+      }
+      if (window.scrollAnimationController) {
+        window.scrollAnimationController.refresh();
       }
     });
   });

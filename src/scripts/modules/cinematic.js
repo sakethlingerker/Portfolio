@@ -82,6 +82,9 @@ export function initCinematicUI() {
         });
         row.classList.toggle('expanded', !isExpanded);
         btn.setAttribute('aria-expanded', (!isExpanded).toString());
+        if (window.scrollAnimationController) {
+          window.scrollAnimationController.refresh();
+        }
       });
     }
   });
