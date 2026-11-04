@@ -389,25 +389,16 @@ try {
   assert.ok(await experienceSection.count() > 0, "Journey / Experience timeline section must exist");
   console.log("✔ 12. Education and experience timeline verified");
 
-  // 13. Terminal accepts commands
+  // 13. Verify complete removal of terminal interface and controls
   const terminalToggle = page.locator("#terminal-toggle");
-  if (await terminalToggle.count() > 0) {
-    await terminalToggle.click();
-    const terminal = page.locator("#portfolio-terminal");
-    await terminal.waitFor({ state: "visible", timeout: 5000 });
-    const termInput = page.locator("#terminal-input");
-    await termInput.fill("help");
-    await termInput.press("Enter");
-    await page.waitForTimeout(300);
-    const output = page.locator("#terminal-output");
-    assert.match(await output.innerText(), /Available commands/i);
-    // Close terminal
-    const closeTerm = page.locator("#close-terminal, #close-terminal-traffic-light");
-    if (await closeTerm.count() > 0) {
-      await closeTerm.first().click();
-    }
-    console.log("✔ 13. Terminal emulator accepted commands and produced expected output");
-  }
+  assert.equal(await terminalToggle.count(), 0, "Terminal toggle button must not exist in DOM");
+  const terminal = page.locator("#portfolio-terminal");
+  assert.equal(await terminal.count(), 0, "Terminal container must not exist in DOM");
+  const terminalInput = page.locator("#terminal-input");
+  assert.equal(await terminalInput.count(), 0, "Terminal input must not exist in DOM");
+  const quickActionTerminal = page.locator("#quick-action-terminal");
+  assert.equal(await quickActionTerminal.count(), 0, "Workbench terminal quick action must not exist in DOM");
+  console.log("✔ 13. Complete removal of terminal interface, toggle, and controls verified");
 
   // 14. Career Matchmaker full quiz flow verified via actual visible button clicks
   await page.evaluate(() => {

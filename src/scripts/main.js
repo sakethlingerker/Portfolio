@@ -6,7 +6,6 @@ import "./preloader.js"; // Import preloader to run its IIFE
 import { initUI, initJourneyTimeline } from "./modules/ui.js";
 import { initEmail } from "./modules/email.js";
 import { setupGlobalErrorHandling } from "./modules/utils.js";
-import { initTerminal } from "./modules/terminal.js";
 import { initWorkbench } from "./modules/workbench.js";
 import { initProjects } from "./modules/projects.js";
 import { initMatchmaker } from "./modules/matchmaker.js";
@@ -33,7 +32,6 @@ async function initApp() {
   await initWorkbench();
   await initMatchmaker();
   initCertifications();
-  initTerminal();
 
   // Initialize Apple-inspired GSAP Scroll Animation System
   const scrollController = initScrollReveals();

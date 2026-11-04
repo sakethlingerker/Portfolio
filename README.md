@@ -1,6 +1,6 @@
 # Saketh Lingerker | Professional Portfolio 🚀
 
-A high-performance, premium portfolio website built for the modern web. This project has evolved from a simple static page into a modular, Vite-powered web application featuring an interactive project matchmaker, Launch System Studio, and a futuristic terminal interface.
+A high-performance, premium portfolio website built for the modern web. This project has evolved from a simple static page into a modular, Vite-powered web application featuring an interactive project matchmaker, Launch System Studio, and an Engineering Workbench diagnostic suite.
 
 [![Deploy to GitHub Pages](https://github.com/sakethlingerker/Portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/sakethlingerker/Portfolio/actions/workflows/deploy.yml)
 [![Vite](https://img.shields.io/badge/Vite-B73BFE?style=flat&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
@@ -8,7 +8,6 @@ A high-performance, premium portfolio website built for the modern web. This pro
 ## ✨ Key Features
 
 - **🧭 Project Matchmaker** - Interactive quiz to recommend the most relevant projects based on user interests.
-- **📟 Developer Terminal** - Fully functional CLI-style interface for exploring the codebase and bio.
 - **🌓 Adaptive Theme** - Seamless Dark/Light mode transitions with persistent state.
 - **📱 Premium Mobile UX** - Enhanced navigation with glassmorphism effects and optimized touch interactions.
 - **⚡ High Performance** - Modular architecture, lazy-loaded assets, and optimized build process via Vite.
@@ -53,10 +52,10 @@ A high-performance, premium portfolio website built for the modern web. This pro
 PORTFOLIO/
 ├── css/
 │   ├── base/           # Core variables, resets, and typography
-│   ├── components/     # Modular styles (navbar, terminal, timeline, etc.)
+│   ├── components/     # Modular styles (navbar, timeline, etc.)
 │   └── utils/          # Helper classes and print styles
 ├── js/
-│   ├── modules/        # Feature-specific logic (email, ui, theme, terminal)
+│   ├── modules/        # Feature-specific logic (email, ui, theme, workbench)
 │   ├── config.js       # App configuration and environment handling
 │   └── main.js         # Entry point
 ├── assets/             # Optimized images, PDFs, and media

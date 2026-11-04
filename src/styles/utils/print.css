@@ -26,8 +26,6 @@
     #project-modal,
     #resume-modal,
     .modal,
-    #terminal-toggle,
-    .terminal-container,
     .matchmaker-card,
     #project-matchmaker {
         display: none !important;

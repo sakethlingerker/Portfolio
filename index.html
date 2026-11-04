@@ -1469,7 +1469,7 @@
   </main>
 
   <!-- ======================================================================
-       Modals & Interactive Overlays (Finder Lightbox, Project Modal, Terminal)
+       Modals & Interactive Overlays (Finder Lightbox, Project Modal)
        ====================================================================== -->
 
   <!-- Finder Image Zoom Lightbox Modal -->
@@ -1507,30 +1507,6 @@
         </div>
         <div id="modal-links" class="bottom-links" style="margin-top: 25px;"></div>
       </div>
-    </div>
-  </div>
-
-
-
-  <!-- Interactive Terminal UI -->
-  <div id="portfolio-terminal" class="terminal-container">
-    <div class="terminal-header">
-      <div class="terminal-controls">
-        <span id="close-terminal-traffic-light" class="control red"></span>
-        <span class="control yellow"></span>
-        <span class="control green"></span>
-      </div>
-      <div class="terminal-title">saketh@systems: ~</div>
-      <button id="close-terminal" class="close-terminal">&times;</button>
-    </div>
-    <div id="terminal-output" class="terminal-output">
-      <div class="terminal-line">Welcome to Saketh's Systems Terminal v2.0</div>
-      <div class="terminal-line">Type 'help' to see available commands (e.g. projects, skills, research, contact).</div>
-    </div>
-    <div class="terminal-input-line">
-      <span class="terminal-prompt">saketh@systems:~ %</span>
-      <input type="text" id="terminal-input" spellcheck="false" autocomplete="off" aria-label="Terminal input"
-        placeholder="type 'help' or explore..." />
     </div>
   </div>
 
@@ -1746,13 +1722,9 @@
               <span class="workbench-section-title" style="color: #F45135;">// QUICK ACTIONS</span>
             </div>
             <div class="workbench-quick-list">
-              <button class="workbench-quick-item" id="quick-action-terminal">
-                <span class="workbench-quick-label"><i class="fas fa-terminal"></i> Open Terminal</span>
-                <span class="workbench-quick-key">T</span>
-              </button>
               <a href="assets/Saketh_Lingerker_8688791352.pdf" target="_blank" rel="noopener"
                 class="workbench-quick-item" id="quick-action-resume">
-                <span class="workbench-quick-label"><i class="fas fa-file-alt"></i> View Résumé</span>
+                <span class="workbench-quick-label"><i class="fas fa-file-alt"></i> View Resume </span>
                 <span class="workbench-quick-key">R</span>
               </a>
               <a href="https://github.com/sakethlingerker" target="_blank" rel="noopener" class="workbench-quick-item"
@@ -1809,10 +1781,6 @@
       </footer>
     </div>
   </div>
-
-  <button id="terminal-toggle" class="terminal-toggle" title="Open Terminal (Shortcut: `)">
-    <i class="fas fa-terminal"></i>
-  </button>
 
   <!-- JavaScript Entry Point -->
   <script type="module" src="src/scripts/main.js"></script>

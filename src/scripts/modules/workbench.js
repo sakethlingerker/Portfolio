@@ -140,10 +140,7 @@ function setupEventListeners() {
       const isInput = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.tagName === 'SELECT');
 
       if (!isInput && !isCtrlOrCmd && !e.altKey) {
-        if (e.key === 't' || e.key === 'T') {
-          e.preventDefault();
-          triggerQuickAction('terminal');
-        } else if (e.key === 'r' || e.key === 'R') {
+        if (e.key === 'r' || e.key === 'R') {
           e.preventDefault();
           triggerQuickAction('resume');
         } else if (e.key === 'g' || e.key === 'G') {
@@ -279,10 +276,6 @@ function setupEventListeners() {
   compSelectB?.addEventListener('change', () => renderComparisonMatrix());
 
   // Quick Action Buttons
-  document.getElementById('quick-action-terminal')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    triggerQuickAction('terminal');
-  });
 
   document.getElementById('quick-action-resume')?.addEventListener('click', () => {
     closeWorkbench();
@@ -834,14 +827,7 @@ function bindChatActions(messageBubble) {
 function triggerQuickAction(action) {
   closeWorkbench();
 
-  if (action === 'terminal') {
-    const term = document.getElementById('portfolio-terminal');
-    const input = document.getElementById('terminal-input');
-    if (term) {
-      term.classList.add('active');
-      setTimeout(() => input?.focus(), 80);
-    }
-  } else if (action === 'resume') {
+  if (action === 'resume') {
     const link = document.createElement('a');
     link.href = 'assets/Saketh_Lingerker_8688791352.pdf';
     link.target = '_blank';

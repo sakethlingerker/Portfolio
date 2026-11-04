@@ -7,7 +7,7 @@
     display: none;
     position: fixed;
     z-index: 11000;
-    /* Fixed above terminal */
+    /* Fixed top overlay */
     left: 0;
     top: 0;
     width: 100%;
@@ -98,7 +98,7 @@
     display: none;
     position: fixed;
     z-index: 11000;
-    /* Fixed above terminal */
+    /* Fixed top overlay */
     left: 0;
     top: 0;
     width: 100%;
