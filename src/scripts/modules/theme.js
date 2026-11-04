@@ -35,6 +35,9 @@ export function initTheme() {
       
       const newIsLight = !body.classList.contains("light-mode");
       setTheme(newIsLight);
+      if (window.scrollAnimationController) {
+        window.scrollAnimationController.refresh();
+      }
       try {
         localStorage.setItem('theme', newIsLight ? 'light' : 'dark');
       } catch (e) {

@@ -82,3 +82,27 @@
         box-shadow: 0 0 32px 6px #8b5cf655;
     }
 }
+
+
+/* Apple-inspired Motion Utility Classes */
+.reveal-word {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.reveal-line {
+    display: block;
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-word,
+    .reveal-line,
+    [data-reveal],
+    [data-reveal-group] > * {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+}

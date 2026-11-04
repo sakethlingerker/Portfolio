@@ -13,11 +13,9 @@ import { initMatchmaker } from "./modules/matchmaker.js";
 import { initCertifications } from "./modules/certifications.js";
 import { initCinematicUI } from "./modules/cinematic.js";
 import { toast } from "./modules/toast.js";
+import { initScrollReveals } from "./animations/scroll-reveal.ts";
 
 async function initApp() {
-  // Initialize AOS
-  if (window.AOS) AOS.init();
-
   setupGlobalErrorHandling();
 
   initRoleBadgeAnimation();
@@ -36,6 +34,10 @@ async function initApp() {
   await initMatchmaker();
   initCertifications();
   initTerminal();
+
+  // Initialize Apple-inspired GSAP Scroll Animation System
+  const scrollController = initScrollReveals();
+  window.scrollAnimationController = scrollController;
 
   // Register Service Worker
   if ("serviceWorker" in navigator) {

@@ -28,6 +28,9 @@ jobs:
       - name: Install project dependencies
         run: npm ci
 
+      - name: Verify TypeScript types
+        run: npm run typecheck
+
       - name: Run unit tests
         run: npm test
 
@@ -54,6 +57,9 @@ jobs:
 
       - name: Run Workbench chat browser regression tests
         run: npm run test:browser
+
+      - name: Run GSAP animation test suite
+        run: npm run test:animations
 
       - name: Run comprehensive website regression tests
         run: |
