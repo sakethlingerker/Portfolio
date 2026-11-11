@@ -14,8 +14,3 @@ coverage/
 .idea/
 portfolio_code.zip
 scratch/
-
-
-tests/screenshots/current/
-tests/screenshots/diff/
-tests/screenshots/animation/
