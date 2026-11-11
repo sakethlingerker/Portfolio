@@ -19,7 +19,7 @@ concurrency:
 jobs:
   verify-and-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
@@ -42,8 +42,89 @@ jobs:
       - name: Run unit tests
         run: npm test
 
+      - name: Report Playwright and runner diagnostics
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Node.js version: $(node --version)"
+          echo "npm version: $(npm --version)"
+          echo "Installed Playwright version: $(npx --no-install playwright --version)"
+          echo "Ubuntu runner version:"
+          if [[ -r /etc/os-release ]]; then
+            grep -E '^(PRETTY_NAME|VERSION_ID|VERSION_CODENAME)=' /etc/os-release
+          else
+            uname -a
+          fi
+
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        shell: bash
+        timeout-minutes: 10
+        run: |
+          set -euo pipefail
+
+          max_attempts=3
+          retry_delays=(0 20 40)
+          log_file="$(mktemp /tmp/playwright-install.XXXXXX.log)"
+          trap 'rm -f "$log_file"' EXIT
+
+          transient_error_regex='Temporary failure resolving|Could not resolve host|Name or service not known|Failed to fetch|Unable to fetch|Connection timed out|Connect Timeout|Temporary failure in name resolution|Some index files failed to download|Connection reset by peer|socket hang up|TLS handshake timeout|EAI_AGAIN|ENOTFOUND|ETIMEDOUT|ECONNRESET|ECONNREFUSED|ENETUNREACH|EHOSTUNREACH|fetch failed'
+
+          for (( attempt = 1; attempt <= max_attempts; attempt++ )); do
+            delay="${retry_delays[$((attempt - 1))]}"
+            if (( delay > 0 )); then
+              echo "Waiting ${delay}s before Chromium installation attempt ${attempt}/${max_attempts}..."
+              sleep "$delay"
+            fi
+
+            echo "=== Playwright Chromium installation attempt ${attempt}/${max_attempts} ==="
+            : > "$log_file"
+
+            set +e
+            npx playwright install --with-deps chromium 2>&1 | tee "$log_file"
+            pipe_status=("${PIPESTATUS[@]}")
+            set -e
+
+            install_exit_code="${pipe_status[0]}"
+            tee_exit_code="${pipe_status[1]}"
+
+            if (( install_exit_code == 0 && tee_exit_code == 0 )); then
+              echo "Playwright Chromium installation succeeded on attempt ${attempt}/${max_attempts}."
+              exit 0
+            fi
+
+            if (( install_exit_code == 0 && tee_exit_code != 0 )); then
+              echo "::error::Logging pipe (tee) failed with exit code ${tee_exit_code} during Chromium installation."
+              exit "$tee_exit_code"
+            fi
+
+            if grep -qiE "$transient_error_regex" "$log_file"; then
+              echo "::warning::Attempt ${attempt}/${max_attempts} failed with exit code ${install_exit_code} due to a transient DNS/network error."
+              if (( attempt == max_attempts )); then
+                echo "::error::Chromium installation failed after ${max_attempts} attempts due to repeated DNS/network errors (last exit code: ${install_exit_code})."
+                exit "$install_exit_code"
+              fi
+            else
+              echo "::error::Attempt ${attempt}/${max_attempts} failed with a non-transient error (exit code: ${install_exit_code}). Not retrying."
+              exit "$install_exit_code"
+            fi
+          done
+
+      - name: Verify Playwright Chromium installation
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=module - <<'EOF'
+          import { accessSync, constants } from 'node:fs';
+          import { chromium } from 'playwright';
+
+          const execPath = chromium.executablePath();
+          accessSync(execPath, constants.X_OK);
+          console.log('Verified Chromium executable:', execPath);
+
+          const browser = await chromium.launch({ headless: true });
+          console.log('Verified Chromium browser version:', browser.version());
+          await browser.close();
+          EOF
 
       - name: Generate baseline fixtures from commit ee53012
         run: node scripts/generate-baseline.mjs
