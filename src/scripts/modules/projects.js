@@ -291,15 +291,13 @@ function renderSidebarList() {
   }
 
   listContainer.innerHTML = filtered
-    .map((p) => {
+    .map((p, idx) => {
       const isActive = p.id === activeProjectId ? 'active' : '';
-      const thumb = getAssetUrl(p.heroImage || 'assets/projects/enterprise_rag_agent.png');
+      const indexLabel = String(idx + 1).padStart(2, '0');
 
       return `
         <div class="finder-nav-item ${isActive}" data-id="${p.id}" tabindex="0" role="button" aria-label="Select ${p.title}">
-          <div class="finder-item-thumb-wrapper">
-            <img src="${thumb}" alt="${p.title}" class="finder-item-thumb" />
-          </div>
+          <span class="finder-item-index" aria-hidden="true">${indexLabel}</span>
           <div class="finder-item-info">
             <div class="finder-item-title">${p.title}</div>
             <div class="finder-item-subtitle">${p.subtitle || p.category}</div>

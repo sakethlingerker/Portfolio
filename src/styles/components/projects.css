@@ -418,8 +418,8 @@ body.light-mode .finder-count {
 .finder-nav-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 7px 8px;
+  gap: 9px;
+  padding: 7px 9px;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -453,26 +453,52 @@ body.light-mode .finder-nav-item.active {
   border-color: rgba(244, 81, 53, 0.25);
 }
 
-.finder-item-thumb-wrapper {
-  width: 36px;
-  height: 36px;
+.finder-item-index {
+  width: 26px;
+  height: 26px;
   border-radius: 6px;
-  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  border: 1px solid var(--line);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: var(--muted);
   background: #121815;
+  border: 1px solid var(--line);
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
-body.light-mode .finder-item-thumb-wrapper {
+body.light-mode .finder-item-index {
   background: #eef1f0;
   border-color: rgba(0, 0, 0, 0.08);
+  color: #556059;
 }
 
-.finder-item-thumb {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.finder-nav-item:hover .finder-item-index {
+  color: var(--ink);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+body.light-mode .finder-nav-item:hover .finder-item-index {
+  color: #111a15;
+  border-color: rgba(0, 0, 0, 0.16);
+}
+
+.finder-nav-item.active .finder-item-index {
+  color: var(--accent);
+  background: rgba(244, 81, 53, 0.14);
+  border-color: rgba(244, 81, 53, 0.32);
+  font-weight: 700;
+}
+
+body.light-mode .finder-nav-item.active .finder-item-index {
+  color: var(--accent);
+  background: rgba(244, 81, 53, 0.1);
+  border-color: rgba(244, 81, 53, 0.28);
 }
 
 .finder-item-info {
