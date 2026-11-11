@@ -27,16 +27,26 @@ export function initCinematicUI() {
     }
   }
 
-  // 2. Reading Progress Bar
+  // 2. Reading Progress Bar (Smooth RAF throttle)
   const progressBar = document.querySelector('.reading-progress');
   if (progressBar) {
-    window.addEventListener('scroll', () => {
+    let progressTicking = false;
+    const updateReadingProgress = () => {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (docHeight > 0) {
         const progress = Math.min(1, Math.max(0, window.scrollY / docHeight));
         progressBar.style.transform = `scaleX(${progress})`;
       }
+      progressTicking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!progressTicking) {
+        requestAnimationFrame(updateReadingProgress);
+        progressTicking = true;
+      }
     }, { passive: true });
+    updateReadingProgress();
   }
 
   // 3. Mobile Navigation Drawer

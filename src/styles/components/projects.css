@@ -980,6 +980,364 @@ body.light-mode .finder-sys-title {
   color: var(--accent);
 }
 
+/* ==========================================================================
+   Interactive Animated SVG Architecture Diagram
+   ========================================================================== */
+.arch-interactive-hint {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.arch-interactive-hint i {
+  color: #F45135;
+  font-size: 0.72rem;
+}
+
+body.light-mode .arch-interactive-hint {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.arch-svg-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 4px 14px 4px;
+  margin: 12px 0 16px 0;
+  border-radius: 8px;
+  background: #0d1210;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(244, 81, 53, 0.4) transparent;
+}
+
+body.light-mode .arch-svg-container {
+  background: #f8faf9;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.arch-svg-canvas {
+  display: block;
+  min-width: 100%;
+  height: auto;
+}
+
+.arch-svg-node {
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arch-node-bg {
+  fill: #131a16;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1.5;
+  transition: fill 0.2s ease, stroke 0.2s ease, filter 0.2s ease;
+}
+
+body.light-mode .arch-node-bg {
+  fill: #ffffff;
+  stroke: rgba(0, 0, 0, 0.12);
+}
+
+.arch-svg-node:hover .arch-node-bg,
+.arch-svg-node:focus-visible .arch-node-bg {
+  fill: #18221c;
+  stroke: #F45135;
+  filter: drop-shadow(0 0 6px rgba(244, 81, 53, 0.45));
+}
+
+body.light-mode .arch-svg-node:hover .arch-node-bg,
+body.light-mode .arch-svg-node:focus-visible .arch-node-bg {
+  fill: #fff5f2;
+  stroke: #F45135;
+}
+
+.arch-svg-node.active .arch-node-bg {
+  fill: #1c2620;
+  stroke: #F45135;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 10px rgba(244, 81, 53, 0.5));
+}
+
+body.light-mode .arch-svg-node.active .arch-node-bg {
+  fill: #ffebe5;
+  stroke: #F45135;
+}
+
+.arch-node-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  fill: #F45135;
+}
+
+.arch-node-cat {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  font-weight: 600;
+  fill: #8fa093;
+  letter-spacing: 0.5px;
+}
+
+.arch-node-title {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  fill: #F1F1ED;
+  line-height: 1.25;
+}
+
+body.light-mode .arch-node-title {
+  fill: #151a17;
+}
+
+.arch-node-indicator {
+  fill: rgba(255, 255, 255, 0.15);
+  transition: fill 0.2s ease;
+}
+
+.arch-svg-node.active .arch-node-indicator {
+  fill: #F45135;
+}
+
+.arch-svg-path {
+  stroke: #F45135;
+  stroke-width: 1.75;
+  stroke-dasharray: 6 4;
+  fill: none;
+  opacity: 0.85;
+}
+
+.arch-flow-dot {
+  filter: drop-shadow(0 0 4px #F45135);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arch-svg-path {
+    stroke-dasharray: none;
+  }
+  .arch-flow-dot {
+    display: none;
+  }
+}
+
+/* Stage Deep-Dive Inspector Box */
+.finder-stage-deepdive {
+  background: #111714;
+  border: 1px solid rgba(244, 81, 53, 0.3);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-top: 14px;
+  box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.2s ease;
+}
+
+body.light-mode .finder-stage-deepdive {
+  background: #ffffff;
+  border-color: rgba(244, 81, 53, 0.35);
+  box-shadow: 0 4px 16px -6px rgba(0, 0, 0, 0.08);
+}
+
+.stage-deepdive-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 14px;
+}
+
+body.light-mode .stage-deepdive-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.stage-deepdive-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stage-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #F45135;
+}
+
+.stage-cat {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stage-title {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+body.light-mode .stage-title {
+  color: #111a15;
+}
+
+.stage-tech-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.finder-tech-pill {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(244, 81, 53, 0.1);
+  color: #F45135;
+  border: 1px solid rgba(244, 81, 53, 0.25);
+}
+
+.stage-deepdive-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .stage-deepdive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stage-deepdive-col.span-2 {
+  grid-column: 1 / -1;
+}
+
+.deepdive-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.deepdive-label i {
+  color: #F45135;
+  font-size: 0.68rem;
+}
+
+.deepdive-val {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.84rem;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.45;
+}
+
+body.light-mode .deepdive-val {
+  color: #212924;
+}
+
+.stage-deepdive-col.decision .deepdive-val {
+  font-style: italic;
+  color: #ffd8d0;
+}
+
+body.light-mode .stage-deepdive-col.decision .deepdive-val {
+  color: #8c2514;
+}
+
+/* ==========================================================================
+   Engineering Challenges & Solved Trade-Offs Bento Card
+   ========================================================================== */
+.finder-challenges-card {
+  margin-top: 14px;
+}
+
+.finder-challenges-header {
+  margin-bottom: 12px;
+}
+
+.finder-challenge-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.finder-challenge-item {
+  background: #111714;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+body.light-mode .finder-challenge-item {
+  background: #f8faf9;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.finder-challenge-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.finder-challenge-badge.challenge {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.finder-challenge-badge.resolution {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.finder-challenge-text {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
+}
+
+body.light-mode .finder-challenge-text {
+  color: #2b332e;
+}
+
 /* 7. Quantified Impact Metrics Cards */
 .finder-impact-grid {
   display: grid;

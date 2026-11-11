@@ -385,12 +385,13 @@
 }
 
 .input-container:focus-within {
-  border-color: var(--accent, #F45135);
-  box-shadow: 0 0 0 1px rgba(244, 81, 53, 0.4);
+  border-color: #F45135;
+  box-shadow: 0 0 0 3px rgba(244, 81, 53, 0.16), 0 0 14px rgba(244, 81, 53, 0.1);
 }
 
 .input-container.has-error {
   border-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.18) !important;
 }
 
 .input-icon {
@@ -491,6 +492,14 @@
   border-right: 1px solid rgba(11, 14, 13, 0.25);
   color: #0B0E0D;
   flex-shrink: 0;
+}
+
+.btn-arrow-box svg {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.terminal-send-button:hover .btn-arrow-box svg {
+  transform: translateX(4px);
 }
 
 /* Center Text Label */

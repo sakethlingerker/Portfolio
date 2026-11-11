@@ -336,7 +336,7 @@ function renderSidebarList() {
         handleSelect();
       }
     });
-  });  animateFinderNavItems();
+  }); animateFinderNavItems();
 }
 
 function selectProject(id) {
@@ -377,14 +377,14 @@ function selectProject(id) {
  * Dynamic "System Flow" (System Architecture / How It Works) Reusable Component
  * Adapts dynamically to project category & actual architecture steps in projects.json
  */
-function renderSystemFlowSection(steps, projectCategory = 'ai-ml') {
-  if (!steps || steps.length === 0) return '';
+function renderSystemFlowSection(steps, projectCategory = 'ai-ml', project = null) {
+  const p = project || { id: 'project', architectureStages: null, architecture: steps };
+  const stages = p.architectureStages || [];
 
   const normalizeStageStep = (stepStr, idx, total) => {
-    const text = stepStr.toLowerCase();
+    const text = (stepStr || '').toLowerCase();
     let category = 'PROCESSING';
 
-    // Intelligently classify Stage Category based on project category and step keywords
     if (
       idx === 0 ||
       text.includes('upload') ||
@@ -436,7 +436,6 @@ function renderSystemFlowSection(steps, projectCategory = 'ai-ml') {
       else category = 'PROCESSING';
     }
 
-    // Format Step Title & One Short Explanation
     let title = stepStr;
     let desc = '';
 
@@ -466,44 +465,142 @@ function renderSystemFlowSection(steps, projectCategory = 'ai-ml') {
     };
   };
 
-  const stagesHtml = steps
-    .map((stepStr, idx) => {
+  const normalizedStages = stages.length > 0
+    ? stages
+    : (steps || []).map((stepStr, idx) => {
       const { stepNumber, category, title, desc } = normalizeStageStep(stepStr, idx, steps.length);
-      const isLast = idx === steps.length - 1;
+      return {
+        stageNumber: idx + 1,
+        name: title,
+        category,
+        tech: [],
+        inputs: 'Raw pipeline input data',
+        outputs: 'Processed stage results',
+        responsibility: desc || title,
+        engineeringDecision: 'Designed for robust validation and clean throughput.'
+      };
+    });
 
-      return `
-        <div class="finder-sys-stage" data-step="${stepNumber}">
-          <div class="finder-sys-stage-box">
-            <div class="finder-sys-stage-meta">
-              <span class="finder-sys-num">[${stepNumber}]</span>
-              <span class="finder-sys-cat">${category}</span>
-            </div>
-            <h4 class="finder-sys-title">${title}</h4>
-            ${desc ? `<p class="finder-sys-desc">${desc}</p>` : ''}
-          </div>
-          ${
-            !isLast
-              ? `
-            <div class="finder-sys-connector" aria-hidden="true">
-              <i class="fas fa-arrow-right sys-conn-arrow"></i>
-            </div>
-          `
-              : ''
-          }
-        </div>
+  if (normalizedStages.length === 0) return '';
+
+  const totalStages = normalizedStages.length;
+  const nodeW = 146;
+  const nodeH = 94;
+  const gap = 34;
+  const padLeft = 16;
+  const padTop = 18;
+  const totalSvgWidth = padLeft * 2 + totalStages * nodeW + (totalStages - 1) * gap;
+  const totalSvgHeight = 132;
+
+  let svgPathsHtml = '';
+  let svgNodesHtml = '';
+
+  normalizedStages.forEach((stage, idx) => {
+    const x = padLeft + idx * (nodeW + gap);
+    const y = padTop;
+    const stageNum = String(stage.stageNumber || idx + 1).padStart(2, '0');
+    const category = (stage.category || 'PROCESSING').toUpperCase();
+    const rawName = stage.name || ('Stage ' + stageNum);
+
+    let line1 = rawName;
+    let line2 = '';
+    if (rawName.length > 16 && rawName.includes(' ')) {
+      const words = rawName.split(' ');
+      const mid = Math.ceil(words.length / 2);
+      line1 = words.slice(0, mid).join(' ');
+      line2 = words.slice(mid).join(' ');
+    }
+
+    if (idx < totalStages - 1) {
+      const x1 = x + nodeW;
+      const y1 = y + Math.round(nodeH / 2);
+      const x2 = x + nodeW + gap - 8;
+      const y2 = y1;
+      const pathId = 'arch-path-' + p.id + '-' + idx;
+
+      svgPathsHtml += `
+        <g class="arch-path-group" aria-hidden="true">
+          <path id="${pathId}" class="arch-svg-path" d="M ${x1} ${y1} L ${x2} ${y2}" marker-end="url(#arch-arrow-${p.id})" />
+          <circle class="arch-flow-dot" r="3" fill="#F45135">
+            <animateMotion dur="${(2.0 + idx * 0.25).toFixed(2)}s" repeatCount="indefinite" path="M ${x1} ${y1} L ${x2} ${y2}" />
+          </circle>
+        </g>
       `;
-    })
-    .join('');
+    }
+
+    svgNodesHtml += `
+      <g class="arch-svg-node ${idx === 0 ? 'active' : ''}" data-stage-idx="${idx}" tabindex="0" role="button" aria-label="Inspect Stage ${stageNum}: ${rawName}">
+        <rect class="arch-node-bg" x="${x}" y="${y}" width="${nodeW}" height="${nodeH}" rx="8" ry="8" />
+        <rect class="arch-node-accent-line" x="${x + 10}" y="${y + 2}" width="26" height="2.5" rx="1" fill="#F45135" />
+        <text class="arch-node-num" x="${x + 12}" y="${y + 22}">[${stageNum}]</text>
+        <text class="arch-node-cat" x="${x + 50}" y="${y + 22}">${category}</text>
+        <text class="arch-node-title" x="${x + 12}" y="${y + 46}">
+          <tspan x="${x + 12}" dy="0">${line1}</tspan>
+          ${line2 ? `<tspan x="${x + 12}" dy="16">${line2}</tspan>` : ''}
+        </text>
+        <circle class="arch-node-indicator" cx="${x + nodeW - 14}" cy="${y + 18}" r="3.5" />
+      </g>
+    `;
+  });
+
+  const initialStage = normalizedStages[0];
+  const initialTechPills = (initialStage.tech || [])
+    .map((t) => `<span class="finder-tech-pill">${t}</span>`)
+    .join(' ');
 
   return `
     <div class="finder-card span-full finder-system-architecture-card">
       <div class="finder-system-flow-header">
-        <span class="finder-sys-eyebrow">SYSTEM ARCHITECTURE</span>
-        <h3 class="finder-card-header"><i class="fas fa-sitemap"></i> How It Works</h3>
+        <div>
+          <span class="finder-sys-eyebrow">SYSTEM ARCHITECTURE</span>
+          <h3 class="finder-card-header"><i class="fas fa-sitemap"></i> Interactive Architecture Diagram</h3>
+        
+
+      <!-- Animated Responsive SVG Diagram Canvas -->
+      <div class="arch-svg-container" tabindex="0" aria-label="Interactive SVG Architecture Diagram">
+        <svg class="arch-svg-canvas" viewBox="0 0 ${totalSvgWidth} ${totalSvgHeight}" width="${totalSvgWidth}" height="${totalSvgHeight}" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arch-arrow-${p.id}" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#F45135" />
+            </marker>
+          </defs>
+          ${svgPathsHtml}
+          ${svgNodesHtml}
+        </svg>
       </div>
-      <div class="finder-system-flow-container">
-        <div class="finder-system-flow-track">
-          ${stagesHtml}
+
+      <!-- Live Stage Inspector Deep-Dive -->
+      <div id="finder-stage-deepdive" class="finder-stage-deepdive" role="region" aria-live="polite" aria-label="Selected Pipeline Stage Details">
+        <div class="stage-deepdive-header">
+          <div class="stage-deepdive-meta">
+            <span class="stage-num">[0${initialStage.stageNumber || 1}]</span>
+            <span class="stage-cat">${initialStage.category || 'PROCESSING'}</span>
+          </div>
+          <h4 class="stage-title">${initialStage.name}</h4>
+          ${initialTechPills ? `<div class="stage-tech-row">${initialTechPills}</div>` : ''}
+        </div>
+        <div class="stage-deepdive-grid">
+          <div class="stage-deepdive-col">
+            <span class="deepdive-label"><i class="fas fa-sign-in-alt"></i> INPUTS</span>
+            <p class="deepdive-val">${initialStage.inputs || 'Verified pipeline inputs'}</p>
+          </div>
+          <div class="stage-deepdive-col">
+            <span class="deepdive-label"><i class="fas fa-sign-out-alt"></i> OUTPUTS</span>
+            <p class="deepdive-val">${initialStage.outputs || 'Verified stage outputs'}</p>
+          </div>
+          <div class="stage-deepdive-col span-2">
+            <span class="deepdive-label"><i class="fas fa-tasks"></i> COMPONENT RESPONSIBILITY</span>
+            <p class="deepdive-val">${initialStage.responsibility || 'System responsibility'}</p>
+          </div>
+          ${initialStage.engineeringDecision
+      ? `
+            <div class="stage-deepdive-col span-2 decision">
+              <span class="deepdive-label"><i class="fas fa-microchip"></i> VERIFIED ENGINEERING DECISION</span>
+              <p class="deepdive-val">"${initialStage.engineeringDecision}"</p>
+            </div>
+          `
+      : ''
+    }
         </div>
       </div>
     </div>
@@ -528,51 +625,51 @@ function renderProjectDetail(id) {
   // Tech stack shield badges
   const techBadgesHtml = p.techStackDetailed
     ? p.techStackDetailed
-        .map(
-          (t) => `
+      .map(
+        (t) => `
       <span class="finder-tech-badge" title="${t.name}">
         <img src="${t.badge}" alt="${t.name}" loading="lazy" />
       </span>
     `
-        )
-        .join('')
+      )
+      .join('')
     : (p.tags || []).map((t) => `<span class="finder-tag-pill">${t}</span>`).join('');
 
   // Key features
   const featuresHtml = p.keyFeatures
     ? p.keyFeatures
-        .map(
-          (f) => `
+      .map(
+        (f) => `
       <li><i class="fas fa-check-circle"></i> <span>${f}</span></li>
     `
-        )
-        .join('')
+      )
+      .join('')
     : '';
 
   // System Flow / How It Works Section
-  const howItWorksHtml = renderSystemFlowSection(p.architecture, p.category);
+  const howItWorksHtml = renderSystemFlowSection(p.architecture, p.category, p);
 
   // Quantified Impact metrics
   const impactHtml = p.quantifiableImpact
     ? p.quantifiableImpact
-        .map(
-          (imp) => `
+      .map(
+        (imp) => `
       <div class="finder-impact-card">
         <div class="finder-impact-val">${imp.value}</div>
         <div class="finder-impact-lbl">${imp.label}</div>
       </div>
     `
-        )
-        .join('')
+      )
+      .join('')
     : '';
 
   // Related projects cards
   const relatedHtml = p.relatedProjectIds
     ? p.relatedProjectIds
-        .map((relId) => {
-          const rel = projectsMap[relId];
-          if (!rel) return '';
-          return `
+      .map((relId) => {
+        const rel = projectsMap[relId];
+        if (!rel) return '';
+        return `
         <div class="finder-related-card" data-rel-id="${rel.id}" tabindex="0" role="button" aria-label="View related project ${rel.title}">
           <img src="${getAssetUrl(rel.heroImage || 'assets/projects/enterprise_rag_agent.png')}" alt="${rel.title}" class="finder-related-thumb" />
           <div class="finder-related-info">
@@ -581,8 +678,8 @@ function renderProjectDetail(id) {
           </div>
         </div>
       `;
-        })
-        .join('')
+      })
+      .join('')
     : '';
 
   // Category display label
@@ -663,10 +760,38 @@ function renderProjectDetail(id) {
         <!-- 3. SYSTEM ARCHITECTURE / HOW IT WORKS -->
         ${howItWorksHtml}
 
+        <!-- 3b. TECHNICAL RIGOR & ENGINEERING CHALLENGES -->
+        ${p.challenges
+      ? `
+          <div class="finder-card span-full finder-challenges-card">
+            <div class="finder-challenges-header">
+              <span class="finder-sys-eyebrow">TECHNICAL RIGOR</span>
+              <h3 class="finder-card-header"><i class="fas fa-shield-alt"></i> Engineering Challenge &amp; Resolution</h3>
+            </div>
+            <div class="finder-challenge-body">
+              <div class="finder-challenge-item">
+                <span class="finder-challenge-badge challenge"><i class="fas fa-exclamation-triangle"></i> Challenge</span>
+                <p class="finder-challenge-text">${p.challenges}</p>
+              </div>
+              ${p.lessonsLearned
+        ? `
+                <div class="finder-challenge-item">
+                  <span class="finder-challenge-badge resolution"><i class="fas fa-check-circle"></i> Architectural Resolution</span>
+                  <p class="finder-challenge-text">${p.lessonsLearned}</p>
+                </div>
+              `
+        : ''
+      }
+            </div>
+          </div>
+        `
+      : ''
+    }
+
+
         <!-- 4. QUANTIFIED IMPACT & TECH STACK -->
-        ${
-          impactHtml
-            ? `
+        ${impactHtml
+      ? `
           <div class="finder-card span-half">
             <h3 class="finder-card-header"><i class="fas fa-chart-line"></i> Quantified Impact</h3>
             <div class="finder-impact-grid">
@@ -674,8 +799,8 @@ function renderProjectDetail(id) {
             </div>
           </div>
         `
-            : ''
-        }
+      : ''
+    }
 
         <div class="finder-card ${impactHtml ? 'span-half' : 'span-full'}">
           <h3 class="finder-card-header"><i class="fas fa-cubes"></i> Technology Stack</h3>
@@ -685,9 +810,8 @@ function renderProjectDetail(id) {
         </div>
 
         <!-- 5. KEY FEATURES & ENGINEERING DECISIONS -->
-        ${
-          featuresHtml
-            ? `
+        ${featuresHtml
+      ? `
           <div class="finder-card span-half">
             <h3 class="finder-card-header"><i class="fas fa-list-check"></i> Key Features</h3>
             <ul class="finder-features-list">
@@ -695,12 +819,11 @@ function renderProjectDetail(id) {
             </ul>
           </div>
         `
-            : ''
-        }
+      : ''
+    }
 
-        ${
-          p.engineeringDecisions
-            ? `
+        ${p.engineeringDecisions
+      ? `
           <div class="finder-card span-half">
             <h3 class="finder-card-header"><i class="fas fa-cogs"></i> Engineering Decisions</h3>
             <ul class="finder-features-list">
@@ -708,13 +831,12 @@ function renderProjectDetail(id) {
             </ul>
           </div>
         `
-            : ''
-        }
+      : ''
+    }
 
         <!-- 6. RELATED PROJECTS -->
-        ${
-          relatedHtml
-            ? `
+        ${relatedHtml
+      ? `
           <div class="finder-card span-full">
             <h3 class="finder-card-header"><i class="fas fa-network-wired"></i> Related Projects</h3>
             <div class="finder-related-grid">
@@ -722,8 +844,8 @@ function renderProjectDetail(id) {
             </div>
           </div>
         `
-            : ''
-        }
+      : ''
+    }
       </div>
     </div>
   `;
@@ -778,6 +900,68 @@ function renderProjectDetail(id) {
       }
     });
   });
+
+  // Bind interactive SVG stage node events
+  const stageNodes = workspaceContainer.querySelectorAll('.arch-svg-node');
+  const deepDiveCard = workspaceContainer.querySelector('#finder-stage-deepdive');
+  if (stageNodes.length && deepDiveCard && p.architectureStages && p.architectureStages.length) {
+    const updateStageSelection = (idx) => {
+      const stage = p.architectureStages[idx];
+      if (!stage) return;
+
+      stageNodes.forEach((node) => {
+        const isSelected = parseInt(node.getAttribute('data-stage-idx'), 10) === idx;
+        node.classList.toggle('active', isSelected);
+      });
+
+      const techPills = (stage.tech || []).map((t) => `<span class="finder-tech-pill">${t}</span>`).join(' ');
+
+      deepDiveCard.innerHTML = `
+        <div class="stage-deepdive-header">
+          <div class="stage-deepdive-meta">
+            <span class="stage-num">[0${stage.stageNumber || idx + 1}]</span>
+            <span class="stage-cat">${stage.category || 'PROCESSING'}</span>
+          </div>
+          <h4 class="stage-title">${stage.name}</h4>
+          ${techPills ? `<div class="stage-tech-row">${techPills}</div>` : ''}
+        </div>
+        <div class="stage-deepdive-grid">
+          <div class="stage-deepdive-col">
+            <span class="deepdive-label"><i class="fas fa-sign-in-alt"></i> INPUTS</span>
+            <p class="deepdive-val">${stage.inputs || 'Verified pipeline inputs'}</p>
+          </div>
+          <div class="stage-deepdive-col">
+            <span class="deepdive-label"><i class="fas fa-sign-out-alt"></i> OUTPUTS</span>
+            <p class="deepdive-val">${stage.outputs || 'Verified stage outputs'}</p>
+          </div>
+          <div class="stage-deepdive-col span-2">
+            <span class="deepdive-label"><i class="fas fa-tasks"></i> COMPONENT RESPONSIBILITY</span>
+            <p class="deepdive-val">${stage.responsibility || 'System responsibility'}</p>
+          </div>
+          ${stage.engineeringDecision
+          ? `
+            <div class="stage-deepdive-col span-2 decision">
+              <span class="deepdive-label"><i class="fas fa-microchip"></i> VERIFIED ENGINEERING DECISION</span>
+              <p class="deepdive-val">"${stage.engineeringDecision}"</p>
+            </div>
+          `
+          : ''
+        }
+        </div>
+      `;
+    };
+
+    stageNodes.forEach((node) => {
+      const idx = parseInt(node.getAttribute('data-stage-idx'), 10) || 0;
+      node.addEventListener('click', () => updateStageSelection(idx));
+      node.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          updateStageSelection(idx);
+        }
+      });
+    });
+  }
 }
 
 export function animateFinderNavItems() {

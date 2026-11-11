@@ -53,49 +53,88 @@ export function initUI() {
     }
   });
 
-  // Scroll Listeners (Active Link, Progress Bar, Header Shrink)
-  window.addEventListener("scroll", () => {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".main-nav-links a, .mobile-nav-links a");
-    const header = document.querySelector(".header");
-    const scrollProgress = document.getElementById("scroll-progress");
-    const backToTopBtn = document.getElementById("back-to-top");
+  // Refined Active Navigation, Thin Scroll-Progress Line & Header Scroll Listener
+  const desktopNavLinks = document.querySelectorAll('.topbar nav a');
+  const mobileNavLinks = document.querySelectorAll('.mobile-cinematic-nav a');
+  const talkBtn = document.querySelector('.talk-btn');
+  const readingProgressBar = document.querySelector('.reading-progress');
+  const scrollProgressLegacy = document.getElementById('scroll-progress');
+  const topbar = document.querySelector('.topbar') || document.querySelector('.header');
+  const backToTopBtn = document.getElementById('back-to-top');
+
+  const trackedSectionIds = ['home', 'proof', 'work', 'projects', 'toolkit', 'journey', 'contact'];
+
+  const updateScrollState = () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Active Highlight
-    let current = "";
-    sections.forEach((section) => {
-      if (scrollTop >= section.offsetTop - 100) current = section.getAttribute("id");
-    });
-    navLinks.forEach((link) => {
-      link.classList.toggle("active", link.getAttribute("href")?.substring(1) === current);
-    });
-
-    // Shrink Header
-    if (header) header.classList.toggle("shrink", scrollTop > 100);
-
-    // Progress Bar
     const docHeight = document.documentElement.scrollHeight;
     const winHeight = window.innerHeight;
-    // scrollTop is already defined above at line 88
 
-    let scrollPercent = 0;
+    // 1. Precise Active Section Detection
+    let activeId = 'home';
+    if (scrollTop < 180) {
+      activeId = 'home';
+    } else if (scrollTop + winHeight >= docHeight - 70) {
+      activeId = 'contact';
+    } else {
+      const probeY = scrollTop + winHeight * 0.35;
+      for (let i = trackedSectionIds.length - 1; i >= 0; i--) {
+        const sec = document.getElementById(trackedSectionIds[i]);
+        if (sec && sec.offsetTop <= probeY) {
+          activeId = sec.id;
+          break;
+        }
+      }
+    }
+
+    // Map '#projects' (System Studio) to 'work' (Projects in top navigation)
+    const normalizedDesktopId = activeId === 'projects' ? 'work' : activeId;
+
+    desktopNavLinks.forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      const targetId = href.replace('#', '');
+      link.classList.toggle('active', targetId === normalizedDesktopId);
+    });
+
+    mobileNavLinks.forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      const targetId = href.replace('#', '');
+      const isMatch = targetId === activeId || (targetId === 'work' && activeId === 'projects');
+      link.classList.toggle('active', isMatch);
+    });
+
+    if (talkBtn) {
+      talkBtn.classList.toggle('active', activeId === 'contact');
+    }
+
+    // 2. Thin Scroll Progress Indicator
     if (docHeight > winHeight) {
-        scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+      const progressFraction = Math.min(1, Math.max(0, scrollTop / (docHeight - winHeight)));
+      if (readingProgressBar) {
+        readingProgressBar.style.transform = `scaleX(${progressFraction})`;
+      }
+      if (scrollProgressLegacy) {
+        scrollProgressLegacy.style.width = `${Math.round(progressFraction * 100)}%`;
+      }
     }
-    
-    const scrollPercentRounded = Math.min(100, Math.max(0, Math.round(scrollPercent)));
 
-    if (scrollProgress) {
-        scrollProgress.style.width = `${scrollPercentRounded}%`;
+    // 3. Header Scrolled State
+    if (topbar) {
+      topbar.classList.toggle('scrolled', scrollTop > 60);
+      topbar.classList.toggle('shrink', scrollTop > 100);
     }
 
-    // Back to Top
-    if (backToTopBtn) backToTopBtn.classList.toggle("visible", scrollTop > 500);
-  });
+    // 4. Back to Top Visibility
+    if (backToTopBtn) {
+      backToTopBtn.classList.toggle('visible', scrollTop > 500);
+    }
+  };
 
-  const backToTopBtn = document.getElementById("back-to-top");
-  if (backToTopBtn) backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  window.addEventListener('scroll', updateScrollState, { passive: true });
+  updateScrollState();
+
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 
   // Resume Modal
   const resumeModal = document.getElementById("resume-modal");
@@ -194,6 +233,37 @@ export function initUI() {
   if (closeProjectModal) closeProjectModal.addEventListener("click", () => {
     projectModal.classList.remove("open");
     document.body.style.overflow = "auto";
+  });
+
+  // Selected Work Interactive Case Study Triggers
+  const selectedActs = document.querySelectorAll(".work-act");
+  const actProjectIds = ["enterprise_rag", "mlops", "smart_feedback", "ats_resume"];
+  selectedActs.forEach((act, idx) => {
+    const projectId = act.getAttribute("data-project-id") || actProjectIds[idx];
+    if (!projectId) return;
+
+    act.style.cursor = "pointer";
+    act.setAttribute("tabindex", "0");
+    act.setAttribute("role", "button");
+    const rawTitle = act.querySelector(".work-act-title")?.textContent.replace("↗", "").trim() || "Project";
+    act.setAttribute("aria-label", `Inspect architecture and case study for ${rawTitle}`);
+
+    const handleInspect = (e) => {
+      // Allow standard clicks on direct links (GitHub / Live Demo)
+      if (e.target.closest("a")) return;
+      if (typeof window.openProjectInStudio === "function") {
+        window.openProjectInStudio(projectId);
+      }
+    };
+
+    act.addEventListener("click", handleInspect);
+    act.addEventListener("keydown", (e) => {
+      if (e.target.closest("a")) return;
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleInspect(e);
+      }
+    });
   });
 
   // Privacy Policy
@@ -572,4 +642,25 @@ export function initJourneyTimeline() {
       }
     });
   });
+
+  // Milestone progressive activation observer
+  const timelineEntries = document.querySelectorAll('.journey-timeline .timeline-entry');
+  if (timelineEntries.length && 'IntersectionObserver' in window) {
+    const milestoneObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('timeline-milestone-active');
+          }
+        });
+      },
+      {
+        rootMargin: '0px 0px -15% 0px',
+        threshold: 0.2
+      }
+    );
+    timelineEntries.forEach((entry) => milestoneObserver.observe(entry));
+  } else {
+    timelineEntries.forEach((entry) => entry.classList.add('timeline-milestone-active'));
+  }
 }

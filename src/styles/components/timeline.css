@@ -179,6 +179,27 @@
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
+/* Progressive Milestone Activation */
+.timeline-entry.timeline-milestone-active .marker-dot {
+  border-color: #F45135 !important;
+  background: #F45135;
+  box-shadow: 0 0 14px rgba(244, 81, 53, 0.65), 0 0 4px #F45135;
+  transform: scale(1.2);
+}
+
+.timeline-entry.timeline-milestone-active .marker-line {
+  background: linear-gradient(180deg, #F45135 0%, rgba(244, 81, 53, 0.4) 75%, var(--line) 100%);
+}
+
+.timeline-entry.timeline-milestone-active .timeline-date {
+  color: #ff7c65;
+  transition: color 0.3s ease;
+}
+
+.timeline-entry.timeline-milestone-active .timeline-org {
+  transition: color 0.3s ease;
+}
+
 .marker-line {
   position: absolute;
   top: 15px;
