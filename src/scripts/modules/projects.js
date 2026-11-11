@@ -552,7 +552,8 @@ function renderSystemFlowSection(steps, projectCategory = 'ai-ml', project = nul
         <div>
           <span class="finder-sys-eyebrow">SYSTEM ARCHITECTURE</span>
           <h3 class="finder-card-header"><i class="fas fa-sitemap"></i> Interactive Architecture Diagram</h3>
-        
+        </div>
+      </div>
 
       <!-- Animated Responsive SVG Diagram Canvas -->
       <div class="arch-svg-container" tabindex="0" aria-label="Interactive SVG Architecture Diagram">

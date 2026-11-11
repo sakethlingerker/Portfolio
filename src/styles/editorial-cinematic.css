@@ -54,7 +54,6 @@ body {
   color: #e8ece6 !important;
   font-family: var(--font-body);
   line-height: 1.6;
-  overflow-x: hidden;
   position: relative;
 }
 
@@ -1577,6 +1576,10 @@ body.light-mode .credential-date {
   outline: none;
 }
 
+.work-act > * {
+  min-width: 0;
+}
+
 .work-act:hover {
   border-top-color: #F45135;
 }
@@ -2192,6 +2195,14 @@ body.light-mode .tools-grid span:hover {
   .work-act {
     padding-top: 24px;
     gap: 24px;
+  }
+  .work-act-title {
+    font-size: clamp(26px, 7.6vw, 44px);
+    overflow-wrap: break-word;
+  }
+  .work-act-actions {
+    flex-wrap: wrap;
+    gap: 14px 20px;
   }
   .all-projects-bar {
     margin-top: 36px;

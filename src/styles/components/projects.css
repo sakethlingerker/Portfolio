@@ -8,6 +8,9 @@
   padding: 60px 5% 64px 5%;
   position: relative;
   border-top: 1px solid var(--line);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .projects.studio-collapsed {
@@ -15,9 +18,12 @@
 }
 
 .projects .container {
+  width: 100%;
   max-width: 100% !important;
+  min-width: 0;
   padding: 0 !important;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* Studio Section Header (Matches Engineering Workbench Typography) */
@@ -65,10 +71,14 @@
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.03);
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   height: 820px;
   max-height: calc(100vh - 100px);
   min-height: 620px;
   overflow: hidden;
+  box-sizing: border-box;
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -183,9 +193,13 @@ body.light-mode #finder-breadcrumb {
 .finder-body {
   display: flex;
   flex: 1;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   min-height: 0;
   overflow: hidden;
   position: relative;
+  box-sizing: border-box;
 }
 
 /* ==========================================================================
@@ -560,11 +574,16 @@ body.light-mode .finder-item-title {
 
 .finder-workspace {
   flex: 1;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
   padding: 24px;
   height: 100%;
   min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   background: #0b0f0d;
+  box-sizing: border-box;
 }
 
 body.light-mode .finder-workspace {
@@ -574,7 +593,11 @@ body.light-mode .finder-workspace {
 .finder-detail-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   gap: 20px;
+  box-sizing: border-box;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
 }
@@ -586,13 +609,22 @@ body.light-mode .finder-workspace {
 /* Top Workspace Header (Category -> Title -> Subtitle -> Actions -> Preview) */
 .finder-workspace-header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 24px;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   background: #0e1411;
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 24px;
+}
+
+.finder-header-info {
+  min-width: 0;
+  max-width: 100%;
 }
 
 body.light-mode .finder-workspace-header {
@@ -644,6 +676,7 @@ body.light-mode .finder-workspace-header {
   margin-bottom: 10px;
   color: #FFFFFF;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
 }
 
 body.light-mode .finder-project-title {
@@ -656,6 +689,7 @@ body.light-mode .finder-project-title {
   color: #8E9591;
   line-height: 1.6;
   margin-bottom: 20px;
+  overflow-wrap: break-word;
 }
 
 .finder-action-links {
@@ -726,6 +760,10 @@ body.light-mode .finder-btn-cta.btn-outline:hover {
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
   cursor: zoom-in;
   position: relative;
@@ -808,6 +846,11 @@ body.light-mode .finder-frame-bar {
   font-family: var(--font-mono, monospace);
   font-size: 0.68rem;
   color: var(--muted);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .finder-preview-img {
@@ -821,10 +864,21 @@ body.light-mode .finder-frame-bar {
    6. Bento Details Cards Grid & Case Study Formatting
    ========================================================================== */
 
+.finder-details-grid-wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
 .finder-details-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .finder-card {
@@ -835,6 +889,10 @@ body.light-mode .finder-frame-bar {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 body.light-mode .finder-card {
@@ -853,8 +911,12 @@ body.light-mode .finder-card {
   color: #E8ECE6;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 body.light-mode .finder-card-header {
@@ -863,6 +925,7 @@ body.light-mode .finder-card-header {
 
 .finder-card-header i {
   color: var(--accent);
+  flex-shrink: 0;
 }
 
 .finder-card-text {
@@ -871,6 +934,10 @@ body.light-mode .finder-card-header {
   line-height: 1.65;
   color: #9EABA3;
   margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
 }
 
 /* System Architecture Flow ("How It Works") */
@@ -882,6 +949,9 @@ body.light-mode .finder-card-header {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .finder-sys-eyebrow {
@@ -1034,8 +1104,13 @@ body.light-mode .arch-interactive-hint {
 
 .arch-svg-container {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   overflow-x: auto;
   overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x pan-y;
   padding: 8px 4px 14px 4px;
   margin: 12px 0 16px 0;
   border-radius: 8px;
@@ -1043,17 +1118,37 @@ body.light-mode .arch-interactive-hint {
   border: 1px solid rgba(255, 255, 255, 0.06);
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: rgba(244, 81, 53, 0.4) transparent;
+  scrollbar-color: rgba(244, 81, 53, 0.45) rgba(255, 255, 255, 0.04);
+}
+
+.arch-svg-container::-webkit-scrollbar {
+  height: 7px;
+}
+
+.arch-svg-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+}
+
+.arch-svg-container::-webkit-scrollbar-thumb {
+  background: rgba(244, 81, 53, 0.45);
+  border-radius: 999px;
 }
 
 body.light-mode .arch-svg-container {
   background: #f8faf9;
   border-color: rgba(0, 0, 0, 0.08);
+  scrollbar-color: rgba(244, 81, 53, 0.45) rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .arch-svg-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .arch-svg-canvas {
   display: block;
   min-width: 100%;
+  max-width: none;
   height: auto;
 }
 
@@ -1164,6 +1259,10 @@ body.light-mode .arch-node-title {
   border-radius: 8px;
   padding: 18px 20px;
   margin-top: 14px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.5);
   transition: border-color 0.2s ease;
 }
@@ -1216,8 +1315,9 @@ body.light-mode .stage-deepdive-header {
   font-weight: 700;
   color: var(--ink);
   margin: 0;
-  flex: 1;
-  min-width: 200px;
+  flex: 1 1 180px;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 body.light-mode .stage-title {
@@ -1242,13 +1342,20 @@ body.light-mode .stage-title {
 
 .stage-deepdive-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+  width: 100%;
+  min-width: 0;
+}
+
+.stage-deepdive-col {
+  min-width: 0;
+  max-width: 100%;
 }
 
 @media (max-width: 640px) {
   .stage-deepdive-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1279,6 +1386,8 @@ body.light-mode .stage-title {
   color: var(--ink);
   margin: 0;
   line-height: 1.45;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
 }
 
 body.light-mode .deepdive-val {
@@ -1307,8 +1416,10 @@ body.light-mode .stage-deepdive-col.decision .deepdive-val {
 
 .finder-challenge-body {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 12px;
+  width: 100%;
+  min-width: 0;
 }
 
 .finder-challenge-item {
@@ -1319,6 +1430,9 @@ body.light-mode .stage-deepdive-col.decision .deepdive-val {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 body.light-mode .finder-challenge-item {
@@ -1358,6 +1472,8 @@ body.light-mode .finder-challenge-item {
   line-height: 1.5;
   color: var(--ink);
   margin: 0;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
 }
 
 body.light-mode .finder-challenge-text {
@@ -1367,8 +1483,10 @@ body.light-mode .finder-challenge-text {
 /* 7. Quantified Impact Metrics Cards */
 .finder-impact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100px, 100%), 1fr));
   gap: 10px;
+  width: 100%;
+  min-width: 0;
 }
 
 .finder-impact-card {
@@ -1377,6 +1495,9 @@ body.light-mode .finder-challenge-text {
   border-radius: 8px;
   padding: 12px 10px;
   text-align: center;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 body.light-mode .finder-impact-card {
@@ -1404,10 +1525,14 @@ body.light-mode .finder-impact-card {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+  width: 100%;
+  min-width: 0;
 }
 
 .finder-tech-badge img {
   height: 22px;
+  max-width: 100%;
+  width: auto;
   border-radius: 3px;
   display: block;
 }
@@ -1421,6 +1546,8 @@ body.light-mode .finder-impact-card {
   background: #121815;
   border: 1px solid var(--line);
   color: var(--ink);
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 body.light-mode .finder-tag-pill {
@@ -1437,6 +1564,7 @@ body.light-mode .finder-tag-pill {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 
 .finder-features-list li {
@@ -1446,6 +1574,13 @@ body.light-mode .finder-tag-pill {
   align-items: flex-start;
   gap: 8px;
   line-height: 1.45;
+  min-width: 0;
+}
+
+.finder-features-list li span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
 }
 
 .finder-features-list li i {
@@ -1458,8 +1593,10 @@ body.light-mode .finder-tag-pill {
 /* 10. Related Projects Cards */
 .finder-related-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
   gap: 12px;
+  width: 100%;
+  min-width: 0;
 }
 
 .finder-related-card {
@@ -1473,6 +1610,14 @@ body.light-mode .finder-tag-pill {
   cursor: pointer;
   transition: all 0.2s ease;
   outline: none;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.finder-related-info {
+  flex: 1;
+  min-width: 0;
 }
 
 body.light-mode .finder-related-card {
@@ -1501,6 +1646,7 @@ body.light-mode .finder-related-card {
   font-weight: 700;
   color: var(--ink);
   line-height: 1.25;
+  overflow-wrap: break-word;
 }
 
 body.light-mode .finder-related-title {
@@ -1627,7 +1773,7 @@ body.finder-lightbox-open {
 
 @media (max-width: 1024px) {
   .finder-workspace-header {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .finder-system-flow-track {
@@ -1637,7 +1783,7 @@ body.finder-lightbox-open {
 
 @media (max-width: 868px) {
   .projects {
-    padding: 60px 4% 80px 4%;
+    padding: 48px 20px 64px;
   }
 
   .finder-window {
@@ -1658,7 +1804,7 @@ body.finder-lightbox-open {
     height: auto;
     max-height: none;
     overflow: visible;
-    padding: 16px 12px;
+    padding: 18px 14px;
   }
 
   .finder-mobile-toggle {
@@ -1673,7 +1819,7 @@ body.finder-lightbox-open {
   /* Optimized Mobile Header Bar: generous space beside dots */
   .finder-header {
     height: 44px;
-    padding: 0 8px;
+    padding: 0 10px;
     gap: 8px;
   }
 
@@ -1755,9 +1901,9 @@ body.finder-lightbox-open {
   .finder-sidebar {
     position: fixed;
     top: 0;
-    left: -320px;
+    left: calc(-1 * min(320px, 95vw));
     bottom: 0;
-    width: 280px;
+    width: min(290px, 86vw);
     height: 100vh;
     overflow-y: auto;
     z-index: 1000;
@@ -1770,11 +1916,13 @@ body.finder-lightbox-open {
   }
 
   .finder-details-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
   }
 
+  .span-full,
   .span-half {
-    grid-column: span 2;
+    grid-column: 1 / -1;
   }
 
   /* Mobile Collapsible Details Button */
@@ -1784,23 +1932,34 @@ body.finder-lightbox-open {
     justify-content: center;
     gap: 10px;
     width: 100%;
-    height: 44px;
-    margin: 16px 0 14px 0;
+    max-width: 100%;
+    min-height: 46px;
+    margin: 14px 0;
     padding: 0 16px;
     background: #121815;
     border: 1px solid var(--line-strong);
     border-radius: 6px;
     color: var(--accent);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
     box-sizing: border-box;
   }
 
+  body.light-mode .btn-mobile-details-toggle {
+    background: #eef1f0;
+    border-color: rgba(0, 0, 0, 0.14);
+  }
+
   .btn-mobile-details-toggle:hover {
     background: #17211c;
+    border-color: var(--accent);
+  }
+
+  body.light-mode .btn-mobile-details-toggle:hover {
+    background: #ffe9e4;
     border-color: var(--accent);
   }
 
@@ -1815,16 +1974,90 @@ body.finder-lightbox-open {
   }
 
   .finder-details-grid-wrapper.expanded {
-    max-height: 6000px;
+    max-height: 12000px;
     opacity: 1;
     overflow: visible;
     pointer-events: auto;
-    margin-top: 16px;
-    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    margin-top: 14px;
+    transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
   }
 }
 
 @media (max-width: 768px) {
+  .projects {
+    padding: 40px 16px 48px;
+  }
+
+  .studio-header {
+    margin-bottom: 20px;
+  }
+
+  .studio-header h2 {
+    font-size: clamp(1.625rem, 6.2vw, 2.25rem);
+    line-height: 1.18;
+  }
+
+  .studio-header p {
+    font-size: clamp(0.875rem, 3.6vw, 0.95rem);
+    line-height: 1.65;
+  }
+
+  .finder-workspace {
+    padding: 14px 12px;
+  }
+
+  .finder-workspace-header {
+    padding: 18px 16px;
+    gap: 16px;
+  }
+
+  .finder-project-title {
+    font-size: clamp(1.28rem, 5.2vw, 1.75rem);
+    line-height: 1.24;
+    margin-bottom: 10px;
+  }
+
+  .finder-project-subtitle {
+    font-size: clamp(0.875rem, 3.6vw, 0.96rem);
+    line-height: 1.62;
+    color: #b0bdb5;
+    margin-bottom: 16px;
+  }
+
+  body.light-mode .finder-project-subtitle {
+    color: #46544c;
+  }
+
+  .finder-card {
+    padding: 16px;
+    gap: 12px;
+    border-radius: 10px;
+  }
+
+  .finder-card-header {
+    font-size: clamp(0.95rem, 3.8vw, 1.05rem);
+    line-height: 1.35;
+    color: #f0f4ee;
+  }
+
+  body.light-mode .finder-card-header {
+    color: #111a15;
+  }
+
+  .finder-card-text {
+    font-size: clamp(0.9rem, 3.6vw, 0.96rem);
+    line-height: 1.65;
+    color: #c0ccc4;
+  }
+
+  body.light-mode .finder-card-text {
+    color: #2d3932;
+  }
+
+  .finder-system-flow-container {
+    padding: 12px;
+  }
+
   .finder-system-flow-track {
     flex-direction: column;
     min-width: 0;
@@ -1856,32 +2089,106 @@ body.finder-lightbox-open {
   .sys-conn-arrow {
     transform: rotate(90deg) !important;
   }
+
+  .arch-svg-container {
+    padding: 8px 6px 14px;
+    margin: 4px 0 6px;
+  }
+
+  .finder-stage-deepdive {
+    padding: 14px;
+    margin-top: 10px;
+  }
+
+  .stage-deepdive-header {
+    gap: 8px 10px;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+  }
+
+  .stage-title {
+    width: 100%;
+    flex: 1 1 100%;
+    min-width: 0;
+    font-size: clamp(0.96rem, 4vw, 1.08rem);
+    line-height: 1.35;
+  }
+
+  .stage-deepdive-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .deepdive-label {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .deepdive-val {
+    font-size: clamp(0.875rem, 3.5vw, 0.94rem);
+    line-height: 1.6;
+  }
+
+  .finder-challenge-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .finder-challenge-item {
+    padding: 14px;
+    gap: 8px;
+  }
+
+  .finder-challenge-text {
+    font-size: clamp(0.875rem, 3.5vw, 0.95rem);
+    line-height: 1.62;
+  }
+
+  .finder-features-list {
+    gap: 10px;
+  }
+
+  .finder-features-list li {
+    font-size: clamp(0.875rem, 3.5vw, 0.94rem);
+    line-height: 1.58;
+    color: #b8c4bc;
+  }
+
+  body.light-mode .finder-features-list li {
+    color: #3a463f;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
+  .projects {
+    padding: 36px 12px 44px;
+  }
+
   .finder-workspace {
-    padding: 12px 8px;
+    padding: 12px 10px;
   }
 
   .finder-workspace-header {
-    padding: 16px;
+    padding: 15px 14px;
   }
 
-  .finder-project-title {
-    font-size: 1.4rem;
+  .finder-card {
+    padding: 14px;
+    gap: 10px;
   }
 
-  .span-full, .span-half {
-    grid-column: span 1;
+  .finder-related-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
-@media (max-width: 768px) {
-  .projects {
-    padding: 44px 5% 48px 5%;
+@media (max-width: 360px) {
+  .finder-action-links {
+    flex-wrap: wrap !important;
   }
-  .studio-header {
-    margin-bottom: 20px;
+
+  .finder-btn-cta {
+    flex: 1 1 120px !important;
   }
 }
 
