@@ -1,88 +1,372 @@
-/* Buttons */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 16px 32px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.05rem;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: none;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    white-space: nowrap;
+/* ==========================================================================
+   FUTURISTIC ENGINEERING BUTTON SYSTEM (<SL /> Branding)
+   Theme: Near-black (#090C0B), Off-white (#EDEDE8), Coral Accent (#F45135)
+   Selected Styles:
+     1. .btn-segmented      (Style A3 / E3: Segmented Rail - Primary Navigation)
+     2. .btn-outline-angled (Style B1 / F2: Outlined Angled - Contact Actions)
+     3. .btn-filled-angled  (Style F1: Filled Angled - Email Actions)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Shared Base Properties
+   -------------------------------------------------------------------------- */
+.btn-segmented,
+.btn-outline-angled,
+.btn-filled-angled {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 24px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  box-sizing: border-box;
+  border: none;
+  background: transparent;
+  isolation: isolate;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-primary {
-    background: var(--gradient-hero);
-    color: white;
-    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.25);
-    z-index: 1;
+.btn-segmented:focus-visible,
+.btn-outline-angled:focus-visible,
+.btn-filled-angled:focus-visible {
+  outline: 2px solid #F45135;
+  outline-offset: 4px;
 }
 
-/* Shine Sweep Effect */
-.btn-primary::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg,
-            transparent,
-            rgba(255, 255, 255, 0.3),
-            transparent);
-    transition: all 0.6s;
-    z-index: -1;
+/* --------------------------------------------------------------------------
+   1. SEGMENTED RAIL (Style A3 / E3) — Primary Navigation Actions
+   Applies to: EXPLORE PROJECTS, VIEW RESUME, READ FULL ABOUT, EXPLORE RESEARCH
+   -------------------------------------------------------------------------- */
+.btn-segmented {
+  color: #EDEDE8;
 }
 
-.btn-primary:hover::after {
-    left: 100%;
+/* Slanted parallelogram background shell */
+.btn-segmented::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: skewX(-14deg);
+  background: rgba(14, 18, 16, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 3px;
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+  pointer-events: none;
 }
 
-.btn-primary:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6), 0 15px 35px rgba(139, 92, 246, 0.4);
+/* Three diagonal coral tick marks near left edge (///) */
+.btn-segmented .btn-ticks {
+  display: inline-flex;
+  align-items: center;
+  gap: 3.5px;
+  margin-right: 3px;
+  flex-shrink: 0;
 }
 
-.btn-primary:active {
-    transform: translateY(-2px) scale(0.98);
+.btn-segmented .btn-ticks i {
+  display: inline-block;
+  width: 3.5px;
+  height: 12px;
+  background: #F45135;
+  transform: skewX(-14deg);
+  border-radius: 1px;
+  transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
 }
 
-.btn i {
-    transition: transform 0.3s ease;
+/* Directional Arrow & Document Icon */
+.btn-segmented .btn-arrow {
+  color: rgba(237, 237, 232, 0.85);
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
 }
 
-.btn:hover i {
-    transform: translateX(4px) rotate(-10deg);
+.btn-segmented .btn-doc-icon {
+  color: #F45135;
+  flex-shrink: 0;
+  margin-right: 1px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-outline {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1.5px solid rgba(139, 92, 246, 0.3);
-    color: var(--text);
-    backdrop-filter: blur(10px);
+/* Primary Variant (e.g. EXPLORE PROJECTS) */
+.btn-segmented.btn-segmented-primary::before {
+  border-color: rgba(244, 81, 53, 0.45);
+  box-shadow: 0 2px 12px rgba(244, 81, 53, 0.12);
 }
 
-.btn-outline:hover {
-    background: rgba(139, 92, 246, 0.1);
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-4px);
+/* Resume Variant (e.g. VIEW RESUME) */
+.btn-segmented.btn-segmented-resume::before {
+  border-color: rgba(244, 81, 53, 0.35);
 }
 
-/* Light Mode Overrides for Buttons */
-body.light-mode .btn-outline {
-    background: rgba(255, 255, 255, 0.7);
-    border-color: rgba(99, 102, 241, 0.2);
-    color: var(--text);
+/* Hover & Active States */
+.btn-segmented:hover {
+  transform: translateY(-2px);
+  color: #FFFFFF;
 }
 
-body.light-mode .btn-outline:hover {
-    background: var(--accent);
-    color: white;
+.btn-segmented:hover::before {
+  border-color: #F45135;
+  background: rgba(244, 81, 53, 0.08);
+  box-shadow: 0 4px 20px rgba(244, 81, 53, 0.28),
+              0 0 10px rgba(244, 81, 53, 0.15);
+}
+
+.btn-segmented.btn-segmented-primary:hover::before {
+  background: rgba(244, 81, 53, 0.14);
+  box-shadow: 0 6px 26px rgba(244, 81, 53, 0.42),
+              0 0 14px rgba(244, 81, 53, 0.22);
+}
+
+.btn-segmented:hover .btn-ticks i {
+  filter: drop-shadow(0 0 4px rgba(244, 81, 53, 0.8));
+}
+
+.btn-segmented:hover .btn-arrow {
+  color: #F45135;
+  transform: translate(3px, -3px);
+}
+
+.btn-segmented:hover .btn-doc-icon {
+  transform: scale(1.1);
+}
+
+.btn-segmented:active {
+  transform: translateY(0);
+}
+
+.btn-segmented:active::before {
+  transform: skewX(-14deg) scale(0.99);
+}
+
+/* --------------------------------------------------------------------------
+   2. OUTLINED ANGLED (Style B1 / F2) — Contact Actions
+   Applies to: GET IN TOUCH, LET'S TALK, Contact CTAs
+   -------------------------------------------------------------------------- */
+.btn-outline-angled {
+  color: #EDEDE8;
+}
+
+/* Slanted / angled outline shell */
+.btn-outline-angled::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: skewX(-14deg);
+  background: rgba(14, 18, 16, 0.65);
+  border: 1.5px solid #F45135;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(244, 81, 53, 0.12);
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.btn-outline-angled .btn-arrow {
+  color: #F45135;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-outline-angled:hover {
+  transform: translateY(-2px);
+  color: #FFFFFF;
+}
+
+.btn-outline-angled:hover::before {
+  border-color: #ff684f;
+  background: rgba(244, 81, 53, 0.12);
+  box-shadow: 0 4px 22px rgba(244, 81, 53, 0.38),
+              0 0 12px rgba(244, 81, 53, 0.22);
+}
+
+.btn-outline-angled:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-outline-angled:active {
+  transform: translateY(0);
+}
+
+.btn-outline-angled:active::before {
+  transform: skewX(-14deg) scale(0.99);
+}
+
+/* --------------------------------------------------------------------------
+   3. FILLED ANGLED (Style F1) — Email Actions
+   Applies to: saketh1805@gmail.com, Email CTAs, mailto: buttons
+   -------------------------------------------------------------------------- */
+.btn-filled-angled {
+  color: #FFFFFF;
+  letter-spacing: 0.05em;
+}
+
+/* Solid coral slanted shell */
+.btn-filled-angled::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: skewX(-14deg);
+  background: linear-gradient(135deg, #F45135 0%, #E03E22 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+  box-shadow: 0 4px 18px rgba(244, 81, 53, 0.36),
+              0 0 10px rgba(244, 81, 53, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.btn-filled-angled .btn-icon,
+.btn-filled-angled i,
+.btn-filled-angled svg {
+  color: #FFFFFF;
+  font-size: 13px;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-filled-angled:hover {
+  transform: translateY(-2px);
+  color: #FFFFFF;
+}
+
+.btn-filled-angled:hover::before {
+  background: linear-gradient(135deg, #ff684f 0%, #F45135 100%);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 6px 26px rgba(244, 81, 53, 0.52),
+              0 0 16px rgba(244, 81, 53, 0.3);
+}
+
+.btn-filled-angled:hover .btn-icon,
+.btn-filled-angled:hover i,
+.btn-filled-angled:hover svg {
+  transform: scale(1.12);
+}
+
+.btn-filled-angled:active {
+  transform: translateY(0);
+}
+
+.btn-filled-angled:active::before {
+  transform: skewX(-14deg) scale(0.99);
+}
+
+/* --------------------------------------------------------------------------
+   Legacy / Backward Compatibility Mappings
+   -------------------------------------------------------------------------- */
+.btn-editorial-primary {
+  composes: btn-segmented;
+}
+
+/* --------------------------------------------------------------------------
+   Light Mode Overrides
+   -------------------------------------------------------------------------- */
+body.light-mode .btn-segmented::before {
+  background: rgba(245, 247, 245, 0.92);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+body.light-mode .btn-segmented {
+  color: #1a221d;
+}
+body.light-mode .btn-segmented:hover {
+  color: #F45135;
+}
+body.light-mode .btn-segmented:hover::before {
+  background: rgba(244, 81, 53, 0.08);
+  border-color: #F45135;
+}
+
+body.light-mode .btn-outline-angled::before {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: #F45135;
+}
+body.light-mode .btn-outline-angled {
+  color: #1a221d;
+}
+body.light-mode .btn-outline-angled:hover {
+  color: #F45135;
+}
+
+body.light-mode .btn-filled-angled {
+  color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .btn-segmented,
+  .btn-outline-angled,
+  .btn-filled-angled,
+  .btn-segmented::before,
+  .btn-outline-angled::before,
+  .btn-filled-angled::before,
+  .btn-arrow,
+  .btn-doc-icon,
+  .btn-ticks i {
+    transition: none !important;
+    transform: none !important;
+  }
+  .btn-segmented::before,
+  .btn-outline-angled::before,
+  .btn-filled-angled::before {
+    transform: skewX(-14deg) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adaptations
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .btn-segmented,
+  .btn-outline-angled,
+  .btn-filled-angled {
+    height: 48px;
+    padding: 0 18px;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-segmented,
+  .btn-outline-angled,
+  .btn-filled-angled {
+    height: 44px;
+    padding: 0 14px;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    gap: 7px;
+  }
+  .btn-segmented .btn-ticks i {
+    width: 2.5px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .btn-segmented,
+  .btn-outline-angled,
+  .btn-filled-angled {
+    padding: 0 10px;
+    font-size: 10.5px;
+    gap: 6px;
+  }
 }

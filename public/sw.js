@@ -1,11 +1,20 @@
-const CACHE_NAME = "saketh-portfolio-v2";
+const CACHE_NAME = "saketh-portfolio-v3";
 
 const PRECACHE_ASSETS = [
   "./",
   "./index.html",
+  "./projects/",
+  "./projects/index.html",
+  "./about/",
+  "./about/index.html",
+  "./research/",
+  "./research/index.html",
+  "./contact/",
+  "./contact/index.html",
   "./manifest.json",
   "./assets/ls-logo.jpg",
   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css",
   "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap",
 ];
 

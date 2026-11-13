@@ -704,10 +704,10 @@ function renderProjectDetail(id) {
         </div>
         <h1 class="finder-project-title">${p.title}</h1>
         <p class="finder-project-subtitle">${p.subtitle || p.overview}</p>
-        
+
         <div class="finder-action-links">
-          ${demoLink ? `<a href="${demoLink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary finder-btn-cta"><i class="fas fa-external-link-alt"></i> Live Demo</a>` : ''}
-          ${githubLink ? `<a href="${githubLink}" target="_blank" rel="noopener noreferrer" class="btn btn-outline finder-btn-cta"><i class="fab fa-github"></i> GitHub Repo</a>` : ''}
+          ${demoLink ? `<a href="${demoLink}" target="_blank" rel="noopener noreferrer" class="btn-filled-angled finder-btn-cta"><i class="fas fa-external-link-alt"></i> Live Demo</a>` : ''}
+          ${githubLink ? `<a href="${githubLink}" target="_blank" rel="noopener noreferrer" class="btn-outline-angled finder-btn-cta"><i class="fab fa-github"></i> GitHub Repo</a>` : ''}
         </div>
       </div>
 
@@ -725,11 +725,11 @@ function renderProjectDetail(id) {
     </div>
 
     <!-- PROMINENT MOBILE-ONLY DETAILS TOGGLE BUTTON -->
-    <button 
-      id="finder-mobile-details-toggle" 
-      class="btn-mobile-details-toggle" 
-      aria-expanded="false" 
-      aria-controls="finder-details-grid-wrapper" 
+    <button
+      id="finder-mobile-details-toggle"
+      class="btn-mobile-details-toggle"
+      aria-expanded="false"
+      aria-controls="finder-details-grid-wrapper"
       type="button"
     >
       <span class="toggle-text">View Project Details</span>

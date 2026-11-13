@@ -1,0 +1,1231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research | Saketh Lingerker - Systems Engineer &amp; AI Developer</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Empirical research in Voice Activity Detection (VAD), WhisperX forced alignment, and speech signal processing conducted by Saketh Lingerker, Systems Engineer &amp; AI Developer, at Speech Lab (LTRC), IIIT Hyderabad." />
+  <meta name="keywords"
+    content="Saketh Lingerker Research, Systems Engineer, AI Developer, IIIT Hyderabad, Voice Activity Detection, VAD, rVAD, WhisperX, Speech Processing, Multimodal QA, Signal Processing, iHub-Data" />
+  <meta name="author" content="Saketh Lingerker" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Research · Speech Processing at IIIT Hyderabad · Saketh Lingerker" />
+  <meta property="og:description"
+    content="Empirical evaluation and optimization of Voice Activity Detection (rVAD 2.0) and WhisperX word-level alignment at Speech Lab, IIIT Hyderabad." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sakethlingerker.github.io/Portfolio/research/" />
+  <meta property="og:image" content="../src/assets/Display-picture.jpg" />
+
+  <link rel="icon" type="image/jpeg" href="../src/assets/Display-picture.jpg" />
+  <link rel="manifest" href="../manifest.json" />
+  <meta name="theme-color" content="#080b09" />
+  <link rel="apple-touch-icon" href="../assets/ls-logo.jpg" />
+
+  <!-- Google Fonts: Syne, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Font Awesome & Devicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="../src/styles/preloader.css" />
+  <link rel="stylesheet" href="../src/styles/main.css" />
+
+  <script>
+    (function () {
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem("theme");
+      } catch (e) { }
+      if (savedTheme === "light") {
+        document.documentElement.classList.add("light-mode");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <!-- Film Grain Overlay -->
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- Ambient Radial World Lighting -->
+  <div class="world" aria-hidden="true"></div>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" aria-hidden="true"></div>
+
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-link"
+    style="position: absolute; top: -90px; left: 20px; z-index: 999; background: #fff; color: #000; padding: 10px 18px; text-decoration: none; font-family: var(--font-mono); font-size: 11px;">Skip
+    to content</a>
+
+    <!-- Top Global Navigation Bar: Futuristic Segmented Rail (Design 04) -->
+  <header class="topbar segmented-rail-topbar">
+    <div class="rail-container">
+      <!-- Left: Brand Section with Geometric Chamfered Badge -->
+      <div class="rail-brand-group">
+        <a href="../" class="rail-brand-badge" aria-label="Saketh Lingerker Home">
+          <span class="brand-logo" aria-hidden="true">
+            <span class="logo-letters">sl</span><span class="logo-dot"></span>
+          </span>
+        </a>
+        <div class="rail-brand-accents" aria-hidden="true">
+          <span class="rail-slash"></span>
+          <span class="rail-slash"></span>
+          <span class="rail-slash"></span>
+          <span class="rail-line-connector"></span>
+        </div>
+      </div>
+
+      <!-- Center: Segmented Navigation Rail -->
+      <nav class="rail-nav" aria-label="Main navigation">
+        <div class="rail-track">
+          <a href="../" class="rail-segment" data-page="home">
+            <span class="segment-label">HOME</span>
+          </a>
+          <a href="../projects/" class="rail-segment" data-page="projects">
+            <span class="segment-label">PROJECTS</span>
+          </a>
+          <a href="../about/" class="rail-segment" data-page="about">
+            <span class="segment-label">ABOUT</span>
+          </a>
+          <a href="./" class="rail-segment active" data-page="research">
+            <span class="segment-label">RESEARCH</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Right: Action Controls (Workbench & Let's Talk) -->
+      <div class="rail-actions-group">
+        <span class="rail-connector-right" aria-hidden="true"></span>
+        <button id="workbench-nav-trigger" class="rail-workbench-btn" title="Open Engineering Workbench (Ctrl+K)"
+          aria-label="Open Engineering Workbench">
+          <span class="wb-prompt mono">&gt;_</span>
+          <span class="workbench-btn-text">WORKBENCH</span>
+        </button>
+        <div class="rail-talk-wrapper">
+          <a class="rail-talk-btn" href="../contact/" data-page="contact" aria-label="Contact - Let's talk">
+            <span class="talk-btn-text">LET'S TALK</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+          <div class="rail-trailing-accents" aria-hidden="true">
+            <span class="rail-slash"></span>
+            <span class="rail-slash"></span>
+            <span class="rail-slash"></span>
+          </div>
+        </div>
+        <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+    <!-- Mobile Cinematic Menu Overlay -->
+  <div class="mobile-cinematic-menu" aria-hidden="true">
+    <button id="mobile-workbench-trigger" class="rail-workbench-btn"
+      style="width: 100%; justify-content: center; margin-bottom: 12px; padding: 12px; transform: none;">
+      <span class="wb-prompt mono">&gt;_</span>
+      <span>ENGINEERING WORKBENCH (Ctrl+K)</span>
+    </button>
+    <a href="../" data-page="home"><span>HOME</span> <span class="mono nav-idx">01</span></a>
+    <a href="../projects/" data-page="projects"><span>PROJECTS</span> <span class="mono nav-idx">02</span></a>
+    <a href="../about/" data-page="about"><span>ABOUT</span> <span class="mono nav-idx">03</span></a>
+    <a href="./" data-page="research"><span>RESEARCH</span> <span class="mono nav-idx">04</span></a>
+    <a href="../contact/" data-page="contact"><span>LET'S TALK</span> <span class="mono nav-idx">05</span></a>
+  </div>
+
+  <!-- Main Content Wrap -->
+  <main id="main-content">
+    <div class="research-page-container">
+
+      <!-- ======================================================================
+           HEADER: RESEARCH EDITORIAL HEADER
+           ====================================================================== -->
+      <header class="research-editorial-header">
+        <span class="research-kicker mono" data-reveal="fade-up">RESEARCH &middot; SPEECH SIGNAL PROCESSING &middot;
+          IIIT HYDERABAD</span>
+        <h1 class="research-editorial-title" data-reveal="heading">
+          Speech Processing &amp;<br /><em>Multimodal Video Understanding.</em>
+        </h1>
+        <p class="research-lead" data-reveal="fade-up">
+          Empirical speech signal processing and applied AI research conducted at IIIT Hyderabad's Speech Lab (Language
+          Technologies Research Center).
+          Investigated Voice Activity Detection (VAD) optimization, word-level acoustic alignment, and speech/non-speech
+          boundary segmentation
+          within a Multimodal Multi-video Question Answering framework.
+        </p>
+      </header>
+
+      <!-- ======================================================================
+           SECTION 1: INSTITUTIONAL CONTEXT STRIP
+           ====================================================================== -->
+      <div class="research-institution-strip" data-reveal="fade-up">
+        <div class="inst-logo-group">
+          <i class="fas fa-university inst-icon" aria-hidden="true"></i>
+          <div>
+            <div class="inst-name">International Institute of Information Technology (IIIT) Hyderabad</div>
+            <div class="inst-lab">Speech Lab &middot; Language Technologies Research Center (LTRC)</div>
+          </div>
+        </div>
+        <div class="inst-meta-group">
+          <span class="inst-timeline mono">01 Dec 2024 &ndash; 31 May 2025</span>
+          <span class="inst-note-badge mono">Role: Research Intern (6 Months &middot; Certificate Verified)</span>
+        </div>
+      </div>
+
+      <!-- ======================================================================
+           SECTION 2: CHRONOLOGICAL RESEARCH & TRAINING TIMELINE
+           ====================================================================== -->
+      <div class="research-section-header" data-reveal="fade-up">
+        <span class="section-tag mono">// ACADEMIC &amp; RESEARCH CHRONOLOGY</span>
+        <h2>Two Distinct Chronological Experiences at IIIT Hyderabad</h2>
+        <p>A structured six-month foundational training program in AI/ML at iHub-Data followed by an applied six-month
+          research internship at the Speech Lab (LTRC).</p>
+      </div>
+
+      <div class="timeline-experience-grid" data-reveal="fade-up">
+        <!-- Experience 01: Training Program -->
+        <div class="experience-card">
+          <div class="exp-header">
+            <span class="exp-index mono">[EXP &middot; 01]</span>
+            <span class="exp-period-badge mono">May 2024 &ndash; Oct 2024 (6 Mos)</span>
+          </div>
+          <h3 class="exp-role-title">Internship Trainee &middot; AI/ML Training</h3>
+          <div class="exp-org mono">iHub-Data &middot; IIIT Hyderabad</div>
+          <p class="exp-description">
+            Completed an intensive six-month training program in Artificial Intelligence and Machine Learning conducted
+            by iHub-Data (Technology Innovation Hub for Data-Driven Technologies) at IIIT Hyderabad. Covered
+            mathematical foundations and practical implementations across four core disciplines:
+          </p>
+          <ul class="exp-topics-list">
+            <li><i class="fas fa-chevron-right"></i> Machine Learning &amp; Deep Learning mathematical foundations</li>
+            <li><i class="fas fa-chevron-right"></i> Natural Language Processing (NLP) architectures</li>
+            <li><i class="fas fa-chevron-right"></i> Computer Vision feature representations</li>
+            <li><i class="fas fa-chevron-right"></i> Practical implementation of AI/ML concepts through rigorous
+              assignments</li>
+          </ul>
+          <div class="exp-footer-action">
+            <a href="https://ihub-data.ai/archives/events/student-training-program-on-aiml-at-iiit-hyderabad-may-2024/"
+              target="_blank" rel="noopener noreferrer" class="exp-link-btn"
+              title="View official iHub-Data training announcement">
+              <span>Program Archive Reference</span>
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+            <a href="../assets/certificates/IIIT-AIML.jpg" target="_blank" rel="noopener noreferrer"
+              class="exp-link-btn" title="View Certificate of Proficiency">
+              <span>Certificate (JPG)</span>
+              <i class="fas fa-file-image" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Experience 02: Research Internship -->
+        <div class="experience-card active-internship">
+          <div class="exp-header">
+            <span class="exp-index mono">[EXP &middot; 02]</span>
+            <span class="exp-period-badge exp-badge-active mono">01 Dec 2024 &ndash; 31 May 2025 (6 Mos)</span>
+          </div>
+          <h3 class="exp-role-title">Research Intern &middot; Speech Lab</h3>
+          <div class="exp-org mono">Language Technologies Research Center (LTRC) &middot; IIIT Hyderabad</div>
+          <p class="exp-description">
+            Completed a formal six-month research internship under the Speech Lab, LTRC. The institutional certificate
+            specifies the core research problem as <strong>&ldquo;Multimodal Multi video Question and
+              Answering&rdquo;</strong>, addressing complex acoustic segmentation, automatic speech recognition, and
+            video synthesis:
+          </p>
+          <ul class="exp-topics-list">
+            <li><i class="fas fa-check" style="color: #00e5a3;"></i> Voice Activity Detection (VAD) pipeline development
+              &amp; evaluation</li>
+            <li><i class="fas fa-check" style="color: #00e5a3;"></i> Automatic Speech Recognition (ASR) integration
+              &amp; alignment</li>
+            <li><i class="fas fa-check" style="color: #00e5a3;"></i> Multimodal Question Answering across lecture video
+              archives</li>
+            <li><i class="fas fa-check" style="color: #00e5a3;"></i> Video stitching &amp; temporal segment
+              synchronization</li>
+          </ul>
+          <div class="exp-footer-action">
+            <span class="mono" style="font-size: 11px; color: #707e73;">Verified Academic Credential</span>
+            <a href="../assets/certificates/SakethCertificate-IIIT.pdf" target="_blank" rel="noopener noreferrer"
+              class="exp-link-btn" style="color: #F45135;" title="View official research certificate">
+              <span>Official Certificate (PDF)</span>
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================================
+           SECTION 3: RESEARCH PROBLEM & SYSTEM SCOPE
+           ====================================================================== -->
+      <article class="research-case-article">
+        <div class="research-pillar-card" data-reveal="fade-up">
+          <div class="pillar-meta">
+            <span class="pillar-index mono">// CORE RESEARCH SPECIFICATION</span>
+            <span class="pillar-badge mono">LTRC RESEARCH INITIATIVE</span>
+          </div>
+          <h2 class="pillar-title">Research Scope: Multimodal Multi-Video Question and Answering</h2>
+
+          <div class="research-spec-grid">
+            <!-- 1. Research Context -->
+            <div class="spec-block">
+              <span class="spec-label mono"><i class="fas fa-microscope"></i> 1. RESEARCH PROBLEM CONTEXT</span>
+              <p class="spec-content">
+                In multimodal question-answering systems querying expansive multi-video archives, accurate acoustic
+                segmentation is the foundational prerequisite.
+                Raw video streams—particularly educational lectures—contain substantial non-speech audio including
+                instructor pauses, classroom reverberation, paper rustling, and ambient acoustic noise.
+              </p>
+            </div>
+
+            <!-- 2. Problem Addressed -->
+            <div class="spec-block">
+              <span class="spec-label mono"><i class="fas fa-exclamation-triangle"></i> 2. THE ENGINEERING
+                BOTTLENECK</span>
+              <p class="spec-content">
+                Standard acoustic energy detectors routinely trigger false voice flags on non-linguistic noise.
+                These false positives overburden downstream Automatic Speech Recognition (ASR) engines with acoustic
+                artifacts, inflating inference latency and inducing hallucinated transcripts in multimodal
+                question-answering models.
+              </p>
+            </div>
+
+            <!-- 3. Four Core System Pillars -->
+            <div class="spec-block span-full">
+              <span class="spec-label mono"><i class="fas fa-cubes"></i> 3. FOUR SYSTEM COMPONENTS IDENTIFIED IN
+                CERTIFICATE</span>
+              <div class="spec-tech-pills">
+                <span class="spec-tech-pill"><i class="fas fa-wave-square"></i> Voice Activity Detection (VAD)</span>
+                <span class="spec-tech-pill"><i class="fas fa-microphone-alt"></i> Automatic Speech Recognition
+                  (ASR)</span>
+                <span class="spec-tech-pill"><i class="fas fa-comments"></i> Question Answering (QA)</span>
+                <span class="spec-tech-pill"><i class="fas fa-film"></i> Video Stitching</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================================================================
+             SECTION 4: TECHNICAL CASE STUDY — rVAD 2.0 EVALUATION
+             ====================================================================== -->
+        <div class="research-pillar-card" data-reveal="fade-up">
+          <div class="pillar-meta">
+            <span class="pillar-index mono">// EXPERIMENTAL STUDY &middot; CASE STUDY 01</span>
+            <span class="pillar-badge mono">LECTURE AUDIO EVALUATION</span>
+          </div>
+          <h2 class="pillar-title">Evaluating &amp; Improving Robust Voice Activity Detection (rVAD 2.0)</h2>
+          <p class="spec-content" style="margin-bottom: 20px;">
+            A substantial portion of the documented experimentation focused on evaluating and optimizing <strong>rVAD
+              2.0 (robust Voice Activity Detection)</strong> on educational lecture audio.
+            A lecture video from Udemy was selected, its audio extracted and converted to a standardized 16 kHz stream,
+            and processed through rVAD.
+            The algorithm generated a frame-level binary sequence where <strong>1 represented speech</strong> and
+            <strong>0 represented non-speech</strong>, evaluated at a standardized <strong>10 ms frame shift</strong>
+            against synchronized SRT subtitle timings.
+          </p>
+
+          <!-- High-Impact KPI Stats Grid -->
+          <div class="research-kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-val">91.54%</div>
+              <div class="kpi-label">Baseline Frame Accuracy</div>
+              <div class="kpi-subtext">Initial rVAD 2.0 output evaluated directly against SRT reference frames (0.9154).
+              </div>
+            </div>
+
+            <div class="kpi-card kpi-highlight">
+              <div class="kpi-val">96.02%</div>
+              <div class="kpi-label">Post-Processed Accuracy</div>
+              <div class="kpi-subtext">+4.48% gain via boundary-constrained short zero-run filling at 100 frames
+                (0.9602).</div>
+            </div>
+
+            <div class="kpi-card kpi-highlight">
+              <div class="kpi-val">0.9791</div>
+              <div class="kpi-label">Peak F1 Metric</div>
+              <div class="kpi-subtext">Achieved at 100-frame (1.0 s) post-processing threshold with 0.9943 recall.</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-val">0.978</div>
+              <div class="kpi-label">WhisperX Word Coverage</div>
+              <div class="kpi-subtext">Consistent word-level VAD coverage across both base and large-v3 models.</div>
+            </div>
+          </div>
+
+          <!-- ======================================================================
+               SECTION 5: ARCHITECTURE FLOW DIAGRAM (SVG)
+               ====================================================================== -->
+          <div class="research-diagram-card">
+            <div class="diagram-header">
+              <span class="diagram-title mono"><i class="fas fa-project-diagram"></i> rVAD 2.0 Evaluation &amp;
+                Refinement Pipeline</span>
+              <span class="diagram-note mono">Horizontal scroll on mobile devices</span>
+            </div>
+            <div class="diagram-scroll-viewport" tabindex="0" aria-label="Speech signal VAD pipeline flow diagram">
+              <svg class="vad-flow-svg" viewBox="0 0 880 110" width="880" height="110"
+                xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="res-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6"
+                    orient="auto-start-reverse">
+                    <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#F45135" />
+                  </marker>
+                </defs>
+
+                <!-- Stage 1 -->
+                <g class="vad-stage">
+                  <rect x="10" y="15" width="146" height="74" rx="6" fill="#131915" stroke="#2a382e"
+                    stroke-width="1.2" />
+                  <rect x="20" y="17" width="22" height="2" rx="1" fill="#F45135" />
+                  <text x="20" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
+                    fill="#F45135">[01]</text>
+                  <text x="50" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
+                    fill="#707e73">INGESTION</text>
+                  <text x="20" y="60" font-family="'Syne', sans-serif" font-size="13" font-weight="600"
+                    fill="#e8ece6">Lecture Audio</text>
+                  <text x="20" y="76" font-family="'Inter', sans-serif" font-size="10.5" fill="#8b968e">Udemy 16 kHz
+                    stream</text>
+                </g>
+
+                <!-- Connector 1 -->
+                <path d="M 156 52 L 186 52" stroke="#F45135" stroke-width="1.5" marker-end="url(#res-arrow)" />
+
+                <!-- Stage 2 -->
+                <g class="vad-stage">
+                  <rect x="192" y="15" width="146" height="74" rx="6" fill="#131915" stroke="#2a382e"
+                    stroke-width="1.2" />
+                  <rect x="202" y="17" width="22" height="2" rx="1" fill="#F45135" />
+                  <text x="202" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
+                    fill="#F45135">[02]</text>
+                  <text x="232" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
+                    fill="#707e73">FRAMING</text>
+                  <text x="202" y="60" font-family="'Syne', sans-serif" font-size="13" font-weight="600"
+                    fill="#e8ece6">10 ms Frame Shift</text>
+                  <text x="202" y="76" font-family="'Inter', sans-serif" font-size="10.5" fill="#8b968e">Acoustic
+                    extraction</text>
+                </g>
+
+                <!-- Connector 2 -->
+                <path d="M 338 52 L 368 52" stroke="#F45135" stroke-width="1.5" marker-end="url(#res-arrow)" />
+
+                <!-- Stage 3 -->
+                <g class="vad-stage">
+                  <rect x="374" y="15" width="146" height="74" rx="6" fill="#131915" stroke="#2a382e"
+                    stroke-width="1.2" />
+                  <rect x="384" y="17" width="22" height="2" rx="1" fill="#F45135" />
+                  <text x="384" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
+                    fill="#F45135">[03]</text>
+                  <text x="414" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
+                    fill="#707e73">CLASSIFIER</text>
+                  <text x="384" y="60" font-family="'Syne', sans-serif" font-size="13" font-weight="600"
+                    fill="#e8ece6">rVAD 2.0 Core</text>
+                  <text x="384" y="76" font-family="'Inter', sans-serif" font-size="10.5" fill="#8b968e">0/1 Frame
+                    sequence</text>
+                </g>
+
+                <!-- Connector 3 -->
+                <path d="M 520 52 L 550 52" stroke="#F45135" stroke-width="1.5" marker-end="url(#res-arrow)" />
+
+                <!-- Stage 4 -->
+                <g class="vad-stage">
+                  <rect x="556" y="15" width="154" height="74" rx="6" fill="#131915" stroke="#2a382e"
+                    stroke-width="1.2" />
+                  <rect x="566" y="17" width="22" height="2" rx="1" fill="#F45135" />
+                  <text x="566" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
+                    fill="#F45135">[04]</text>
+                  <text x="596" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
+                    fill="#707e73">POST-PROCESS</text>
+                  <text x="566" y="60" font-family="'Syne', sans-serif" font-size="13" font-weight="600"
+                    fill="#e8ece6">Short-Gap Fill</text>
+                  <text x="566" y="76" font-family="'Inter', sans-serif" font-size="10.5" fill="#8b968e">Runs &le;
+                    50/80/100 frames</text>
+                </g>
+
+                <!-- Connector 4 -->
+                <path d="M 710 52 L 740 52" stroke="#F45135" stroke-width="1.5" marker-end="url(#res-arrow)" />
+
+                <!-- Stage 5 -->
+                <g class="vad-stage">
+                  <rect x="746" y="15" width="124" height="74" rx="6" fill="#18231c" stroke="#F45135"
+                    stroke-width="1.2" />
+                  <rect x="756" y="17" width="22" height="2" rx="1" fill="#F45135" />
+                  <text x="756" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
+                    fill="#F45135">[05]</text>
+                  <text x="786" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
+                    fill="#00e5a3">DOWNSTREAM</text>
+                  <text x="756" y="60" font-family="'Syne', sans-serif" font-size="13" font-weight="600"
+                    fill="#e8ece6">WhisperX ASR</text>
+                  <text x="756" y="76" font-family="'Inter', sans-serif" font-size="10.5" fill="#00e5a3">Multimodal
+                    QA</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- ======================================================================
+               SECTION 6: EXPERIMENT 01 — SHORT-GAP POST-PROCESSING
+               ====================================================================== -->
+          <div style="margin-top: 36px;">
+            <div class="pillar-meta">
+              <span class="pillar-index mono">// EXPERIMENTAL PROCEDURE 01</span>
+              <span class="pillar-badge mono">GAP RECOVERY BENCHMARK</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: #e8ece6; margin-bottom: 12px;">
+              Post-Processing to Recover Short Gaps Between Continuous Speech
+            </h3>
+            <p class="spec-content">
+              To mitigate false negatives caused by brief acoustic dropouts (such as unvoiced stops, short vocal
+              hesitations, or intra-word breathing pauses), a boundary-constrained post-processing algorithm was
+              engineered.
+              The algorithm scanned the binary VAD sequence, identified consecutive runs of 0-valued frames occurring
+              between speech segments, and flipped them to 1 <strong>if and only if</strong>:
+            </p>
+            <ul class="exp-topics-list" style="margin: 12px 0 16px;">
+              <li><i class="fas fa-arrow-right"></i> The run length of 0s was at or below a selected threshold \(N\)
+                frames.</li>
+              <li><i class="fas fa-arrow-right"></i> The run was strictly flanked by 1-valued (speech) frames on both
+                preceding and succeeding sides.</li>
+            </ul>
+
+            <!-- Table 1: Short Gap Results -->
+            <div class="table-scroll-container">
+              <table class="research-data-table">
+                <thead>
+                  <tr>
+                    <th>Maximum Gap</th>
+                    <th>Equivalent Duration</th>
+                    <th>Accuracy</th>
+                    <th>F1 Score</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>Total Mismatches</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="metric-num">50 frames</span></td>
+                    <td class="mono">0.5 s</td>
+                    <td><span class="metric-num">0.9567</span> (95.67%)</td>
+                    <td><span class="metric-num">0.9770</span></td>
+                    <td><span class="metric-num">0.9733</span></td>
+                    <td><span class="metric-num">0.9807</span></td>
+                    <td><span class="metric-num">2,670</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="metric-num">80 frames</span></td>
+                    <td class="mono">0.8 s</td>
+                    <td><span class="metric-num">0.9601</span> (96.01%)</td>
+                    <td><span class="metric-num">0.9790</span></td>
+                    <td><span class="metric-num">0.9670</span></td>
+                    <td><span class="metric-num">0.9912</span></td>
+                    <td><span class="metric-num">2,459</span></td>
+                  </tr>
+                  <tr class="highlight-row">
+                    <td><span class="metric-num">100 frames</span> <span class="metric-pill">OPTIMAL</span></td>
+                    <td class="mono">1.0 s</td>
+                    <td><span class="metric-num">0.9602</span> (96.02%)</td>
+                    <td><span class="metric-num">0.9791</span></td>
+                    <td><span class="metric-num">0.9643</span></td>
+                    <td><span class="metric-num">0.9943</span></td>
+                    <td><span class="metric-num">2,453</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Collapsible Confusion Matrix Grid -->
+            <details class="research-details-card">
+              <summary>
+                <span><i class="fas fa-table" style="margin-right: 8px; color: #F45135;"></i> View Complete Confusion
+                  Matrix Metrics (TP, FP, FN, TN)</span>
+                <i class="fas fa-chevron-down toggle-icon" aria-hidden="true"></i>
+              </summary>
+              <div class="details-content-inner">
+                <p class="spec-content" style="font-size: 12.5px; margin-bottom: 12px; color: #8b968e;">
+                  Exact frame-level contingency matrix counts across the three evaluated gap thresholds (at 10 ms frame
+                  shift):
+                </p>
+                <div class="cm-container-grid">
+                  <!-- 50 Frames -->
+                  <div class="cm-box">
+                    <div class="cm-box-title">
+                      <span>50 FRAMES (0.5 s)</span>
+                      <span class="mono">Mismatches: 2,670</span>
+                    </div>
+                    <div class="cm-stat-row"><span>True Positives (TP)</span><span class="cm-stat-val">56,635</span>
+                    </div>
+                    <div class="cm-stat-row"><span>False Positives (FP)</span><span class="cm-stat-val">1,554</span>
+                    </div>
+                    <div class="cm-stat-row"><span>False Negatives (FN)</span><span class="cm-stat-val">1,116</span>
+                    </div>
+                    <div class="cm-stat-row"><span>True Negatives (TN)</span><span class="cm-stat-val">2,372</span>
+                    </div>
+                  </div>
+
+                  <!-- 80 Frames -->
+                  <div class="cm-box">
+                    <div class="cm-box-title">
+                      <span>80 FRAMES (0.8 s)</span>
+                      <span class="mono">Mismatches: 2,459</span>
+                    </div>
+                    <div class="cm-stat-row"><span>True Positives (TP)</span><span class="cm-stat-val">57,244</span>
+                    </div>
+                    <div class="cm-stat-row"><span>False Positives (FP)</span><span class="cm-stat-val">1,952</span>
+                    </div>
+                    <div class="cm-stat-row"><span>False Negatives (FN)</span><span class="cm-stat-val">507</span></div>
+                    <div class="cm-stat-row"><span>True Negatives (TN)</span><span class="cm-stat-val">1,974</span>
+                    </div>
+                  </div>
+
+                  <!-- 100 Frames -->
+                  <div class="cm-box" style="border-color: rgba(0, 229, 163, 0.3);">
+                    <div class="cm-box-title" style="color: var(--cyan, #00e5a3);">
+                      <span>100 FRAMES (1.0 s) &middot; PEAK F1</span>
+                      <span class="mono">Mismatches: 2,453</span>
+                    </div>
+                    <div class="cm-stat-row"><span>True Positives (TP)</span><span class="cm-stat-val">57,421</span>
+                    </div>
+                    <div class="cm-stat-row"><span>False Positives (FP)</span><span class="cm-stat-val">2,123</span>
+                    </div>
+                    <div class="cm-stat-row"><span>False Negatives (FN)</span><span class="cm-stat-val">330</span></div>
+                    <div class="cm-stat-row"><span>True Negatives (TN)</span><span class="cm-stat-val">1,803</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <!-- Trade-off Analysis Callout -->
+            <div class="research-callout-box callout-info">
+              <i class="fas fa-balance-scale callout-icon" aria-hidden="true"></i>
+              <div class="callout-body">
+                <strong>Empirical Trade-Off Dynamics:</strong>
+                Increasing the maximum gap threshold from 50 to 100 frames slashed false negatives by
+                <strong>70.4%</strong> (from 1,116 down to 330) and boosted recall from 0.9807 to 0.9943.
+                Simultaneously, it introduced additional false positives (rising from 1,554 to 2,123), which caused
+                precision to gently taper from 0.9733 to 0.9643.
+                Overall frame-level accuracy and F1 score steadily climbed, with the 100-frame setting yielding the
+                highest recall (0.9943) and F1 score (0.9791), while accuracy between 80 and 100 frames remained
+                virtually equivalent (0.9601 vs 0.9602).
+              </div>
+            </div>
+          </div>
+
+          <!-- ======================================================================
+               SECTION 7: EXPERIMENT 02 — WHISPERX WORD-LEVEL EVALUATION
+               ====================================================================== -->
+          <div style="margin-top: 36px;">
+            <div class="pillar-meta">
+              <span class="pillar-index mono">// EXPERIMENTAL PROCEDURE 02</span>
+              <span class="pillar-badge mono">FORCED ALIGNMENT EVALUATION</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: #e8ece6; margin-bottom: 12px;">
+              Word-Level VAD Evaluation Using WhisperX Forced Alignment
+            </h3>
+            <p class="spec-content">
+              To cross-validate speech detection against phonetic word boundaries rather than block subtitles,
+              <strong>WhisperX</strong> was deployed to extract precise word-level start and end timestamps using both
+              the <strong>base</strong> and <strong>large-v3</strong> models.
+              Each extracted word interval was mapped to its corresponding 10 ms rVAD frames. Word-level VAD coverage
+              was computed as the proportion of frames within each word interval that rVAD labeled as speech.
+              Acoustic frames outside the union of all word intervals were separately quantified as non-word regions.
+            </p>
+
+            <!-- Table 2: WhisperX Comparison -->
+            <div class="table-scroll-container">
+              <table class="research-data-table">
+                <thead>
+                  <tr>
+                    <th>WhisperX Model</th>
+                    <th>Word-Level VAD Score</th>
+                    <th>Non-Word VAD Score</th>
+                    <th>Extracted Word Count</th>
+                    <th>Reference Alignment &amp; Nuance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="metric-num">base</span></td>
+                    <td><span class="metric-num">0.978</span> (97.8%)</td>
+                    <td><span class="metric-num">0.718</span> (71.8%)</td>
+                    <td><span class="metric-num">1,877</span></td>
+                    <td style="color: var(--cyan, #00e5a3);">Matches SRT reference word count exactly (1,877 words)</td>
+                  </tr>
+                  <tr>
+                    <td><span class="metric-num">large-v3</span></td>
+                    <td><span class="metric-num">0.978</span> (97.8%)</td>
+                    <td><span class="metric-num">0.719</span> (71.9%)</td>
+                    <td><span class="metric-num">1,884</span></td>
+                    <td>+7 words overall; includes 76 words missing relative to SRT reference comparison</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- WhisperX Technical Interpretation -->
+            <div class="research-callout-box callout-info">
+              <i class="fas fa-lightbulb callout-icon" aria-hidden="true"></i>
+              <div class="callout-body">
+                <strong>Model Alignment Nuance:</strong>
+                Both models produced identical high word-level VAD scores of <strong>0.978</strong>, demonstrating that
+                rVAD robustly captures speech across distinct model sizes.
+                Their non-word scores were also tightly clustered (0.718 &ndash; 0.719), indicating that inter-word
+                acoustic segments present distinct signal characteristics requiring separate analysis.
+                Crucially, while the <code>base</code> model's extracted word count matched the SRT reference count of
+                1,877 words exactly, the <code>large-v3</code> model produced 1,884 words with a reported set of
+                <strong>76 missing words</strong> relative to the reference comparison, reflecting different
+                tokenization, hallucination suppression, and decoding behaviors.
+              </div>
+            </div>
+          </div>
+
+          <!-- ======================================================================
+               SECTION 8: EXPERIMENT 03 — NON-SPEECH ANALYSIS VIA SUBTITLE GAPS
+               ====================================================================== -->
+          <div style="margin-top: 36px;">
+            <div class="pillar-meta">
+              <span class="pillar-index mono">// EXPERIMENTAL PROCEDURE 03</span>
+              <span class="pillar-badge mono">CANDIDATE SILENCE INVESTIGATION</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: #e8ece6; margin-bottom: 12px;">
+              Investigating Non-Speech Detection Using Subtitle Gaps &amp; Boundary Timing
+            </h3>
+            <p class="spec-content">
+              A complementary evaluation explored measuring rVAD behavior outside active subtitle intervals.
+              Candidate non-speech intervals were extracted by taking gaps between the end time of one subtitle block
+              and the start time of the subsequent subtitle,
+              together with the leading interval from <code>00:00:00,000</code> to the first subtitle.
+              Timestamps were converted to 10 ms frame indices to calculate silence scores (proportion of 0-valued rVAD
+              frames) and inspect potential false speech triggers.
+            </p>
+
+            <!-- Important Academic Limitation Callout -->
+            <div class="research-callout-box callout-caution">
+              <i class="fas fa-exclamation-triangle callout-icon" aria-hidden="true"></i>
+              <div class="callout-body">
+                <strong>Essential Academic &amp; Evaluation Limitation:</strong>
+                Subtitle gaps serve only as an operational heuristic for non-speech analysis, <em>not</em> ground-truth
+                acoustic silence.
+                Subtitles are segmented for human reading pacing and viewer comprehension; a subtitle gap may naturally
+                contain low-amplitude speech, conversational laughter, or instructor breathing pauses.
+                Consequently, this study documents this method as <strong>subtitle-gap-based non-speech
+                  analysis</strong> rather than definitive silence classification accuracy.
+              </div>
+            </div>
+
+            <!-- Subtitle-Level Timing Check Note -->
+            <div class="spec-block span-full"
+              style="background: #090c0b; border: 1px solid var(--line, #222b26); border-radius: 6px; padding: 18px 20px; margin-top: 14px;">
+              <span class="spec-label mono"><i class="fas fa-stopwatch"></i> SUBTITLE-LEVEL TIMING DIAGNOSTIC
+                NOTE</span>
+              <p class="spec-content" style="font-size: 13px; color: #a4b5a6; margin: 0;">
+                A separate exploratory boundary check yielded <strong>80 out of 274 subtitle blocks (ratio of
+                  0.2920)</strong>.
+                This value represents a subtitle-level block-boundary timing pass ratio rather than frame-level or model
+                accuracy.
+                Its interpretation depends strictly on the exact tolerance threshold applied to determine whether
+                subtitle start and end boundaries synchronize with continuous rVAD speech labels.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================================================================
+             SECTION 9: KEY FINDINGS (7 STRUCTURED POINTS)
+             ====================================================================== -->
+        <div class="research-section-header" data-reveal="fade-up" style="margin-top: 48px;">
+          <span class="section-tag mono">// EMPIRICAL TAKEAWAYS</span>
+          <h2>Seven Core Research Findings</h2>
+          <p>Key empirical conclusions documented throughout the rVAD 2.0 evaluation and WhisperX comparative alignment
+            experiments.</p>
+        </div>
+
+        <div class="findings-grid" data-reveal="fade-up">
+          <!-- Finding 1 -->
+          <div class="finding-card">
+            <span class="finding-num mono">[01]</span>
+            <div class="finding-body">
+              <h4>91.54% Baseline Frame Accuracy</h4>
+              <p>Initial rVAD 2.0 frame classification against synchronized SRT subtitle references demonstrated robust
+                baseline speech detection on 16 kHz educational lecture audio.</p>
+            </div>
+          </div>
+
+          <!-- Finding 2 -->
+          <div class="finding-card">
+            <span class="finding-num mono">[02]</span>
+            <div class="finding-body">
+              <h4>Short-Gap Recovery Yields ~96.0% Accuracy</h4>
+              <p>Boundary-constrained post-processing of zero-valued gaps between active speech regions elevated frame
+                accuracy to 96.02% and F1 score to 0.9791 at the 100-frame (1.0 s) setting.</p>
+            </div>
+          </div>
+
+          <!-- Finding 3 -->
+          <div class="finding-card">
+            <span class="finding-num mono">[03]</span>
+            <div class="finding-body">
+              <h4>Precision-Recall Trade-off Dynamics</h4>
+              <p>Widening the gap threshold from 50 to 100 frames slashed false negatives by 70.4% (1,116 down to 330)
+                and boosted recall to 0.9943, with a minor trade-off in precision (0.9733 to 0.9643).</p>
+            </div>
+          </div>
+
+          <!-- Finding 4 -->
+          <div class="finding-card">
+            <span class="finding-num mono">[04]</span>
+            <div class="finding-body">
+              <h4>0.978 WhisperX Word-Level Coverage</h4>
+              <p>Forced alignment across both WhisperX base and large-v3 models confirmed identical 0.978 word-level VAD
+                coverage, demonstrating high consistency across spoken words.</p>
+            </div>
+          </div>
+
+          <!-- Finding 5 -->
+          <div class="finding-card">
+            <span class="finding-num mono">[05]</span>
+            <div class="finding-body">
+              <h4>Non-Word Region Acoustic Dynamics</h4>
+              <p>Non-word VAD scores stabilized at 0.718&ndash;0.719 across both WhisperX models, indicating that
+                acoustic regions between words contain distinct acoustic dynamics that differ from active speech.</p>
+            </div>
+          </div>
+
+          <!-- Finding 6 -->
+          <div class="finding-card">
+            <span class="finding-num mono">[06]</span>
+            <div class="finding-body">
+              <h4>Model Alignment Differences (Base vs Large-v3)</h4>
+              <p>The WhisperX base model extracted 1,877 words matching the SRT count, while large-v3 extracted 1,884
+                words with 76 missing words relative to the reference comparison.</p>
+            </div>
+          </div>
+
+          <!-- Finding 7 -->
+          <div class="finding-card span-full">
+            <span class="finding-num mono">[07]</span>
+            <div class="finding-body">
+              <h4>Subtitle Gaps as an Operational Silence Heuristic</h4>
+              <p>Subtitle gap extraction proved valuable for inspecting false positive speech detections in candidate
+                silence regions, though it functions strictly as an operational proxy rather than acoustic ground-truth
+                silence.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================================================================
+             SECTION 10: TOOLS, TECHNOLOGIES & SKILLS BREAKDOWN
+             ====================================================================== -->
+        <div class="research-section-header" data-reveal="fade-up">
+          <span class="section-tag mono">// TECHNICAL STACK SEPARATION</span>
+          <h2>Tools, Technologies &amp; Demonstrated Skills</h2>
+          <p>Clear demarcation between tools utilized during research experimentation and the machine learning
+            foundations stack mastered in the training program.</p>
+        </div>
+
+        <div class="toolchain-grid" data-reveal="fade-up">
+          <!-- Research Toolchain -->
+          <div class="toolchain-card">
+            <div class="toolchain-card-header">
+              <i class="fas fa-flask"></i>
+              <h3 class="toolchain-title">Research Toolchain (Speech Lab, LTRC)</h3>
+            </div>
+            <div class="toolchain-pills">
+              <span class="toolchain-pill"><i class="devicon-python-plain"></i> Python</span>
+              <span class="toolchain-pill"><i class="fas fa-wave-square"></i> rVAD 2.0</span>
+              <span class="toolchain-pill"><i class="fas fa-align-left"></i> WhisperX (base &amp; large-v3)</span>
+              <span class="toolchain-pill"><i class="fas fa-closed-captioning"></i> SRT Subtitle Parsing</span>
+              <span class="toolchain-pill"><i class="devicon-numpy-plain"></i> NumPy</span>
+              <span class="toolchain-pill"><i class="fas fa-wave-square"></i> SciPy Signal</span>
+              <span class="toolchain-pill"><i class="fas fa-robot"></i> Transformers</span>
+              <span class="toolchain-pill"><i class="fas fa-file-code"></i> Audio Analysis Scripts</span>
+            </div>
+            <p class="toolchain-note">
+              Applied for audio stream extraction, 10 ms frame shifting, binary sequence generation, gap recovery
+              post-processing, and forced alignment.
+            </p>
+          </div>
+
+          <!-- Training Stack -->
+          <div class="toolchain-card">
+            <div class="toolchain-card-header">
+              <i class="fas fa-graduation-cap"></i>
+              <h3 class="toolchain-title">AI/ML Training Stack (iHub-Data)</h3>
+            </div>
+            <div class="toolchain-pills">
+              <span class="toolchain-pill"><i class="devicon-python-plain"></i> Python</span>
+              <span class="toolchain-pill"><i class="devicon-tensorflow-original"></i> TensorFlow</span>
+              <span class="toolchain-pill"><i class="devicon-pytorch-original"></i> PyTorch</span>
+              <span class="toolchain-pill"><i class="devicon-scikitlearn-plain"></i> Scikit-learn</span>
+              <span class="toolchain-pill"><i class="devicon-pandas-plain"></i> Pandas</span>
+              <span class="toolchain-pill"><i class="fas fa-chart-line"></i> Matplotlib</span>
+              <span class="toolchain-pill"><i class="devicon-opencv-plain"></i> Computer Vision</span>
+              <span class="toolchain-pill"><i class="fas fa-language"></i> NLP Pipelines</span>
+            </div>
+            <p class="toolchain-note">
+              Mastered during the six-month AI/ML foundational training program covering neural architectures,
+              optimization algorithms, and benchmark assignments.
+            </p>
+          </div>
+        </div>
+
+        <!-- Skills Summary Matrix -->
+        <div class="skills-summary-box" data-reveal="fade-up">
+          <div class="skills-summary-title mono">// DEMONSTRATED RESEARCH &amp; APPLIED AI COMPETENCIES</div>
+          <div class="skills-summary-grid">
+            <div class="skill-item"><i class="fas fa-check-circle"></i> Speech signal processing &amp; Voice Activity
+              Detection (VAD)</div>
+            <div class="skill-item"><i class="fas fa-check-circle"></i> Audio frame segmentation (10 ms hop) &amp;
+              timestamp alignment</div>
+            <div class="skill-item"><i class="fas fa-check-circle"></i> ASR pipelines &amp; WhisperX word-level forced
+              alignment</div>
+            <div class="skill-item"><i class="fas fa-check-circle"></i> Rigorous evaluation metrics (Precision, Recall,
+              F1, TP/FP/FN/TN)</div>
+            <div class="skill-item"><i class="fas fa-check-circle"></i> Python-based signal processing &amp; scientific
+              data analysis</div>
+            <div class="skill-item"><i class="fas fa-check-circle"></i> Deep Learning, NLP, and Computer Vision
+              fundamentals</div>
+            <div class="skill-item"><i class="fas fa-check-circle"></i> Experimental design, comparative analysis &amp;
+              technical reporting</div>
+            <div class="skill-item"><i class="fas fa-check-circle"></i> Multimodal video understanding &amp; temporal
+              video stitching</div>
+          </div>
+        </div>
+
+        <!-- ======================================================================
+             SECTION 11: VERIFIED INSTITUTIONAL CERTIFICATES
+             ====================================================================== -->
+        <div class="research-section-header" data-reveal="fade-up">
+          <span class="section-tag mono">// FORMAL VERIFICATION</span>
+          <h2>Verified Institutional Credentials</h2>
+          <p>Official completion certificates issued by the Speech Lab (LTRC) and iHub-Data at IIIT Hyderabad.</p>
+        </div>
+
+        <div class="cert-showcase-grid" data-reveal="fade-up">
+          <!-- Research Internship Certificate -->
+          <div class="cert-card">
+            <div class="cert-card-header">
+              <i class="fas fa-award cert-badge-icon" aria-hidden="true"></i>
+              <div class="cert-title-group">
+                <h3>Research Internship Certificate</h3>
+                <span class="cert-subtitle">Speech Lab &middot; Language Technologies Research Center (LTRC),
+                  IIIT-H</span>
+              </div>
+            </div>
+            <div class="cert-card-meta">
+              Validates six-month research internship (01 Dec 2024 &ndash; 31 May 2025) on <em>&ldquo;Multimodal Multi
+                video Question and Answering&rdquo;</em>, confirming contributions across VAD, ASR, Question Answering,
+              and video stitching.
+            </div>
+            <a href="../assets/certificates/SakethCertificate-IIIT.pdf" target="_blank" rel="noopener noreferrer"
+              class="btn-segmented cert-action-btn">
+              <span class="btn-ticks" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>View Official Certificate (PDF)</span>
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <!-- Training Proficiency Certificate -->
+          <div class="cert-card">
+            <div class="cert-card-header">
+              <i class="fas fa-certificate cert-badge-icon" aria-hidden="true"></i>
+              <div class="cert-title-group">
+                <h3>Certificate of Proficiency &middot; Applied AI &amp; ML</h3>
+                <span class="cert-subtitle">iHub-Data &middot; Technology Innovation Hub, IIIT Hyderabad</span>
+              </div>
+            </div>
+            <div class="cert-card-meta">
+              Validates successful completion of the six-month training program (May &ndash; Oct 2024) spanning Deep
+              Learning, Machine Learning, Natural Language Processing, and Computer Vision proctored benchmarks.
+            </div>
+            <a href="../assets/certificates/IIIT-AIML.jpg" target="_blank" rel="noopener noreferrer"
+              class="btn-segmented cert-action-btn secondary-btn">
+              <span class="btn-ticks" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>View Certificate of Proficiency (JPG)</span>
+              <i class="fas fa-file-image" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ======================================================================
+       GLOBAL EDITORIAL FOOTER
+       ====================================================================== -->
+  <footer class="global-editorial-footer">
+    <div class="footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand-col">
+          <a href="../" class="brand-monogram">
+
+            <span class="brand-name">Saketh Lingerker</span>
+          </a>
+          <p class="footer-tagline">Systems Engineer &amp; AI Developer</p>
+        </div>
+        <div class="footer-nav-col">
+          <span class="footer-col-title mono">// NAVIGATION</span>
+          <ul class="footer-nav-links">
+            <li><a href="../" data-footer-link="home">Home</a></li>
+            <li><a href="../projects/" data-footer-link="projects">Projects</a></li>
+            <li><a href="../about/" data-footer-link="about">About</a></li>
+            <li><a href="../contact/" data-footer-link="contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <span class="footer-col-title mono">// CONNECT</span>
+          <ul class="footer-links-list">
+            <li><a href="https://github.com/sakethlingerker" target="_blank" rel="noopener noreferrer"><i
+                  class="fab fa-github"></i> GitHub ↗</a></li>
+            <li><a href="https://www.linkedin.com/in/sakethlingerker/" target="_blank" rel="noopener noreferrer"><i
+                  class="fab fa-linkedin"></i> LinkedIn ↗</a></li>
+            <li><a href="mailto:saketh1805@gmail.com"><i class="fas fa-envelope"></i> Email ↗</a></li>
+            <li><a href="../assets/Saketh_Lingerker_8688791352.pdf" target="_blank" rel="noopener noreferrer"><i
+                  class="fas fa-file-pdf"></i> Resume ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <span class="footer-copy mono">&copy; 2024 Saketh Lingerker. Built with engineering rigor.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       ENGINEERING WORKBENCH MODAL (Ctrl+K Diagnostic Suite)
+       ====================================================================== -->
+  <div id="workbench-modal" class="workbench-modal" role="dialog" aria-modal="true"
+    aria-labelledby="workbench-modal-title" aria-hidden="true">
+    <div class="workbench-backdrop" id="workbench-backdrop"></div>
+    <div class="workbench-dialog">
+      <header class="workbench-header">
+        <div class="workbench-brand">
+          <span id="workbench-modal-title" class="workbench-title">Engineering Workbench</span>
+          <span class="workbench-version">v1.0</span>
+        </div>
+        <div class="workbench-header-actions">
+          <button id="workbench-close-btn" class="workbench-close-btn"
+            aria-label="Close Engineering Workbench">&times;</button>
+        </div>
+      </header>
+
+      <div class="workbench-search-area">
+        <div class="workbench-search-wrapper">
+          <i class="fas fa-search workbench-search-icon" aria-hidden="true"></i>
+          <input type="text" id="workbench-search-input" class="workbench-search-input"
+            placeholder="Search projects, tech, concepts, tools, or ask a question..." autocomplete="off"
+            spellcheck="false" />
+        </div>
+        <div class="workbench-try-row" aria-label="Try quick queries">
+          <span class="workbench-try-label">Try:</span>
+          <button class="workbench-try-chip" data-query="rag">rag</button>
+          <button class="workbench-try-chip" data-query="aws">aws</button>
+          <button class="workbench-try-chip" data-query="docker">docker</button>
+          <button class="workbench-try-chip" data-query="system design">system design</button>
+          <button class="workbench-try-chip" data-query="machine learning">machine learning</button>
+          <button class="workbench-try-chip" data-query="data pipeline">data pipeline</button>
+          <button class="workbench-try-chip" data-query="react">react</button>
+          <button class="workbench-try-chip" data-query="resume">resume</button>
+        </div>
+      </div>
+
+      <nav class="workbench-modes-grid" aria-label="Workbench modes">
+        <button class="workbench-mode-card active" data-mode="projects" id="mode-btn-projects">
+          <div class="workbench-mode-top">
+            <i class="fas fa-search workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">01</span>
+          </div>
+          <h3 class="workbench-mode-name">Find Projects</h3>
+          <p class="workbench-mode-desc">Search by tech, domain, or problem</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="architecture" id="mode-btn-architecture">
+          <div class="workbench-mode-top">
+            <i class="fas fa-project-diagram workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">02</span>
+          </div>
+          <h3 class="workbench-mode-name">Inspect Architecture</h3>
+          <p class="workbench-mode-desc">Explore system components &amp; decisions</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="compare" id="mode-btn-compare">
+          <div class="workbench-mode-top">
+            <i class="fas fa-layer-group workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">03</span>
+          </div>
+          <h3 class="workbench-mode-name">Compare Projects</h3>
+          <p class="workbench-mode-desc">Side-by-side tech, features &amp; use cases</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="ask" id="mode-btn-ask">
+          <div class="workbench-mode-top">
+            <i class="fas fa-comment-dots workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">04</span>
+          </div>
+          <h3 class="workbench-mode-name">Ask About My Work</h3>
+          <p class="workbench-mode-desc">Get answers from my portfolio data</p>
+        </button>
+      </nav>
+
+      <div class="workbench-content-area">
+        <main class="workbench-main-view">
+          <div id="workbench-pane-projects" class="workbench-view-pane active">
+            <div class="workbench-section-header">
+              <span class="workbench-section-title">// PROJECTS MATCHING <span
+                  id="workbench-query-display">"all"</span></span>
+              <span class="workbench-section-meta" id="workbench-results-count">10 results</span>
+            </div>
+            <div id="workbench-results-list" class="workbench-results-list" role="list"></div>
+          </div>
+
+          <div id="workbench-pane-architecture" class="workbench-view-pane">
+            <div class="workbench-arch-container">
+              <div class="workbench-arch-header">
+                <span class="workbench-section-title">// SYSTEM ARCHITECTURE INSPECTOR</span>
+                <select id="workbench-arch-project-select" class="workbench-project-select">
+                  <option value="enterprise_rag">Enterprise-Ready RAG Agent</option>
+                  <option value="mlops">Vehicle Insurance MLOps Pipeline</option>
+                </select>
+              </div>
+              <div id="workbench-arch-flow" class="workbench-arch-flow"></div>
+              <div id="workbench-arch-detail" class="workbench-arch-detail-card"></div>
+            </div>
+          </div>
+
+          <div id="workbench-pane-compare" class="workbench-view-pane">
+            <div class="workbench-compare-container">
+              <div class="workbench-section-header">
+                <span class="workbench-section-title">// SIDE-BY-SIDE SPECIFICATION COMPARISON</span>
+              </div>
+              <div class="workbench-compare-selectors">
+                <div>
+                  <label for="compare-select-a" class="workbench-detail-label">Project A</label>
+                  <select id="compare-select-a" class="workbench-project-select" style="width: 100%;"></select>
+                </div>
+                <div>
+                  <label for="compare-select-b" class="workbench-detail-label">Project B</label>
+                  <select id="compare-select-b" class="workbench-project-select" style="width: 100%;"></select>
+                </div>
+              </div>
+              <div id="workbench-compare-matrix" class="workbench-compare-grid"></div>
+            </div>
+          </div>
+
+          <div id="workbench-pane-ask" class="workbench-view-pane">
+            <div class="workbench-ask-container">
+              <div class="workbench-section-header">
+                <span class="workbench-section-title">// GROUNDED PORTFOLIO DIGITAL TWIN</span>
+                <span class="workbench-section-meta"><i class="fas fa-shield-alt" style="color: #F45135;"></i> Verified
+                  Data Only</span>
+              </div>
+              <div id="workbench-chat-messages" class="workbench-chat-messages" role="log" aria-live="polite"></div>
+              <div class="workbench-suggested-area" style="margin-top: 6px; padding-top: 8px;">
+                <div class="workbench-try-row" style="margin-top: 0;">
+                  <span class="workbench-try-label">SUGGESTED</span>
+                  <button class="workbench-try-chip" data-ask="Summarize your experience and TCS status">TCS
+                    Status</button>
+                  <button class="workbench-try-chip" data-ask="Tell me about your IIIT Hyderabad research">IIIT
+                    Research</button>
+                  <button class="workbench-try-chip" data-ask="What is your highest impact ML project?">Best ML
+                    Project</button>
+                  <button class="workbench-try-chip"
+                    data-ask="Which certifications do you hold?">Certifications</button>
+                </div>
+              </div>
+              <div class="workbench-chat-input-bar"
+                style="display: flex; gap: 8px; margin-top: 10px; align-items: center;">
+                <textarea id="workbench-ask-input" class="workbench-search-input workbench-chat-textarea"
+                  style="padding: 9px 14px; font-size: 13px; min-height: 38px; max-height: 112px; resize: vertical;"
+                  placeholder="Ask me about a project, technology, or engineering decision..."
+                  aria-label="Ask about my work" autocomplete="off" spellcheck="false" rows="1"></textarea>
+                <button type="button" id="workbench-ask-submit-btn" class="workbench-tag accent-tag"
+                  aria-label="Send message"
+                  style="height: 38px; padding: 0 16px; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 12px;">
+                  <span>Send</span> <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <aside class="workbench-sidebar-area">
+          <div>
+            <div class="workbench-section-header">
+              <span class="workbench-section-title" style="color: #F45135;">// QUICK ACTIONS</span>
+            </div>
+            <div class="workbench-quick-list">
+              <a href="../assets/Saketh_Lingerker_8688791352.pdf" target="_blank" rel="noopener"
+                class="workbench-quick-item" id="quick-action-resume">
+                <span class="workbench-quick-label"><i class="fas fa-file-alt"></i> View Resume </span>
+                <span class="workbench-quick-key">R</span>
+              </a>
+              <a href="https://github.com/sakethlingerker" target="_blank" rel="noopener" class="workbench-quick-item"
+                id="quick-action-github">
+                <span class="workbench-quick-label"><i class="fab fa-github"></i> Open GitHub</span>
+                <span class="workbench-quick-key">G</span>
+              </a>
+              <a href="https://www.linkedin.com/in/sakethlingerker/" target="_blank" rel="noopener"
+                class="workbench-quick-item" id="quick-action-linkedin">
+                <span class="workbench-quick-label"><i class="fab fa-linkedin-in"></i> Open LinkedIn</span>
+                <span class="workbench-quick-key">L</span>
+              </a>
+              <a href="mailto:saketh1805@gmail.com" class="workbench-quick-item" id="quick-action-email">
+                <span class="workbench-quick-label"><i class="fas fa-envelope"></i> Send an Email</span>
+                <span class="workbench-quick-key">E</span>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="workbench-footer">
+        <div class="workbench-footer-keys">
+          <span><kbd style="color: #F45135;">&uarr;&darr;</kbd> Navigate</span>
+          <span><kbd style="color: #F45135;">&crarr;</kbd> Select</span>
+          <span><kbd style="color: #F45135;">esc</kbd> Close</span>
+        </div>
+        <div class="workbench-footer-tagline">
+          <span class="workbench-status-dot">&bull;</span> SEARCH &middot; EXPLORE &middot; INSPECT &middot; COMPARE
+          &middot; ASK
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Floating Back to Top Button -->
+  <button id="floating-back-to-top" class="floating-back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Main Application Script (ES Module) -->
+  <script type="module" src="../src/scripts/pages/research.js"></script>
+</body>
+
+</html>

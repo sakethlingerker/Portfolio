@@ -1,0 +1,162 @@
+/* ==========================================================================
+   ABOUT PAGE STYLES
+   Editorial bio, engineering philosophy, journey timeline & technical toolkit
+   ========================================================================== */
+
+.about-page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 130px 5% 80px;
+}
+
+/* Header */
+.about-editorial-header {
+  margin-bottom: 56px;
+}
+
+.about-kicker {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #F45135;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.about-editorial-title {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--ink, #e8ece6);
+  margin-bottom: 20px;
+}
+
+.about-editorial-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: #9cb0a0;
+}
+
+/* Two-Column Intro & Philosophy */
+.about-intro-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 56px;
+  margin-bottom: 72px;
+  align-items: start;
+}
+
+.about-bio-text {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(1.02rem, 1.2vw, 1.15rem);
+  line-height: 1.8;
+  color: #c5cec6;
+}
+
+.about-bio-text p {
+  margin-bottom: 20px;
+}
+
+.about-bio-text strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Engineering Philosophy Box */
+.philosophy-panel {
+  background: var(--bg-surface, #101513);
+  border: 1px solid var(--line, #222b26);
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.philosophy-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #F45135;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line, #222b26);
+}
+
+.philosophy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.philosophy-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.phil-title {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: #e8ece6;
+}
+
+.phil-desc {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #8fa093;
+}
+
+/* Section Dividers */
+.about-section-block {
+  margin-bottom: 80px;
+}
+
+.about-section-header {
+  margin-bottom: 36px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line, #222b26);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.about-section-heading {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: #e8ece6;
+  letter-spacing: -0.02em;
+}
+
+.about-section-sub {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: #8b968e;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .about-page-container {
+    padding: 100px 5% 60px;
+  }
+
+  .about-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+

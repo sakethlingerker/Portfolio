@@ -342,7 +342,6 @@ export function initHeroSequence(config = DEFAULT_CONFIG): gsap.core.Timeline | 
   const hero = document.getElementById("home");
   if (!hero) return null;
 
-  const eyebrow = hero.querySelector<HTMLElement>(".hero-eyebrow");
   const title = hero.querySelector<HTMLElement>(".hero-name");
   const nameSpans = title
     ? (Array.from(title.querySelectorAll<HTMLElement>(".hero-name-first, .hero-name-last")))
@@ -355,7 +354,6 @@ export function initHeroSequence(config = DEFAULT_CONFIG): gsap.core.Timeline | 
   const proofItems = proofStrip ? Array.from(proofStrip.querySelectorAll<HTMLElement>(".proof-item")) : [];
 
   if (prefersReducedMotion()) {
-    if (eyebrow) gsap.set(eyebrow, { opacity: 1, y: 0 });
     if (nameSpans.length > 0) {
       gsap.set(nameSpans, { opacity: 1, y: 0 });
     } else if (title) {
@@ -373,7 +371,6 @@ export function initHeroSequence(config = DEFAULT_CONFIG): gsap.core.Timeline | 
   }
 
   // Fail-open initial state for hero elements
-  if (eyebrow) gsap.set(eyebrow, { y: 16, opacity: 0 });
   if (nameSpans.length > 0) {
     gsap.set(nameSpans, { y: 22, opacity: 0, display: "inline-block" });
   } else if (title) {
@@ -391,17 +388,12 @@ export function initHeroSequence(config = DEFAULT_CONFIG): gsap.core.Timeline | 
     defaults: { ease: "power3.out" },
     onComplete: () => {
       // Clear inline transform and will-change to avoid layout/font rendering differences
-      const targets = [eyebrow, title, roleBadge, description, secondaryLine, actions, proofStrip, ...nameSpans, ...proofItems];
+      const targets = [title, roleBadge, description, secondaryLine, actions, proofStrip, ...nameSpans, ...proofItems];
       targets.forEach((t) => t && gsap.set(t, { clearProps: "willChange,transform" }));
     },
   });
 
-  // 1. Eyebrow badge (0.05s)
-  if (eyebrow) {
-    heroTimeline.to(eyebrow, { y: 0, opacity: 1, duration: 0.6 }, 0.05);
-  }
-
-  // 2. Main title words (0.15s)
+  // 1. Main title words (0.15s)
   if (nameSpans.length > 0) {
     heroTimeline.to(
       nameSpans,

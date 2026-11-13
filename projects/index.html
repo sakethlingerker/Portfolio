@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Saketh Lingerker - Systems Engineer &amp; AI Developer</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Production architectures, deep case studies, interactive system diagrams, and source code for systems built by Saketh Lingerker — Systems Engineer &amp; AI Developer." />
+  <meta name="keywords"
+    content="Saketh Lingerker Projects, Systems Engineer, AI Developer, Enterprise RAG Agent, MLOps Pipeline, LangChain, FAISS, PyTorch, Docker, AWS, System Architecture, Case Studies" />
+  <meta name="author" content="Saketh Lingerker" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title"
+    content="Projects &amp; System Architecture · Saketh Lingerker · Systems Engineer &amp; AI Developer" />
+  <meta property="og:description"
+    content="Interactive system diagrams, verified benchmarks, and complete architecture case studies for production AI and software builds." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sakethlingerker.github.io/Portfolio/projects/" />
+  <meta property="og:image" content="../src/assets/Display-picture.jpg" />
+
+  <link rel="icon" type="image/jpeg" href="../src/assets/Display-picture.jpg" />
+  <link rel="manifest" href="../manifest.json" />
+  <meta name="theme-color" content="#080b09" />
+  <link rel="apple-touch-icon" href="../assets/ls-logo.jpg" />
+
+  <!-- Google Fonts: Syne, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Font Awesome & Devicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="../src/styles/preloader.css" />
+  <link rel="stylesheet" href="../src/styles/main.css" />
+
+  <script>
+    (function () {
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem("theme");
+      } catch (e) { }
+      if (savedTheme === "light") {
+        document.documentElement.classList.add("light-mode");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <!-- Film Grain Overlay -->
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- Ambient Radial World Lighting -->
+  <div class="world" aria-hidden="true"></div>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" aria-hidden="true"></div>
+
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-link"
+    style="position: absolute; top: -90px; left: 20px; z-index: 999; background: #fff; color: #000; padding: 10px 18px; text-decoration: none; font-family: var(--font-mono); font-size: 11px;">Skip
+    to content</a>
+
+  <!-- Top Global Navigation Bar: Futuristic Segmented Rail (Design 04) -->
+  <header class="topbar segmented-rail-topbar">
+    <div class="rail-container">
+      <!-- Left: Brand Section with Geometric Chamfered Badge -->
+      <div class="rail-brand-group">
+        <a href="../" class="rail-brand-badge" aria-label="Saketh Lingerker Home">
+          <span class="brand-logo" aria-hidden="true">
+            <span class="logo-letters">sl</span><span class="logo-dot"></span>
+          </span>
+        </a>
+        <div class="rail-brand-accents" aria-hidden="true">
+          <span class="rail-slash"></span>
+          <span class="rail-slash"></span>
+          <span class="rail-slash"></span>
+          <span class="rail-line-connector"></span>
+        </div>
+      </div>
+
+      <!-- Center: Segmented Navigation Rail -->
+      <nav class="rail-nav" aria-label="Main navigation">
+        <div class="rail-track">
+          <a href="../" class="rail-segment" data-page="home">
+            <span class="segment-label">HOME</span>
+          </a>
+          <a href="./" class="rail-segment active" data-page="projects">
+            <span class="segment-label">PROJECTS</span>
+          </a>
+          <a href="../about/" class="rail-segment" data-page="about">
+            <span class="segment-label">ABOUT</span>
+          </a>
+          <a href="../research/" class="rail-segment" data-page="research">
+            <span class="segment-label">RESEARCH</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Right: Action Controls (Workbench & Let's Talk) -->
+      <div class="rail-actions-group">
+        <span class="rail-connector-right" aria-hidden="true"></span>
+        <button id="workbench-nav-trigger" class="rail-workbench-btn" title="Open Engineering Workbench (Ctrl+K)"
+          aria-label="Open Engineering Workbench">
+          <span class="wb-prompt mono">&gt;_</span>
+          <span class="workbench-btn-text">WORKBENCH</span>
+        </button>
+        <div class="rail-talk-wrapper">
+          <a class="rail-talk-btn" href="../contact/" data-page="contact" aria-label="Contact - Let's talk">
+            <span class="talk-btn-text">LET'S TALK</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+          <div class="rail-trailing-accents" aria-hidden="true">
+            <span class="rail-slash"></span>
+            <span class="rail-slash"></span>
+            <span class="rail-slash"></span>
+          </div>
+        </div>
+        <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Cinematic Menu Overlay -->
+  <div class="mobile-cinematic-menu" aria-hidden="true">
+    <button id="mobile-workbench-trigger" class="rail-workbench-btn"
+      style="width: 100%; justify-content: center; margin-bottom: 12px; padding: 12px; transform: none;">
+      <span class="wb-prompt mono">&gt;_</span>
+      <span>ENGINEERING WORKBENCH (Ctrl+K)</span>
+    </button>
+    <a href="../" data-page="home"><span>HOME</span> <span class="mono nav-idx">01</span></a>
+    <a href="./" data-page="projects"><span>PROJECTS</span> <span class="mono nav-idx">02</span></a>
+    <a href="../about/" data-page="about"><span>ABOUT</span> <span class="mono nav-idx">03</span></a>
+    <a href="../research/" data-page="research"><span>RESEARCH</span> <span class="mono nav-idx">04</span></a>
+    <a href="../contact/" data-page="contact"><span>LET'S TALK</span> <span class="mono nav-idx">05</span></a>
+  </div>
+
+  <!-- Main Content Wrap -->
+  <main id="main-content" style="padding-top: 40px;">
+
+    <!-- ======================================================================
+         1. PROJECT INTELLIGENCE SUITE & SYSTEM STUDIO (ALL 10 PROJECTS)
+         ====================================================================== -->
+    <section id="projects" class="projects" aria-label="Engineering Projects and System Architecture">
+      <div class="container" style="max-width: 1400px; padding: 0 5%;">
+
+        <!-- Editorial Header -->
+        <div class="proof-header" style="margin-bottom: 40px;">
+          <span class="proof-kicker mono" data-reveal="fade-up">SYSTEM ARCHITECTURE &amp; BUILDS</span>
+          <h1 class="proof-editorial-title" data-reveal="heading">
+            Engineering Projects.<br /><em>Architecture in detail.</em>
+          </h1>
+          <p class="proof-lead" data-reveal="fade-up">
+            Interactive system diagrams, verified trade-offs, engineering decisions, and live demonstrations across all
+            10 software and AI builds.
+          </p>
+        </div>
+
+        <!-- The Finder Window (Split-View Studio) -->
+        <div class="finder-window" style="margin-bottom: 60px;">
+          <div class="finder-header">
+            <div class="finder-controls">
+              <span class="finder-dot red" title="Studio Active"></span>
+              <span class="finder-dot yellow" title="Interactive"></span>
+              <span class="finder-dot green" title="10 Systems Loaded"></span>
+            </div>
+            <div class="finder-title">
+              <i class="fas fa-folder-open"></i>
+              <span id="finder-breadcrumb"><span class="finder-bc-prefix">Projects / </span><span
+                  class="finder-bc-name">Enterprise-Ready RAG Agent</span></span>
+            </div>
+            <button id="finder-mobile-toggle" class="finder-mobile-toggle" aria-label="Toggle Project Sidebar">
+              <i class="fas fa-list"></i> <span>Projects</span>
+            </button>
+          </div>
+
+          <div class="finder-body">
+            <!-- Sidebar: Search, Categories & Project List -->
+            <aside class="finder-sidebar" id="finder-sidebar">
+              <div class="finder-sidebar-header">
+                <div class="finder-studio-badge">
+                  <div class="finder-studio-icon"><i class="fas fa-microchip"></i></div>
+                  <div class="finder-studio-text">
+                    <h4 class="finder-studio-title">Project Intelligence</h4>
+                    <span class="finder-studio-subtitle">Discover builds across AI, Software and Infrastructure.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Project Search -->
+              <div class="finder-search-box">
+                <i class="fas fa-search finder-search-icon" aria-hidden="true"></i>
+                <input type="text" id="finder-project-search" placeholder="Search by tech, problem, tool..."
+                  aria-label="Search projects by tech, domain, or problem" autocomplete="off" />
+              </div>
+
+              <!-- Category Filters -->
+              <div class="finder-categories">
+                <span class="finder-section-title">CATEGORIES</span>
+                <div class="finder-category-list">
+                  <button class="finder-cat-btn active" data-category="all">
+                    <span><i class="fas fa-layer-group"></i> All Projects</span>
+                    <span class="finder-count" id="count-all">10</span>
+                  </button>
+                  <button class="finder-cat-btn" data-category="featured">
+                    <span><i class="fas fa-star"></i> Featured</span>
+                    <span class="finder-count" id="count-featured">4</span>
+                  </button>
+                  <button class="finder-cat-btn" data-category="ai-ml">
+                    <span><i class="fas fa-brain"></i> AI &amp; ML</span>
+                    <span class="finder-count" id="count-ai-ml">5</span>
+                  </button>
+                  <button class="finder-cat-btn" data-category="fullstack">
+                    <span><i class="fas fa-code"></i> Full Stack</span>
+                    <span class="finder-count" id="count-fullstack">2</span>
+                  </button>
+                  <button class="finder-cat-btn" data-category="mlops">
+                    <span><i class="fas fa-server"></i> MLOps</span>
+                    <span class="finder-count" id="count-mlops">1</span>
+                  </button>
+                  <button class="finder-cat-btn" data-category="datascience">
+                    <span><i class="fas fa-chart-bar"></i> Data Science</span>
+                    <span class="finder-count" id="count-datascience">2</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Project Items List -->
+              <div class="finder-projects-nav">
+                <span class="finder-section-title">PROJECT REPOSITORY</span>
+                <div class="finder-project-list" id="finder-project-list">
+                  <!-- Dynamically populated from projects.json -->
+                </div>
+              </div>
+            </aside>
+
+            <!-- Main Workspace: Case Study, Interactive Dynamic SVG Architecture & Metrics -->
+            <main class="finder-workspace" id="finder-workspace">
+              <div class="finder-detail-container" id="finder-detail-container">
+                <!-- Dynamically populated from projects.json -->
+              </div>
+            </main>
+          </div>
+        </div>
+
+        <!-- ======================================================================
+             2. PROJECT MATCHMAKER QUIZ (INTERACTIVE RECOMMENDATION ENGINE)
+             ====================================================================== -->
+        <section class="proof-section" style="padding: 60px 0; border-top: 1px solid var(--line);"
+          aria-label="Project Matchmaker">
+          <div class="work-intro" style="margin-bottom: 32px;">
+            <span class="mono" data-reveal="fade-up">RECOMMENDATION ENGINE</span>
+            <h2 data-reveal="heading">Project Matchmaker<br /><span style="color: #8fa093;">Find what matches your
+                domain.</span></h2>
+            <p data-reveal="fade-up" style="max-width: 600px;">
+              Answer two quick questions to find the project architecture most relevant to your technical requirements
+              or evaluation criteria.
+            </p>
+          </div>
+
+          <div class="quiz-container" id="project-matchmaker-container"
+            style="background: var(--bg-surface, #101513); border: 1px solid var(--line, #222b26); border-radius: 8px; padding: 36px; max-width: 760px;">
+            <!-- Step Progress -->
+            <div class="quiz-progress-bar"
+              style="height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 24px; overflow: hidden;">
+              <div id="quiz-progress-fill"
+                style="height: 100%; width: 0%; background: #F45135; transition: width 0.3s ease;"></div>
+            </div>
+
+            <!-- Step 1: Broad Category -->
+            <div id="quiz-step-1" class="quiz-step active">
+              <span class="mono" style="color: #F45135; font-size: 11px;">QUESTION 01 // 02</span>
+              <h3 style="font-family: var(--font-display); font-size: 20px; color: #e8ece6; margin: 8px 0 20px 0;">Which
+                domain are you evaluating today?</h3>
+              <div class="quiz-options-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+                <button class="quiz-option-btn" onclick="handleQuizAnswer(1, 'genai')">
+                  <i class="fas fa-brain" style="color: #F45135; font-size: 20px;"></i>
+                  <span>Generative AI &amp; RAG Systems</span>
+                </button>
+                <button class="quiz-option-btn" onclick="handleQuizAnswer(1, 'ml_data')">
+                  <i class="fas fa-chart-line" style="color: var(--cyan, #00e5a3); font-size: 20px;"></i>
+                  <span>Machine Learning &amp; Analytics</span>
+                </button>
+                <button class="quiz-option-btn" onclick="handleQuizAnswer(1, 'software')">
+                  <i class="fas fa-layer-group" style="color: var(--lime, #d2f898); font-size: 20px;"></i>
+                  <span>Full-Stack &amp; Cloud Infrastructure</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Specific Sub-problem -->
+            <div id="quiz-step-2" class="quiz-step">
+              <span class="mono" style="color: #F45135; font-size: 11px;">QUESTION 02 // 02</span>
+              <h3 id="quiz-q2-text"
+                style="font-family: var(--font-display); font-size: 20px; color: #e8ece6; margin: 8px 0 20px 0;">What
+                capability interests you most?</h3>
+              <div id="quiz-q2-options" class="quiz-options-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+                <!-- Populated dynamically via handleQuizAnswer(1, answer) -->
+              </div>
+            </div>
+
+            <!-- Result Step -->
+            <div id="quiz-result-step" class="quiz-step">
+              <div id="quiz-recommendation-display"></div>
+              <button class="btn-outline-angled" onclick="resetQuiz()" style="margin-top: 24px;">
+                <i class="fas fa-redo-alt" aria-hidden="true"></i>
+                <span>START QUIZ OVER</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- Finder Image Zoom Lightbox Modal -->
+    <div id="finder-lightbox" class="finder-lightbox" aria-hidden="true">
+      <div class="finder-lightbox-backdrop" id="finder-lightbox-backdrop"></div>
+      <div class="finder-lightbox-container">
+        <button id="finder-lightbox-close" class="finder-lightbox-close" aria-label="Close zoomed view">
+          <i class="fas fa-times"></i> <span>Close</span>
+        </button>
+        <img id="finder-lightbox-img" src="" alt="Project Image Preview" class="finder-lightbox-img" />
+        <div id="finder-lightbox-caption" class="finder-lightbox-caption"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ======================================================================
+       GLOBAL EDITORIAL FOOTER
+       ====================================================================== -->
+  <footer class="global-editorial-footer">
+    <div class="footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand-col">
+          <a href="../" class="brand-monogram">
+
+            <span class="brand-name">Saketh Lingerker</span>
+          </a>
+          <p class="footer-tagline">Systems Engineer &amp; AI Developer</p>
+
+        </div>
+        <div class="footer-nav-col">
+          <span class="footer-col-title mono">// NAVIGATION</span>
+          <ul class="footer-nav-links">
+            <li><a href="../" data-footer-link="home">Home</a></li>
+            <li><a href="../about/" data-footer-link="about">About</a></li>
+            <li><a href="../research/" data-footer-link="research">Research</a></li>
+            <li><a href="../contact/" data-footer-link="contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <span class="footer-col-title mono">// CONNECT</span>
+          <ul class="footer-links-list">
+            <li><a href="https://github.com/sakethlingerker" target="_blank" rel="noopener noreferrer"><i
+                  class="fab fa-github"></i> GitHub ↗</a></li>
+            <li><a href="https://www.linkedin.com/in/sakethlingerker/" target="_blank" rel="noopener noreferrer"><i
+                  class="fab fa-linkedin"></i> LinkedIn ↗</a></li>
+            <li><a href="mailto:saketh1805@gmail.com"><i class="fas fa-envelope"></i> Email ↗</a></li>
+            <li><a href="../assets/Saketh_Lingerker_8688791352.pdf" target="_blank" rel="noopener noreferrer"><i
+                  class="fas fa-file-pdf"></i> Resume ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <span class="footer-copy mono">&copy; 2026 Saketh Lingerker. Built with engineering rigor.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       ENGINEERING WORKBENCH MODAL (Ctrl+K Diagnostic Suite)
+       ====================================================================== -->
+  <div id="workbench-modal" class="workbench-modal" role="dialog" aria-modal="true"
+    aria-labelledby="workbench-modal-title" aria-hidden="true">
+    <div class="workbench-backdrop" id="workbench-backdrop"></div>
+    <div class="workbench-dialog">
+      <header class="workbench-header">
+        <div class="workbench-brand">
+          <span id="workbench-modal-title" class="workbench-title">Engineering Workbench</span>
+          <span class="workbench-version">v1.0</span>
+        </div>
+        <div class="workbench-header-actions">
+          <button id="workbench-close-btn" class="workbench-close-btn"
+            aria-label="Close Engineering Workbench">&times;</button>
+        </div>
+      </header>
+
+      <div class="workbench-search-area">
+        <div class="workbench-search-wrapper">
+          <i class="fas fa-search workbench-search-icon" aria-hidden="true"></i>
+          <input type="text" id="workbench-search-input" class="workbench-search-input"
+            placeholder="Search projects, tech, concepts, tools, or ask a question..." autocomplete="off"
+            spellcheck="false" />
+        </div>
+        <div class="workbench-try-row" aria-label="Try quick queries">
+          <span class="workbench-try-label">Try:</span>
+          <button class="workbench-try-chip" data-query="rag">rag</button>
+          <button class="workbench-try-chip" data-query="aws">aws</button>
+          <button class="workbench-try-chip" data-query="docker">docker</button>
+          <button class="workbench-try-chip" data-query="system design">system design</button>
+          <button class="workbench-try-chip" data-query="machine learning">machine learning</button>
+          <button class="workbench-try-chip" data-query="data pipeline">data pipeline</button>
+          <button class="workbench-try-chip" data-query="react">react</button>
+          <button class="workbench-try-chip" data-query="resume">resume</button>
+        </div>
+      </div>
+
+      <nav class="workbench-modes-grid" aria-label="Workbench modes">
+        <button class="workbench-mode-card active" data-mode="projects" id="mode-btn-projects">
+          <div class="workbench-mode-top">
+            <i class="fas fa-search workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">01</span>
+          </div>
+          <h3 class="workbench-mode-name">Find Projects</h3>
+          <p class="workbench-mode-desc">Search by tech, domain, or problem</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="architecture" id="mode-btn-architecture">
+          <div class="workbench-mode-top">
+            <i class="fas fa-project-diagram workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">02</span>
+          </div>
+          <h3 class="workbench-mode-name">Inspect Architecture</h3>
+          <p class="workbench-mode-desc">Explore system components &amp; decisions</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="compare" id="mode-btn-compare">
+          <div class="workbench-mode-top">
+            <i class="fas fa-layer-group workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">03</span>
+          </div>
+          <h3 class="workbench-mode-name">Compare Projects</h3>
+          <p class="workbench-mode-desc">Side-by-side tech, features &amp; use cases</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="ask" id="mode-btn-ask">
+          <div class="workbench-mode-top">
+            <i class="fas fa-comment-dots workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">04</span>
+          </div>
+          <h3 class="workbench-mode-name">Ask About My Work</h3>
+          <p class="workbench-mode-desc">Get answers from my portfolio data</p>
+        </button>
+      </nav>
+
+      <div class="workbench-content-area">
+        <main class="workbench-main-view">
+          <div id="workbench-pane-projects" class="workbench-view-pane active">
+            <div class="workbench-section-header">
+              <span class="workbench-section-title">// PROJECTS MATCHING <span
+                  id="workbench-query-display">"all"</span></span>
+              <span class="workbench-section-meta" id="workbench-results-count">10 results</span>
+            </div>
+            <div id="workbench-results-list" class="workbench-results-list" role="list"></div>
+          </div>
+
+          <div id="workbench-pane-architecture" class="workbench-view-pane">
+            <div class="workbench-arch-container">
+              <div class="workbench-arch-header">
+                <span class="workbench-section-title">// SYSTEM ARCHITECTURE INSPECTOR</span>
+                <select id="workbench-arch-project-select" class="workbench-project-select">
+                  <option value="enterprise_rag">Enterprise-Ready RAG Agent</option>
+                  <option value="mlops">Vehicle Insurance MLOps Pipeline</option>
+                </select>
+              </div>
+              <div id="workbench-arch-flow" class="workbench-arch-flow"></div>
+              <div id="workbench-arch-detail" class="workbench-arch-detail-card"></div>
+            </div>
+          </div>
+
+          <div id="workbench-pane-compare" class="workbench-view-pane">
+            <div class="workbench-compare-container">
+              <div class="workbench-section-header">
+                <span class="workbench-section-title">// SIDE-BY-SIDE SPECIFICATION COMPARISON</span>
+              </div>
+              <div class="workbench-compare-selectors">
+                <div>
+                  <label for="compare-select-a" class="workbench-detail-label">Project A</label>
+                  <select id="compare-select-a" class="workbench-project-select" style="width: 100%;"></select>
+                </div>
+                <div>
+                  <label for="compare-select-b" class="workbench-detail-label">Project B</label>
+                  <select id="compare-select-b" class="workbench-project-select" style="width: 100%;"></select>
+                </div>
+              </div>
+              <div id="workbench-compare-matrix" class="workbench-compare-grid"></div>
+            </div>
+          </div>
+
+          <div id="workbench-pane-ask" class="workbench-view-pane">
+            <div class="workbench-ask-container">
+              <div class="workbench-section-header">
+                <span class="workbench-section-title">// GROUNDED PORTFOLIO DIGITAL TWIN</span>
+                <span class="workbench-section-meta"><i class="fas fa-shield-alt" style="color: #F45135;"></i> Verified
+                  Data Only</span>
+              </div>
+              <div id="workbench-chat-messages" class="workbench-chat-messages" role="log" aria-live="polite"></div>
+              <div class="workbench-suggested-area" style="margin-top: 6px; padding-top: 8px;">
+                <div class="workbench-try-row" style="margin-top: 0;">
+                  <span class="workbench-try-label">SUGGESTED</span>
+                  <button class="workbench-try-chip" data-ask="Summarize your experience and TCS status">TCS
+                    Status</button>
+                  <button class="workbench-try-chip" data-ask="Tell me about your IIIT Hyderabad research">IIIT
+                    Research</button>
+                  <button class="workbench-try-chip" data-ask="What is your highest impact ML project?">Best ML
+                    Project</button>
+                  <button class="workbench-try-chip"
+                    data-ask="Which certifications do you hold?">Certifications</button>
+                </div>
+              </div>
+              <div class="workbench-chat-input-bar"
+                style="display: flex; gap: 8px; margin-top: 10px; align-items: center;">
+                <textarea id="workbench-ask-input" class="workbench-search-input workbench-chat-textarea"
+                  style="padding: 9px 14px; font-size: 13px; min-height: 38px; max-height: 112px; resize: vertical;"
+                  placeholder="Ask me about a project, technology, or engineering decision..."
+                  aria-label="Ask about my work" autocomplete="off" spellcheck="false" rows="1"></textarea>
+                <button type="button" id="workbench-ask-submit-btn" class="workbench-tag accent-tag"
+                  aria-label="Send message"
+                  style="height: 38px; padding: 0 16px; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 12px;">
+                  <span>Send</span> <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <aside class="workbench-sidebar-area">
+          <div>
+            <div class="workbench-section-header">
+              <span class="workbench-section-title" style="color: #F45135;">// QUICK ACTIONS</span>
+            </div>
+            <div class="workbench-quick-list">
+              <a href="../assets/Saketh_Lingerker_8688791352.pdf" target="_blank" rel="noopener"
+                class="workbench-quick-item" id="quick-action-resume">
+                <span class="workbench-quick-label"><i class="fas fa-file-alt"></i> View Resume </span>
+                <span class="workbench-quick-key">R</span>
+              </a>
+              <a href="https://github.com/sakethlingerker" target="_blank" rel="noopener" class="workbench-quick-item"
+                id="quick-action-github">
+                <span class="workbench-quick-label"><i class="fab fa-github"></i> Open GitHub</span>
+                <span class="workbench-quick-key">G</span>
+              </a>
+              <a href="https://www.linkedin.com/in/sakethlingerker/" target="_blank" rel="noopener"
+                class="workbench-quick-item" id="quick-action-linkedin">
+                <span class="workbench-quick-label"><i class="fab fa-linkedin-in"></i> Open LinkedIn</span>
+                <span class="workbench-quick-key">L</span>
+              </a>
+              <a href="mailto:saketh1805@gmail.com" class="workbench-quick-item" id="quick-action-email">
+                <span class="workbench-quick-label"><i class="fas fa-envelope"></i> Send an Email</span>
+                <span class="workbench-quick-key">E</span>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="workbench-footer">
+        <div class="workbench-footer-keys">
+          <span><kbd style="color: #F45135;">&uarr;&darr;</kbd> Navigate</span>
+          <span><kbd style="color: #F45135;">&crarr;</kbd> Select</span>
+          <span><kbd style="color: #F45135;">esc</kbd> Close</span>
+        </div>
+        <div class="workbench-footer-tagline">
+          <span class="workbench-status-dot">&bull;</span> SEARCH &middot; EXPLORE &middot; INSPECT &middot; COMPARE
+          &middot; ASK
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Floating Back to Top Button -->
+  <button id="floating-back-to-top" class="floating-back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- JavaScript Entry Point for Projects Page -->
+  <script type="module" src="../src/scripts/pages/projects.js"></script>
+</body>
+
+</html>

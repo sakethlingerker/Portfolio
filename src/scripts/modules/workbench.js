@@ -5,7 +5,7 @@
  */
 
 import { loadProjectsData } from './projects-data.js';
-import { openProjectInStudio } from './projects.js';
+import { openProjectInStudio, getAssetUrl } from './projects.js';
 import { createPortfolioChat } from './workbench-chat.js';
 
 // Verified Grounded Knowledge Base for "Ask About My Work"
@@ -474,12 +474,13 @@ function renderSearchResults(projects, query) {
   container.innerHTML = projects
     .map((p) => {
       const tags = (p.tags || []).slice(0, 4);
-      const thumb = p.heroImage || 'assets/projects/enterprise_rag_agent.png';
+      const rawThumb = p.heroImage || 'assets/projects/enterprise_rag_agent.png';
+      const thumb = typeof getAssetUrl === 'function' ? getAssetUrl(rawThumb) : rawThumb;
 
       return `
         <div class="workbench-project-item" data-project-id="${p.id}" tabindex="0" role="button" aria-label="View project ${p.title}">
           <div class="workbench-project-info">
-            <img src="${thumb}" alt="${p.title}" class="workbench-project-thumb" onerror="this.src='src/assets/Display-picture.jpg'" />
+            <img src="${thumb}" alt="${p.title}" class="workbench-project-thumb" onerror="this.style.display='none'" />
             <div class="workbench-project-text">
               <h4 class="workbench-project-title">${p.title}</h4>
               <p class="workbench-project-sub">${p.subtitle || p.overview}</p>
@@ -523,7 +524,15 @@ function navigateToProject(projectId) {
 
   // Clean navigation with smooth transition avoiding modal close race conditions
   setTimeout(() => {
-    openProjectInStudio(projectId);
+    const studioSection = document.querySelector('#projects');
+    if (studioSection && typeof openProjectInStudio === 'function') {
+      openProjectInStudio(projectId);
+    } else {
+      const path = (window.location.pathname || '').toLowerCase();
+      const isSubpage = path.includes('/about') || path.includes('/research') || path.includes('/contact');
+      const targetBase = isSubpage ? '../projects/' : (path.includes('/projects') ? './' : 'projects/');
+      window.location.href = `${targetBase}?id=${encodeURIComponent(projectId)}`;
+    }
   }, 100);
 }
 

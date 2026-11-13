@@ -172,100 +172,403 @@ p {
   text-transform: uppercase;
 }
 
-/* Top Navigation Bar */
+/* ==========================================================================
+   FUTURISTIC SEGMENTED RAIL NAVBAR (Design Option 04)
+   Near-black chassis, angular geometric segments, technical connecting lines,
+   illuminated coral active states, and 3D pointer micro-interactions
+   ========================================================================== */
 .topbar {
   position: fixed;
   inset: 0 0 auto;
-  height: 75px;
-  padding: 0 5%;
+  height: 72px;
+  padding: 0 4%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  background: rgba(7, 10, 8, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  color: #e8ece6;
+  width: 100%;
+  box-sizing: border-box;
+  perspective: 1200px;
+  transition: background 0.3s ease, height 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.topbar.scrolled {
+  height: 66px;
+  background: rgba(5, 8, 6, 0.97);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+  border-bottom-color: rgba(244, 81, 53, 0.16);
+}
+
+.rail-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 500;
-  background: rgba(8, 11, 9, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  color: #e8ece6;
-}
-
-.topbar nav {
-  display: flex;
-  gap: 30px;
-}
-
-.topbar nav a {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-family: var(--font-mono);
-  text-decoration: none;
-  color: #a4b5a6;
-  opacity: 0.85;
-  transition: color 0.25s ease, opacity 0.25s ease;
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
   position: relative;
-  padding: 6px 0;
+  transform-style: preserve-3d;
 }
 
-.topbar nav a::after {
+/* 1. Left: Brand Section with Geometric Chamfered Badge */
+.rail-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  transform-style: preserve-3d;
+}
+
+.rail-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  background: rgba(14, 18, 16, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  text-decoration: none;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.rail-brand-badge:hover {
+  border-color: rgba(244, 81, 53, 0.65);
+  box-shadow: 0 0 16px rgba(244, 81, 53, 0.3), inset 0 0 10px rgba(244, 81, 53, 0.12);
+  transform: translateY(-2px) translateZ(6px);
+}
+
+.rail-brand-badge:focus-visible {
+  outline: 2px solid #F45135;
+  outline-offset: 3px;
+}
+
+.rail-brand-badge .brand-logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.rail-brand-badge .logo-letters {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.rail-brand-badge .logo-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #F45135;
+  border-radius: 50%;
+  margin-left: 2px;
+  box-shadow: 0 0 8px rgba(244, 81, 53, 0.85);
+}
+
+.rail-brand-accents {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rail-slash {
+  display: inline-block;
+  width: 3px;
+  height: 14px;
+  background: #F45135;
+  transform: skewX(-25deg);
+  border-radius: 1px;
+  opacity: 0.85;
+}
+
+.rail-line-connector {
+  display: inline-block;
+  width: 38px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(244, 81, 53, 0.7) 0%, rgba(255, 255, 255, 0.12) 100%);
+  margin-left: 4px;
+}
+
+/* 2. Center: Segmented Navigation Rail */
+.rail-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.rail-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  padding: 2px 0;
+}
+
+/* Continuous subtle rail guide line behind track */
+.rail-track::before {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
+  top: 50%;
+  left: -24px;
+  right: -24px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.rail-segment {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 24px;
+  text-decoration: none;
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a2b3a5;
+  background: rgba(14, 19, 16, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transform: skewX(-14deg) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s ease,
+              background 0.22s ease,
+              color 0.2s ease,
+              box-shadow 0.22s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.rail-segment .segment-label {
+  display: inline-block;
+  transform: skewX(14deg);
+  white-space: nowrap;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+/* Hover State: 3D forward lift, subtle coral edge lighting */
+.rail-segment:hover {
+  color: #ffffff;
+  background: rgba(20, 28, 23, 0.95);
+  border-color: rgba(244, 81, 53, 0.6);
+  box-shadow: 0 4px 18px rgba(244, 81, 53, 0.25), 0 0 10px rgba(244, 81, 53, 0.15);
+  transform: translateY(-2px) translateZ(8px) skewX(-14deg) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+}
+
+.rail-segment:hover .segment-label {
+  color: #ffffff;
+}
+
+/* Active Segment State (Design 04): Illuminated with coral gradient fill, glowing border, intense bottom glow */
+.rail-segment.active {
+  color: #ffffff;
+  background: linear-gradient(180deg, rgba(244, 81, 53, 0.25) 0%, rgba(244, 81, 53, 0.08) 100%);
+  border: 1px solid #F45135;
+  border-bottom: 2px solid #F45135;
+  box-shadow: 0 4px 22px rgba(244, 81, 53, 0.45),
+              inset 0 0 16px rgba(244, 81, 53, 0.2),
+              0 0 12px rgba(244, 81, 53, 0.3);
+  font-weight: 700;
+}
+
+.rail-segment.active .segment-label {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(244, 81, 53, 0.6);
+}
+
+.rail-segment.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 15%;
+  right: 15%;
   height: 2px;
-  background: #F45135;
+  background: #ff745c;
+  box-shadow: 0 0 10px #F45135, 0 0 16px #F45135;
   border-radius: 1px;
-  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 8px rgba(244, 81, 53, 0.6);
 }
 
-.topbar nav a:hover,
-.topbar nav a.active {
-  color: #F45135;
-  opacity: 1;
+.rail-segment:focus-visible {
+  outline: 2px solid #F45135;
+  outline-offset: 3px;
+  z-index: 10;
 }
 
-.topbar nav a.active::after {
-  width: 100%;
-}
-
-.topbar-actions {
+/* 3. Right: Action Controls (Workbench & Let's Talk) */
+.rail-actions-group {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
+  position: relative;
+  transform-style: preserve-3d;
+  flex-shrink: 0;
 }
 
-.talk-btn {
-  display: flex;
+.rail-connector-right {
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(244, 81, 53, 0.6) 100%);
+  margin-right: 2px;
+}
+
+/* Workbench Trigger Button */
+.rail-workbench-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 16px;
+  background: rgba(14, 19, 16, 0.88);
+  border: 1px solid rgba(244, 81, 53, 0.35);
+  color: #e8ece6;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skewX(-12deg);
+  transform-style: preserve-3d;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s ease,
+              background 0.22s ease,
+              box-shadow 0.22s ease,
+              color 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.rail-workbench-btn > * {
+  transform: skewX(12deg);
+}
+
+.rail-workbench-btn .wb-prompt {
+  color: #F45135;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0;
+  transition: text-shadow 0.2s ease;
+}
+
+.rail-workbench-btn:hover {
+  background: rgba(22, 30, 25, 0.98);
+  border-color: #F45135;
+  color: #ffffff;
+  transform: translateY(-2px) translateZ(8px) skewX(-12deg);
+  box-shadow: 0 4px 16px rgba(244, 81, 53, 0.3), 0 0 12px rgba(244, 81, 53, 0.25);
+}
+
+.rail-workbench-btn:hover .wb-prompt {
+  text-shadow: 0 0 8px rgba(244, 81, 53, 0.9);
+}
+
+.rail-workbench-btn:focus-visible {
+  outline: 2px solid #F45135;
+  outline-offset: 3px;
+}
+
+/* Let's Talk Trigger Button */
+.rail-talk-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.rail-talk-btn {
+  position: relative;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
-  font-family: var(--font-mono);
-  letter-spacing: 0.05em;
-  text-decoration: none;
-  padding: 8px 18px;
-  border: 1px solid rgba(244, 81, 53, 0.4);
-  background: rgba(244, 81, 53, 0.08);
-  color: #F45135;
-  border-radius: 99px;
-  transition: all 0.3s var(--ease-cinematic);
-}
-
-.talk-btn:hover,
-.talk-btn.active {
-  background: #F45135;
+  height: 38px;
+  padding: 0 20px;
+  background: linear-gradient(135deg, #FF5733 0%, #F45135 100%);
+  border: 1px solid #FF6B4A;
   color: #ffffff;
-  border-color: #F45135;
-  box-shadow: 0 0 14px rgba(244, 81, 53, 0.4);
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transform: skewX(-14deg);
+  transform-style: preserve-3d;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.22s ease,
+              box-shadow 0.22s ease,
+              border-color 0.22s ease;
+  box-shadow: 0 4px 16px rgba(244, 81, 53, 0.45);
 }
 
-.talk-btn svg {
-  transition: transform 0.3s;
+.rail-talk-btn > * {
+  transform: skewX(14deg);
 }
 
-.talk-btn:hover svg {
+.rail-talk-btn svg {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.rail-talk-btn:hover {
+  background: linear-gradient(135deg, #FF6847 0%, #FF451A 100%);
+  border-color: #ff856b;
+  transform: translateY(-2px) translateZ(10px) skewX(-14deg);
+  box-shadow: 0 6px 24px rgba(244, 81, 53, 0.7), 0 0 16px rgba(244, 81, 53, 0.4);
+}
+
+.rail-talk-btn:hover svg {
   transform: translate(2px, -2px);
+}
+
+.rail-talk-btn.active {
+  background: linear-gradient(135deg, #FF6847 0%, #FF451A 100%);
+  border-color: #ff9d85;
+  box-shadow: 0 6px 26px rgba(244, 81, 53, 0.75), 0 0 18px rgba(244, 81, 53, 0.45);
+}
+
+.rail-talk-btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.rail-trailing-accents {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 8px;
+}
+
+.brand-name {
+  font-family: var(--font-body, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #f0f0eb;
+  line-height: 1.2;
+  white-space: nowrap;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.brand-monogram:hover .brand-name {
+  color: #ffffff;
 }
 
 .menu-toggle {
@@ -744,7 +1047,7 @@ p {
 .brand-monogram {
   display: inline-flex;
   align-items: center;
-  gap: 0;
+  gap: 10px;
   text-decoration: none;
   color: inherit;
   background: transparent !important;
@@ -754,6 +1057,7 @@ p {
   margin: 0;
   transition: opacity 0.2s ease;
   user-select: none;
+  flex-shrink: 0;
 }
 
 .brand-monogram:focus-visible {
@@ -2100,56 +2404,111 @@ body.light-mode .tools-grid span:hover {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .topbar {
-    height: 56px;
-    padding: 0 6%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    height: 60px;
+    padding: 0 4%;
   }
-  .brand-monogram {
-    gap: 0;
-    padding: 0;
-    margin: 0;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    display: inline-flex;
-    align-items: center;
-    height: 38px;
+
+  .rail-brand-accents,
+  .rail-nav,
+  .rail-connector-right,
+  .rail-trailing-accents,
+  .rail-talk-wrapper {
+    display: none !important;
   }
-  .brand-logo,
-  .brand-mobile-logo,
-  .brand-code-mobile {
-    display: inline-flex !important;
-    align-items: flex-end;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0;
-    margin: 0;
+
+  .rail-actions-group {
+    gap: 10px;
   }
-  .topbar nav, .talk-btn {
-    display: none;
+
+  .rail-workbench-btn {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 10px;
+    transform: none !important;
   }
+
+  .rail-workbench-btn > * {
+    transform: none !important;
+  }
+
   .menu-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 38px;
     height: 38px;
-    padding: 6px;
+    background: rgba(14, 19, 16, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 2px;
+    color: #e8ece6;
+    cursor: pointer;
+    transition: all 0.2s ease;
   }
+
+  .menu-toggle:hover {
+    border-color: #F45135;
+    color: #F45135;
+  }
+
   .menu-toggle svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
+
+  /* Segmented Technical Mobile Menu */
   .mobile-cinematic-menu {
     padding: 85px 6% 35px;
-    gap: 20px;
+    gap: 12px;
+    background: rgba(7, 10, 8, 0.98);
   }
+
   .mobile-cinematic-menu a {
-    font-size: clamp(20px, 5.5vw, 26px);
-    padding-bottom: 12px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: rgba(14, 19, 16, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 3px solid rgba(255, 255, 255, 0.25);
+    color: #d4ded6;
+    text-decoration: none;
+    font-family: var(--font-mono, monospace);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .mobile-cinematic-menu a:hover,
+  .mobile-cinematic-menu a.active {
+    background: linear-gradient(90deg, rgba(244, 81, 53, 0.18) 0%, rgba(14, 19, 16, 0.9) 100%);
+    border-color: rgba(244, 81, 53, 0.6);
+    border-left: 3px solid #F45135;
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(244, 81, 53, 0.2);
+  }
+
+  .mobile-cinematic-menu a .nav-idx {
+    font-family: var(--font-mono, monospace);
+    font-size: 11px;
+    color: #617064;
+    letter-spacing: 0.1em;
+  }
+
+  .mobile-cinematic-menu a.active .nav-idx,
+  .mobile-cinematic-menu a:hover .nav-idx {
+    color: #F45135;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    height: 58px;
   }
   .story-grid {
     grid-template-columns: 1fr;
@@ -2218,6 +2577,24 @@ body.light-mode .tools-grid span:hover {
 }
 
 @media (max-width: 480px) {
+  .topbar {
+    padding: 0 4%;
+  }
+  .brand-monogram {
+    gap: 7px;
+  }
+  .brand-logo .logo-letters {
+    font-size: 1.45rem;
+  }
+  .brand-name {
+    font-size: 13px;
+  }
+  .workbench-btn-text {
+    display: none;
+  }
+  .workbench-nav-btn {
+    padding: 6px 10px;
+  }
   .proof-section {
     padding: 46px 4.5% 36px;
   }
@@ -2236,6 +2613,12 @@ body.light-mode .tools-grid span:hover {
   .tools-grid span {
     padding: 6px 10px;
     gap: 6px;
+  }
+}
+
+@media (max-width: 340px) {
+  .brand-name {
+    font-size: 11.5px;
   }
 }
 

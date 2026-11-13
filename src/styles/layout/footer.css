@@ -1,111 +1,390 @@
-/* Footer */
-footer {
-    background: var(--darker-bg);
-    color: var(--text-secondary);
-    font-size: 1.08rem;
-    padding: 32px 0 32px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    width: 100vw;
-    left: 0;
-    position: relative;
-    box-sizing: border-box;
+/* ==========================================================================
+   GLOBAL EDITORIAL FOOTER
+   Consistent, minimal, balanced editorial footer for all 5 pages
+   ========================================================================== */
+
+.global-editorial-footer {
+  width: 100%;
+  background: #060807;
+  border-top: 1px solid var(--line, #222b26);
+  padding: 64px 5% 36px;
+  box-sizing: border-box;
+  color: #8b968e;
+  position: relative;
+  z-index: 10;
 }
 
-.footer-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 0 100px;
-    /* Increased to avoid overlap with fixed toggle buttons */
-    box-sizing: border-box;
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
-@media (max-width: 768px) {
-    .footer-content {
-        padding: 0 24px;
-        flex-direction: column;
-        text-align: center;
-        gap: 24px;
-    }
+.footer-top-row {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr 1.4fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 440px;
+}
+
+.footer-brand-col .brand-monogram {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink, #e8ece6);
+  margin-bottom: 4px;
+}
+
+.footer-brand-col .brand-name {
+  font-family: var(--font-display, 'Syne', sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.footer-tagline {
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  color: #F45135;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.footer-subtext {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #707e73;
+  margin: 0;
+}
+
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-col-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F45135;
+}
+
+/* Balanced horizontal layout on desktop for the 4 page links */
+.footer-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+}
+
+.footer-nav-links li {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-nav-links li a {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 13.5px;
+  color: #a4b5a6;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.footer-nav-links li a:hover {
+  color: #F45135;
+  transform: translateX(2px);
+}
+
+/* Balanced horizontal layout for Connect links on desktop */
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: center;
+}
+
+.footer-links-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links-list li a {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 13.5px;
+  color: #a4b5a6;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.footer-links-list li a:hover {
+  color: #F45135;
+  transform: translateX(2px);
+}
+
+.footer-links-list li a i {
+  font-size: 13.5px;
+  width: 15px;
+  text-align: center;
+  color: #8b968e;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.footer-links-list li a:hover i {
+  color: #F45135;
+}
+
+.footer-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .footer-copy {
-    font-weight: 500;
-    white-space: nowrap;
-    font-size: 1.1rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: #617064;
 }
 
-.footer-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* ==========================================================================
+   FLOATING BACK TO TOP BUTTON
+   Fixed circular trigger with subtle dark backdrop and coral accent
+   ========================================================================== */
+.floating-back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(14, 18, 15, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #c5d3c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 95;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.floating-back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.floating-back-to-top:hover {
+  background: rgba(244, 81, 53, 0.14);
+  border-color: rgba(244, 81, 53, 0.6);
+  color: #F45135;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(244, 81, 53, 0.28);
+}
+
+.floating-back-to-top:active {
+  transform: translateY(-1px);
+}
+
+.floating-back-to-top:focus-visible {
+  outline: 2px solid #F45135;
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .floating-back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 375px) {
+  .floating-back-to-top {
+    bottom: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-back-to-top {
+    transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   LAPTOP ADAPTATION (769px - 1024px)
+   Balanced column gaps and natural wrapping for narrower laptop viewports
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .footer-top-row {
+    gap: 32px;
+  }
+
+  .footer-nav-links,
+  .footer-links-list {
+    gap: 10px 18px;
+  }
+}
+
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE FOOTER (<= 768px)
+   Compact 2-column grid for navigation & connect links without vertical bloat
+   ========================================================================== */
+@media (max-width: 768px) {
+  .global-editorial-footer {
+    padding: 44px 5% 28px;
+  }
+
+  .footer-container {
+    gap: 32px;
+  }
+
+  .footer-top-row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-brand-col {
+    max-width: 100%;
     gap: 10px;
-}
+  }
 
-.footer-nav {
-    display: flex;
-    align-items: center;
+  .footer-nav-col {
     gap: 12px;
-    font-size: 1.08rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+  }
 
-.footer-nav a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.2s;
-    font-weight: 500;
-}
+  /* Compact 2-column grid for navigation & connect on mobile */
+  .footer-nav-links,
+  .footer-links-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 16px;
+  }
 
-.footer-nav a:hover {
-    color: var(--accent);
-}
+  .footer-nav-links li,
+  .footer-links-list li {
+    min-width: 0;
+  }
 
-.footer-nav span {
-    color: var(--text-secondary);
-    font-size: 1.1em;
-}
-
-.footer-privacy {
-    display: flex;
-    justify-content: center;
+  .footer-nav-links li a,
+  .footer-links-list li a {
+    font-size: 13px;
+    min-height: 36px;
+    padding: 6px 0;
+    display: inline-flex;
     align-items: center;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
+
+  .footer-links-list li a i {
+    font-size: 13px;
+    width: 14px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding-top: 20px;
+  }
 }
 
-.footer-privacy a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 4px 0;
-    transition: color 0.2s ease;
-    border-bottom: 1px solid transparent;
-}
+/* Narrow mobile optimization (320px - 375px) */
+@media (max-width: 375px) {
+  .global-editorial-footer {
+    padding: 36px 4% 24px;
+  }
 
-.footer-privacy a:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-}
+  .footer-container {
+    gap: 24px;
+  }
 
-.footer-socials {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-top: 6px;
-}
+  .footer-top-row {
+    gap: 22px;
+  }
 
-.footer-socials a {
-    color: var(--accent);
-    font-size: 1.3rem;
-    transition: color 0.2s;
-    text-decoration: none;
-}
+  .footer-nav-links,
+  .footer-links-list {
+    gap: 8px 12px;
+  }
 
-.footer-socials a:hover {
-    color: var(--accent-light);
+  .footer-nav-links li a,
+  .footer-links-list li a {
+    font-size: 12px;
+    gap: 6px;
+    min-height: 34px;
+    padding: 5px 0;
+  }
+
+  .footer-links-list li a i {
+    font-size: 12px;
+    width: 13px;
+  }
+
+  .footer-subtext {
+    font-size: 12px;
+  }
+
+  .footer-copy {
+    font-size: 10px;
+  }
 }

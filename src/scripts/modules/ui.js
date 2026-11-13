@@ -5,7 +5,7 @@ export function initUI() {
       strings: [
         "Saketh Lingerker",
         "Incoming Systems Engineer @ TCS",
-        "Full-Stack & AI Engineer",
+        "Systems Engineer & AI Developer",
         "Former AI/ML Research Intern @ IIIT-H",
       ],
       typeSpeed: 50,
@@ -56,11 +56,9 @@ export function initUI() {
   // Refined Active Navigation, Thin Scroll-Progress Line & Header Scroll Listener
   const desktopNavLinks = document.querySelectorAll('.topbar nav a');
   const mobileNavLinks = document.querySelectorAll('.mobile-cinematic-nav a');
-  const talkBtn = document.querySelector('.talk-btn');
   const readingProgressBar = document.querySelector('.reading-progress');
   const scrollProgressLegacy = document.getElementById('scroll-progress');
   const topbar = document.querySelector('.topbar') || document.querySelector('.header');
-  const backToTopBtn = document.getElementById('back-to-top');
 
   const trackedSectionIds = ['home', 'proof', 'work', 'projects', 'toolkit', 'journey', 'contact'];
 
@@ -102,10 +100,6 @@ export function initUI() {
       link.classList.toggle('active', isMatch);
     });
 
-    if (talkBtn) {
-      talkBtn.classList.toggle('active', activeId === 'contact');
-    }
-
     // 2. Thin Scroll Progress Indicator
     if (docHeight > winHeight) {
       const progressFraction = Math.min(1, Math.max(0, scrollTop / (docHeight - winHeight)));
@@ -122,19 +116,10 @@ export function initUI() {
       topbar.classList.toggle('scrolled', scrollTop > 60);
       topbar.classList.toggle('shrink', scrollTop > 100);
     }
-
-    // 4. Back to Top Visibility
-    if (backToTopBtn) {
-      backToTopBtn.classList.toggle('visible', scrollTop > 500);
-    }
   };
 
   window.addEventListener('scroll', updateScrollState, { passive: true });
   updateScrollState();
-
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
 
   // Resume Modal
   const resumeModal = document.getElementById("resume-modal");

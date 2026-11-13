@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Saketh Lingerker - Systems Engineer &amp; AI Developer</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Professional background, engineering philosophy, career journey at TCS Digital and IIIT Hyderabad, education, and technical toolkit of Saketh Lingerker — Systems Engineer &amp; AI Developer." />
+  <meta name="keywords"
+    content="Saketh Lingerker About, Systems Engineer, AI Developer, Software Developer, IIIT Hyderabad Research, TCS Digital, JNTUH, Technical Skills, Engineering Philosophy" />
+  <meta name="author" content="Saketh Lingerker" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About · Systems Engineer &amp; AI Developer · Saketh Lingerker" />
+  <meta property="og:description"
+    content="Professional background, engineering approach, experience at TCS and IIIT Hyderabad, education, and technical skills." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sakethlingerker.github.io/Portfolio/about/" />
+  <meta property="og:image" content="../src/assets/Display-picture.jpg" />
+
+  <link rel="icon" type="image/jpeg" href="../src/assets/Display-picture.jpg" />
+  <link rel="manifest" href="../manifest.json" />
+  <meta name="theme-color" content="#080b09" />
+  <link rel="apple-touch-icon" href="../assets/ls-logo.jpg" />
+
+  <!-- Google Fonts: Syne, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Font Awesome & Devicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="../src/styles/preloader.css" />
+  <link rel="stylesheet" href="../src/styles/main.css" />
+
+  <script>
+    (function () {
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem("theme");
+      } catch (e) { }
+      if (savedTheme === "light") {
+        document.documentElement.classList.add("light-mode");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <!-- Film Grain Overlay -->
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- Ambient Radial World Lighting -->
+  <div class="world" aria-hidden="true"></div>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress" aria-hidden="true"></div>
+
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-link"
+    style="position: absolute; top: -90px; left: 20px; z-index: 999; background: #fff; color: #000; padding: 10px 18px; text-decoration: none; font-family: var(--font-mono); font-size: 11px;">Skip
+    to content</a>
+
+  <!-- Top Global Navigation Bar: Futuristic Segmented Rail (Design 04) -->
+  <header class="topbar segmented-rail-topbar">
+    <div class="rail-container">
+      <!-- Left: Brand Section with Geometric Chamfered Badge -->
+      <div class="rail-brand-group">
+        <a href="../" class="rail-brand-badge" aria-label="Saketh Lingerker Home">
+          <span class="brand-logo" aria-hidden="true">
+            <span class="logo-letters">sl</span><span class="logo-dot"></span>
+          </span>
+        </a>
+        <div class="rail-brand-accents" aria-hidden="true">
+          <span class="rail-slash"></span>
+          <span class="rail-slash"></span>
+          <span class="rail-slash"></span>
+          <span class="rail-line-connector"></span>
+        </div>
+      </div>
+
+      <!-- Center: Segmented Navigation Rail -->
+      <nav class="rail-nav" aria-label="Main navigation">
+        <div class="rail-track">
+          <a href="../" class="rail-segment" data-page="home">
+            <span class="segment-label">HOME</span>
+          </a>
+          <a href="../projects/" class="rail-segment" data-page="projects">
+            <span class="segment-label">PROJECTS</span>
+          </a>
+          <a href="./" class="rail-segment active" data-page="about">
+            <span class="segment-label">ABOUT</span>
+          </a>
+          <a href="../research/" class="rail-segment" data-page="research">
+            <span class="segment-label">RESEARCH</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Right: Action Controls (Workbench & Let's Talk) -->
+      <div class="rail-actions-group">
+        <span class="rail-connector-right" aria-hidden="true"></span>
+        <button id="workbench-nav-trigger" class="rail-workbench-btn" title="Open Engineering Workbench (Ctrl+K)"
+          aria-label="Open Engineering Workbench">
+          <span class="wb-prompt mono">&gt;_</span>
+          <span class="workbench-btn-text">WORKBENCH</span>
+        </button>
+        <div class="rail-talk-wrapper">
+          <a class="rail-talk-btn" href="../contact/" data-page="contact" aria-label="Contact - Let's talk">
+            <span class="talk-btn-text">LET'S TALK</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+          <div class="rail-trailing-accents" aria-hidden="true">
+            <span class="rail-slash"></span>
+            <span class="rail-slash"></span>
+            <span class="rail-slash"></span>
+          </div>
+        </div>
+        <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Cinematic Menu Overlay -->
+  <div class="mobile-cinematic-menu" aria-hidden="true">
+    <button id="mobile-workbench-trigger" class="rail-workbench-btn"
+      style="width: 100%; justify-content: center; margin-bottom: 12px; padding: 12px; transform: none;">
+      <span class="wb-prompt mono">&gt;_</span>
+      <span>ENGINEERING WORKBENCH (Ctrl+K)</span>
+    </button>
+    <a href="../" data-page="home"><span>HOME</span> <span class="mono nav-idx">01</span></a>
+    <a href="../projects/" data-page="projects"><span>PROJECTS</span> <span class="mono nav-idx">02</span></a>
+    <a href="./" data-page="about"><span>ABOUT</span> <span class="mono nav-idx">03</span></a>
+    <a href="../research/" data-page="research"><span>RESEARCH</span> <span class="mono nav-idx">04</span></a>
+    <a href="../contact/" data-page="contact"><span>LET'S TALK</span> <span class="mono nav-idx">05</span></a>
+  </div>
+
+  <!-- Main Content Wrap -->
+  <main id="main-content">
+    <div class="about-page-container">
+
+      <!-- ======================================================================
+           1. PROFESSIONAL INTRODUCTION & EDITORIAL HEADER
+           ====================================================================== -->
+      <header class="about-editorial-header">
+        <span class="about-kicker mono" data-reveal="fade-up">BACKGROUND &amp; IDENTITY</span>
+        <h1 class="about-editorial-title" data-reveal="heading">
+          Systems Engineer.<br /><em>AI Developer. Systems Mindset.</em>
+        </h1>
+      </header>
+
+      <!-- Two-Column Editorial Bio & Engineering Philosophy -->
+      <div class="about-intro-grid">
+        <div class="about-bio-text" data-reveal="fade-up">
+          <p>
+            I am Saketh Lingerker, a <strong>Systems Engineer and AI Developer</strong> focused on building scalable
+            software systems, applied AI solutions, and production-grade applications.
+            My work centers on the intersection of modern software architecture and practical artificial intelligence —
+            ensuring systems are performant, reliable, and grounded in concrete requirements.
+          </p>
+          <p>
+            During my research internship at the <strong>Speech Lab, Language Technologies Research Center (LTRC), IIIT
+              Hyderabad</strong>, I researched Voice Activity Detection (VAD) algorithms, developing audio preprocessing
+            pipelines and acoustic feature extractors to advance AI-assisted video summarization in noisy acoustic
+            environments.
+          </p>
+          <p>
+            Through rigorous technical evaluations, I achieved <strong>89% in the TCS iON Graduate Engineer Trainee
+              (GET-IT)</strong> exam and <strong>91.51% in the TCS iON Cognitive NQT</strong>, securing an offer as an
+            <strong>Incoming Systems Engineer at Tata Consultancy Services (TCS Digital)</strong>.
+          </p>
+          <p>
+            Whether architecting an end-to-end MLOps pipeline on AWS EC2/ECR with automated CI/CD runners, designing a
+            high-precision enterprise RAG agent with hybrid vector search, or crafting responsive full-stack web
+            applications, I bring disciplined engineering rigor to every layer of the stack.
+          </p>
+        </div>
+
+        <!-- Engineering Philosophy Panel -->
+        <aside class="philosophy-panel" data-reveal="fade-up">
+          <div class="philosophy-header">
+            <i class="fas fa-compass" aria-hidden="true"></i>
+            <span>ENGINEERING PHILOSOPHY</span>
+          </div>
+          <ul class="philosophy-list">
+            <li class="philosophy-item">
+              <span class="phil-title">1. Grounded Systems over Hype</span>
+              <p class="phil-desc">
+                Building AI that cites strict page-level sources, validates every input, and eliminates hallucination.
+              </p>
+            </li>
+            <li class="philosophy-item">
+              <span class="phil-title">2. Modularity &amp; Clean Contracts</span>
+              <p class="phil-desc">
+                Decoupled backend services, clean REST API boundaries, and isolated container execution.
+              </p>
+            </li>
+            <li class="philosophy-item">
+              <span class="phil-title">3. Quantifiable Verification</span>
+              <p class="phil-desc">
+                Testing every pipeline against empirical benchmarks: accuracy, latency, and throughput.
+              </p>
+            </li>
+            <li class="philosophy-item">
+              <span class="phil-title">4. Continuous Technical Growth</span>
+              <p class="phil-desc">
+                Iterative mastery through real-world system building, research exploration, and peer mentorship.
+              </p>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
+      <!-- ======================================================================
+           2. THE JOURNEY (EXPERIENCE & EDUCATION EDITORIAL TIMELINE)
+           ====================================================================== -->
+      <section class="about-section-block" aria-label="Career Journey and Education">
+        <div class="about-section-header">
+          <h2 class="about-section-heading" data-reveal="heading">The Journey</h2>
+          <span class="about-section-sub mono" data-reveal="fade-up">Professional Milestones &amp; Academic
+            Foundation</span>
+        </div>
+
+        <div class="journey-timeline" data-reveal-group="timeline">
+          <!-- 1. TCS Experience -->
+          <article class="timeline-entry" data-category="experience">
+            <div class="timeline-meta">
+              <span class="timeline-date mono">Jul 2025 – Feb 2026</span>
+              <span class="timeline-badge badge-amber mono">Work Experience</span>
+            </div>
+            <div class="timeline-marker" aria-hidden="true">
+              <span class="marker-dot"></span>
+              <span class="marker-line"></span>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-title-row">
+                <h3 class="timeline-org">TCS iON Job Achiever · Tata Consultancy Services</h3>
+                <span class="timeline-location mono soft">Hyderabad, India</span>
+              </div>
+              <div class="timeline-role">Graduate Engineer Trainee - IT (Incoming Systems Engineer @ TCS Digital)</div>
+              <p class="timeline-desc">
+                Completed intensive Graduate Engineer Trainee (GET-IT) training program focused on software engineering
+                fundamentals, systems architecture, and core enterprise IT competencies.
+              </p>
+              <div class="timeline-expandable" id="details-tcs" hidden>
+                <div class="timeline-details-inner">
+                  <ul class="timeline-list">
+                    <li>
+                      <strong>TCS iON NPT – Graduate Engineer Trainee (GET-IT):</strong> 89%
+                      <a href="../assets/certificates/TCS%20iON%20NPT%20-%20GET%20IT.pdf" target="_blank"
+                        rel="noopener noreferrer" class="timeline-cert-link"><i class="fas fa-file-pdf"></i> View
+                        Certificate ↗</a>
+                    </li>
+                    <li>
+                      <strong>TCS iON National Qualifier Test (NQT) – Cognitive:</strong> 91.51%
+                      <a href="../assets/certificates/TCS%20iON%20NQT%20-%20Cognitive.pdf" target="_blank"
+                        rel="noopener noreferrer" class="timeline-cert-link"><i class="fas fa-file-pdf"></i> View
+                        Scorecard ↗</a>
+                    </li>
+                    <li>
+                      <strong>TCS iON NQT – Psychometric Assessment:</strong> High Performance
+                      <a href="../assets/certificates/TCS%20iON%20NQT%20-%20Cognitive.pdf" target="_blank"
+                        rel="noopener noreferrer" class="timeline-cert-link"><i class="fas fa-file-pdf"></i> View
+                        Scorecard ↗</a>
+                    </li>
+                    <li>
+                      <strong>TCS iON NPT – English with British Council:</strong> CEFR B1 (Speaking), CEFR B2+
+                      (Writing)
+                      <a href="../assets/certificates/English%20with%20British%20Council.pdf" target="_blank"
+                        rel="noopener noreferrer" class="timeline-cert-link"><i class="fas fa-file-pdf"></i> View
+                        Certificate ↗</a>
+                    </li>
+                    <li>
+                      <strong>Certificate of Proficiency:</strong> TCS iON Program Completion
+                      <a href="../assets/certificates/Certificate%20of%20Proficiency.pdf" target="_blank"
+                        rel="noopener noreferrer" class="timeline-cert-link"><i class="fas fa-file-pdf"></i> View
+                        Certificate ↗</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <button type="button" class="timeline-toggle-btn" aria-expanded="false" aria-controls="details-tcs">
+                <span class="toggle-text">View details</span>
+                <svg class="toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- 2. IIIT Hyderabad Internship -->
+          <article class="timeline-entry" data-category="research">
+            <div class="timeline-meta">
+              <span class="timeline-date mono">Nov 2024 – Jun 2025</span>
+              <span class="timeline-badge badge-purple mono">Research Internship</span>
+            </div>
+            <div class="timeline-marker" aria-hidden="true">
+              <span class="marker-dot"></span>
+              <span class="marker-line"></span>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-title-row">
+                <h3 class="timeline-org">IIIT Hyderabad</h3>
+                <span class="timeline-location mono soft">Hyderabad, India</span>
+              </div>
+              <div class="timeline-role">AI/ML Research Intern · Speech Lab (LTRC)</div>
+              <p class="timeline-desc">
+                Conducted applied research on Voice Activity Detection (VAD) algorithms and speech processing to enhance
+                AI-assisted video summarization under real-world acoustic noise.
+              </p>
+              <div class="timeline-expandable" id="details-iiit" hidden>
+                <div class="timeline-details-inner">
+                  <ul class="timeline-list">
+                    <li>Implemented and evaluated Rapid Voice Activity Detection (VAD) models using Python, PyTorch, and
+                      Librosa.</li>
+                    <li>Developed automated data preprocessing pipelines and acoustic feature extraction scripts (MFCC,
+                      STFT).</li>
+                    <li>Collaborated with research mentors to benchmark summarization accuracy and processing latency.
+                    </li>
+                  </ul>
+                  <div class="timeline-cert-block">
+                    <a href="../assets/certificates/SakethCertificate-IIIT.pdf" target="_blank"
+                      rel="noopener noreferrer" class="timeline-cert-link" style="margin-left: 0; padding: 6px 14px;">
+                      <i class="fas fa-file-pdf"></i> Verified Research Internship Certificate ↗
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="timeline-toggle-btn" aria-expanded="false" aria-controls="details-iiit">
+                <span class="toggle-text">View details</span>
+                <svg class="toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- 3. B.Tech Education -->
+          <article class="timeline-entry" data-category="education">
+            <div class="timeline-meta">
+              <span class="timeline-date mono">Dec 2021 – Jul 2025</span>
+              <span class="timeline-badge badge-blue mono">Under Graduation</span>
+            </div>
+            <div class="timeline-marker" aria-hidden="true">
+              <span class="marker-dot"></span>
+              <span class="marker-line"></span>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-title-row">
+                <h3 class="timeline-org">JNTUH University</h3>
+                <span class="timeline-location mono soft">Telangana, India</span>
+              </div>
+              <div class="timeline-role">B.Tech Computer Science and Engineering</div>
+              <div>
+                <span class="timeline-grade">CGPA: 7.47 / 10.0</span>
+              </div>
+              <p class="timeline-desc">
+                Specialized in core computer science disciplines including Data Structures &amp; Algorithms, Operating
+                Systems,
+                DBMS, and Computer Networks, alongside Machine Learning and Deep Learning.
+              </p>
+              <div class="timeline-expandable" id="details-jntuh" hidden>
+                <div class="timeline-details-inner">
+                  <ul class="timeline-list">
+                    <li>Led technical workshops and peer mentorship as Coding Club Mentor (50+ students mentored).</li>
+                    <li>Head of technical infrastructure for annual college hack tracks as College Fest Coordinator.
+                    </li>
+                    <li>Developed multiple full-stack and machine learning applications.</li>
+                  </ul>
+                </div>
+              </div>
+              <button type="button" class="timeline-toggle-btn" aria-expanded="false" aria-controls="details-jntuh">
+                <span class="toggle-text">View details</span>
+                <svg class="toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- 4. Intermediate Education -->
+          <article class="timeline-entry" data-category="education">
+            <div class="timeline-meta">
+              <span class="timeline-date mono">March 2021</span>
+              <span class="timeline-badge badge-lime mono">Higher Education</span>
+            </div>
+            <div class="timeline-marker" aria-hidden="true">
+              <span class="marker-dot"></span>
+              <span class="marker-line"></span>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-title-row">
+                <h3 class="timeline-org">Sri Gayatri Junior College</h3>
+                <span class="timeline-location mono soft">Hyderabad, India</span>
+              </div>
+              <div class="timeline-role">Intermediate (12th Grade) · Mathematics, Physics &amp; Chemistry</div>
+              <div>
+                <span class="timeline-grade">Percentage: 94.4%</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Secondary School Education -->
+          <article class="timeline-entry" data-category="education">
+            <div class="timeline-meta">
+              <span class="timeline-date mono">March 2019</span>
+              <span class="timeline-badge badge-coral mono">Secondary Education</span>
+            </div>
+            <div class="timeline-marker" aria-hidden="true">
+              <span class="marker-dot"></span>
+              <span class="marker-line"></span>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-title-row">
+                <h3 class="timeline-org">Vaishnavi High School</h3>
+                <span class="timeline-location mono soft">Hyderabad, India</span>
+              </div>
+              <div class="timeline-role">Secondary School (10th Grade)</div>
+              <div>
+                <span class="timeline-grade">GPA: 9.5 / 10.0</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           3. TECHNICAL TOOLKIT (AN ENGINEER'S VOCABULARY ACCORDION)
+           ====================================================================== -->
+      <section class="about-section-block" aria-label="Technical Toolkit and Skills">
+        <div class="about-section-header">
+          <h2 class="about-section-heading" data-reveal="heading">Technical Toolkit</h2>
+          <span class="about-section-sub mono" data-reveal="fade-up">Frameworks, Languages, Cloud &amp; Storage</span>
+        </div>
+
+        <div class="tool-list" data-reveal-group="skills">
+          <!-- Row 1: AI & Deep Learning -->
+          <div class="tool-row expanded">
+            <button aria-expanded="true">
+              <span>AI &amp; Deep Learning <span class="tool-count">7</span></span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+            <div class="tool-content">
+              <div>
+                <p>Model architectures, vector search, embeddings, acoustic signal processing, and generative LLM
+                  orchestration.</p>
+                <div class="tools-grid">
+                  <span><i class="devicon-pytorch-original"></i> PyTorch</span>
+                  <span><i class="devicon-tensorflow-original"></i> TensorFlow</span>
+                  <span><i class="fas fa-link"></i> LangChain</span>
+                  <span><i class="fas fa-bolt"></i> FAISS</span>
+                  <span><i class="fas fa-cubes"></i> ChromaDB</span>
+                  <span><i class="devicon-python-plain"></i> Scikit-learn</span>
+                  <span><i class="fas fa-robot"></i> Hugging Face</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Systems & Backend -->
+          <div class="tool-row">
+            <button aria-expanded="false">
+              <span>Systems &amp; Backend <span class="tool-count">8</span></span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+            <div class="tool-content">
+              <div>
+                <p>High-concurrency servers, clean API contracts, and low-level runtime efficiency.</p>
+                <div class="tools-grid">
+                  <span><i class="devicon-python-plain"></i> Python</span>
+                  <span><i class="devicon-java-plain"></i> Java</span>
+                  <span><i class="devicon-fastapi-plain"></i> FastAPI</span>
+                  <span><i class="devicon-nodejs-plain"></i> Node.js</span>
+                  <span><i class="devicon-express-original"></i> Express</span>
+                  <span><i class="fas fa-network-wired"></i> REST APIs</span>
+                  <span><i class="devicon-linux-plain"></i> Linux</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: Data & Storage -->
+          <div class="tool-row">
+            <button aria-expanded="false">
+              <span>Data &amp; Storage <span class="tool-count">6</span></span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+            <div class="tool-content">
+              <div>
+                <p>Schema design, analytical query optimization, and structured &amp; unstructured stores.</p>
+                <div class="tools-grid">
+                  <span><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
+                  <span><i class="devicon-mongodb-plain"></i> MongoDB</span>
+                  <span><i class="devicon-mysql-plain"></i> MySQL</span>
+                  <span><i class="devicon-pandas-plain"></i> Pandas</span>
+                  <span><i class="devicon-numpy-plain"></i> NumPy</span>
+                  <span><i class="devicon-microsoftsqlserver-plain"></i> SQL Server</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 4: Cloud & MLOps -->
+          <div class="tool-row">
+            <button aria-expanded="false">
+              <span>Cloud &amp; MLOps <span class="tool-count">6</span></span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+            <div class="tool-content">
+              <div>
+                <p>Container isolation, automated CI/CD runners, and scalable cloud execution on AWS.</p>
+                <div class="tools-grid">
+                  <span><i class="devicon-docker-plain"></i> Docker</span>
+                  <span><i class="fab fa-aws"></i> AWS EC2 / ECR</span>
+                  <span><i class="devicon-githubactions-plain"></i> GitHub Actions</span>
+                  <span><i class="devicon-git-plain"></i> Git</span>
+                  <span><i class="devicon-streamlit-plain"></i> Streamlit</span>
+                  <span><i class="devicon-postman-plain"></i> Postman</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           4. VERIFIED CREDENTIALS & INDUSTRY SIMULATIONS
+           ====================================================================== -->
+      <section class="about-section-block" aria-label="Verified Credentials">
+        <div class="about-section-header">
+          <h2 class="about-section-heading" data-reveal="heading">Verified Credentials</h2>
+          <span class="about-section-sub mono" data-reveal="fade-up">Institutional &amp; Industry Certifications</span>
+        </div>
+
+        <div class="credentials-list" data-reveal-group="credentials">
+          <a href="../assets/certificates/TCS%20iON%20NPT%20-%20GET%20IT.pdf" target="_blank" rel="noopener noreferrer"
+            class="credential-row">
+            <span class="credential-category mono">Evaluation</span>
+            <div class="credential-main">
+              <span class="credential-title">TCS iON NPT – Graduate Engineer Trainee (GET-IT)</span>
+              <span class="credential-details mono">Score: 89% · Systems Architecture, Data Structures,
+                Algorithms</span>
+            </div>
+            <div class="credential-meta">
+              <span class="credential-issuer mono">Tata Consultancy Services</span>
+              <span class="credential-date mono">Jul 2025</span>
+            </div>
+            <span class="credential-action"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg></span>
+          </a>
+
+          <a href="../assets/certificates/TCS%20iON%20NQT%20-%20Cognitive.pdf" target="_blank" rel="noopener noreferrer"
+            class="credential-row">
+            <span class="credential-category mono">Cognitive</span>
+            <div class="credential-main">
+              <span class="credential-title">TCS iON National Qualifier Test (NQT) – Cognitive</span>
+              <span class="credential-details mono">Score: 91.51% · Numerical, Verbal, and Logical Reasoning</span>
+            </div>
+            <div class="credential-meta">
+              <span class="credential-issuer mono">Tata Consultancy Services</span>
+              <span class="credential-date mono">Jul 2025</span>
+            </div>
+            <span class="credential-action"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg></span>
+          </a>
+
+          <a href="../assets/certificates/AWS%20Cloud%20Practitioner%20Essentials.pdf" target="_blank"
+            rel="noopener noreferrer" class="credential-row">
+            <span class="credential-category mono">Cloud</span>
+            <div class="credential-main">
+              <span class="credential-title">AWS Cloud Practitioner Essentials</span>
+              <span class="credential-details mono">Cloud Computing Architecture, IAM Security, Global Infrastructure
+                &amp; Billing</span>
+            </div>
+            <div class="credential-meta">
+              <span class="credential-issuer mono">Amazon Web Services</span>
+              <span class="credential-date mono">Apr 2025</span>
+            </div>
+            <span class="credential-action"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg></span>
+          </a>
+
+          <a href="../assets/certificates/Data%20Analytics%20Job%20Simulation.pdf" target="_blank"
+            rel="noopener noreferrer" class="credential-row">
+            <span class="credential-category mono">Simulation</span>
+            <div class="credential-main">
+              <span class="credential-title">Deloitte Australia – Data Analytics Simulation</span>
+              <span class="credential-details mono">Credential ID: RubyKoEwttXCc7pDv · Forensic Technology, Data
+                Visualization</span>
+            </div>
+            <div class="credential-meta">
+              <span class="credential-issuer mono">Deloitte · Forage</span>
+              <span class="credential-date mono">Dec 2025</span>
+            </div>
+            <span class="credential-action"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg></span>
+          </a>
+
+          <a href="../assets/certificates/GenAI%20Powered%20Data%20Analytics%20Job%20Simulation.pdf" target="_blank"
+            rel="noopener noreferrer" class="credential-row">
+            <span class="credential-category mono">Simulation</span>
+            <div class="credential-main">
+              <span class="credential-title">Tata Group – GenAI Powered Data Analytics Simulation</span>
+              <span class="credential-details mono">Credential ID: 4pc3JgG3CEuqSST9g · Exploratory Data Analysis &amp;
+                Delinquency Risk AI</span>
+            </div>
+            <div class="credential-meta">
+              <span class="credential-issuer mono">Tata Group · Forage</span>
+              <span class="credential-date mono">Dec 2025</span>
+            </div>
+            <span class="credential-action"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg></span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ======================================================================
+       GLOBAL EDITORIAL FOOTER
+       ====================================================================== -->
+  <footer class="global-editorial-footer">
+    <div class="footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand-col">
+          <a href="../" class="brand-monogram">
+
+            <span class="brand-name">Saketh Lingerker</span>
+          </a>
+          <p class="footer-tagline">Systems Engineer &amp; AI Developer</p>
+        </div>
+        <div class="footer-nav-col">
+          <span class="footer-col-title mono">// NAVIGATION</span>
+          <ul class="footer-nav-links">
+            <li><a href="../" data-footer-link="home">Home</a></li>
+            <li><a href="../projects/" data-footer-link="projects">Projects</a></li>
+            <li><a href="../research/" data-footer-link="research">Research</a></li>
+            <li><a href="../contact/" data-footer-link="contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <span class="footer-col-title mono">// CONNECT</span>
+          <ul class="footer-links-list">
+            <li><a href="https://github.com/sakethlingerker" target="_blank" rel="noopener noreferrer"><i
+                  class="fab fa-github"></i> GitHub ↗</a></li>
+            <li><a href="https://www.linkedin.com/in/sakethlingerker/" target="_blank" rel="noopener noreferrer"><i
+                  class="fab fa-linkedin"></i> LinkedIn ↗</a></li>
+            <li><a href="mailto:saketh1805@gmail.com"><i class="fas fa-envelope"></i> Email ↗</a></li>
+            <li><a href="../assets/Saketh_Lingerker_8688791352.pdf" target="_blank" rel="noopener noreferrer"><i
+                  class="fas fa-file-pdf"></i> Resume ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <span class="footer-copy mono">&copy; 2026 Saketh Lingerker. Built with engineering rigor.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       ENGINEERING WORKBENCH MODAL (Ctrl+K Diagnostic Suite)
+       ====================================================================== -->
+  <div id="workbench-modal" class="workbench-modal" role="dialog" aria-modal="true"
+    aria-labelledby="workbench-modal-title" aria-hidden="true">
+    <div class="workbench-backdrop" id="workbench-backdrop"></div>
+    <div class="workbench-dialog">
+      <header class="workbench-header">
+        <div class="workbench-brand">
+          <span id="workbench-modal-title" class="workbench-title">Engineering Workbench</span>
+          <span class="workbench-version">v1.0</span>
+        </div>
+        <div class="workbench-header-actions">
+          <button id="workbench-close-btn" class="workbench-close-btn"
+            aria-label="Close Engineering Workbench">&times;</button>
+        </div>
+      </header>
+
+      <div class="workbench-search-area">
+        <div class="workbench-search-wrapper">
+          <i class="fas fa-search workbench-search-icon" aria-hidden="true"></i>
+          <input type="text" id="workbench-search-input" class="workbench-search-input"
+            placeholder="Search projects, tech, concepts, tools, or ask a question..." autocomplete="off"
+            spellcheck="false" />
+        </div>
+        <div class="workbench-try-row" aria-label="Try quick queries">
+          <span class="workbench-try-label">Try:</span>
+          <button class="workbench-try-chip" data-query="rag">rag</button>
+          <button class="workbench-try-chip" data-query="aws">aws</button>
+          <button class="workbench-try-chip" data-query="docker">docker</button>
+          <button class="workbench-try-chip" data-query="system design">system design</button>
+          <button class="workbench-try-chip" data-query="machine learning">machine learning</button>
+          <button class="workbench-try-chip" data-query="data pipeline">data pipeline</button>
+          <button class="workbench-try-chip" data-query="react">react</button>
+          <button class="workbench-try-chip" data-query="resume">resume</button>
+        </div>
+      </div>
+
+      <nav class="workbench-modes-grid" aria-label="Workbench modes">
+        <button class="workbench-mode-card active" data-mode="projects" id="mode-btn-projects">
+          <div class="workbench-mode-top">
+            <i class="fas fa-search workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">01</span>
+          </div>
+          <h3 class="workbench-mode-name">Find Projects</h3>
+          <p class="workbench-mode-desc">Search by tech, domain, or problem</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="architecture" id="mode-btn-architecture">
+          <div class="workbench-mode-top">
+            <i class="fas fa-project-diagram workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">02</span>
+          </div>
+          <h3 class="workbench-mode-name">Inspect Architecture</h3>
+          <p class="workbench-mode-desc">Explore system components &amp; decisions</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="compare" id="mode-btn-compare">
+          <div class="workbench-mode-top">
+            <i class="fas fa-layer-group workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">03</span>
+          </div>
+          <h3 class="workbench-mode-name">Compare Projects</h3>
+          <p class="workbench-mode-desc">Side-by-side tech, features &amp; use cases</p>
+        </button>
+
+        <button class="workbench-mode-card" data-mode="ask" id="mode-btn-ask">
+          <div class="workbench-mode-top">
+            <i class="fas fa-comment-dots workbench-mode-icon" aria-hidden="true"></i>
+            <span class="workbench-mode-index">04</span>
+          </div>
+          <h3 class="workbench-mode-name">Ask About My Work</h3>
+          <p class="workbench-mode-desc">Get answers from my portfolio data</p>
+        </button>
+      </nav>
+
+      <div class="workbench-content-area">
+        <main class="workbench-main-view">
+          <div id="workbench-pane-projects" class="workbench-view-pane active">
+            <div class="workbench-section-header">
+              <span class="workbench-section-title">// PROJECTS MATCHING <span
+                  id="workbench-query-display">"all"</span></span>
+              <span class="workbench-section-meta" id="workbench-results-count">10 results</span>
+            </div>
+            <div id="workbench-results-list" class="workbench-results-list" role="list"></div>
+          </div>
+
+          <div id="workbench-pane-architecture" class="workbench-view-pane">
+            <div class="workbench-arch-container">
+              <div class="workbench-arch-header">
+                <span class="workbench-section-title">// SYSTEM ARCHITECTURE INSPECTOR</span>
+                <select id="workbench-arch-project-select" class="workbench-project-select">
+                  <option value="enterprise_rag">Enterprise-Ready RAG Agent</option>
+                  <option value="mlops">Vehicle Insurance MLOps Pipeline</option>
+                </select>
+              </div>
+              <div id="workbench-arch-flow" class="workbench-arch-flow"></div>
+              <div id="workbench-arch-detail" class="workbench-arch-detail-card"></div>
+            </div>
+          </div>
+
+          <div id="workbench-pane-compare" class="workbench-view-pane">
+            <div class="workbench-compare-container">
+              <div class="workbench-section-header">
+                <span class="workbench-section-title">// SIDE-BY-SIDE SPECIFICATION COMPARISON</span>
+              </div>
+              <div class="workbench-compare-selectors">
+                <div>
+                  <label for="compare-select-a" class="workbench-detail-label">Project A</label>
+                  <select id="compare-select-a" class="workbench-project-select" style="width: 100%;"></select>
+                </div>
+                <div>
+                  <label for="compare-select-b" class="workbench-detail-label">Project B</label>
+                  <select id="compare-select-b" class="workbench-project-select" style="width: 100%;"></select>
+                </div>
+              </div>
+              <div id="workbench-compare-matrix" class="workbench-compare-grid"></div>
+            </div>
+          </div>
+
+          <div id="workbench-pane-ask" class="workbench-view-pane">
+            <div class="workbench-ask-container">
+              <div class="workbench-section-header">
+                <span class="workbench-section-title">// GROUNDED PORTFOLIO DIGITAL TWIN</span>
+                <span class="workbench-section-meta"><i class="fas fa-shield-alt" style="color: #F45135;"></i> Verified
+                  Data Only</span>
+              </div>
+              <div id="workbench-chat-messages" class="workbench-chat-messages" role="log" aria-live="polite"></div>
+              <div class="workbench-suggested-area" style="margin-top: 6px; padding-top: 8px;">
+                <div class="workbench-try-row" style="margin-top: 0;">
+                  <span class="workbench-try-label">SUGGESTED</span>
+                  <button class="workbench-try-chip" data-ask="Summarize your experience and TCS status">TCS
+                    Status</button>
+                  <button class="workbench-try-chip" data-ask="Tell me about your IIIT Hyderabad research">IIIT
+                    Research</button>
+                  <button class="workbench-try-chip" data-ask="What is your highest impact ML project?">Best ML
+                    Project</button>
+                  <button class="workbench-try-chip"
+                    data-ask="Which certifications do you hold?">Certifications</button>
+                </div>
+              </div>
+              <div class="workbench-chat-input-bar"
+                style="display: flex; gap: 8px; margin-top: 10px; align-items: center;">
+                <textarea id="workbench-ask-input" class="workbench-search-input workbench-chat-textarea"
+                  style="padding: 9px 14px; font-size: 13px; min-height: 38px; max-height: 112px; resize: vertical;"
+                  placeholder="Ask me about a project, technology, or engineering decision..."
+                  aria-label="Ask about my work" autocomplete="off" spellcheck="false" rows="1"></textarea>
+                <button type="button" id="workbench-ask-submit-btn" class="workbench-tag accent-tag"
+                  aria-label="Send message"
+                  style="height: 38px; padding: 0 16px; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 12px;">
+                  <span>Send</span> <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <aside class="workbench-sidebar-area">
+          <div>
+            <div class="workbench-section-header">
+              <span class="workbench-section-title" style="color: #F45135;">// QUICK ACTIONS</span>
+            </div>
+            <div class="workbench-quick-list">
+              <a href="../assets/Saketh_Lingerker_8688791352.pdf" target="_blank" rel="noopener"
+                class="workbench-quick-item" id="quick-action-resume">
+                <span class="workbench-quick-label"><i class="fas fa-file-alt"></i> View Resume </span>
+                <span class="workbench-quick-key">R</span>
+              </a>
+              <a href="https://github.com/sakethlingerker" target="_blank" rel="noopener" class="workbench-quick-item"
+                id="quick-action-github">
+                <span class="workbench-quick-label"><i class="fab fa-github"></i> Open GitHub</span>
+                <span class="workbench-quick-key">G</span>
+              </a>
+              <a href="https://www.linkedin.com/in/sakethlingerker/" target="_blank" rel="noopener"
+                class="workbench-quick-item" id="quick-action-linkedin">
+                <span class="workbench-quick-label"><i class="fab fa-linkedin-in"></i> Open LinkedIn</span>
+                <span class="workbench-quick-key">L</span>
+              </a>
+              <a href="mailto:saketh1805@gmail.com" class="workbench-quick-item" id="quick-action-email">
+                <span class="workbench-quick-label"><i class="fas fa-envelope"></i> Send an Email</span>
+                <span class="workbench-quick-key">E</span>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="workbench-footer">
+        <div class="workbench-footer-keys">
+          <span><kbd style="color: #F45135;">&uarr;&darr;</kbd> Navigate</span>
+          <span><kbd style="color: #F45135;">&crarr;</kbd> Select</span>
+          <span><kbd style="color: #F45135;">esc</kbd> Close</span>
+        </div>
+        <div class="workbench-footer-tagline">
+          <span class="workbench-status-dot">&bull;</span> SEARCH &middot; EXPLORE &middot; INSPECT &middot; COMPARE
+          &middot; ASK
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Floating Back to Top Button -->
+  <button id="floating-back-to-top" class="floating-back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- JavaScript Entry Point for About Page -->
+  <script type="module" src="../src/scripts/pages/about.js"></script>
+</body>
+
+</html>

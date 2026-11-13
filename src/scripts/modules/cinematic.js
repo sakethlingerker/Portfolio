@@ -99,15 +99,6 @@ export function initCinematicUI() {
     }
   });
 
-  // 5. Back to Top Smooth Trigger
-  const backTopBtn = document.querySelector('.back-to-top-btn, .back-top');
-  if (backTopBtn) {
-    backTopBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
   // 6. Navigation Link Active State Tracker (Scrollspy)
   const trackedSectionIds = ['proof', 'work', 'projects', 'toolkit', 'journey', 'contact'];
   const sectionNavMap = {
@@ -121,7 +112,6 @@ export function initCinematicUI() {
 
   const navLinks = document.querySelectorAll('.topbar nav a');
   const mobileNavLinks = document.querySelectorAll('.mobile-cinematic-menu a[href^="#"]');
-  const talkBtn = document.querySelector('.talk-btn');
 
   function updateNavScrollSpy() {
     const scrollY = window.scrollY;
@@ -159,11 +149,6 @@ export function initCinematicUI() {
     mobileNavLinks.forEach(link => {
       link.classList.toggle('active', link.getAttribute('href') === activeTarget);
     });
-
-    // Update Talk Action Button
-    if (talkBtn) {
-      talkBtn.classList.toggle('active', activeTarget === '#contact');
-    }
   }
 
   // Instant active feedback when clicking any nav link
