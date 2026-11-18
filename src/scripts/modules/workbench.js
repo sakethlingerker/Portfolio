@@ -12,13 +12,14 @@ import { createPortfolioChat } from './workbench-chat.js';
 const VERIFIED_KNOWLEDGE_BASE = {
   profile: {
     name: "Saketh Lingerker",
-    role: "Incoming Systems Engineer @ Tata Consultancy Services (TCS Digital Offer Accepted, Awaiting Onboarding)",
+    role: "Systems Engineer & AI Developer (TCS Digital Offer Received, Joining Pending)",
     location: "Hyderabad, Telangana, India",
     education: "B.Tech in Computer Science & Engineering from JNTUH University College of Engineering, Manthani (2021–2025, CGPA: 7.47/10.0)",
     summary: "Computer Science Engineer specializing in practical AI/ML systems, production-ready web applications, Retrieval-Augmented Generation (RAG), and MLOps cloud pipelines on AWS.",
     contact: "Email: saketh1805@gmail.com | Phone: +91 8688791352 | Portfolio: https://sakethlingerker.github.io/Portfolio/",
     truthRules: [
-      "Saketh accepted the TCS Digital (Systems Engineer) offer after achieving 89% in GET-IT and 91.51% in Cognitive NQT, and is currently awaiting official onboarding. He does NOT currently work at TCS.",
+      "Saketh received an offer from Tata Consultancy Services (TCS Digital) through its separate off-campus recruitment process, and has not joined yet. He does NOT currently work at TCS.",
+      "All five TCS credentials (89% GET-IT, 91.51% Cognitive NQT, Psychometric Assessment, English with British Council, and Certificate of Proficiency) belong exclusively to the college-collaborated TCS iON Job Achiever training programme. They are completely separate from the TCS Digital off-campus offer.",
       "Saketh was an AI/ML Research Intern at IIIT Hyderabad (Nov 2024 - Jun 2025). He was NOT a Teaching Assistant and NOT a Co-founder.",
       "Saketh holds a B.Tech CSE degree. He DOES NOT hold a Master's degree.",
       "Saketh specializes in Python, LangChain, FAISS, Docker, AWS (EC2/ECR/S3), Flask, and JavaScript. He does NOT list Azure or unverified frameworks."
@@ -26,10 +27,16 @@ const VERIFIED_KNOWLEDGE_BASE = {
   },
   experience: [
     {
-      company: "Tata Consultancy Services (TCS iON)",
-      role: "Graduate Engineer Trainee - IT (Systems Engineer Offer Accepted)",
-      period: "Jul 2025 – Present (Awaiting Joining)",
-      details: "Offered Systems Engineer role via TCS Digital recruitment following competitive assessments: TCS iON GET-IT (89%) and TCS iON Cognitive NQT (91.51%). Currently awaiting official joining date."
+      company: "TCS iON Job Achiever (Tata Consultancy Services)",
+      role: "Graduate Engineer Trainee - IT · Training Programme",
+      period: "Jul 2025 – Feb 2026",
+      details: "Completed intensive training programme provided by TCS in collaboration with college, completing coursework and earning credentials in GET-IT (89%), Cognitive NQT (91.51%), Psychometric Assessment, English proficiency, and Programme Completion."
+    },
+    {
+      company: "Tata Consultancy Services (TCS Digital)",
+      role: "Systems Engineer (Off-Campus Offer Received)",
+      period: "Offer Received · Joining Pending",
+      details: "Received an offer from Tata Consultancy Services (TCS Digital) through its separate off-campus recruitment process. Has not joined yet."
     },
     {
       company: "IIIT Hyderabad (International Institute of Information Technology)",
@@ -39,10 +46,11 @@ const VERIFIED_KNOWLEDGE_BASE = {
     }
   ],
   certifications: [
-    { name: "TCS iON NPT – GET IT", score: "89% (Proficiency Certificate)", type: "Professional Assessment", verified: true },
-    { name: "TCS iON NQT – Cognitive", score: "91.51% Percentile", type: "Cognitive Assessment", verified: true },
-    { name: "TCS iON NQT – Psychometric Assessment", score: "High Performance", type: "Psychometric Assessment", verified: true },
-    { name: "English with British Council", score: "CEFR B1 (Speaking) / B2+ (Writing)", type: "Language Proficiency", verified: true },
+    { name: "TCS iON NPT – GET IT", score: "89% (Proficiency Certificate)", type: "TCS iON Job Achiever", verified: true },
+    { name: "TCS iON NQT – Cognitive", score: "91.51% Score", type: "TCS iON Job Achiever", verified: true },
+    { name: "TCS iON NQT – Psychometric Assessment", score: "High Performance", type: "TCS iON Job Achiever", verified: true },
+    { name: "English with British Council", score: "CEFR B1 (Speaking) / B2+ (Writing)", type: "TCS iON Job Achiever", verified: true },
+    { name: "Certificate of Proficiency", score: "TCS iON Program Completion", type: "TCS iON Job Achiever", verified: true },
     { name: "IIIT Hyderabad AI/ML Research Internship Certificate", score: "Verified Research Completion", type: "Research Internship", verified: true },
     { name: "Deloitte Australia Data Analytics Simulation", score: "Job Simulation Certificate", type: "Industry Simulation", verified: true },
     { name: "Tata Group Data Analytics Simulation", score: "Job Simulation Certificate", type: "Industry Simulation", verified: true },

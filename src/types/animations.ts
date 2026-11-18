@@ -11,7 +11,10 @@ export type RevealVariant =
   | "fade-up"
   | "scale-in"
   | "hero"
-  | "stagger";
+  | "stagger"
+  | "card"
+  | "text"
+  | "step";
 
 export interface RevealOptions {
   duration?: number;

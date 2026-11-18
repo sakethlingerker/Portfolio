@@ -2096,6 +2096,12 @@ body.light-mode .credential-date {
   cursor: pointer;
 }
 
+.tool-row > button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 .tool-count {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -2126,6 +2132,14 @@ body.light-mode .credential-date {
 
 .tool-content > div {
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.35s ease, transform 0.35s var(--ease-cinematic);
+}
+
+.tool-row.expanded .tool-content > div {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .tool-content p {

@@ -263,10 +263,8 @@ function profileAnswer(intent, knowledgeBase, question) {
   const experience = kb.experience || [];
   const certifications = kb.certifications || [];
   if (intent === "tcs") {
-    const tcs = experience.find(function (item) { return /tcs|tata consultancy/i.test(item.company || ""); });
-    return "<p><strong>TCS status:</strong> " + escapeHtml(profile.role || (tcs ? tcs.role : "TCS offer information")) + ".</p>" +
-      "<p>" + escapeHtml(tcs ? tcs.details : "The verified profile knowledge base does not contain further TCS details.") + "</p>" +
-      "<p>The portfolio records an accepted offer, not completed employment. A confirmed joining date is not documented here.</p>";
+    return "<p><strong>TCS Digital:</strong> Received an offer from Tata Consultancy Services (TCS Digital) through its separate off-campus recruitment process. Joining is currently pending; this is not current employment.</p>" +
+      "<p><strong>TCS iON Job Achiever:</strong> Separate training programme provided by TCS in collaboration with college, where all five associated credentials (89% GET-IT, 91.51% Cognitive NQT, Psychometric Assessment, English with British Council, and Certificate of Proficiency) were earned.</p>";
   }
   if (intent === "research") {
     const item = experience.find(function (entry) { return /iiit|research/i.test((entry.company || "") + " " + (entry.role || "")); });

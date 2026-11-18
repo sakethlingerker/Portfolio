@@ -4,7 +4,6 @@ export function initUI() {
     new Typed("#typed", {
       strings: [
         "Saketh Lingerker",
-        "Incoming Systems Engineer @ TCS",
         "Systems Engineer & AI Developer",
         "Former AI/ML Research Intern @ IIIT-H",
       ],

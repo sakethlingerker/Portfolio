@@ -1,4 +1,5 @@
 import { PORTRAIT_PARTICLES } from './portrait-particles.js';
+import { bindToolkitAccordion } from './skills.js';
 
 /**
  * Cinematic Editorial Portfolio Controller
@@ -77,27 +78,8 @@ export function initCinematicUI() {
   }
 
   // 4. Engineering Vocabulary / Toolkit Accordion
-  const toolRows = document.querySelectorAll('.tool-row');
-  toolRows.forEach(row => {
-    const btn = row.querySelector('button');
-    if (btn) {
-      btn.addEventListener('click', () => {
-        const isExpanded = row.classList.contains('expanded');
-        // If clicking an unexpanded row, optionally close siblings or toggle
-        toolRows.forEach(r => {
-          if (r !== row) {
-            r.classList.remove('expanded');
-            r.querySelector('button')?.setAttribute('aria-expanded', 'false');
-          }
-        });
-        row.classList.toggle('expanded', !isExpanded);
-        btn.setAttribute('aria-expanded', (!isExpanded).toString());
-        if (window.scrollAnimationController) {
-          window.scrollAnimationController.refresh();
-        }
-      });
-    }
-  });
+  const toolLists = document.querySelectorAll('.tool-list');
+  toolLists.forEach(toolList => bindToolkitAccordion(toolList));
 
   // 6. Navigation Link Active State Tracker (Scrollspy)
   const trackedSectionIds = ['proof', 'work', 'projects', 'toolkit', 'journey', 'contact'];

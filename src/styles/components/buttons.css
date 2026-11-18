@@ -45,6 +45,15 @@
   outline-offset: 4px;
 }
 
+/* Visible Desktop / Mobile Labels */
+.btn-label-desktop {
+  display: inline;
+}
+
+.btn-label-mobile {
+  display: none;
+}
+
 /* --------------------------------------------------------------------------
    1. SEGMENTED RAIL (Style A3 / E3) — Primary Navigation Actions
    Applies to: EXPLORE PROJECTS, VIEW RESUME, READ FULL ABOUT, EXPLORE RESEARCH
@@ -335,6 +344,14 @@ body.light-mode .btn-filled-angled {
    Responsive Adaptations
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
+  .btn-label-desktop {
+    display: none;
+  }
+
+  .btn-label-mobile {
+    display: inline;
+  }
+
   .btn-segmented,
   .btn-outline-angled,
   .btn-filled-angled {

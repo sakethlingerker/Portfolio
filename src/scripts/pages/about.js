@@ -1,8 +1,9 @@
 /**
  * About Page Entry Script
- * Initializes professional introduction, engineering philosophy,
- * The Journey timeline with collapsible credentials, technical toolkit accordion,
- * verified certifications, and global navigation.
+ * Initializes professional identity, 8-stage cinematic portrait animation,
+ * Engineering Mindset, interactive Systems Atlas, Learning Frontier (Agentic AI),
+ * The Journey timeline with distinct milestones, verified certifications,
+ * closing CTA, and global navigation.
  */
 
 import { initGlobalNav } from "../modules/nav.js";
@@ -11,6 +12,8 @@ import { initCertifications } from "../modules/certifications.js";
 import { initWorkbench } from "../modules/workbench.js";
 import { initScrollReveals } from "../animations/scroll-reveal.ts";
 import { setupGlobalErrorHandling } from "../modules/utils.js";
+import { initSystemsAtlas } from "../modules/skills.js";
+import { initCinematicHeroPortrait } from "../modules/cinematic.js";
 
 async function initAboutPage() {
   setupGlobalErrorHandling();
@@ -24,14 +27,18 @@ async function initAboutPage() {
   document.body.classList.remove("preloader-active");
   document.body.classList.add("hero-ready");
 
-  // Initialize The Journey Timeline & collapsible details
+  // Initialize exact 8-stage cinematic hero portrait animation & HUD frame on About page
+  initCinematicHeroPortrait();
+
+  // Initialize interactive Systems Atlas
+  initSystemsAtlas();
+
+  // Initialize The Journey Timeline & collapsible credential drawers
   initJourneyTimeline();
 
-  // Initialize Toolkit Accordion
-  initToolkitAccordion();
-
-  // Initialize Certifications
+  // Initialize Certifications filtering and modal inspection
   initCertifications();
+  initCredentialsFilter();
 
   // Initialize Workbench in background for Ctrl+K
   try {
@@ -48,23 +55,27 @@ async function initAboutPage() {
   registerServiceWorker();
 }
 
-function initToolkitAccordion() {
-  const toolRows = document.querySelectorAll(".tool-row");
-  toolRows.forEach((row) => {
-    const btn = row.querySelector("button");
-    if (!btn) return;
+function initCredentialsFilter() {
+  const filterButtons = document.querySelectorAll(".cert-filter-btn");
+  const credentialRows = document.querySelectorAll(".credentials-list .credential-row");
+  if (!filterButtons.length || !credentialRows.length) return;
 
+  filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const isExpanded = row.classList.contains("expanded");
-      toolRows.forEach((r) => {
-        if (r !== row) {
-          r.classList.remove("expanded");
-          r.querySelector("button")?.setAttribute("aria-expanded", "false");
-        }
+      const filter = btn.dataset.filter;
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      credentialRows.forEach((row) => {
+        const category = row.dataset.category;
+        const shouldShow = filter === "all" || category === filter;
+        row.style.display = shouldShow ? "grid" : "none";
       });
-      row.classList.toggle("expanded", !isExpanded);
-      btn.setAttribute("aria-expanded", String(!isExpanded));
-      if (window.scrollAnimationController) {
+
+      if (
+        window.scrollAnimationController &&
+        typeof window.scrollAnimationController.refresh === "function"
+      ) {
         window.scrollAnimationController.refresh();
       }
     });
@@ -86,4 +97,3 @@ if (document.readyState === "loading") {
 } else {
   initAboutPage();
 }
-

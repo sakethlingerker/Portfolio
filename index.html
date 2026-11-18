@@ -193,38 +193,53 @@
   <main id="main-content">
 
     <!-- ======================================================================
-         1. REDESIGNED HERO SECTION (EDITORIAL DEVELOPER IDENTITY)
+         1. 3D SCROLL-LINKED ENGINEERING CORE HERO SECTION
          ====================================================================== -->
-    <section id="hero" class="editorial-hero" aria-label="Introduction and Identity">
+    <section id="hero" class="hero-3d-section" aria-label="Introduction and Engineering Focus">
+      <div class="hero-ambient-glow" aria-hidden="true"></div>
+
       <div class="hero-container">
-        <div class="hero-layout">
-          <!-- Left Column: Content Hierarchy -->
-          <div class="hero-identity-col">
-            <!-- Main Dominant Heading -->
+        <div class="hero-3d-layout">
+          <!-- Left Column (55%) — Engineering Identity & CTAs -->
+          <div class="hero-intro-col">
+            <!-- 1. Eyebrow -->
+            <div class="hero-eyebrow mono" data-hero-elem="kicker">
+              <span class="eyebrow-bracket">[</span>
+              <span>SYSTEMS <span class="eyebrow-accent">ENGINEERING</span> / APPLIED AI</span>
+              <span class="eyebrow-bracket">]</span>
+            </div>
+
+            <!-- 2. Headline -->
             <h1 class="hero-display-heading" data-hero-elem="heading">
-              <span class="heading-line">I BUILD DIGITAL SYSTEMS</span>
-              <span class="heading-line">THAT <span class="coral-highlight">SOLVE REAL PROBLEMS.</span></span>
+              <span class="heading-line">Building reliable</span>
+              <span class="heading-line">software <em class="headline-coral-ai">with AI.</em></span>
             </h1>
 
-            <!-- Supporting Description -->
+            <!-- Coral Accent Line Under Headline -->
+            <div class="headline-accent-bar" data-hero-elem="accent-bar" aria-hidden="true"></div>
+
+            <!-- 3. Supporting Description -->
             <p class="hero-lead-desc" data-hero-elem="desc">
-              I'm <strong>Saketh Lingerker</strong> — a Systems Engineer and AI Developer focused on building scalable
-              software systems, applied AI solutions, and production-grade applications.
+              I design and build scalable applications, robust backend systems, and data-driven solutions that turn
+              ideas into real-world impact.
             </p>
 
-            <!-- Action CTAs -->
+            <!-- 4. CTA Buttons -->
             <div class="hero-cta-group" data-hero-elem="cta">
-              <a href="projects/" class="btn-segmented btn-segmented-primary" id="hero-cta-projects">
+              <a href="projects/" class="btn-segmented btn-segmented-primary" id="hero-cta-projects"
+                aria-label="Explore Projects">
                 <span class="btn-ticks" aria-hidden="true"><i></i><i></i><i></i></span>
-                <span>EXPLORE PROJECTS</span>
+                <span class="btn-label-desktop">EXPLORE PROJECTS</span>
+                <span class="btn-label-mobile" aria-hidden="true">EXPLORE PROJECTS</span>
                 <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="7" y1="17" x2="17" y2="7"></line>
                   <polyline points="7 7 17 7 17 17"></polyline>
                 </svg>
               </a>
-              <a href="contact/" class="btn-outline-angled" id="hero-cta-contact">
-                <span>GET IN TOUCH</span>
+              <a href="contact/" class="btn-outline-angled" id="hero-cta-contact" aria-label="Get in Touch">
+                <span class="btn-label-desktop">GET IN TOUCH</span>
+                <span class="btn-label-mobile" aria-hidden="true">CONTACT</span>
                 <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -243,7 +258,8 @@
                   <line x1="16" y1="17" x2="8" y2="17"></line>
                   <polyline points="10 9 9 9 8 9"></polyline>
                 </svg>
-                <span>VIEW RESUME</span>
+                <span class="btn-label-desktop">VIEW RESUME</span>
+                <span class="btn-label-mobile" aria-hidden="true">VIEW RESUME</span>
                 <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -251,129 +267,123 @@
                 </svg>
               </a>
             </div>
+          </div>
 
-            <!-- Technical Focus Metadata Strip -->
-            <div class="hero-meta-strip" data-hero-elem="meta">
-              <div class="meta-strip-item">
-                <span class="meta-pip" aria-hidden="true">/</span>
-                <span class="meta-text mono">Full-Stack Development</span>
-              </div>
-              <div class="meta-strip-item">
-                <span class="meta-pip" aria-hidden="true">/</span>
-                <span class="meta-text mono">Applied AI &amp; Machine Learning</span>
-              </div>
-              <div class="meta-strip-item">
-                <span class="meta-pip" aria-hidden="true">/</span>
-                <span class="meta-text mono">Software Engineering</span>
+          <!-- Right Column (45%) — 3D Engineering Core -->
+          <div class="hero-3d-col" data-hero-elem="3d-col">
+            <div class="hero-3d-container" id="hero-3d-container">
+              <div class="scene" id="hero-3d-scene">
+                <!-- Perspective grid plane -->
+                <div class="grid-plane" aria-hidden="true"></div>
+
+                <!-- Stepped Platform -->
+                <div class="platform" aria-hidden="true">
+                  <div class="platform-glow"></div>
+                  <div class="platform-tier platform-tier-1"></div>
+                  <div class="platform-tier platform-tier-2-base"></div>
+                  <div class="platform-tier platform-tier-2"></div>
+                </div>
+
+                <!-- Orbit Ring and Trail -->
+                <div class="orbit" aria-hidden="true">
+                  <div class="orbit-trail"></div>
+                </div>
+
+                <!-- Main Cube Wrapper (True 3D preserve-3d) -->
+                <div class="cube-wrapper" id="cube-wrapper">
+                  <!-- Outer Glass Cube (200px) -->
+                  <div class="cube-outer">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face left"></div>
+                    <div class="face right"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                  </div>
+
+                  <!-- Inner Glowing Solid Neon Cube (86px) -->
+                  <div class="cube-inner" id="cube-inner">
+                    <div class="inner-face inner-front"></div>
+                    <div class="inner-face inner-back"></div>
+                    <div class="inner-face inner-left"></div>
+                    <div class="inner-face inner-right"></div>
+                    <div class="inner-face inner-top"></div>
+                    <div class="inner-face inner-bottom"></div>
+                  </div>
+                </div>
+
+                <!-- Floating 3D Panels with Coral SVGs -->
+                <div class="panel panel-code" aria-label="Full-Stack Development">
+                  <svg class="panel-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F45135"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m18 16 4-4-4-4" />
+                    <path d="m6 8-4 4 4 4" />
+                    <path d="m14.5 4-5 16" />
+                  </svg>
+                </div>
+
+                <div class="panel panel-ai" aria-label="Applied AI &amp; Machine Learning">
+                  <svg class="panel-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F45135"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 13h4" />
+                    <path d="M12 18h6a2 2 0 0 1 2 2v1" />
+                    <path d="M12 8h8" />
+                    <path d="M12 9a4.17 4.17 0 0 1-3 4" />
+                    <path d="M16 8V5a2 2 0 0 1 2-2" />
+                    <path d="M6 18a4 4 0 0 1-2-7.465" />
+                    <path d="M6.004 5.125a4 4 0 0 0-2.526 5.77" />
+                    <path d="M6.294 6.294A3 3 0 1 1 12 5v13a4 4 0 1 1-7.967-.518" />
+                    <circle cx="16" cy="13" r="0.5" fill="#F45135" />
+                    <circle cx="18" cy="3" r="0.5" fill="#F45135" />
+                    <circle cx="20" cy="21" r="0.5" fill="#F45135" />
+                    <circle cx="20" cy="8" r="0.5" fill="#F45135" />
+                  </svg>
+                </div>
+
+                <div class="panel panel-cloud" aria-label="Cloud &amp; Deployment">
+                  <svg class="panel-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F45135"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 13v8" />
+                    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+                    <path d="m8 17 4-4 4 4" />
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Right Column: Visual Focal Point (Cinematic Portrait & HUD Frame) -->
-          <div class="hero-visual-col" data-hero-elem="portrait">
-            <div class="cinematic-portrait-wrapper stage-1" id="hero-cinematic-portrait">
-              <!-- Left Technical Telemetry Axis -->
-              <div class="portrait-telemetry-axis" aria-hidden="true">
-                <span class="telemetry-node node-top"></span>
-                <span class="telemetry-tick tick-1"></span>
-                <span class="telemetry-node node-mid pulse-node"></span>
-                <span class="telemetry-tick tick-2"></span>
-                <span class="telemetry-node node-bottom"></span>
-              </div>
+        <!-- Single Full-Width Bottom Expertise Strip -->
+        <div class="hero-expertise-strip" data-hero-elem="expertise">
+          <div class="expertise-item">
+            <svg class="expertise-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F45135"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            <span class="expertise-label">Full-Stack Development</span>
+          </div>
 
-              <!-- Main HUD Frame Container -->
-              <div class="cinematic-portrait-card">
-                <!-- High-Precision Animated Glowing Orange HUD Frame Overlay -->
-                <svg class="hud-border-svg" viewBox="0 0 400 424" preserveAspectRatio="none" aria-hidden="true">
-                  <defs>
-                    <filter id="hud-corner-glow" x="-20%" y="-20%" width="140%" height="140%">
-                      <feGaussianBlur stdDeviation="2" result="blur1" />
-                      <feGaussianBlur stdDeviation="4.5" result="blur2" />
-                      <feMerge>
-                        <feMergeNode in="blur2" />
-                        <feMergeNode in="blur1" />
-                        <feMergeNode in="SourceGraphic" />
-                      </feMerge>
-                    </filter>
-                    <filter id="hud-node-glow" x="-50%" y="-50%" width="200%" height="200%">
-                      <feGaussianBlur stdDeviation="3" result="blur" />
-                      <feMerge>
-                        <feMergeNode in="blur" />
-                        <feMergeNode in="SourceGraphic" />
-                      </feMerge>
-                    </filter>
-                  </defs>
+          <span class="expertise-separator" aria-hidden="true"></span>
 
-                  <!-- 1. Base Thin Chamfered Frame Outline -->
-                  <path class="hud-frame-path"
-                    d="M 32,2 L 368,2 L 398,32 L 398,392 L 368,422 L 32,422 L 2,392 L 2,32 Z" />
+          <div class="expertise-item">
+            <svg class="expertise-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F45135"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span class="expertise-label">Applied AI &amp; Machine Learning</span>
+          </div>
 
-                  <!-- 2. Traveling Animated Light Beams along the perimeter -->
-                  <path class="hud-beam-segment beam-1"
-                    d="M 32,2 L 368,2 L 398,32 L 398,392 L 368,422 L 32,422 L 2,392 L 2,32 Z" />
-                  <path class="hud-beam-segment beam-2"
-                    d="M 32,2 L 368,2 L 398,32 L 398,392 L 368,422 L 32,422 L 2,392 L 2,32 Z" />
+          <span class="expertise-separator" aria-hidden="true"></span>
 
-                  <!-- 3. Distinctive Clipped/Chamfered Glowing Corner Brackets -->
-                  <path class="hud-corner-bracket corner-tl-path" d="M 68,2 L 32,2 L 2,32 L 2,68" />
-                  <path class="hud-corner-bracket corner-tr-path" d="M 332,2 L 368,2 L 398,32 L 398,68" />
-                  <path class="hud-corner-bracket corner-bl-path" d="M 2,356 L 2,392 L 32,422 L 68,422" />
-                  <path class="hud-corner-bracket corner-br-path" d="M 332,422 L 368,422 L 398,392 L 398,356" />
-
-                  <!-- 4. Left Circuit Rail with Connector Lines & Glowing Nodes -->
-                  <line class="hud-circuit-line left-rail" x1="-12" y1="65" x2="-12" y2="360" />
-                  <line class="hud-circuit-line" x1="-12" y1="95" x2="2" y2="95" />
-                  <circle class="hud-node-circle pulse-1" cx="-12" cy="155" r="4.5" />
-                  <circle class="hud-node-core" cx="-12" cy="155" r="1.8" />
-                  <rect class="hud-node-square" x="-14.5" y="132" width="5" height="5" />
-                  <rect class="hud-node-square" x="-14.5" y="178" width="5" height="5" />
-                  <line class="hud-circuit-line" x1="-12" y1="215" x2="2" y2="215" />
-                  <circle class="hud-node-circle pulse-2" cx="-12" cy="250" r="4.5" />
-                  <circle class="hud-node-core" cx="-12" cy="250" r="1.8" />
-                  <rect class="hud-node-square" x="-14.5" y="272" width="5" height="5" />
-                  <line class="hud-circuit-line" x1="-12" y1="330" x2="2" y2="330" />
-
-                  <!-- Right Outer Edge Nodes -->
-                  <circle class="hud-node-circle pulse-3" cx="410" cy="195" r="4.5" />
-                  <circle class="hud-node-core" cx="410" cy="195" r="1.8" />
-                  <line class="hud-circuit-line" x1="398" y1="195" x2="410" y2="195" />
-                  <rect class="hud-node-square" x="407.5" y="320" width="5" height="5" />
-                  <line class="hud-circuit-line" x1="398" y1="322.5" x2="410" y2="322.5" />
-                </svg>
-
-                <!-- Inner Media Viewport Frame (Chamfered Silhouette) -->
-                <div class="portrait-media-frame">
-                  <!-- Layer 1: Base Blurred Photograph (Silhouette & Formation Foundation) -->
-                  <img src="src/assets/Display-picture.jpg" alt="" class="cinematic-portrait-base" aria-hidden="true" />
-
-                  <!-- Layer 2: Particle Matrix Canvas (Stages 2 & 3: Particle Assembly & Vector Contours) -->
-                  <canvas class="portrait-particle-canvas" id="portrait-particle-canvas" aria-hidden="true"></canvas>
-
-                  <!-- Layer 3: Progressive Reveal Photograph (Unmasked by Horizontal Scan) -->
-                  <div class="portrait-reveal-layer" id="portrait-reveal-layer">
-                    <img src="src/assets/Display-picture.jpg"
-                      alt="Saketh Lingerker — Systems Engineer &amp; AI Developer" class="cinematic-portrait-img"
-                      fetchpriority="high" />
-                  </div>
-
-                  <!-- Layer 4: Digital Grid Overlay -->
-                  <div class="portrait-grid-overlay" aria-hidden="true"></div>
-
-                  <!-- Layer 5: Horizontal Glowing Laser Scan Beam (Stage 4) -->
-                  <div class="portrait-scan-beam" id="portrait-scan-beam" aria-hidden="true">
-                    <div class="scan-beam-line"></div>
-                    <div class="scan-beam-glow"></div>
-                  </div>
-                </div>
-
-                <!-- Portrait Motto Stack: THINK. BUILD. EVOLVE. (Text-Only, Static, No Background) -->
-                <div class="hud-motto-stack" aria-hidden="true">
-                  <span class="hud-motto-line">THINK<span class="hud-motto-dot">.</span></span>
-                  <span class="hud-motto-line">BUILD<span class="hud-motto-dot">.</span></span>
-                  <span class="hud-motto-line">EVOLVE<span class="hud-motto-dot">.</span></span>
-                </div>
-              </div>
-            </div>
+          <div class="expertise-item">
+            <svg class="expertise-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F45135"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+            </svg>
+            <span class="expertise-label">Cloud &amp; Deployment</span>
           </div>
         </div>
       </div>
@@ -526,7 +536,7 @@
           orchestration.</span>
       </div>
 
-      <div class="work-acts-list" data-reveal-group="cards">
+      <div class="work-acts-list">
         <!-- Act 1: Enterprise RAG Agent -->
         <article class="work-act">
           <div>
@@ -679,101 +689,113 @@
       </div>
 
       <div class="tool-list" data-reveal-group="skills">
-        <div class="tool-row expanded">
-          <button aria-expanded="true">
-            <span>Full-Stack Engineering <span class="tool-count">APIs &amp; UIs</span></span>
+        <!-- Row 1: Full-Stack Systems -->
+        <div class="tool-row expanded" data-category-id="full-stack-systems">
+          <button type="button" id="toolkit-btn-home-full-stack-systems" aria-expanded="true"
+            aria-controls="toolkit-panel-home-full-stack-systems">
+            <span>Full-Stack Systems <span class="tool-count">6</span></span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
           </button>
-          <div class="tool-content">
+          <div id="toolkit-panel-home-full-stack-systems" class="tool-content" role="region"
+            aria-labelledby="toolkit-btn-home-full-stack-systems">
             <div>
-              <p>Designing high-concurrency RESTful APIs, type-safe data pipelines, and responsive editorial interfaces
-                with clean architecture.</p>
+              <p>Building complete applications with dependable backend services, clear API contracts, and responsive
+                interfaces.</p>
               <div class="tools-grid">
-                <span><i class="devicon-python-plain"></i> Python</span>
-                <span><i class="devicon-fastapi-plain"></i> FastAPI</span>
-                <span><i class="devicon-nodejs-plain"></i> Node.js</span>
-                <span><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
-                <span><i class="devicon-mongodb-plain"></i> MongoDB</span>
-                <span><i class="devicon-linux-plain"></i> Linux</span>
+                <span><i class="devicon-python-plain" aria-hidden="true"></i> Python</span>
+                <span><i class="devicon-java-plain" aria-hidden="true"></i> Java</span>
+                <span><i class="devicon-fastapi-plain" aria-hidden="true"></i> FastAPI</span>
+                <span><i class="devicon-nodejs-plain" aria-hidden="true"></i> Node.js</span>
+                <span><i class="devicon-express-original" aria-hidden="true"></i> Express</span>
+                <span><i class="fas fa-network-wired" aria-hidden="true"></i> REST APIs</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="tool-row">
-          <button aria-expanded="false">
-            <span>Artificial Intelligence &amp; RAG <span class="tool-count">Vector &amp; LLM</span></span>
+        <!-- Row 2: Applied AI & Retrieval -->
+        <div class="tool-row" data-category-id="applied-ai-retrieval">
+          <button type="button" id="toolkit-btn-home-applied-ai-retrieval" aria-expanded="false"
+            aria-controls="toolkit-panel-home-applied-ai-retrieval">
+            <span>Applied AI &amp; Retrieval <span class="tool-count">7</span></span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
           </button>
-          <div class="tool-content">
+          <div id="toolkit-panel-home-applied-ai-retrieval" class="tool-content" role="region"
+            aria-labelledby="toolkit-btn-home-applied-ai-retrieval">
             <div>
-              <p>Building hallucination-free retrieval engines, hybrid vector indices (FAISS/ChromaDB), semantic
-                chunking, and multi-agent systems.</p>
+              <p>Developing practical AI applications using machine learning, retrieval pipelines, embedding search, and
+                grounded response generation.</p>
               <div class="tools-grid">
-                <span><i class="fas fa-link"></i> LangChain</span>
-                <span><i class="fas fa-bolt"></i> FAISS</span>
-                <span><i class="fas fa-cubes"></i> ChromaDB</span>
-                <span><i class="fas fa-robot"></i> Llama 3.3</span>
-                <span><i class="fas fa-brain"></i> Gemini</span>
-                <span><i class="devicon-pytorch-original"></i> PyTorch</span>
+                <span><i class="devicon-pytorch-original" aria-hidden="true"></i> PyTorch</span>
+                <span><i class="devicon-tensorflow-original" aria-hidden="true"></i> TensorFlow</span>
+                <span><i class="fas fa-link" aria-hidden="true"></i> LangChain</span>
+                <span><i class="fas fa-bolt" aria-hidden="true"></i> FAISS</span>
+                <span><i class="fas fa-cubes" aria-hidden="true"></i> ChromaDB</span>
+                <span><i class="devicon-python-plain" aria-hidden="true"></i> Scikit-learn</span>
+                <span><i class="fas fa-robot" aria-hidden="true"></i> Hugging Face</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="tool-row">
-          <button aria-expanded="false">
-            <span>Applied Machine Learning <span class="tool-count">Signal &amp; Models</span></span>
+        <!-- Row 3: Data & Storage -->
+        <div class="tool-row" data-category-id="data-storage">
+          <button type="button" id="toolkit-btn-home-data-storage" aria-expanded="false"
+            aria-controls="toolkit-panel-home-data-storage">
+            <span>Data &amp; Storage <span class="tool-count">6</span></span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
           </button>
-          <div class="tool-content">
+          <div id="toolkit-panel-home-data-storage" class="tool-content" role="region"
+            aria-labelledby="toolkit-btn-home-data-storage">
             <div>
-              <p>Acoustic feature extraction (MFCC, STFT), Voice Activity Detection (VAD), regression pipelines, and
-                deep neural networks.</p>
+              <p>Working with structured data, databases, processing workflows, and information retrieval.</p>
               <div class="tools-grid">
-                <span><i class="devicon-python-plain"></i> Scikit-Learn</span>
-                <span><i class="devicon-pandas-plain"></i> Pandas</span>
-                <span><i class="devicon-numpy-plain"></i> NumPy</span>
-                <span><i class="fas fa-wave-square"></i> Librosa</span>
-                <span><i class="devicon-tensorflow-original"></i> TensorFlow</span>
-                <span><i class="fas fa-chart-line"></i> Matplotlib</span>
+                <span><i class="devicon-postgresql-plain" aria-hidden="true"></i> PostgreSQL</span>
+                <span><i class="devicon-mongodb-plain" aria-hidden="true"></i> MongoDB</span>
+                <span><i class="devicon-mysql-plain" aria-hidden="true"></i> MySQL</span>
+                <span><i class="devicon-pandas-plain" aria-hidden="true"></i> Pandas</span>
+                <span><i class="devicon-numpy-plain" aria-hidden="true"></i> NumPy</span>
+                <span><i class="devicon-microsoftsqlserver-plain" aria-hidden="true"></i> SQL Server</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="tool-row">
-          <button aria-expanded="false">
-            <span>Software Architecture &amp; MLOps <span class="tool-count">Cloud &amp; CI/CD</span></span>
+        <!-- Row 4: Cloud & MLOps -->
+        <div class="tool-row" data-category-id="cloud-mlops">
+          <button type="button" id="toolkit-btn-home-cloud-mlops" aria-expanded="false"
+            aria-controls="toolkit-panel-home-cloud-mlops">
+            <span>Cloud &amp; MLOps <span class="tool-count">7</span></span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
           </button>
-          <div class="tool-content">
+          <div id="toolkit-panel-home-cloud-mlops" class="tool-content" role="region"
+            aria-labelledby="toolkit-btn-home-cloud-mlops">
             <div>
-              <p>Containerized workloads, automated CI/CD runners, model evaluation benchmarks, and scalable cloud
-                execution on AWS.</p>
+              <p>Working with containerization, cloud infrastructure, automated delivery, and deployment workflows.</p>
               <div class="tools-grid">
-                <span><i class="devicon-docker-plain"></i> Docker</span>
-                <span><i class="fab fa-aws"></i> AWS EC2 / ECR</span>
-                <span><i class="devicon-githubactions-plain"></i> GitHub Actions</span>
-                <span><i class="devicon-git-plain"></i> Git</span>
-                <span><i class="devicon-streamlit-plain"></i> Streamlit</span>
-                <span><i class="devicon-postman-plain"></i> Postman</span>
+                <span><i class="devicon-docker-plain" aria-hidden="true"></i> Docker</span>
+                <span><i class="fab fa-aws" aria-hidden="true"></i> AWS EC2 / ECR</span>
+                <span><i class="devicon-githubactions-plain" aria-hidden="true"></i> GitHub Actions</span>
+                <span><i class="devicon-git-plain" aria-hidden="true"></i> Git</span>
+                <span><i class="devicon-streamlit-plain" aria-hidden="true"></i> Streamlit</span>
+                <span><i class="devicon-postman-plain" aria-hidden="true"></i> Postman</span>
+                <span><i class="devicon-linux-plain" aria-hidden="true"></i> Linux</span>
               </div>
             </div>
           </div>
@@ -803,8 +825,8 @@
           <a href="about/" class="btn-segmented">
             <span class="btn-ticks" aria-hidden="true"><i></i><i></i><i></i></span>
             <span>READ FULL ABOUT &amp; JOURNEY</span>
-            <svg class="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -812,8 +834,8 @@
           <a href="research/" class="btn-segmented">
             <span class="btn-ticks" aria-hidden="true"><i></i><i></i><i></i></span>
             <span>EXPLORE RESEARCH</span>
-            <svg class="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research | Saketh Lingerker - Systems Engineer &amp; AI Developer</title>
+  <title>Research | Saketh Lingerker — Systems Engineer &amp; AI Developer</title>
 
   <!-- SEO Meta Tags -->
   <meta name="description"
@@ -24,7 +24,7 @@
 
   <link rel="icon" type="image/jpeg" href="../src/assets/Display-picture.jpg" />
   <link rel="manifest" href="../manifest.json" />
-  <meta name="theme-color" content="#080b09" />
+  <meta name="theme-color" content="#0b0d0e" />
   <link rel="apple-touch-icon" href="../assets/ls-logo.jpg" />
 
   <!-- Google Fonts: Syne, Inter, JetBrains Mono -->
@@ -72,7 +72,7 @@
     style="position: absolute; top: -90px; left: 20px; z-index: 999; background: #fff; color: #000; padding: 10px 18px; text-decoration: none; font-family: var(--font-mono); font-size: 11px;">Skip
     to content</a>
 
-    <!-- Top Global Navigation Bar: Futuristic Segmented Rail (Design 04) -->
+  <!-- Top Global Navigation Bar: Futuristic Segmented Rail (Design 04) -->
   <header class="topbar segmented-rail-topbar">
     <div class="rail-container">
       <!-- Left: Brand Section with Geometric Chamfered Badge -->
@@ -120,7 +120,8 @@
           <a class="rail-talk-btn" href="../contact/" data-page="contact" aria-label="Contact - Let's talk">
             <span class="talk-btn-text">LET'S TALK</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
               <line x1="7" y1="17" x2="17" y2="7"></line>
               <polyline points="7 7 17 7 17 17"></polyline>
             </svg>
@@ -143,7 +144,7 @@
     </div>
   </header>
 
-    <!-- Mobile Cinematic Menu Overlay -->
+  <!-- Mobile Cinematic Menu Overlay -->
   <div class="mobile-cinematic-menu" aria-hidden="true">
     <button id="mobile-workbench-trigger" class="rail-workbench-btn"
       style="width: 100%; justify-content: center; margin-bottom: 12px; padding: 12px; transform: none;">
@@ -158,820 +159,419 @@
   </div>
 
   <!-- Main Content Wrap -->
-  <main id="main-content">
-    <div class="research-page-container">
+  <main id="main-content" class="research-container">
 
-      <!-- ======================================================================
-           HEADER: RESEARCH EDITORIAL HEADER
-           ====================================================================== -->
-      <header class="research-editorial-header">
-        <span class="research-kicker mono" data-reveal="fade-up">RESEARCH &middot; SPEECH SIGNAL PROCESSING &middot;
-          IIIT HYDERABAD</span>
-        <h1 class="research-editorial-title" data-reveal="heading">
-          Speech Processing &amp;<br /><em>Multimodal Video Understanding.</em>
-        </h1>
-        <p class="research-lead" data-reveal="fade-up">
-          Empirical speech signal processing and applied AI research conducted at IIIT Hyderabad's Speech Lab (Language
-          Technologies Research Center).
-          Investigated Voice Activity Detection (VAD) optimization, word-level acoustic alignment, and speech/non-speech
-          boundary segmentation
-          within a Multimodal Multi-video Question Answering framework.
+    <section class="hero-header">
+      <div class="eyebrow" data-reveal="fade-up">// RESEARCH &amp; APPLIED AI · IIIT HYDERABAD</div>
+      <h1 class="hero-title" data-reveal="heading">
+        Speech Signal Processing &amp;<br />
+        <em>Multimodal Video Understanding.</em>
+      </h1>
+      <p class="hero-lead" data-reveal="fade-up">
+        During my research internship at the <strong>Speech Lab, Language Technologies Research Center (LTRC) at IIIT
+          Hyderabad</strong>, my work focused on Multimodal Multi-Video Question Answering. I engineered and evaluated
+        Python-based <strong>Voice Activity Detection (rVAD 2.0)</strong> algorithms and <strong>WhisperX</strong>
+        forced-alignment pipelines to help our AI-driven video summarization framework accurately segment educational
+        content.
+      </p>
+
+      <div class="credential-bar" data-reveal="fade-up">
+        <div class="credential-info">
+          <h2>International Institute of Information Technology (IIIT) Hyderabad</h2>
+          <p>Speech Processing Lab · Language Technologies Research Center (LTRC)</p>
+        </div>
+        <div class="credential-badges">
+          <span class="pill pill-emerald"><span class="badge-dot">•</span> 01 Dec 2024 - 31 May 2025</span>
+          <a href="#chronology" class="pill pill-orange">View Academic Chronology ↗</a>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card" data-reveal="card">
+          <div class="kpi-value">
+            <span class="stat-number">91.54%</span>
+          </div>
+          <span class="kpi-label">Baseline rVAD Accuracy</span>
+          <p class="kpi-desc">Initial 10 ms frame-level classification evaluated against SRT reference timings.</p>
+        </div>
+        <div class="kpi-card highlight" data-reveal="card">
+          <div class="kpi-value">
+            <span class="stat-number">96.02%</span>
+          </div>
+          <span class="kpi-label">Optimized Accuracy</span>
+          <p class="kpi-desc"><strong>+4.48% gain</strong> I achieved by designing a boundary-constrained short-gap
+            recovery filter.</p>
+        </div>
+        <div class="kpi-card highlight" data-reveal="card">
+          <div class="kpi-value">
+            <span class="stat-number">0.9791</span>
+          </div>
+          <span class="kpi-label">Peak F1 Score (-70.4% FN)</span>
+          <p class="kpi-desc">I reduced missed speech frames from 1,116 to 330 while achieving an optimal <strong>0.9943
+              recall</strong>.</p>
+        </div>
+        <div class="kpi-card" data-reveal="card">
+          <div class="kpi-value">
+            <span class="stat-number">0.978</span>
+          </div>
+          <span class="kpi-label">WhisperX Word Coverage</span>
+          <p class="kpi-desc">Consistent word-level VAD alignment confirmed across both <code>base</code> and
+            <code>large-v3</code> models.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="eyebrow" data-reveal="fade-up">// 01 · PROBLEM SCOPE &amp; TECHNICAL CONTRIBUTIONS</div>
+      <h2 class="section-title" data-reveal="heading">Multimodal Multi-Video Question Answering</h2>
+      <p class="section-subtitle" data-reveal="fade-up">Bridging raw acoustic signal segmentation with downstream ASR, transformer-based QA,
+        and video synthesis.</p>
+
+      <div class="overview-grid">
+        <div class="card" data-reveal="card">
+          <span class="card-tag">The Challenge</span>
+          <h3>Noisy Lecture Streams &amp; Intra-Word Dropouts</h3>
+          <p>
+            Querying large educational video archives requires accurate acoustic segmentation before transcription. I
+            observed that raw lecture audio contains <strong>instructor pauses</strong>, <strong>classroom
+              reverberation</strong>, and <strong>brief unvoiced stops</strong>.
+          </p>
+          <p style="margin-bottom:0;">
+            Standard energy detectors either trigger <strong>false voice flags</strong> on ambient noise (causing ASR
+            hallucinations) or suffer <strong>intra-speech dropouts</strong> that clip words mid-sentence.
+          </p>
+        </div>
+
+        <div class="card" data-reveal="card">
+          <span class="card-tag">My Responsibilities &amp; Impact</span>
+          <h3>My Technical Contributions</h3>
+          <ul class="bullet-list emerald">
+            <li><strong>Python VAD Modules:</strong> I developed frame-level evaluation pipelines (10 ms frame shift)
+              for our AI-driven video summarization system.</li>
+            <li><strong>Short-Gap Recovery Algorithm:</strong> I designed a post-processing filter to bridge short
+              <code>0</code>-runs between active speech, lifting overall accuracy from <strong>91.54% to
+                96.02%</strong>.
+            </li>
+            <li><strong>WhisperX Forced Alignment:</strong> I mapped word-level timestamps from <code>base</code> (1,877
+              words) and <code>large-v3</code> (1,884 words) to 10 ms rVAD frames.</li>
+            <li><strong>Cross-Module Collaboration:</strong> I collaborated with the Speech Lab team across our four
+              core pillars: <strong>Voice Activity Detection, Automatic Speech Recognition, Question Answering, and
+                Video Stitching</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pipeline-box" data-reveal="fade-up">
+        <div class="pipeline-header">
+          <span>MY END-TO-END EVALUATION PIPELINE</span>
+          <span>FRAME SHIFT: 10 ms (16 kHz)</span>
+        </div>
+        <div class="pipeline-steps">
+          <div class="step-node">
+            <span class="step-num">[01] INGESTION</span>
+            <span class="step-title">Lecture Audio</span>
+            <span class="step-sub">Udemy stream &amp; SRT extraction</span>
+          </div>
+          <div class="step-node">
+            <span class="step-num">[02] FRAMING</span>
+            <span class="step-title">10 ms Frame Shift</span>
+            <span class="step-sub">Acoustic feature segmentation</span>
+          </div>
+          <div class="step-node">
+            <span class="step-num">[03] CLASSIFIER</span>
+            <span class="step-title">rVAD 2.0 Core</span>
+            <span class="step-sub">Binary 0/1 sequence (91.54% base)</span>
+          </div>
+          <div class="step-node active-step">
+            <span class="step-num">[04] POST-PROCESS</span>
+            <span class="step-title">Short-Gap Fill</span>
+            <span class="step-sub">50 / 80 / 100 frame recovery</span>
+          </div>
+          <div class="step-node">
+            <span class="step-num">[05] DOWNSTREAM</span>
+            <span class="step-title">WhisperX &amp; QA</span>
+            <span class="step-sub">Word alignment &amp; video stitching</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="eyebrow" data-reveal="fade-up">// 02 · EMPIRICAL CASE STUDIES (CLICK TO INSPECT)</div>
+      <h2 class="section-title" data-reveal="heading">My Controlled Lecture Audio Benchmarks</h2>
+      <p class="section-subtitle" data-reveal="fade-up">Interactive breakdown of the three evaluation experiments I conducted on educational
+        lecture audio.</p>
+
+      <div class="tabs-header" role="tablist" data-reveal="fade-up">
+        <button class="tab-btn active" onclick="switchTab(event, 'exp1')">
+          [EXP 01] Short-Gap Recovery (rVAD 2.0)
+        </button>
+        <button class="tab-btn" onclick="switchTab(event, 'exp2')">
+          [EXP 02] WhisperX Word-Level Alignment
+        </button>
+        <button class="tab-btn" onclick="switchTab(event, 'exp3')">
+          [EXP 03] Subtitle-Gap Silence Analysis
+        </button>
+      </div>
+
+      <!-- TAB 1: Post-Processing Gap Recovery -->
+      <div id="exp1" class="tab-panel active">
+        <span class="card-tag">Experiment 01 · Frame-Level Post-Processing</span>
+        <h3>Recovering Short Acoustic Dropouts Between Continuous Speech</h3>
+        <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:0.4rem;">
+          To mitigate false negatives caused by brief intra-speech pauses, I built a post-processing algorithm that
+          scanned the binary rVAD sequence and flipped consecutive runs of <code>0</code>-valued frames to
+          <code>1</code> <strong>if and only if</strong> the run length was &le; my selected threshold <code>N</code>
+          frames (50, 80, or 100 frames at 10 ms shift) and strictly flanked by <code>1</code>-valued speech frames on
+          both sides.
         </p>
-      </header>
 
-      <!-- ======================================================================
-           SECTION 1: INSTITUTIONAL CONTEXT STRIP
-           ====================================================================== -->
-      <div class="research-institution-strip" data-reveal="fade-up">
-        <div class="inst-logo-group">
-          <i class="fas fa-university inst-icon" aria-hidden="true"></i>
+        <div class="signal-demo">
+          <span><strong>Raw rVAD Sequence:</strong>
+            <code>[1, 1, 1, <span class="bit-Zero">0, 0, 0</span>, 1, 1, 1]</code> (Run &le; N flanked by 1s)</span>
+          <span>&rarr;</span>
+          <span><strong>Post-Processed:</strong> <code>[1, 1, 1, <span class="bit-One">1, 1, 1</span>, 1, 1, 1]</code>
+            (Bridged Speech Segment)</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Max Gap (N)</th>
+                <th>Duration</th>
+                <th>Accuracy</th>
+                <th>F1 Score</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>Total Mismatches</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Baseline (0)</td>
+                <td>0.0 s</td>
+                <td>0.9154 (91.54%)</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>50 frames</td>
+                <td>0.5 s</td>
+                <td>0.9567 (95.67%)</td>
+                <td>0.9770</td>
+                <td>0.9733</td>
+                <td>0.9807</td>
+                <td>2,670</td>
+              </tr>
+              <tr>
+                <td>80 frames</td>
+                <td>0.8 s</td>
+                <td>0.9601 (96.01%)</td>
+                <td>0.9790</td>
+                <td>0.9670</td>
+                <td>0.9912</td>
+                <td>2,459</td>
+              </tr>
+              <tr class="optimal-row">
+                <td>100 frames <span class="badge-optimal">OPTIMAL</span></td>
+                <td>1.0 s</td>
+                <td>0.9602 (96.02%)</td>
+                <td>0.9791</td>
+                <td>0.9643</td>
+                <td>0.9943</td>
+                <td>2,453</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="matrix-drawer">
+          <summary>+ View Complete Confusion Matrix Counts (TP, FP, FN, TN)</summary>
+          <div class="table-wrap" style="margin-top:0.75rem;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>True Positives (TP)</th>
+                  <th>False Positives (FP)</th>
+                  <th>False Negatives (FN)</th>
+                  <th>True Negatives (TN)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>50 frames (0.5 s)</td>
+                  <td>56,635</td>
+                  <td>1,554</td>
+                  <td>1,116</td>
+                  <td>2,372</td>
+                </tr>
+                <tr>
+                  <td>80 frames (0.8 s)</td>
+                  <td>57,244</td>
+                  <td>1,952</td>
+                  <td>507</td>
+                  <td>1,974</td>
+                </tr>
+                <tr class="optimal-row">
+                  <td>100 frames (1.0 s)</td>
+                  <td>57,421</td>
+                  <td>2,123</td>
+                  <td>330 (-70.4%)</td>
+                  <td>1,803</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <div class="callout callout-emerald">
+          <strong>Precision–Recall Trade-Off Insight:</strong> Widening the gap threshold from 50 to 100 frames reduced
+          False Negatives by <strong>70.4%</strong> (1,116 &rarr; 330) and elevated Recall to <strong>0.9943</strong>.
+          This did increase False Positives (1,554 &rarr; 2,123) and slightly tapered Precision (0.9733 &rarr; 0.9643),
+          but overall Accuracy between 80 and 100 frames plateaued successfully.
+        </div>
+      </div>
+
+      <!-- TAB 2: WhisperX Word-Level Alignment -->
+      <div id="exp2" class="tab-panel">
+        <span class="card-tag">Experiment 02 · Phonetic Word Alignment</span>
+        <h3>Word-Level VAD Cross-Validation Using WhisperX</h3>
+        <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:0.4rem;">
+          Because SRT subtitles group words into reading blocks, I deployed <strong>WhisperX</strong> (testing both the
+          <code>base</code> and <code>large-v3</code> models) to extract exact word-level start and end timestamps,
+          which I then mapped to my 10 ms rVAD frames.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>WhisperX Model</th>
+                <th>Word-Level VAD Score</th>
+                <th>Non-Word VAD Score</th>
+                <th>Extracted Word Count</th>
+                <th>SRT Reference Alignment Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="optimal-row">
+                <td>base</td>
+                <td>0.978 (97.8%)</td>
+                <td>0.718 (71.8%)</td>
+                <td>1,877</td>
+                <td>Matches SRT reference word count exactly (1,877 words)</td>
+              </tr>
+              <tr>
+                <td>large-v3</td>
+                <td>0.978 (97.8%)</td>
+                <td>0.719 (71.9%)</td>
+                <td>1,884</td>
+                <td>Differs in coverage; I identified 76 missing words relative to my SRT comparison</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-emerald">
+          <strong>Model Alignment Takeaway:</strong> Both WhisperX models achieved an identical <strong>0.978 word-level
+            VAD score</strong>, confirming that my rVAD pipeline reliably captures spoken words. Non-word regions scored
+          <strong>0.718–0.719</strong>, demonstrating that inter-word acoustic intervals require separate analysis.
+        </div>
+      </div>
+
+      <!-- TAB 3: Subtitle-Gap Silence Analysis -->
+      <div id="exp3" class="tab-panel">
+        <span class="card-tag">Experiment 03 · Candidate Non-Speech Heuristic</span>
+        <h3>Evaluating Non-Speech Detection via Subtitle Gaps &amp; Boundary Timing</h3>
+        <p style="color:var(--text-secondary); font-size:0.9rem; margin-top:0.4rem;">
+          To inspect potential false speech detections outside subtitle blocks, I converted intervals between the end of
+          one subtitle and the start of the next (plus <code>00:00:00,000</code> to the first subtitle) to 10 ms frame
+          indices and checked them for <code>0</code>-valued rVAD frames.
+        </p>
+
+        <div class="callout callout-amber">
+          <strong>Methodological Context:</strong> Since SRT subtitle gaps are grouped for viewer readability rather
+          than acoustic silence, they frequently contain natural breathing or low-amplitude speech. Therefore, I treated
+          this metric as a <strong>subtitle-gap-based non-speech analysis</strong> rather than absolute ground-truth
+          silence accuracy.
+        </div>
+
+        <details class="matrix-drawer">
+          <summary>+ View Subtitle-Level Start/End Boundary Check Note (80 / 274 blocks)</summary>
+          <p style="font-size:0.83rem; color:var(--text-secondary); margin-top:0.65rem;">
+            In a separate exploratory check, I evaluated subtitle-level boundary alignment, recording a 0.2920 pass
+            ratio (80 of 274 blocks), dependent on strict start/end boundary tolerance rules.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section id="chronology" class="section-block" style="margin-bottom:0;">
+      <div class="eyebrow" data-reveal="fade-up">// 03 · ACADEMIC CHRONOLOGY &amp; TECHNICAL STACK</div>
+      <h2 class="section-title" data-reveal="heading">My Journey at IIIT Hyderabad</h2>
+      <p class="section-subtitle" data-reveal="fade-up">Foundational AI/ML training at iHub-Data followed by my applied research at the Speech
+        Lab (LTRC).</p>
+
+      <div class="two-col">
+        <div class="role-card primary-role" data-reveal="card">
           <div>
-            <div class="inst-name">International Institute of Information Technology (IIIT) Hyderabad</div>
-            <div class="inst-lab">Speech Lab &middot; Language Technologies Research Center (LTRC)</div>
+            <div class="role-meta">
+              <span style="color:var(--accent-orange);"> RESEARCH INTERNSHIP</span>
+              <span>01 Dec 2024 – 31 May 2025 (6 Mos)</span>
+            </div>
+            <h3>Research Intern — Speech Lab, LTRC</h3>
+            <p style="font-size:0.86rem; color:var(--text-secondary); margin:0.5rem 0 0.85rem;">
+              I worked in the research area of <strong>Multimodal Multi-video Question and Answering</strong>, spanning
+              Voice Activity Detection, Automatic Speech Recognition, Question Answering, and video stitching.
+            </p>
+            <div class="chip-group">
+              <span class="tech-chip">Python</span>
+              <span class="tech-chip">rVAD 2.0</span>
+              <span class="tech-chip">WhisperX (base &amp; large-v3)</span>
+              <span class="tech-chip">Transformers</span>
+              <span class="tech-chip">NumPy</span>
+              <span class="tech-chip">Audacity</span>
+              <span class="tech-chip">SRT Timestamp Alignment</span>
+            </div>
+          </div>
+          <div class="role-footer">
+            <a href="../assets/certificates/SakethCertificate-IIIT.pdf" target="_blank"
+              rel="noopener noreferrer">Research Internship Certificate ↗</a>
           </div>
         </div>
-        <div class="inst-meta-group">
-          <span class="inst-timeline mono">01 Dec 2024 &ndash; 31 May 2025</span>
-          <span class="inst-note-badge mono">Role: Research Intern (6 Months &middot; Certificate Verified)</span>
-        </div>
-      </div>
 
-      <!-- ======================================================================
-           SECTION 2: CHRONOLOGICAL RESEARCH & TRAINING TIMELINE
-           ====================================================================== -->
-      <div class="research-section-header" data-reveal="fade-up">
-        <span class="section-tag mono">// ACADEMIC &amp; RESEARCH CHRONOLOGY</span>
-        <h2>Two Distinct Chronological Experiences at IIIT Hyderabad</h2>
-        <p>A structured six-month foundational training program in AI/ML at iHub-Data followed by an applied six-month
-          research internship at the Speech Lab (LTRC).</p>
-      </div>
-
-      <div class="timeline-experience-grid" data-reveal="fade-up">
-        <!-- Experience 01: Training Program -->
-        <div class="experience-card">
-          <div class="exp-header">
-            <span class="exp-index mono">[EXP &middot; 01]</span>
-            <span class="exp-period-badge mono">May 2024 &ndash; Oct 2024 (6 Mos)</span>
+        <div class="role-card" data-reveal="card">
+          <div>
+            <div class="role-meta">
+              <span>FOUNDATIONAL TRAINING</span>
+              <span>May 2024 – Oct 2024 (6 Mos)</span>
+            </div>
+            <h3>Internship Trainee — AI/ML Training (iHub-Data)</h3>
+            <p style="font-size:0.86rem; color:var(--text-secondary); margin:0.5rem 0 0.85rem;">
+              Before my research role, I completed an intensive six-month AI/ML training program at IIIT Hyderabad,
+              cementing my foundation in machine learning, deep learning, NLP, and computer vision.
+            </p>
+            <div class="chip-group">
+              <span class="tech-chip">Python</span>
+              <span class="tech-chip">PyTorch</span>
+              <span class="tech-chip">TensorFlow</span>
+              <span class="tech-chip">Scikit-learn</span>
+              <span class="tech-chip">NLP &amp; Computer Vision</span>
+            </div>
           </div>
-          <h3 class="exp-role-title">Internship Trainee &middot; AI/ML Training</h3>
-          <div class="exp-org mono">iHub-Data &middot; IIIT Hyderabad</div>
-          <p class="exp-description">
-            Completed an intensive six-month training program in Artificial Intelligence and Machine Learning conducted
-            by iHub-Data (Technology Innovation Hub for Data-Driven Technologies) at IIIT Hyderabad. Covered
-            mathematical foundations and practical implementations across four core disciplines:
-          </p>
-          <ul class="exp-topics-list">
-            <li><i class="fas fa-chevron-right"></i> Machine Learning &amp; Deep Learning mathematical foundations</li>
-            <li><i class="fas fa-chevron-right"></i> Natural Language Processing (NLP) architectures</li>
-            <li><i class="fas fa-chevron-right"></i> Computer Vision feature representations</li>
-            <li><i class="fas fa-chevron-right"></i> Practical implementation of AI/ML concepts through rigorous
-              assignments</li>
-          </ul>
-          <div class="exp-footer-action">
+          <div class="role-footer">
             <a href="https://ihub-data.ai/archives/events/student-training-program-on-aiml-at-iiit-hyderabad-may-2024/"
-              target="_blank" rel="noopener noreferrer" class="exp-link-btn"
-              title="View official iHub-Data training announcement">
-              <span>Program Archive Reference</span>
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-            </a>
-            <a href="../assets/certificates/IIIT-AIML.jpg" target="_blank" rel="noopener noreferrer"
-              class="exp-link-btn" title="View Certificate of Proficiency">
-              <span>Certificate (JPG)</span>
-              <i class="fas fa-file-image" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Experience 02: Research Internship -->
-        <div class="experience-card active-internship">
-          <div class="exp-header">
-            <span class="exp-index mono">[EXP &middot; 02]</span>
-            <span class="exp-period-badge exp-badge-active mono">01 Dec 2024 &ndash; 31 May 2025 (6 Mos)</span>
-          </div>
-          <h3 class="exp-role-title">Research Intern &middot; Speech Lab</h3>
-          <div class="exp-org mono">Language Technologies Research Center (LTRC) &middot; IIIT Hyderabad</div>
-          <p class="exp-description">
-            Completed a formal six-month research internship under the Speech Lab, LTRC. The institutional certificate
-            specifies the core research problem as <strong>&ldquo;Multimodal Multi video Question and
-              Answering&rdquo;</strong>, addressing complex acoustic segmentation, automatic speech recognition, and
-            video synthesis:
-          </p>
-          <ul class="exp-topics-list">
-            <li><i class="fas fa-check" style="color: #00e5a3;"></i> Voice Activity Detection (VAD) pipeline development
-              &amp; evaluation</li>
-            <li><i class="fas fa-check" style="color: #00e5a3;"></i> Automatic Speech Recognition (ASR) integration
-              &amp; alignment</li>
-            <li><i class="fas fa-check" style="color: #00e5a3;"></i> Multimodal Question Answering across lecture video
-              archives</li>
-            <li><i class="fas fa-check" style="color: #00e5a3;"></i> Video stitching &amp; temporal segment
-              synchronization</li>
-          </ul>
-          <div class="exp-footer-action">
-            <span class="mono" style="font-size: 11px; color: #707e73;">Verified Academic Credential</span>
-            <a href="../assets/certificates/SakethCertificate-IIIT.pdf" target="_blank" rel="noopener noreferrer"
-              class="exp-link-btn" style="color: #F45135;" title="View official research certificate">
-              <span>Official Certificate (PDF)</span>
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-            </a>
+              target="_blank" rel="noopener">iHub-Data Program Archive ↗</a>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- ======================================================================
-           SECTION 3: RESEARCH PROBLEM & SYSTEM SCOPE
-           ====================================================================== -->
-      <article class="research-case-article">
-        <div class="research-pillar-card" data-reveal="fade-up">
-          <div class="pillar-meta">
-            <span class="pillar-index mono">// CORE RESEARCH SPECIFICATION</span>
-            <span class="pillar-badge mono">LTRC RESEARCH INITIATIVE</span>
-          </div>
-          <h2 class="pillar-title">Research Scope: Multimodal Multi-Video Question and Answering</h2>
-
-          <div class="research-spec-grid">
-            <!-- 1. Research Context -->
-            <div class="spec-block">
-              <span class="spec-label mono"><i class="fas fa-microscope"></i> 1. RESEARCH PROBLEM CONTEXT</span>
-              <p class="spec-content">
-                In multimodal question-answering systems querying expansive multi-video archives, accurate acoustic
-                segmentation is the foundational prerequisite.
-                Raw video streams—particularly educational lectures—contain substantial non-speech audio including
-                instructor pauses, classroom reverberation, paper rustling, and ambient acoustic noise.
-              </p>
-            </div>
-
-            <!-- 2. Problem Addressed -->
-            <div class="spec-block">
-              <span class="spec-label mono"><i class="fas fa-exclamation-triangle"></i> 2. THE ENGINEERING
-                BOTTLENECK</span>
-              <p class="spec-content">
-                Standard acoustic energy detectors routinely trigger false voice flags on non-linguistic noise.
-                These false positives overburden downstream Automatic Speech Recognition (ASR) engines with acoustic
-                artifacts, inflating inference latency and inducing hallucinated transcripts in multimodal
-                question-answering models.
-              </p>
-            </div>
-
-            <!-- 3. Four Core System Pillars -->
-            <div class="spec-block span-full">
-              <span class="spec-label mono"><i class="fas fa-cubes"></i> 3. FOUR SYSTEM COMPONENTS IDENTIFIED IN
-                CERTIFICATE</span>
-              <div class="spec-tech-pills">
-                <span class="spec-tech-pill"><i class="fas fa-wave-square"></i> Voice Activity Detection (VAD)</span>
-                <span class="spec-tech-pill"><i class="fas fa-microphone-alt"></i> Automatic Speech Recognition
-                  (ASR)</span>
-                <span class="spec-tech-pill"><i class="fas fa-comments"></i> Question Answering (QA)</span>
-                <span class="spec-tech-pill"><i class="fas fa-film"></i> Video Stitching</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ======================================================================
-             SECTION 4: TECHNICAL CASE STUDY — rVAD 2.0 EVALUATION
-             ====================================================================== -->
-        <div class="research-pillar-card" data-reveal="fade-up">
-          <div class="pillar-meta">
-            <span class="pillar-index mono">// EXPERIMENTAL STUDY &middot; CASE STUDY 01</span>
-            <span class="pillar-badge mono">LECTURE AUDIO EVALUATION</span>
-          </div>
-          <h2 class="pillar-title">Evaluating &amp; Improving Robust Voice Activity Detection (rVAD 2.0)</h2>
-          <p class="spec-content" style="margin-bottom: 20px;">
-            A substantial portion of the documented experimentation focused on evaluating and optimizing <strong>rVAD
-              2.0 (robust Voice Activity Detection)</strong> on educational lecture audio.
-            A lecture video from Udemy was selected, its audio extracted and converted to a standardized 16 kHz stream,
-            and processed through rVAD.
-            The algorithm generated a frame-level binary sequence where <strong>1 represented speech</strong> and
-            <strong>0 represented non-speech</strong>, evaluated at a standardized <strong>10 ms frame shift</strong>
-            against synchronized SRT subtitle timings.
-          </p>
-
-          <!-- High-Impact KPI Stats Grid -->
-          <div class="research-kpi-grid">
-            <div class="kpi-card">
-              <div class="kpi-val">91.54%</div>
-              <div class="kpi-label">Baseline Frame Accuracy</div>
-              <div class="kpi-subtext">Initial rVAD 2.0 output evaluated directly against SRT reference frames (0.9154).
-              </div>
-            </div>
-
-            <div class="kpi-card kpi-highlight">
-              <div class="kpi-val">96.02%</div>
-              <div class="kpi-label">Post-Processed Accuracy</div>
-              <div class="kpi-subtext">+4.48% gain via boundary-constrained short zero-run filling at 100 frames
-                (0.9602).</div>
-            </div>
-
-            <div class="kpi-card kpi-highlight">
-              <div class="kpi-val">0.9791</div>
-              <div class="kpi-label">Peak F1 Metric</div>
-              <div class="kpi-subtext">Achieved at 100-frame (1.0 s) post-processing threshold with 0.9943 recall.</div>
-            </div>
-
-            <div class="kpi-card">
-              <div class="kpi-val">0.978</div>
-              <div class="kpi-label">WhisperX Word Coverage</div>
-              <div class="kpi-subtext">Consistent word-level VAD coverage across both base and large-v3 models.</div>
-            </div>
-          </div>
-
-          <!-- ======================================================================
-               SECTION 5: ARCHITECTURE FLOW DIAGRAM (SVG)
-               ====================================================================== -->
-          <div class="research-diagram-card">
-            <div class="diagram-header">
-              <span class="diagram-title mono"><i class="fas fa-project-diagram"></i> rVAD 2.0 Evaluation &amp;
-                Refinement Pipeline</span>
-              <span class="diagram-note mono">Horizontal scroll on mobile devices</span>
-            </div>
-            <div class="diagram-scroll-viewport" tabindex="0" aria-label="Speech signal VAD pipeline flow diagram">
-              <svg class="vad-flow-svg" viewBox="0 0 880 110" width="880" height="110"
-                xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <marker id="res-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6"
-                    orient="auto-start-reverse">
-                    <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#F45135" />
-                  </marker>
-                </defs>
-
-                <!-- Stage 1 -->
-                <g class="vad-stage">
-                  <rect x="10" y="15" width="146" height="74" rx="6" fill="#131915" stroke="#2a382e"
-                    stroke-width="1.2" />
-                  <rect x="20" y="17" width="22" height="2" rx="1" fill="#F45135" />
-                  <text x="20" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
-                    fill="#F45135">[01]</text>
-                  <text x="50" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
-                    fill="#707e73">INGESTION</text>
-                  <text x="20" y="60" font-family="'Syne', sans-serif" font-size="13" font-weight="600"
-                    fill="#e8ece6">Lecture Audio</text>
-                  <text x="20" y="76" font-family="'Inter', sans-serif" font-size="10.5" fill="#8b968e">Udemy 16 kHz
-                    stream</text>
-                </g>
-
-                <!-- Connector 1 -->
-                <path d="M 156 52 L 186 52" stroke="#F45135" stroke-width="1.5" marker-end="url(#res-arrow)" />
-
-                <!-- Stage 2 -->
-                <g class="vad-stage">
-                  <rect x="192" y="15" width="146" height="74" rx="6" fill="#131915" stroke="#2a382e"
-                    stroke-width="1.2" />
-                  <rect x="202" y="17" width="22" height="2" rx="1" fill="#F45135" />
-                  <text x="202" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
-                    fill="#F45135">[02]</text>
-                  <text x="232" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
-                    fill="#707e73">FRAMING</text>
-                  <text x="202" y="60" font-family="'Syne', sans-serif" font-size="13" font-weight="600"
-                    fill="#e8ece6">10 ms Frame Shift</text>
-                  <text x="202" y="76" font-family="'Inter', sans-serif" font-size="10.5" fill="#8b968e">Acoustic
-                    extraction</text>
-                </g>
-
-                <!-- Connector 2 -->
-                <path d="M 338 52 L 368 52" stroke="#F45135" stroke-width="1.5" marker-end="url(#res-arrow)" />
-
-                <!-- Stage 3 -->
-                <g class="vad-stage">
-                  <rect x="374" y="15" width="146" height="74" rx="6" fill="#131915" stroke="#2a382e"
-                    stroke-width="1.2" />
-                  <rect x="384" y="17" width="22" height="2" rx="1" fill="#F45135" />
-                  <text x="384" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
-                    fill="#F45135">[03]</text>
-                  <text x="414" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
-                    fill="#707e73">CLASSIFIER</text>
-                  <text x="384" y="60" font-family="'Syne', sans-serif" font-size="13" font-weight="600"
-                    fill="#e8ece6">rVAD 2.0 Core</text>
-                  <text x="384" y="76" font-family="'Inter', sans-serif" font-size="10.5" fill="#8b968e">0/1 Frame
-                    sequence</text>
-                </g>
-
-                <!-- Connector 3 -->
-                <path d="M 520 52 L 550 52" stroke="#F45135" stroke-width="1.5" marker-end="url(#res-arrow)" />
-
-                <!-- Stage 4 -->
-                <g class="vad-stage">
-                  <rect x="556" y="15" width="154" height="74" rx="6" fill="#131915" stroke="#2a382e"
-                    stroke-width="1.2" />
-                  <rect x="566" y="17" width="22" height="2" rx="1" fill="#F45135" />
-                  <text x="566" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
-                    fill="#F45135">[04]</text>
-                  <text x="596" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
-                    fill="#707e73">POST-PROCESS</text>
-                  <text x="566" y="60" font-family="'Syne', sans-serif" font-size="13" font-weight="600"
-                    fill="#e8ece6">Short-Gap Fill</text>
-                  <text x="566" y="76" font-family="'Inter', sans-serif" font-size="10.5" fill="#8b968e">Runs &le;
-                    50/80/100 frames</text>
-                </g>
-
-                <!-- Connector 4 -->
-                <path d="M 710 52 L 740 52" stroke="#F45135" stroke-width="1.5" marker-end="url(#res-arrow)" />
-
-                <!-- Stage 5 -->
-                <g class="vad-stage">
-                  <rect x="746" y="15" width="124" height="74" rx="6" fill="#18231c" stroke="#F45135"
-                    stroke-width="1.2" />
-                  <rect x="756" y="17" width="22" height="2" rx="1" fill="#F45135" />
-                  <text x="756" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
-                    fill="#F45135">[05]</text>
-                  <text x="786" y="38" font-family="'JetBrains Mono', monospace" font-size="10"
-                    fill="#00e5a3">DOWNSTREAM</text>
-                  <text x="756" y="60" font-family="'Syne', sans-serif" font-size="13" font-weight="600"
-                    fill="#e8ece6">WhisperX ASR</text>
-                  <text x="756" y="76" font-family="'Inter', sans-serif" font-size="10.5" fill="#00e5a3">Multimodal
-                    QA</text>
-                </g>
-              </svg>
-            </div>
-          </div>
-
-          <!-- ======================================================================
-               SECTION 6: EXPERIMENT 01 — SHORT-GAP POST-PROCESSING
-               ====================================================================== -->
-          <div style="margin-top: 36px;">
-            <div class="pillar-meta">
-              <span class="pillar-index mono">// EXPERIMENTAL PROCEDURE 01</span>
-              <span class="pillar-badge mono">GAP RECOVERY BENCHMARK</span>
-            </div>
-            <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: #e8ece6; margin-bottom: 12px;">
-              Post-Processing to Recover Short Gaps Between Continuous Speech
-            </h3>
-            <p class="spec-content">
-              To mitigate false negatives caused by brief acoustic dropouts (such as unvoiced stops, short vocal
-              hesitations, or intra-word breathing pauses), a boundary-constrained post-processing algorithm was
-              engineered.
-              The algorithm scanned the binary VAD sequence, identified consecutive runs of 0-valued frames occurring
-              between speech segments, and flipped them to 1 <strong>if and only if</strong>:
-            </p>
-            <ul class="exp-topics-list" style="margin: 12px 0 16px;">
-              <li><i class="fas fa-arrow-right"></i> The run length of 0s was at or below a selected threshold \(N\)
-                frames.</li>
-              <li><i class="fas fa-arrow-right"></i> The run was strictly flanked by 1-valued (speech) frames on both
-                preceding and succeeding sides.</li>
-            </ul>
-
-            <!-- Table 1: Short Gap Results -->
-            <div class="table-scroll-container">
-              <table class="research-data-table">
-                <thead>
-                  <tr>
-                    <th>Maximum Gap</th>
-                    <th>Equivalent Duration</th>
-                    <th>Accuracy</th>
-                    <th>F1 Score</th>
-                    <th>Precision</th>
-                    <th>Recall</th>
-                    <th>Total Mismatches</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="metric-num">50 frames</span></td>
-                    <td class="mono">0.5 s</td>
-                    <td><span class="metric-num">0.9567</span> (95.67%)</td>
-                    <td><span class="metric-num">0.9770</span></td>
-                    <td><span class="metric-num">0.9733</span></td>
-                    <td><span class="metric-num">0.9807</span></td>
-                    <td><span class="metric-num">2,670</span></td>
-                  </tr>
-                  <tr>
-                    <td><span class="metric-num">80 frames</span></td>
-                    <td class="mono">0.8 s</td>
-                    <td><span class="metric-num">0.9601</span> (96.01%)</td>
-                    <td><span class="metric-num">0.9790</span></td>
-                    <td><span class="metric-num">0.9670</span></td>
-                    <td><span class="metric-num">0.9912</span></td>
-                    <td><span class="metric-num">2,459</span></td>
-                  </tr>
-                  <tr class="highlight-row">
-                    <td><span class="metric-num">100 frames</span> <span class="metric-pill">OPTIMAL</span></td>
-                    <td class="mono">1.0 s</td>
-                    <td><span class="metric-num">0.9602</span> (96.02%)</td>
-                    <td><span class="metric-num">0.9791</span></td>
-                    <td><span class="metric-num">0.9643</span></td>
-                    <td><span class="metric-num">0.9943</span></td>
-                    <td><span class="metric-num">2,453</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Collapsible Confusion Matrix Grid -->
-            <details class="research-details-card">
-              <summary>
-                <span><i class="fas fa-table" style="margin-right: 8px; color: #F45135;"></i> View Complete Confusion
-                  Matrix Metrics (TP, FP, FN, TN)</span>
-                <i class="fas fa-chevron-down toggle-icon" aria-hidden="true"></i>
-              </summary>
-              <div class="details-content-inner">
-                <p class="spec-content" style="font-size: 12.5px; margin-bottom: 12px; color: #8b968e;">
-                  Exact frame-level contingency matrix counts across the three evaluated gap thresholds (at 10 ms frame
-                  shift):
-                </p>
-                <div class="cm-container-grid">
-                  <!-- 50 Frames -->
-                  <div class="cm-box">
-                    <div class="cm-box-title">
-                      <span>50 FRAMES (0.5 s)</span>
-                      <span class="mono">Mismatches: 2,670</span>
-                    </div>
-                    <div class="cm-stat-row"><span>True Positives (TP)</span><span class="cm-stat-val">56,635</span>
-                    </div>
-                    <div class="cm-stat-row"><span>False Positives (FP)</span><span class="cm-stat-val">1,554</span>
-                    </div>
-                    <div class="cm-stat-row"><span>False Negatives (FN)</span><span class="cm-stat-val">1,116</span>
-                    </div>
-                    <div class="cm-stat-row"><span>True Negatives (TN)</span><span class="cm-stat-val">2,372</span>
-                    </div>
-                  </div>
-
-                  <!-- 80 Frames -->
-                  <div class="cm-box">
-                    <div class="cm-box-title">
-                      <span>80 FRAMES (0.8 s)</span>
-                      <span class="mono">Mismatches: 2,459</span>
-                    </div>
-                    <div class="cm-stat-row"><span>True Positives (TP)</span><span class="cm-stat-val">57,244</span>
-                    </div>
-                    <div class="cm-stat-row"><span>False Positives (FP)</span><span class="cm-stat-val">1,952</span>
-                    </div>
-                    <div class="cm-stat-row"><span>False Negatives (FN)</span><span class="cm-stat-val">507</span></div>
-                    <div class="cm-stat-row"><span>True Negatives (TN)</span><span class="cm-stat-val">1,974</span>
-                    </div>
-                  </div>
-
-                  <!-- 100 Frames -->
-                  <div class="cm-box" style="border-color: rgba(0, 229, 163, 0.3);">
-                    <div class="cm-box-title" style="color: var(--cyan, #00e5a3);">
-                      <span>100 FRAMES (1.0 s) &middot; PEAK F1</span>
-                      <span class="mono">Mismatches: 2,453</span>
-                    </div>
-                    <div class="cm-stat-row"><span>True Positives (TP)</span><span class="cm-stat-val">57,421</span>
-                    </div>
-                    <div class="cm-stat-row"><span>False Positives (FP)</span><span class="cm-stat-val">2,123</span>
-                    </div>
-                    <div class="cm-stat-row"><span>False Negatives (FN)</span><span class="cm-stat-val">330</span></div>
-                    <div class="cm-stat-row"><span>True Negatives (TN)</span><span class="cm-stat-val">1,803</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </details>
-
-            <!-- Trade-off Analysis Callout -->
-            <div class="research-callout-box callout-info">
-              <i class="fas fa-balance-scale callout-icon" aria-hidden="true"></i>
-              <div class="callout-body">
-                <strong>Empirical Trade-Off Dynamics:</strong>
-                Increasing the maximum gap threshold from 50 to 100 frames slashed false negatives by
-                <strong>70.4%</strong> (from 1,116 down to 330) and boosted recall from 0.9807 to 0.9943.
-                Simultaneously, it introduced additional false positives (rising from 1,554 to 2,123), which caused
-                precision to gently taper from 0.9733 to 0.9643.
-                Overall frame-level accuracy and F1 score steadily climbed, with the 100-frame setting yielding the
-                highest recall (0.9943) and F1 score (0.9791), while accuracy between 80 and 100 frames remained
-                virtually equivalent (0.9601 vs 0.9602).
-              </div>
-            </div>
-          </div>
-
-          <!-- ======================================================================
-               SECTION 7: EXPERIMENT 02 — WHISPERX WORD-LEVEL EVALUATION
-               ====================================================================== -->
-          <div style="margin-top: 36px;">
-            <div class="pillar-meta">
-              <span class="pillar-index mono">// EXPERIMENTAL PROCEDURE 02</span>
-              <span class="pillar-badge mono">FORCED ALIGNMENT EVALUATION</span>
-            </div>
-            <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: #e8ece6; margin-bottom: 12px;">
-              Word-Level VAD Evaluation Using WhisperX Forced Alignment
-            </h3>
-            <p class="spec-content">
-              To cross-validate speech detection against phonetic word boundaries rather than block subtitles,
-              <strong>WhisperX</strong> was deployed to extract precise word-level start and end timestamps using both
-              the <strong>base</strong> and <strong>large-v3</strong> models.
-              Each extracted word interval was mapped to its corresponding 10 ms rVAD frames. Word-level VAD coverage
-              was computed as the proportion of frames within each word interval that rVAD labeled as speech.
-              Acoustic frames outside the union of all word intervals were separately quantified as non-word regions.
-            </p>
-
-            <!-- Table 2: WhisperX Comparison -->
-            <div class="table-scroll-container">
-              <table class="research-data-table">
-                <thead>
-                  <tr>
-                    <th>WhisperX Model</th>
-                    <th>Word-Level VAD Score</th>
-                    <th>Non-Word VAD Score</th>
-                    <th>Extracted Word Count</th>
-                    <th>Reference Alignment &amp; Nuance</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="metric-num">base</span></td>
-                    <td><span class="metric-num">0.978</span> (97.8%)</td>
-                    <td><span class="metric-num">0.718</span> (71.8%)</td>
-                    <td><span class="metric-num">1,877</span></td>
-                    <td style="color: var(--cyan, #00e5a3);">Matches SRT reference word count exactly (1,877 words)</td>
-                  </tr>
-                  <tr>
-                    <td><span class="metric-num">large-v3</span></td>
-                    <td><span class="metric-num">0.978</span> (97.8%)</td>
-                    <td><span class="metric-num">0.719</span> (71.9%)</td>
-                    <td><span class="metric-num">1,884</span></td>
-                    <td>+7 words overall; includes 76 words missing relative to SRT reference comparison</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <!-- WhisperX Technical Interpretation -->
-            <div class="research-callout-box callout-info">
-              <i class="fas fa-lightbulb callout-icon" aria-hidden="true"></i>
-              <div class="callout-body">
-                <strong>Model Alignment Nuance:</strong>
-                Both models produced identical high word-level VAD scores of <strong>0.978</strong>, demonstrating that
-                rVAD robustly captures speech across distinct model sizes.
-                Their non-word scores were also tightly clustered (0.718 &ndash; 0.719), indicating that inter-word
-                acoustic segments present distinct signal characteristics requiring separate analysis.
-                Crucially, while the <code>base</code> model's extracted word count matched the SRT reference count of
-                1,877 words exactly, the <code>large-v3</code> model produced 1,884 words with a reported set of
-                <strong>76 missing words</strong> relative to the reference comparison, reflecting different
-                tokenization, hallucination suppression, and decoding behaviors.
-              </div>
-            </div>
-          </div>
-
-          <!-- ======================================================================
-               SECTION 8: EXPERIMENT 03 — NON-SPEECH ANALYSIS VIA SUBTITLE GAPS
-               ====================================================================== -->
-          <div style="margin-top: 36px;">
-            <div class="pillar-meta">
-              <span class="pillar-index mono">// EXPERIMENTAL PROCEDURE 03</span>
-              <span class="pillar-badge mono">CANDIDATE SILENCE INVESTIGATION</span>
-            </div>
-            <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: #e8ece6; margin-bottom: 12px;">
-              Investigating Non-Speech Detection Using Subtitle Gaps &amp; Boundary Timing
-            </h3>
-            <p class="spec-content">
-              A complementary evaluation explored measuring rVAD behavior outside active subtitle intervals.
-              Candidate non-speech intervals were extracted by taking gaps between the end time of one subtitle block
-              and the start time of the subsequent subtitle,
-              together with the leading interval from <code>00:00:00,000</code> to the first subtitle.
-              Timestamps were converted to 10 ms frame indices to calculate silence scores (proportion of 0-valued rVAD
-              frames) and inspect potential false speech triggers.
-            </p>
-
-            <!-- Important Academic Limitation Callout -->
-            <div class="research-callout-box callout-caution">
-              <i class="fas fa-exclamation-triangle callout-icon" aria-hidden="true"></i>
-              <div class="callout-body">
-                <strong>Essential Academic &amp; Evaluation Limitation:</strong>
-                Subtitle gaps serve only as an operational heuristic for non-speech analysis, <em>not</em> ground-truth
-                acoustic silence.
-                Subtitles are segmented for human reading pacing and viewer comprehension; a subtitle gap may naturally
-                contain low-amplitude speech, conversational laughter, or instructor breathing pauses.
-                Consequently, this study documents this method as <strong>subtitle-gap-based non-speech
-                  analysis</strong> rather than definitive silence classification accuracy.
-              </div>
-            </div>
-
-            <!-- Subtitle-Level Timing Check Note -->
-            <div class="spec-block span-full"
-              style="background: #090c0b; border: 1px solid var(--line, #222b26); border-radius: 6px; padding: 18px 20px; margin-top: 14px;">
-              <span class="spec-label mono"><i class="fas fa-stopwatch"></i> SUBTITLE-LEVEL TIMING DIAGNOSTIC
-                NOTE</span>
-              <p class="spec-content" style="font-size: 13px; color: #a4b5a6; margin: 0;">
-                A separate exploratory boundary check yielded <strong>80 out of 274 subtitle blocks (ratio of
-                  0.2920)</strong>.
-                This value represents a subtitle-level block-boundary timing pass ratio rather than frame-level or model
-                accuracy.
-                Its interpretation depends strictly on the exact tolerance threshold applied to determine whether
-                subtitle start and end boundaries synchronize with continuous rVAD speech labels.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ======================================================================
-             SECTION 9: KEY FINDINGS (7 STRUCTURED POINTS)
-             ====================================================================== -->
-        <div class="research-section-header" data-reveal="fade-up" style="margin-top: 48px;">
-          <span class="section-tag mono">// EMPIRICAL TAKEAWAYS</span>
-          <h2>Seven Core Research Findings</h2>
-          <p>Key empirical conclusions documented throughout the rVAD 2.0 evaluation and WhisperX comparative alignment
-            experiments.</p>
-        </div>
-
-        <div class="findings-grid" data-reveal="fade-up">
-          <!-- Finding 1 -->
-          <div class="finding-card">
-            <span class="finding-num mono">[01]</span>
-            <div class="finding-body">
-              <h4>91.54% Baseline Frame Accuracy</h4>
-              <p>Initial rVAD 2.0 frame classification against synchronized SRT subtitle references demonstrated robust
-                baseline speech detection on 16 kHz educational lecture audio.</p>
-            </div>
-          </div>
-
-          <!-- Finding 2 -->
-          <div class="finding-card">
-            <span class="finding-num mono">[02]</span>
-            <div class="finding-body">
-              <h4>Short-Gap Recovery Yields ~96.0% Accuracy</h4>
-              <p>Boundary-constrained post-processing of zero-valued gaps between active speech regions elevated frame
-                accuracy to 96.02% and F1 score to 0.9791 at the 100-frame (1.0 s) setting.</p>
-            </div>
-          </div>
-
-          <!-- Finding 3 -->
-          <div class="finding-card">
-            <span class="finding-num mono">[03]</span>
-            <div class="finding-body">
-              <h4>Precision-Recall Trade-off Dynamics</h4>
-              <p>Widening the gap threshold from 50 to 100 frames slashed false negatives by 70.4% (1,116 down to 330)
-                and boosted recall to 0.9943, with a minor trade-off in precision (0.9733 to 0.9643).</p>
-            </div>
-          </div>
-
-          <!-- Finding 4 -->
-          <div class="finding-card">
-            <span class="finding-num mono">[04]</span>
-            <div class="finding-body">
-              <h4>0.978 WhisperX Word-Level Coverage</h4>
-              <p>Forced alignment across both WhisperX base and large-v3 models confirmed identical 0.978 word-level VAD
-                coverage, demonstrating high consistency across spoken words.</p>
-            </div>
-          </div>
-
-          <!-- Finding 5 -->
-          <div class="finding-card">
-            <span class="finding-num mono">[05]</span>
-            <div class="finding-body">
-              <h4>Non-Word Region Acoustic Dynamics</h4>
-              <p>Non-word VAD scores stabilized at 0.718&ndash;0.719 across both WhisperX models, indicating that
-                acoustic regions between words contain distinct acoustic dynamics that differ from active speech.</p>
-            </div>
-          </div>
-
-          <!-- Finding 6 -->
-          <div class="finding-card">
-            <span class="finding-num mono">[06]</span>
-            <div class="finding-body">
-              <h4>Model Alignment Differences (Base vs Large-v3)</h4>
-              <p>The WhisperX base model extracted 1,877 words matching the SRT count, while large-v3 extracted 1,884
-                words with 76 missing words relative to the reference comparison.</p>
-            </div>
-          </div>
-
-          <!-- Finding 7 -->
-          <div class="finding-card span-full">
-            <span class="finding-num mono">[07]</span>
-            <div class="finding-body">
-              <h4>Subtitle Gaps as an Operational Silence Heuristic</h4>
-              <p>Subtitle gap extraction proved valuable for inspecting false positive speech detections in candidate
-                silence regions, though it functions strictly as an operational proxy rather than acoustic ground-truth
-                silence.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ======================================================================
-             SECTION 10: TOOLS, TECHNOLOGIES & SKILLS BREAKDOWN
-             ====================================================================== -->
-        <div class="research-section-header" data-reveal="fade-up">
-          <span class="section-tag mono">// TECHNICAL STACK SEPARATION</span>
-          <h2>Tools, Technologies &amp; Demonstrated Skills</h2>
-          <p>Clear demarcation between tools utilized during research experimentation and the machine learning
-            foundations stack mastered in the training program.</p>
-        </div>
-
-        <div class="toolchain-grid" data-reveal="fade-up">
-          <!-- Research Toolchain -->
-          <div class="toolchain-card">
-            <div class="toolchain-card-header">
-              <i class="fas fa-flask"></i>
-              <h3 class="toolchain-title">Research Toolchain (Speech Lab, LTRC)</h3>
-            </div>
-            <div class="toolchain-pills">
-              <span class="toolchain-pill"><i class="devicon-python-plain"></i> Python</span>
-              <span class="toolchain-pill"><i class="fas fa-wave-square"></i> rVAD 2.0</span>
-              <span class="toolchain-pill"><i class="fas fa-align-left"></i> WhisperX (base &amp; large-v3)</span>
-              <span class="toolchain-pill"><i class="fas fa-closed-captioning"></i> SRT Subtitle Parsing</span>
-              <span class="toolchain-pill"><i class="devicon-numpy-plain"></i> NumPy</span>
-              <span class="toolchain-pill"><i class="fas fa-wave-square"></i> SciPy Signal</span>
-              <span class="toolchain-pill"><i class="fas fa-robot"></i> Transformers</span>
-              <span class="toolchain-pill"><i class="fas fa-file-code"></i> Audio Analysis Scripts</span>
-            </div>
-            <p class="toolchain-note">
-              Applied for audio stream extraction, 10 ms frame shifting, binary sequence generation, gap recovery
-              post-processing, and forced alignment.
-            </p>
-          </div>
-
-          <!-- Training Stack -->
-          <div class="toolchain-card">
-            <div class="toolchain-card-header">
-              <i class="fas fa-graduation-cap"></i>
-              <h3 class="toolchain-title">AI/ML Training Stack (iHub-Data)</h3>
-            </div>
-            <div class="toolchain-pills">
-              <span class="toolchain-pill"><i class="devicon-python-plain"></i> Python</span>
-              <span class="toolchain-pill"><i class="devicon-tensorflow-original"></i> TensorFlow</span>
-              <span class="toolchain-pill"><i class="devicon-pytorch-original"></i> PyTorch</span>
-              <span class="toolchain-pill"><i class="devicon-scikitlearn-plain"></i> Scikit-learn</span>
-              <span class="toolchain-pill"><i class="devicon-pandas-plain"></i> Pandas</span>
-              <span class="toolchain-pill"><i class="fas fa-chart-line"></i> Matplotlib</span>
-              <span class="toolchain-pill"><i class="devicon-opencv-plain"></i> Computer Vision</span>
-              <span class="toolchain-pill"><i class="fas fa-language"></i> NLP Pipelines</span>
-            </div>
-            <p class="toolchain-note">
-              Mastered during the six-month AI/ML foundational training program covering neural architectures,
-              optimization algorithms, and benchmark assignments.
-            </p>
-          </div>
-        </div>
-
-        <!-- Skills Summary Matrix -->
-        <div class="skills-summary-box" data-reveal="fade-up">
-          <div class="skills-summary-title mono">// DEMONSTRATED RESEARCH &amp; APPLIED AI COMPETENCIES</div>
-          <div class="skills-summary-grid">
-            <div class="skill-item"><i class="fas fa-check-circle"></i> Speech signal processing &amp; Voice Activity
-              Detection (VAD)</div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i> Audio frame segmentation (10 ms hop) &amp;
-              timestamp alignment</div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i> ASR pipelines &amp; WhisperX word-level forced
-              alignment</div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i> Rigorous evaluation metrics (Precision, Recall,
-              F1, TP/FP/FN/TN)</div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i> Python-based signal processing &amp; scientific
-              data analysis</div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i> Deep Learning, NLP, and Computer Vision
-              fundamentals</div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i> Experimental design, comparative analysis &amp;
-              technical reporting</div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i> Multimodal video understanding &amp; temporal
-              video stitching</div>
-          </div>
-        </div>
-
-        <!-- ======================================================================
-             SECTION 11: VERIFIED INSTITUTIONAL CERTIFICATES
-             ====================================================================== -->
-        <div class="research-section-header" data-reveal="fade-up">
-          <span class="section-tag mono">// FORMAL VERIFICATION</span>
-          <h2>Verified Institutional Credentials</h2>
-          <p>Official completion certificates issued by the Speech Lab (LTRC) and iHub-Data at IIIT Hyderabad.</p>
-        </div>
-
-        <div class="cert-showcase-grid" data-reveal="fade-up">
-          <!-- Research Internship Certificate -->
-          <div class="cert-card">
-            <div class="cert-card-header">
-              <i class="fas fa-award cert-badge-icon" aria-hidden="true"></i>
-              <div class="cert-title-group">
-                <h3>Research Internship Certificate</h3>
-                <span class="cert-subtitle">Speech Lab &middot; Language Technologies Research Center (LTRC),
-                  IIIT-H</span>
-              </div>
-            </div>
-            <div class="cert-card-meta">
-              Validates six-month research internship (01 Dec 2024 &ndash; 31 May 2025) on <em>&ldquo;Multimodal Multi
-                video Question and Answering&rdquo;</em>, confirming contributions across VAD, ASR, Question Answering,
-              and video stitching.
-            </div>
-            <a href="../assets/certificates/SakethCertificate-IIIT.pdf" target="_blank" rel="noopener noreferrer"
-              class="btn-segmented cert-action-btn">
-              <span class="btn-ticks" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span>View Official Certificate (PDF)</span>
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-            </a>
-          </div>
-
-          <!-- Training Proficiency Certificate -->
-          <div class="cert-card">
-            <div class="cert-card-header">
-              <i class="fas fa-certificate cert-badge-icon" aria-hidden="true"></i>
-              <div class="cert-title-group">
-                <h3>Certificate of Proficiency &middot; Applied AI &amp; ML</h3>
-                <span class="cert-subtitle">iHub-Data &middot; Technology Innovation Hub, IIIT Hyderabad</span>
-              </div>
-            </div>
-            <div class="cert-card-meta">
-              Validates successful completion of the six-month training program (May &ndash; Oct 2024) spanning Deep
-              Learning, Machine Learning, Natural Language Processing, and Computer Vision proctored benchmarks.
-            </div>
-            <a href="../assets/certificates/IIIT-AIML.jpg" target="_blank" rel="noopener noreferrer"
-              class="btn-segmented cert-action-btn secondary-btn">
-              <span class="btn-ticks" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span>View Certificate of Proficiency (JPG)</span>
-              <i class="fas fa-file-image" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-
-      </article>
-
-    </div>
   </main>
 
   <!-- ======================================================================
@@ -982,7 +582,6 @@
       <div class="footer-top-row">
         <div class="footer-brand-col">
           <a href="../" class="brand-monogram">
-
             <span class="brand-name">Saketh Lingerker</span>
           </a>
           <p class="footer-tagline">Systems Engineer &amp; AI Developer</p>
@@ -1223,6 +822,29 @@
       <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
   </button>
+
+  <!-- Inline Tab Switcher for instantaneous tab responses -->
+  <script>
+    function switchTab(event, tabId) {
+      const buttons = document.querySelectorAll('.tab-btn');
+      const panels = document.querySelectorAll('.tab-panel');
+      buttons.forEach(function (btn) {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      panels.forEach(function (panel) {
+        panel.classList.remove('active');
+      });
+      if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+        event.currentTarget.setAttribute('aria-selected', 'true');
+      }
+      var target = document.getElementById(tabId);
+      if (target) {
+        target.classList.add('active');
+      }
+    }
+  </script>
 
   <!-- Main Application Script (ES Module) -->
   <script type="module" src="../src/scripts/pages/research.js"></script>

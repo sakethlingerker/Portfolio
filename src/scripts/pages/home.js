@@ -1,14 +1,15 @@
 /**
  * Home Page Entry Script
- * Initializes the editorial developer identity hero, proof metrics, featured projects preview,
- * global navigation, and GSAP scroll reveals.
+ * Initializes the text-led editorial developer identity hero, proof metrics,
+ * featured projects preview, Technical Focus toolkit, global navigation, and GSAP scroll reveals.
  */
 
 import { initGlobalNav } from "../modules/nav.js";
 import { initWorkbench } from "../modules/workbench.js";
 import { initScrollReveals } from "../animations/scroll-reveal.ts";
 import { setupGlobalErrorHandling } from "../modules/utils.js";
-import { initCinematicHeroPortrait } from "../modules/cinematic.js";
+import { initSkillsToolkit } from "../modules/skills.js";
+import { initHero3D } from "../modules/hero-3d.js";
 import "../preloader.js";
 
 async function initHomePage() {
@@ -20,19 +21,22 @@ async function initHomePage() {
   // Dismiss boot preloader smoothly
   initBootPreloader();
 
+  // Initialize Technical Focus skills accordion from single source of truth
+  initSkillsToolkit();
+
+  // Initialize GSAP scroll reveal system
+  const scrollController = initScrollReveals();
+  window.scrollAnimationController = scrollController;
+
+  // Initialize Genuine 3D Scroll-Linked Engineering Core Hero
+  initHero3D();
+
   // Initialize Workbench in background for Ctrl+K launcher
   try {
     await initWorkbench();
   } catch (err) {
     console.warn("Workbench initialization warning:", err);
   }
-
-  // Initialize GSAP scroll reveal system (triggers hero sequence)
-  const scrollController = initScrollReveals();
-  window.scrollAnimationController = scrollController;
-
-  // Initialize exact 8-stage cinematic hero portrait animation & HUD
-  initCinematicHeroPortrait();
 
   // Register Service Worker
   registerServiceWorker();
@@ -81,4 +85,3 @@ if (document.readyState === "loading") {
 } else {
   initHomePage();
 }
-
