@@ -29,6 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
     transformStyle: "preserve-3d"
   });
 
+  const platform = document.querySelector(".platform");
+  if (platform) {
+    gsap.set(platform, {
+      rotationX: 62,
+      rotationZ: -45,
+      transformStyle: "preserve-3d"
+    });
+  }
+
   if (prefersReduced) {
     gsap.set(document.querySelectorAll("[data-hero-elem], .hero-eyebrow, .hero-display-heading, .hero-lead-desc, .hero-cta-group, .hero-3d-col, .hero-expertise-strip"), {
       opacity: 1,
@@ -85,7 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const panelCode = document.querySelector(".panel-code");
     const panelAi = document.querySelector(".panel-ai");
     const panelCloud = document.querySelector(".panel-cloud");
-    const platform = document.querySelector(".platform");
 
     if (panelCode) {
       gsap.to(panelCode, {
@@ -113,7 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (platform) {
       gsap.to(platform, {
-        y: 25,
+        y: isMobile ? 18 : 28,
+        rotationX: 62,
+        rotationZ: -45,
         ease: "none",
         scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: 1.5 }
       });
@@ -123,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 4. Idle Floating Animations (Independent of scroll)
   if (cubeInner) {
     gsap.to(cubeInner, {
-      y: 8,
+      y: 6,
       duration: 3.2,
       repeat: -1,
       yoyo: true,

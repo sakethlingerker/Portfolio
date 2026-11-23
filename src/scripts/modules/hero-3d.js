@@ -34,6 +34,15 @@ export function initHero3D() {
     transformStyle: "preserve-3d"
   });
 
+  const platform = hero.querySelector(".platform");
+  if (platform) {
+    gsap.set(platform, {
+      rotationX: 62,
+      rotationZ: -45,
+      transformStyle: "preserve-3d"
+    });
+  }
+
   // If user prefers reduced motion, set static elements and exit
   if (prefersReduced) {
     gsap.set([
@@ -133,7 +142,6 @@ export function initHero3D() {
   const panelCode = hero.querySelector(".panel-code");
   const panelAi = hero.querySelector(".panel-ai");
   const panelCloud = hero.querySelector(".panel-cloud");
-  const platform = hero.querySelector(".platform");
 
   if (panelCode) {
     gsap.to(panelCode, {
@@ -176,7 +184,9 @@ export function initHero3D() {
 
   if (platform) {
     gsap.to(platform, {
-      y: 25,
+      y: isMobile ? 18 : 28,
+      rotationX: 62,
+      rotationZ: -45,
       ease: "none",
       scrollTrigger: {
         trigger: hero,
@@ -190,7 +200,7 @@ export function initHero3D() {
   // 4. Idle Floating Animations (Independent of scroll)
   if (cubeInner) {
     gsap.to(cubeInner, {
-      y: 8,
+      y: 6,
       duration: 3.2,
       repeat: -1,
       yoyo: true,
